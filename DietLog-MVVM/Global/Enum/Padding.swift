@@ -10,7 +10,3 @@ import Foundation
 enum Padding: Int {
     case leftRightSpacing = 24
 }
-
-enum ComponentSize: Int {
-    case textFieldHeight = 44
-}

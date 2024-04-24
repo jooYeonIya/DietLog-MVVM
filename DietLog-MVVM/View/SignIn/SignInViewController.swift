@@ -70,11 +70,11 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupDoneButtonUI() {
-        doneButton.configureCircleShape(width: 44)
-        doneButton.backgroundColor = .customGreen
+        let width: CGFloat = CGFloat(ComponentSize.textFieldHeight.rawValue)
+        doneButton.configureCircleShape(width: width)
         
         let buttonImgae = UIImage(systemName: "arrowshape.turn.up.right",
-                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: width / 2, weight: .medium))
         doneButton.setImage(buttonImgae, for: .normal)
         doneButton.tintColor = .white
         

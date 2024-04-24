@@ -27,6 +27,7 @@ class MyInfoViewController: BaseViewController {
     private lazy var weightTextField = UITextField()
     private lazy var muscleTextField = UITextField()
     private lazy var fatTextField = UITextField()
+    private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
     private let nickname: String = "nickname"
@@ -42,13 +43,15 @@ class MyInfoViewController: BaseViewController {
         view.addSubviews([welcomLabel,
                           calendarBackgroundView,
                           myInfoLabel,
-                          myInfoStackView])
+                          myInfoStackView,
+                          floatingButton])
         
         calendarBackgroundView.addSubview(calendarView)
         
         setupWelcomLabelUI()
         setupCalendarViewUI()
         setupStackViewUI()
+        setFloatingButtonUI()
     }
     
     private func setupWelcomLabelUI() {
@@ -84,6 +87,10 @@ class MyInfoViewController: BaseViewController {
         myInfoStackView.addArrangedSubview(fatCardView)
     }
     
+    private func setFloatingButtonUI() {
+        floatingButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+    }
+    
     // MARK: - Setup Layout
     override func setupLayout() {
         welcomLabel.snp.makeConstraints { make in
@@ -112,6 +119,12 @@ class MyInfoViewController: BaseViewController {
             make.leading.trailing.equalTo(myInfoLabel)
             let size = view.frame.size.width - (16 * 4) - (24 * 2)
             make.height.equalTo(size / 3)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(welcomLabel)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }
 }

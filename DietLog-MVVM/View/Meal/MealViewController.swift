@@ -15,6 +15,7 @@ class MealViewController: BaseViewController {
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
     private lazy var mealsDataTableView = UITableView()
+    private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
     // 임시
@@ -29,10 +30,12 @@ class MealViewController: BaseViewController {
     // MARK: - Setup UI
     override func setupUI() {
         view.addSubviews([calendarBackgroundView,
-                          mealsDataTableView])
+                          mealsDataTableView,
+                          floatingButton])
         
         setupCalendarViewUI()
         setupTableViewUI()
+        setupFloatingButtoUI()
     }
     
     private func setupCalendarViewUI() {
@@ -53,6 +56,10 @@ class MealViewController: BaseViewController {
         mealsDataTableView.showsVerticalScrollIndicator = false
     }
     
+    private func setupFloatingButtoUI() {
+        floatingButton.configureFloatingButton(width:CGFloat(ComponentSize.floatingButton.rawValue))
+    }
+    
     // MARK: - Setup Layout
     override func setupLayout() {
         calendarBackgroundView.snp.makeConstraints { make in
@@ -70,6 +77,12 @@ class MealViewController: BaseViewController {
             make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
             make.leading.trailing.equalTo(calendarBackgroundView)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(calendarBackgroundView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }
     

@@ -32,19 +32,6 @@ class MealEditViewController: BaseViewController {
         createAccessoryView()
     }
     
-    private func createAccessoryView() {
-        let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(openPhotoGallery))
-        photoButton.tintColor = .customGreen
-        
-        let cameraButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(openCamera))
-        cameraButton.tintColor = .customGreen
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        toolBar.setItems([photoButton, cameraButton], animated: true)
-        memoTextView.inputAccessoryView = toolBar
-    }
-    
     // MARK: - Setup Layout
     override func setupLayout() {
         memoTextView.snp.makeConstraints { make in
@@ -62,6 +49,19 @@ extension MealEditViewController {
     
     @objc func openCamera() {
         insertImageIntoTextView(UIImage(systemName: "heart")!)
+    }
+    
+    private func createAccessoryView() {
+        let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(openPhotoGallery))
+        photoButton.tintColor = .customGreen
+        
+        let cameraButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(openCamera))
+        cameraButton.tintColor = .customGreen
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        toolBar.setItems([photoButton, cameraButton], animated: true)
+        memoTextView.inputAccessoryView = toolBar
     }
     
     private func insertImageIntoTextView(_ image: UIImage) {

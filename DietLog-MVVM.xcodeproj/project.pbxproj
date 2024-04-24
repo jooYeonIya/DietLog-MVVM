@@ -34,6 +34,7 @@
 		0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */; };
 		0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */; };
 		0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */; };
+		0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		0AEAC2CF2BD8EACA0071FCBC /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendarView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				0AEAC2CD2BD8E49C0071FCBC /* UIView+Extension.swift */,
 				0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */,
 				0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */,
+				0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
+				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,

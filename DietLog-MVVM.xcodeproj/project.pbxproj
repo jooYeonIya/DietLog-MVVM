@@ -25,6 +25,7 @@
 		0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */; };
 		0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */; };
 		0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */; };
+		0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LINESeedKR-Rg.otf"; sourceTree = "<group>"; };
 		0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LINESeedKR-Bd.otf"; sourceTree = "<group>"; };
 		0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */,
+				0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */,
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
+				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,

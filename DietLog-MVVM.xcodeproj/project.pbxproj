@@ -33,6 +33,7 @@
 		0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2CF2BD8EACA0071FCBC /* Padding.swift */; };
 		0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */; };
 		0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */; };
+		0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
+				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +314,7 @@
 			name = "DietLog-MVVM";
 			packageProductDependencies = (
 				0AEAC2C92BD8E00D0071FCBC /* SnapKit */,
+				0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -343,6 +346,7 @@
 			mainGroup = 0AEAC2742BD7DE860071FCBC;
 			packageReferences = (
 				0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -608,6 +612,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -615,6 +627,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

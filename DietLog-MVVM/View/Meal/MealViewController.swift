@@ -7,9 +7,13 @@
 
 import UIKit
 
-class MealViewController: UIViewController {
+class MealViewController: BaseViewController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayTopView(true)
     }
+    
+    
 }

@@ -9,19 +9,39 @@
 /* Begin PBXBuildFile section */
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
-		0AEAC2852BD7DE860071FCBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* ViewController.swift */; };
+		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
 		0AEAC28A2BD7DE860071FCBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2892BD7DE860071FCBC /* Assets.xcassets */; };
 		0AEAC28D2BD7DE860071FCBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC28B2BD7DE860071FCBC /* LaunchScreen.storyboard */; };
+		0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */; };
+		0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2AC2BD8CA120071FCBC /* MyInfoViewController.swift */; };
+		0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */; };
+		0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */; };
+		0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */; };
+		0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */; };
+		0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */; };
+		0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */; };
+		0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */; };
+		0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AEAC2842BD7DE860071FCBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AEAC2892BD7DE860071FCBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEAC28C2BD7DE860071FCBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AEAC28E2BD7DE860071FCBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0AEAC2AC2BD8CA120071FCBC /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryViewController.swift; sourceTree = "<group>"; };
+		0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +79,6 @@
 				0AEAC2992BD7E6FE0071FCBC /* View */,
 				0AEAC29B2BD7E7100071FCBC /* Global */,
 				0AEAC2942BD7E6C90071FCBC /* Application */,
-				0AEAC2842BD7DE860071FCBC /* ViewController.swift */,
 			);
 			path = "DietLog-MVVM";
 			sourceTree = "<group>";
@@ -107,6 +126,12 @@
 		0AEAC2992BD7E6FE0071FCBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2A72BD8C9660071FCBC /* Serach */,
+				0AEAC2A62BD8C9550071FCBC /* Exercise */,
+				0AEAC2A52BD8C9460071FCBC /* Category */,
+				0AEAC2A42BD8C9420071FCBC /* Meal */,
+				0AEAC2A32BD8C93A0071FCBC /* MyInfo */,
+				0AEAC2A22BD8C92C0071FCBC /* SignIn */,
 				0AEAC29A2BD7E7030071FCBC /* LaunchScreen */,
 			);
 			path = View;
@@ -172,8 +197,69 @@
 		0AEAC2A12BD7E7450071FCBC /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2A82BD8C9850071FCBC /* TabBar */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		0AEAC2A22BD8C92C0071FCBC /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0AEAC2A32BD8C93A0071FCBC /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2AC2BD8CA120071FCBC /* MyInfoViewController.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		0AEAC2A42BD8C9420071FCBC /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */,
+				0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */,
+			);
+			path = Meal;
+			sourceTree = "<group>";
+		};
+		0AEAC2A52BD8C9460071FCBC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */,
+				0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		0AEAC2A62BD8C9550071FCBC /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */,
+				0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */,
+				0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		0AEAC2A72BD8C9660071FCBC /* Serach */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */,
+			);
+			path = Serach;
+			sourceTree = "<group>";
+		};
+		0AEAC2A82BD8C9850071FCBC /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +332,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AEAC2852BD7DE860071FCBC /* ViewController.swift in Sources */,
+				0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */,
+				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
+				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
+				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
+				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
+				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
+				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
+				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
+				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
+				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
+				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

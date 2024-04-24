@@ -26,6 +26,13 @@
 		0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */; };
 		0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */; };
 		0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */; };
+		0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C62BD8DDBE0071FCBC /* BaseViewController.swift */; };
+		0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2C92BD8E00D0071FCBC /* SnapKit */; };
+		0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */; };
+		0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2CD2BD8E49C0071FCBC /* UIView+Extension.swift */; };
+		0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2CF2BD8EACA0071FCBC /* Padding.swift */; };
+		0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */; };
+		0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +57,12 @@
 		0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LINESeedKR-Bd.otf"; sourceTree = "<group>"; };
 		0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2C62BD8DDBE0071FCBC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2CD2BD8E49C0071FCBC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2CF2BD8EACA0071FCBC /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +209,10 @@
 			children = (
 				0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */,
 				0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */,
+				0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */,
+				0AEAC2CD2BD8E49C0071FCBC /* UIView+Extension.swift */,
+				0AEAC2D12BD8ED630071FCBC /* UITextField+Extension.swift */,
+				0AEAC2D32BD8EFCE0071FCBC /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -202,6 +220,7 @@
 		0AEAC2A02BD7E7410071FCBC /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2CF2BD8EACA0071FCBC /* Padding.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2A82BD8C9850071FCBC /* TabBar */,
+				0AEAC2C62BD8DDBE0071FCBC /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -290,6 +310,9 @@
 			dependencies = (
 			);
 			name = "DietLog-MVVM";
+			packageProductDependencies = (
+				0AEAC2C92BD8E00D0071FCBC /* SnapKit */,
+			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +341,9 @@
 				Base,
 			);
 			mainGroup = 0AEAC2742BD7DE860071FCBC;
+			packageReferences = (
+				0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,19 +374,25 @@
 			files = (
 				0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */,
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
+				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
+				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
+				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
+				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
+				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
+				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +598,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0AEAC2C92BD8E00D0071FCBC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0AEAC2752BD7DE860071FCBC /* Project object */;
 }

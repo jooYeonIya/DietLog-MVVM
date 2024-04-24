@@ -88,7 +88,8 @@ class MyInfoViewController: BaseViewController {
     }
     
     private func setFloatingButtonUI() {
-        floatingButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+        floatingButton.configureFloatingButton(with: "저장",
+                                               and: CGFloat(ComponentSize.floatingButton.rawValue))
     }
     
     // MARK: - Setup Layout

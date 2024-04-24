@@ -28,6 +28,7 @@
 		0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */; };
 		0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2C62BD8DDBE0071FCBC /* BaseViewController.swift */; };
 		0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2C92BD8E00D0071FCBC /* SnapKit */; };
+		0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC2C62BD8DDBE0071FCBC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				0AEAC2C22BD8D00B0071FCBC /* UIColor+Extension.swift */,
 				0AEAC2C42BD8D3510071FCBC /* UIFont+Extension.swift */,
+				0AEAC2CB2BD8E2C60071FCBC /* UILable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
+				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,

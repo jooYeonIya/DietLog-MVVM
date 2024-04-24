@@ -23,4 +23,9 @@ extension UIView {
     func applyRadius() {
         layer.cornerRadius = 16
     }
+    
+    func applyBorderLine() {
+        layer.borderColor = UIColor.customGray.cgColor
+        layer.borderWidth = 1.0
+    }
 }

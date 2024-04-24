@@ -56,10 +56,32 @@ class MealEditViewController: BaseViewController {
 // MARK: - 메서드
 extension MealEditViewController {
     @objc func openPhotoGallery() {
-        print("photo")
+        insertImageIntoTextView(UIImage(systemName: "photo")!)
+
     }
     
     @objc func openCamera() {
-        print("camera")
+        insertImageIntoTextView(UIImage(systemName: "heart")!)
+    }
+    
+    private func insertImageIntoTextView(_ image: UIImage) {
+        let memoTextViewWidth = memoTextView.frame.size.width
+        let imageWidth = image.size.width
+        
+        let textAttachment = NSTextAttachment()
+        
+        if imageWidth > memoTextViewWidth {
+            let scale = imageWidth / (memoTextViewWidth - 12)
+            textAttachment.image = UIImage(cgImage: image.cgImage!, scale: scale, orientation: .up)
+        } else {
+            textAttachment.image = image
+        }
+        
+        let attributedStringWithImage = NSAttributedString(attachment: textAttachment)
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(attributedStringWithImage)
+        
+        memoTextView.attributedText = attributedString
     }
 }

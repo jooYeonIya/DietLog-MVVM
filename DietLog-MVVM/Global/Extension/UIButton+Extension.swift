@@ -11,5 +11,23 @@ extension UIButton {
     func configureCircleShape(width: CGFloat) {
         layer.cornerRadius = width / 2
         layer.masksToBounds = true
+        
+        backgroundColor = .customGreen
+    }
+    
+    func configureFloatingButton(width: CGFloat) {
+        configureCircleShape(width: width)
+        
+        let buttonImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: width / 2, weight: .medium))
+        setImage(buttonImage, for: .normal)
+        tintColor = .white
+    }
+    
+    func configureFloatingButton(with text: String, and width: CGFloat) {
+        configureCircleShape(width: width)
+        
+        setTitle(text, for: .normal)
+        setTitleColor(.white, for: .normal)
+        titleLabel?.font = .body
     }
 }

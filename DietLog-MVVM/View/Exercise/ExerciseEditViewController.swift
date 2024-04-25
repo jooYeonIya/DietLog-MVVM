@@ -82,11 +82,6 @@ extension ExerciseEditViewController: UITableViewDataSource, UITableViewDelegate
             if let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseEditTextFieldTableViewCell.indetifier) as? ExerciseEditTextFieldTableViewCell {
                 cell.configure()
                 cell.selectionStyle = .none
-                let view = UIView()
-                view.layer.shadowOffset = CGSize(width: 2, height: 2)
-                view.layer.shadowOpacity = 1.0
-                view.layer.shadowRadius = 5
-                cell.backgroundView = view
                 return cell
             }
         } else if section == ExerciseEditOption.category.rawValue {

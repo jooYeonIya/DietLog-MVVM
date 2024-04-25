@@ -93,6 +93,7 @@ extension ExerciseEditViewController: UITableViewDataSource, UITableViewDelegate
             if let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseEditTableViewCell.indetifier) as? ExerciseEditTableViewCell {
                 cell.configure()
                 cell.selectionStyle = .none
+                cell.accessoryType = .disclosureIndicator
                 return cell
             }
         } else {

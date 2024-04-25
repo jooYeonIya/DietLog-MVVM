@@ -10,6 +10,7 @@ import UIKit
 class ExerciseSelectCategoryViewController: BaseViewController {
 
     // MARK: - Component
+    private lazy var addCategoryButton = UIButton()
     private lazy var categoryTableView = UITableView()
     
     // MARK: - Life Cycle
@@ -20,8 +21,24 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubview(categoryTableView)
+        view.addSubviews([addCategoryButton, categoryTableView])
         
+        setupAddCategoryButton()
+        setupTableViewUI()
+    }
+    
+    private func setupAddCategoryButton() {
+        addCategoryButton.applyRadius()
+        addCategoryButton.applyShadow()
+        addCategoryButton.tintColor = .white
+        addCategoryButton.backgroundColor = .systemGray
+        
+        let buttonImage = UIImage(systemName: "plus",
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
+        addCategoryButton.setImage(buttonImage, for: .normal)
+    }
+    
+    private func setupTableViewUI() {
         categoryTableView.register(ExerciseSelectCategoryTableViewCell.self,
                                    forCellReuseIdentifier: ExerciseSelectCategoryTableViewCell.identifier)
         categoryTableView.showsVerticalScrollIndicator = false
@@ -31,8 +48,15 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        addCategoryButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.height.equalTo(40)
+        }
+        
         categoryTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(addCategoryButton.snp.bottom).offset(4)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     

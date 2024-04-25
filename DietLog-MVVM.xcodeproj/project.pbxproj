@@ -43,6 +43,7 @@
 		0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */; };
 		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
 		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
+		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 				0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */,
 				0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */,
 				0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */,
+				0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
+				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,

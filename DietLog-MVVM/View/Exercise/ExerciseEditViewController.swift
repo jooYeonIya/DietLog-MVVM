@@ -105,4 +105,11 @@ extension ExerciseEditViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == ExerciseEditOption.category.rawValue {
+            let viewController = ExerciseSelectCategoryViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

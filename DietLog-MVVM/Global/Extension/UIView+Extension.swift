@@ -26,6 +26,6 @@ extension UIView {
     
     func applyBorderLine() {
         layer.borderColor = UIColor.customGray.cgColor
-        layer.borderWidth = 1.0
+        layer.borderWidth = 1.2
     }
 }

@@ -40,6 +40,9 @@
 		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
 		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
 		0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */; };
+		0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */; };
+		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
+		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
 		0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */,
+				0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */,
+				0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */,
+				0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -431,7 +440,9 @@
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
+				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
+				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
@@ -442,6 +453,7 @@
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
+				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,

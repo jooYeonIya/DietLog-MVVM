@@ -39,6 +39,7 @@
 		0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */; };
 		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
 		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
+		0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDataTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
 		0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 		0AEAC2A62BD8C9550071FCBC /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2E42BDA51A90071FCBC /* Cells */,
 				0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */,
 				0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */,
 				0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */,
@@ -323,6 +326,14 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0AEAC2E42BDA51A90071FCBC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -422,6 +433,7 @@
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
+				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,

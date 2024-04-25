@@ -38,6 +38,7 @@
 		0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DA2BD9775D0071FCBC /* ComponentSize.swift */; };
 		0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */; };
 		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
+		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		0AEAC2DA2BD9775D0071FCBC /* ComponentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSize.swift; sourceTree = "<group>"; };
 		0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDataTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
+		0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +277,7 @@
 		0AEAC2A52BD8C9460071FCBC /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2E12BDA270C0071FCBC /* Cells */,
 				0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */,
 				0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */,
 			);
@@ -312,6 +315,14 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0AEAC2E12BDA270C0071FCBC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
+				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,

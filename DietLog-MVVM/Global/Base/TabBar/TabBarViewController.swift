@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController {
         
         let mealView = MealViewController()
         let myInfoView = MyInfoViewController()
-        let exerciseView = ExerciseViewController()
+        let exerciseView = CategoryViewController()
         
         let tabBarItems = TabBarOption.allCases.map {
             UITabBarItem(title: $0.toTabTitle(), image: $0.toTabImage(), tag: $0.rawValue)

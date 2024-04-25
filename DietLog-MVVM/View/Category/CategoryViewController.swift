@@ -10,6 +10,7 @@ import UIKit
 class CategoryViewController: BaseViewController {
 
     // MARK: - Component
+    private lazy var floatingButton = UIButton()
     private lazy var categoryCollectionView: UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.minimumLineSpacing = cellSpacing
@@ -34,9 +35,10 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([categoryCollectionView])
+        view.addSubviews([categoryCollectionView, floatingButton])
         
         setupSearchBarUI()
+        setupFloatingButtonUI()
     }
     
     private func setupSearchBarUI() {
@@ -45,11 +47,21 @@ class CategoryViewController: BaseViewController {
         navigationItem.titleView = searchBar
     }
     
+    private func setupFloatingButtonUI() {
+        floatingButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+    }
+    
     // MARK: - Setup Layout
     override func setupLayout() {
         categoryCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(categoryCollectionView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }
     

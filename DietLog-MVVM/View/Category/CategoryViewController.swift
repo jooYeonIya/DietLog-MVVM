@@ -20,10 +20,10 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        setupSearchController()
+        setupSearchBarUI()
     }
     
-    private func setupSearchController() {
+    private func setupSearchBarUI() {
         let searchBar = UISearchBar()
         searchBar.delegate = self
         navigationItem.titleView = searchBar

@@ -104,6 +104,11 @@ extension CategoryViewController: UICollectionViewDataSource {
         cell.configure(with: categoiesData[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = ExerciseViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - CollerctionView Delegate

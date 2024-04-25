@@ -70,6 +70,19 @@ class CategoryViewController: BaseViewController {
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
     }
+    
+    // MARK: - Setup Event
+    override func setupEvent() {
+        floatingButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
+    }
+}
+
+// MARK: - 메서드
+extension CategoryViewController {
+    @objc func moveToCategoryEditView() {
+        let viewController = CategoryEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - SearchBar

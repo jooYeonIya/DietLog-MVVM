@@ -7,9 +7,37 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: BaseViewController {
 
+    // MARK: - Component
+
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayTopView(false)
+    }
+    
+    // MARK: - Setup UI
+    override func setupUI() {
+        setupSearchController()
+    }
+    
+    private func setupSearchController() {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+    }
+    
+    // MARK: - Setup Layout
+    override func setupLayout() {
+        
+    }
+}
+
+extension CategoryViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

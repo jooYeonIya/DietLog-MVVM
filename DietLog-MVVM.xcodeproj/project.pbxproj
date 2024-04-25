@@ -37,6 +37,7 @@
 		0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */; };
 		0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DA2BD9775D0071FCBC /* ComponentSize.swift */; };
 		0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */; };
+		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendarView+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC2DA2BD9775D0071FCBC /* ComponentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSize.swift; sourceTree = "<group>"; };
 		0AEAC2DD2BD98E460071FCBC /* MealsDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDataTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */,
+				0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
+				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,

@@ -80,7 +80,7 @@ class CategoryViewController: BaseViewController {
 // MARK: - 메서드
 extension CategoryViewController {
     @objc func moveToCategoryEditView() {
-        let viewController = CategoryEditViewController()
+        let viewController = ExerciseEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

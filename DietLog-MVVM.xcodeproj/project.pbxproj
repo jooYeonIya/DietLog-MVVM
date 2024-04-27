@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2FA9E72BDC81C20065BDCF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +318,7 @@
 		0AEAC2A72BD8C9660071FCBC /* Serach */ = {
 			isa = PBXGroup;
 			children = (
+				0A2FA9E72BDC81C20065BDCF /* Cells */,
 				0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */,
 			);
 			path = Serach;
@@ -435,6 +446,7 @@
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
+				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,

@@ -7,7 +7,27 @@
 
 import UIKit
 
+enum SearchViewText: String {
+    case recentWord = "최근 검색어"
+}
+
 class SearchViewController: BaseViewController {
+    
+    // MARK: - Component
+    private lazy var recentWordCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 8
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.register(RecentWordCollectionViewCell.self, forCellWithReuseIdentifier: RecentWordCollectionViewCell.identified)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    private lazy var recentWordLabel = UILabel()
+    
+    // MARK: - 변수
+    var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -18,8 +38,10 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
+        view.addSubviews([recentWordLabel, recentWordCollectionView])
         
         setupSearchBarUI()
+        setupRecentWordSectionUI()
     }
     
     private func setupSearchBarUI() {
@@ -27,9 +49,62 @@ class SearchViewController: BaseViewController {
         searchBar.delegate = self
         navigationItem.titleView = searchBar
     }
+    
+    private func setupRecentWordSectionUI() {
+        recentWordLabel.configure(text: SearchViewText.recentWord.rawValue, font: .title)
+        recentWordLabel.textColor = .black
+        
+    }
+    
+    // MARK: - Setup Layout
+    override func setupLayout() {
+        recentWordLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        recentWordCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(recentWordLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(recentWordLabel)
+            make.height.equalTo(24)
+        }
+    }
+
+    // MARK: - Setup Delegate
+    override func setupDelegate() {
+        recentWordCollectionView.dataSource = self
+        recentWordCollectionView.delegate = self
+    }
 }
 
 // MARK: - SerachBar
 extension SearchViewController: UISearchBarDelegate {
     
+}
+
+// MARK: - CollectionView
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recentWords.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentWordCollectionViewCell.identified, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
+        cell.configure(text: recentWords[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let text = recentWords[indexPath.row]
+        let textAttributes = [NSAttributedString.Key.font: UIFont.smallBody]
+        let textWidth = (text as NSString).size(withAttributes: textAttributes).width
+        
+        let delegateButtonWidth: CGFloat = 20
+        let spacing: CGFloat = (8 * 2) + 4
+        
+        let width = textWidth + delegateButtonWidth + spacing
+        
+        return CGSize(width: width, height: 20)
+    }
 }

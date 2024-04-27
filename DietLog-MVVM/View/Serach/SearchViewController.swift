@@ -9,6 +9,7 @@ import UIKit
 
 enum SearchViewText: String {
     case recentWord = "최근 검색어"
+    case result = "검색 결과"
 }
 
 class SearchViewController: BaseViewController {
@@ -24,8 +25,17 @@ class SearchViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+    
+    private lazy var resultLabel: UILabel = {
+        let label = UILabel()
+        label.configure(text: SearchViewText.result.rawValue , font: .title)
+        return label
+    }()
+    
     private lazy var recentWordLabel = UILabel()
     private lazy var recentWordAllDeleteButton = UIButton()
+    private lazy var segmentedControl = UISegmentedControl(items: ["메모", "URL"])
+    private lazy var underlineView = UIView()
     
     // MARK: - 변수
     var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
@@ -39,10 +49,16 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([recentWordLabel, recentWordCollectionView, recentWordAllDeleteButton])
+        view.addSubviews([recentWordLabel, 
+                          recentWordCollectionView,
+                          recentWordAllDeleteButton,
+                          resultLabel,
+                          segmentedControl,
+                          underlineView])
         
         setupSearchBarUI()
         setupRecentWordSectionUI()
+        setupSegmentedControlUI()
     }
     
     private func setupSearchBarUI() {
@@ -58,6 +74,12 @@ class SearchViewController: BaseViewController {
         recentWordAllDeleteButton.setTitle("전체 삭제", for: .normal)
         recentWordAllDeleteButton.setTitleColor(.systemGray, for: .normal)
         recentWordAllDeleteButton.titleLabel?.font = .smallBody
+    }
+    
+    private func setupSegmentedControlUI() {
+        segmentedControl.setBackgroundWhiteImage()
+
+        underlineView.backgroundColor = .customYellow
     }
     
     // MARK: - Setup Layout
@@ -78,7 +100,28 @@ class SearchViewController: BaseViewController {
         recentWordAllDeleteButton.snp.makeConstraints { make in
             make.centerY.equalTo(recentWordLabel)
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
+        }
+        
+        resultLabel.snp.makeConstraints { make in
+            make.top.equalTo(recentWordCollectionView.snp.bottom).offset(24)
+            make.leading.equalTo(recentWordLabel.snp.leading)
+            make.trailing.equalTo(recentWordAllDeleteButton.snp.trailing)
+        }
+        
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(resultLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(resultLabel)
+            make.height.equalTo(40)
+        }
+        
+        underlineView.snp.makeConstraints { make in
+            let width = view.frame.width - CGFloat(Padding.leftRightSpacing.rawValue * 2)
             
+            make.width.equalTo(width / 2)
+            make.height.equalTo(2)
+            
+            make.top.equalTo(segmentedControl.snp.bottom)
+            make.leading.equalTo(segmentedControl.snp.leading)
         }
     }
 

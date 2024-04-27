@@ -26,6 +26,7 @@ class BaseViewController: UIViewController {
     
     func setupNavigationBar() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationController?.navigationBar.tintColor = .black
     }
     
     func setupUI() {}

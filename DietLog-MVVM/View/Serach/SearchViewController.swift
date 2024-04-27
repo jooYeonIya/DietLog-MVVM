@@ -36,6 +36,7 @@ class SearchViewController: BaseViewController {
     private lazy var recentWordAllDeleteButton = UIButton()
     private lazy var segmentedControl = UISegmentedControl(items: ["메모", "URL"])
     private lazy var underlineView = UIView()
+    private lazy var resultTableView = UITableView()
     
     // MARK: - 변수
     var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
@@ -54,11 +55,13 @@ class SearchViewController: BaseViewController {
                           recentWordAllDeleteButton,
                           resultLabel,
                           segmentedControl,
-                          underlineView])
+                          underlineView,
+                          resultTableView])
         
         setupSearchBarUI()
         setupRecentWordSectionUI()
         setupSegmentedControlUI()
+        setupResultTableViewUI()
     }
     
     private func setupSearchBarUI() {
@@ -80,6 +83,13 @@ class SearchViewController: BaseViewController {
         segmentedControl.setBackgroundWhiteImage()
 
         underlineView.backgroundColor = .customYellow
+    }
+    
+    private func setupResultTableViewUI() {
+        resultTableView.register(ExerciseTableViewCell.self, forCellReuseIdentifier: ExerciseTableViewCell.identifier)
+        resultTableView.showsVerticalScrollIndicator = false
+        resultTableView.separatorStyle = .none
+        resultTableView.backgroundColor = .clear
     }
     
     // MARK: - Setup Layout
@@ -123,12 +133,21 @@ class SearchViewController: BaseViewController {
             make.top.equalTo(segmentedControl.snp.bottom)
             make.leading.equalTo(segmentedControl.snp.leading)
         }
+        
+        resultTableView.snp.makeConstraints { make in
+            make.top.equalTo(underlineView.snp.bottom).offset(12)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.trailing.equalTo(resultLabel)
+        }
     }
 
     // MARK: - Setup Delegate
     override func setupDelegate() {
         recentWordCollectionView.dataSource = self
         recentWordCollectionView.delegate = self
+        
+        resultTableView.dataSource = self
+        resultTableView.delegate = self
     }
 }
 
@@ -161,5 +180,22 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let width = textWidth + delegateButtonWidth + spacing
         
         return CGSize(width: width, height: 20)
+    }
+}
+
+// MARK: - TableView
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
+        cell.configure()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

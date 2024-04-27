@@ -24,7 +24,9 @@ class BaseViewController: UIViewController {
         setupEvent()
     }
     
-    func setupNavigationBar() {}
+    func setupNavigationBar() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
     
     func setupUI() {}
     

@@ -90,6 +90,7 @@ extension CategoryViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let vc = SearchViewController()
         navigationController?.pushViewController(vc, animated: true)
+        searchBar.resignFirstResponder()
     }
 }
 

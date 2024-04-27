@@ -7,9 +7,29 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayTopView(false)
     }
+    
+    // MARK: - Setup UI
+    override func setupUI() {
+        
+        setupSearchBarUI()
+    }
+    
+    private func setupSearchBarUI() {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+    }
+}
+
+// MARK: - SerachBar
+extension SearchViewController: UISearchBarDelegate {
+    
 }

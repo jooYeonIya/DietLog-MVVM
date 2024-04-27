@@ -52,6 +52,12 @@ class ExerciseEditViewController: BaseViewController {
         exerciseEditTableView.dataSource = self
         exerciseEditTableView.delegate = self
     }
+    
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
+    }
 }
 
 // MARK: - TableView

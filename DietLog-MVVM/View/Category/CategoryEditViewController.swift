@@ -33,6 +33,7 @@ class CategoryEditViewController: BaseViewController {
         view.addSubviews([titleLable, categoryNameTextField])
     }
     
+    // MARK: - Setup Layout
     override func setupLayout() {
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
@@ -44,5 +45,11 @@ class CategoryEditViewController: BaseViewController {
             make.leading.trailing.equalTo(titleLable)
             make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
         }
+    }
+    
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
     }
 }

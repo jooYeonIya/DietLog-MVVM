@@ -38,6 +38,12 @@ class MealEditViewController: BaseViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
+    }
 }
 
 // MARK: - 메서드

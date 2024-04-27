@@ -25,6 +25,7 @@ class SearchViewController: BaseViewController {
         return collectionView
     }()
     private lazy var recentWordLabel = UILabel()
+    private lazy var recentWordAllDeleteButton = UIButton()
     
     // MARK: - 변수
     var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
@@ -38,7 +39,7 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([recentWordLabel, recentWordCollectionView])
+        view.addSubviews([recentWordLabel, recentWordCollectionView, recentWordAllDeleteButton])
         
         setupSearchBarUI()
         setupRecentWordSectionUI()
@@ -54,19 +55,30 @@ class SearchViewController: BaseViewController {
         recentWordLabel.configure(text: SearchViewText.recentWord.rawValue, font: .title)
         recentWordLabel.textColor = .black
         
+        recentWordAllDeleteButton.setTitle("전체 삭제", for: .normal)
+        recentWordAllDeleteButton.setTitleColor(.systemGray, for: .normal)
+        recentWordAllDeleteButton.titleLabel?.font = .smallBody
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
         recentWordLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
-            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.leading.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.trailing.lessThanOrEqualTo(recentWordAllDeleteButton.snp.leading)
         }
         
         recentWordCollectionView.snp.makeConstraints { make in
             make.top.equalTo(recentWordLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(recentWordLabel)
+            make.leading.equalTo(recentWordLabel)
+            make.trailing.equalTo(recentWordAllDeleteButton)
             make.height.equalTo(24)
+        }
+        
+        recentWordAllDeleteButton.snp.makeConstraints { make in
+            make.centerY.equalTo(recentWordLabel)
+            make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
+            
         }
     }
 

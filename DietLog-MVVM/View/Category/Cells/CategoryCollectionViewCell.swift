@@ -35,7 +35,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         }
         
         button.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(4)
+            make.top.trailing.equalToSuperview().inset(8)
             make.width.height.equalTo(20)
         }
         

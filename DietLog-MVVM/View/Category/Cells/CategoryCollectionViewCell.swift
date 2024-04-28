@@ -24,7 +24,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         
         let button = UIButton()
-        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.setImage(UIImage(named: "OptionMenu"), for: .normal)
         
         view.addSubviews([label, button])
         

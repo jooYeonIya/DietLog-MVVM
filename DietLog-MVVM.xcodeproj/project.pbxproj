@@ -50,6 +50,7 @@
 		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
 		0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F52BDE20B70071FCBC /* Meal.swift */; };
 		0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */; };
+		0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
+		0AEAC2F92BDE222A0071FCBC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +380,7 @@
 			children = (
 				0AEAC2F52BDE20B70071FCBC /* Meal.swift */,
 				0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */,
+				0AEAC2F92BDE222A0071FCBC /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
+				0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,

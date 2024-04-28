@@ -161,6 +161,11 @@ class MyInfoViewController: BaseViewController {
             make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }
+    
+    override func setupDelegate() {
+        calendarView.delegate = self
+        calendarView.dataSource = self
+    }
 }
 
 // MARK: - 메서드
@@ -206,3 +211,11 @@ extension MyInfoViewController {
         return cardView
     }
 }
+
+// MARK: - FSCalendar
+extension MyInfoViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        viewModel.getMyInfo(for: date)
+    }
+}
+

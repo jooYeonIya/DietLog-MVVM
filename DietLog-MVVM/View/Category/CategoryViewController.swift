@@ -117,11 +117,12 @@ class CategoryViewController: BaseViewController {
 // MARK: - 메서드
 extension CategoryViewController {
     @objc func toggleFloatingButton() {
-    
+        
         if isDisplyStackView {
             UIView.animate(withDuration: 0.3) {
                 self.floatingStackView.alpha = 0
                 self.grayView.isHidden = true
+                self.floatingButton.transform = CGAffineTransform.identity
             }
         } else {
             floatingStackView.isHidden = false
@@ -130,6 +131,7 @@ extension CategoryViewController {
             UIView.animate(withDuration: 0.3) {
                 self.floatingStackView.alpha = 1
                 self.grayView.isHidden = false
+                self.floatingButton.transform = CGAffineTransform(rotationAngle: .pi - (.pi / 4))
             }
         }
         

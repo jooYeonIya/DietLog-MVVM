@@ -46,6 +46,8 @@
 		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
 		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
+		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
+		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */,
+				0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */,
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
 				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
 			);
@@ -383,6 +387,8 @@
 			packageProductDependencies = (
 				0AEAC2C92BD8E00D0071FCBC /* SnapKit */,
 				0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */,
+				0AEAC2F02BDE202E0071FCBC /* Realm */,
+				0AEAC2F22BDE202E0071FCBC /* RealmSwift */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -415,6 +421,7 @@
 			packageReferences = (
 				0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -702,6 +709,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -714,6 +729,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		0AEAC2F02BDE202E0071FCBC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		0AEAC2F22BDE202E0071FCBC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

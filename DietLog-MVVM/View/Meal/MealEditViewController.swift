@@ -28,6 +28,7 @@ class MealEditViewController: BaseViewController {
     private func setupMemoTextViewUI() {
         memoTextView.becomeFirstResponder()
         memoTextView.font = .body
+        memoTextView.backgroundColor = .customGray
         
         createAccessoryView()
     }

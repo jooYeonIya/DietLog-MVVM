@@ -49,6 +49,7 @@
 		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
 		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
 		0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F52BDE20B70071FCBC /* Meal.swift */; };
+		0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2F52BDE20B70071FCBC /* Meal.swift */,
+				0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
+				0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,

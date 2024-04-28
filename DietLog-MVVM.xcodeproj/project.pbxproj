@@ -59,6 +59,7 @@
 		0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 		0AEAC30A2BDE38140071FCBC /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC3092BDE38140071FCBC /* RxCocoa */; };
 		0AEAC30C2BDE38140071FCBC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC30B2BDE38140071FCBC /* RxSwift */; };
+		0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */; };
 		0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
 		0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
+		0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +212,7 @@
 		0AEAC2982BD7E6F60071FCBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
+				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,

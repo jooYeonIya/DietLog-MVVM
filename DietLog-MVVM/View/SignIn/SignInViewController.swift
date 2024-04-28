@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 enum SignInText: String {
     case dietLog = "DIET LOG"
@@ -24,9 +25,49 @@ class SignInViewController: BaseViewController {
     private lazy var nicknameTextField = UITextField()
     private lazy var doneButton = UIButton()
 
+    // MARK: - 변수
+    private let viewModel = SignInViewModel()
+    private let disposeBag = DisposeBag()
+    private var isCompletedNickNameCheck = false {
+        willSet {
+            if newValue {
+                moveToMyInfoView()
+            }
+        }
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        doneButton.rx.tap
+            .withLatestFrom(nicknameTextField.rx.text)
+            .map {
+                $0?.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            .subscribe() { [weak self] nickname in
+                self?.viewModel.nickname.onNext(nickname)
+            }.disposed(by: disposeBag)
+        
+        
+        viewModel.signInResult
+            .subscribe() { [weak self] result in
+                var message = ""
+                
+                if result {
+                    message = "환영합니다"
+                } else {
+                    message = "닉네임을 입력해 주세요"
+                }
+                
+                self?.showAlertWithOKButton(title: nil, message: message) {
+                    self?.isCompletedNickNameCheck = result
+                }
+                
+            }.disposed(by: disposeBag)
     }
     
     // MARK: - Setup UI
@@ -115,5 +156,13 @@ class SignInViewController: BaseViewController {
             make.trailing.equalTo(titleLabel)
             make.width.height.equalTo(ComponentSize.textFieldHeight.rawValue)
         }
+    }
+}
+
+// MARK: - 메서드
+extension SignInViewController {
+    private func moveToMyInfoView() {
+        let viewController = TabBarViewController()
+        view.window?.rootViewController = viewController
     }
 }

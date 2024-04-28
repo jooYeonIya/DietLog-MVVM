@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
         setupTopView()
         
         setupNavigationBar()
+        setupBinding()
         setupUI()
         setupLayout()
         setupDelegate()
@@ -28,6 +29,8 @@ class BaseViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationController?.navigationBar.tintColor = .black
     }
+    
+    func setupBinding() {}
     
     func setupUI() {}
     
@@ -52,5 +55,21 @@ extension BaseViewController {
     
     func displayTopView(_ display: Bool) {
         topView.isHidden = !display
+    }
+}
+
+extension BaseViewController {
+    func showAlertWithOKButton(title: String?,
+                               message: String?,
+                               OKTitle: String = "확인",
+                               completion: (() -> Void)? = nil) {
+        let OKAction = UIAlertAction(title: OKTitle, style: .default) { _ in
+            completion?()
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(OKAction)
+        
+        present(alert, animated: true)
     }
 }

@@ -57,6 +57,9 @@ class ExerciseEditViewController: BaseViewController {
     override func setupNavigationBar() {
         let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = button
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = backButton
     }
 }
 

@@ -95,7 +95,7 @@ class MyInfoViewController: BaseViewController {
     // MARK: - Setup Layout
     override func setupLayout() {
         welcomLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(48)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         

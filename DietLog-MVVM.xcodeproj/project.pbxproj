@@ -46,6 +46,17 @@
 		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
 		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
+		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
+		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
+		0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F52BDE20B70071FCBC /* Meal.swift */; };
+		0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */; };
+		0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
+		0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */; };
+		0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
+		0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */; };
+		0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */; };
+		0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */; };
+		0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +99,15 @@
 		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
+		0AEAC2F92BDE222A0071FCBC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
+		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
+		0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */,
+				0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */,
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
 				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
 			);
@@ -152,6 +174,7 @@
 		0AEAC2952BD7E6E20071FCBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2F42BDE20980071FCBC /* Model */,
 				0AEAC2962BD7E6E60071FCBC /* ModelManager */,
 				0AEAC2972BD7E6ED0071FCBC /* NetworkService */,
 			);
@@ -161,6 +184,11 @@
 		0AEAC2962BD7E6E60071FCBC /* ModelManager */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */,
+				0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */,
+				0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */,
+				0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */,
+				0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */,
 			);
 			path = ModelManager;
 			sourceTree = "<group>";
@@ -364,6 +392,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0AEAC2F42BDE20980071FCBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2F52BDE20B70071FCBC /* Meal.swift */,
+				0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */,
+				0AEAC2F92BDE222A0071FCBC /* Category.swift */,
+				0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -383,6 +422,8 @@
 			packageProductDependencies = (
 				0AEAC2C92BD8E00D0071FCBC /* SnapKit */,
 				0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */,
+				0AEAC2F02BDE202E0071FCBC /* Realm */,
+				0AEAC2F22BDE202E0071FCBC /* RealmSwift */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -415,6 +456,7 @@
 			packageReferences = (
 				0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -447,6 +489,7 @@
 				0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */,
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
+				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
@@ -457,15 +500,21 @@
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
+				0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */,
+				0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
+				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
+				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
+				0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
+				0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
@@ -475,6 +524,8 @@
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
+				0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */,
+				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,
 			);
@@ -702,6 +753,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -714,6 +773,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		0AEAC2F02BDE202E0071FCBC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		0AEAC2F22BDE202E0071FCBC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

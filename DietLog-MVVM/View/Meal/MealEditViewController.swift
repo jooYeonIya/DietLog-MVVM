@@ -43,6 +43,8 @@ class MealEditViewController: BaseViewController {
     override func setupNavigationBar() {
         let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = button
+        
+        navigationItem.title = "식단 쓰기"
     }
 }
 

@@ -114,6 +114,9 @@ class CategoryViewController: BaseViewController {
     // MARK: - Setup Event
     override func setupEvent() {
         floatingButton.addTarget(self, action: #selector(toggleFloatingButton), for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleFloatingButton))
+        grayView.addGestureRecognizer(tapGesture)
     }
 }
 

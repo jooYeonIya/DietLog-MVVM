@@ -19,7 +19,7 @@ class MealViewController: BaseViewController {
     
     // MARK: - 변수
     // 임시
-    private var mealsData: [UIImage] = [UIImage(systemName: "photo")!]
+    private var mealsData: [UIImage] = [UIImage(named: "MealBasicImage")!]
 
     // MARK: - Life Cycle
     override func viewDidLoad() {

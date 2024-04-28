@@ -28,6 +28,8 @@ class ExerciseTableViewCell: UITableViewCell {
         
         let titleLable = UILabel()
         titleLable.configure(text: "타이틀 테스트", font: .body)
+        titleLable.numberOfLines = 0
+        titleLable.lineBreakMode = .byCharWrapping
         
         let memoLable = UILabel()
         memoLable.configure(text: "메모 테스트", font: .smallBody)
@@ -49,6 +51,7 @@ class ExerciseTableViewCell: UITableViewCell {
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
+            make.trailing.lessThanOrEqualTo(button.snp.leading).offset(-8)
         }
         
         memoLable.snp.makeConstraints { make in

@@ -52,6 +52,7 @@
 		0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */; };
 		0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
 		0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */; };
+		0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
 		0AEAC2F92BDE222A0071FCBC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		0AEAC2962BD7E6E60071FCBC /* ModelManager */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */,
 			);
 			path = ModelManager;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
+				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,

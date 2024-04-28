@@ -61,6 +61,7 @@
 		0AEAC30C2BDE38140071FCBC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC30B2BDE38140071FCBC /* RxSwift */; };
 		0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */; };
 		0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */; };
+		0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
 		0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
+				0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
+				0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */,
 				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
 				0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */,

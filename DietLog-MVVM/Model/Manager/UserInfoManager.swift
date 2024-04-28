@@ -25,4 +25,8 @@ class UserInfoManager {
     func getIsCompletedFirstFaunch() -> Bool {
         return userDefaults.bool(forKey: UserInfoKeys.isCompletedFirstFaunch)
     }
+
+    func getNickname() -> String {
+        return userDefaults.string(forKey: UserInfoKeys.nickName) ?? "닉네임"
+    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import RxSwift
 
 enum MyInfoViewText: String {
     case welcom = "안녕하세요"
@@ -30,12 +31,21 @@ class MyInfoViewController: BaseViewController {
     private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
-    private let nickname: String = "nickname"
+    private let viewModel = MyInfoViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(true)
+    }
+    
+    // MARK: - Setup Bind
+    override func setupEvent() {
+        viewModel.nickname
+            .map {"\(MyInfoViewText.welcom.rawValue) \($0 ?? "닉네임")" }
+            .bind(to: welcomLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Setup UI
@@ -54,10 +64,8 @@ class MyInfoViewController: BaseViewController {
         setFloatingButtonUI()
     }
     
-    private func setupWelcomLabelUI() {
-        let text = "\(MyInfoViewText.welcom.rawValue) \(nickname)"
-        
-        welcomLabel.configure(text: text, font: .largeTitle)
+    private func setupWelcomLabelUI() {        
+        welcomLabel.configure(text: "", font: .largeTitle)
     }
     
     private func setupCalendarViewUI() {

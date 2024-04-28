@@ -8,7 +8,7 @@
 import Foundation
 
 enum UserInfoKeys {
-    static let isFirstLaunchComplete = "isFirstLaunchComplete"
+    static let isCompletedFirstFaunch = "isCompletedFirstFaunch"
     static let nickName = "nickName"
 }
 
@@ -19,10 +19,10 @@ class UserInfoManager {
     
     func addUserInfo(nickname: String) {
         userDefaults.setValue(nickname, forKey: UserInfoKeys.nickName)
-        userDefaults.setValue(true, forKey: UserInfoKeys.isFirstLaunchComplete)
+        userDefaults.setValue(true, forKey: UserInfoKeys.isCompletedFirstFaunch)
     }
     
-    func getisFirstLaunchComplete() -> Bool {
-        return userDefaults.bool(forKey: UserInfoKeys.isFirstLaunchComplete)
+    func getIsCompletedFirstFaunch() -> Bool {
+        return userDefaults.bool(forKey: UserInfoKeys.isCompletedFirstFaunch)
     }
 }

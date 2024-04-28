@@ -12,6 +12,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customYellow
+        tabBar.tintColor = .customGreen
         
         let mealView = MealViewController()
         let myInfoView = MyInfoViewController()

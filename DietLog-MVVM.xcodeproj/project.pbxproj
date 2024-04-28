@@ -54,6 +54,7 @@
 		0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */; };
 		0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
 		0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */; };
+		0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		0AEAC2FB2BDE23CE0071FCBC /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
+		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */,
 				0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */,
+				0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */,
 			);
 			path = ModelManager;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				0AEAC2AA2BD8C9EE0071FCBC /* SignInViewController.swift in Sources */,
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
+				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,

@@ -55,6 +55,7 @@
 		0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
 		0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */; };
 		0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */; };
+		0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
 		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
+		0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */,
 				0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */,
 				0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */,
+				0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */,
 			);
 			path = ModelManager;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
+				0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */,
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,

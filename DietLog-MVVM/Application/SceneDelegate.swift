@@ -16,7 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = TabBarViewController()
+        
+        let manager = UserInfoManager.shared
+        let result = manager.getisFirstLaunchComplete()
+        
+        if result {
+            window?.rootViewController = TabBarViewController()
+        } else {
+            window?.rootViewController = SignInViewController()
+        }
+        
         window?.makeKeyAndVisible()
     }
 

@@ -59,6 +59,7 @@
 		0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 		0AEAC30A2BDE38140071FCBC /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC3092BDE38140071FCBC /* RxCocoa */; };
 		0AEAC30C2BDE38140071FCBC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC30B2BDE38140071FCBC /* RxSwift */; };
+		0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
 		0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
+		0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				0AEAC2F42BDE20980071FCBC /* Model */,
 				0AEAC2962BD7E6E60071FCBC /* ModelManager */,
+				0AEAC3102BDE6E8C0071FCBC /* Manager */,
 				0AEAC2972BD7E6ED0071FCBC /* NetworkService */,
 			);
 			path = Model;
@@ -407,6 +410,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0AEAC3102BDE6E8C0071FCBC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -515,6 +526,7 @@
 				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
+				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,

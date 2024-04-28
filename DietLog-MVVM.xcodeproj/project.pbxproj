@@ -56,6 +56,7 @@
 		0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */; };
 		0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */; };
 		0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */; };
+		0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealManager.swift; sourceTree = "<group>"; };
 		0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
 		0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				0AEAC2FF2BDE26A20071FCBC /* MealManager.swift */,
 				0AEAC3012BDE28300071FCBC /* MyInfoManager.swift */,
 				0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */,
+				0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */,
 			);
 			path = ModelManager;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */,
+				0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,

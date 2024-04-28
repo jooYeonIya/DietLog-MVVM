@@ -68,9 +68,12 @@ class CategoryViewController: BaseViewController {
         let moveToCategoryEditViewButton = UIButton()
         moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", and: CGFloat(ComponentSize.floatingButton.rawValue))
         moveToCategoryEditViewButton.titleLabel?.font = .smallBody
+        moveToCategoryEditViewButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
         
         let moveToExerciseEditViewButton = UIButton()
         moveToExerciseEditViewButton.configureFloatingButton(with: "운동", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToExerciseEditViewButton.addTarget(self, action: #selector(moveToExerciseEditView), for: .touchUpInside)
+
         
         floatingStackView.axis = .vertical
         floatingStackView.spacing = 4
@@ -137,6 +140,16 @@ extension CategoryViewController {
         
         isDisplyStackView.toggle()
     }
+    
+    @objc func moveToCategoryEditView() {
+        let viewController = CategoryEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func moveToExerciseEditView() {
+        let viewController = ExerciseEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - SearchBar
@@ -149,7 +162,7 @@ extension CategoryViewController: UISearchBarDelegate {
 }
 
 // MARK: - CollerctionView DataSource
-extension CategoryViewController: UICollectionViewDataSource {
+extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoiesData.count
     }
@@ -164,10 +177,6 @@ extension CategoryViewController: UICollectionViewDataSource {
         let viewController = ExerciseViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
-}
-
-// MARK: - CollerctionView Delegate
-extension CategoryViewController: UICollectionViewDelegate {
 }
 
 // MARK: - CollerctionView Flowlayout

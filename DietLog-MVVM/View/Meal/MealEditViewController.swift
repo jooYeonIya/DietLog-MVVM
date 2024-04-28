@@ -28,6 +28,7 @@ class MealEditViewController: BaseViewController {
     private func setupMemoTextViewUI() {
         memoTextView.becomeFirstResponder()
         memoTextView.font = .body
+        memoTextView.backgroundColor = .customGray
         
         createAccessoryView()
     }
@@ -43,6 +44,8 @@ class MealEditViewController: BaseViewController {
     override func setupNavigationBar() {
         let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = button
+        
+        navigationItem.title = "식단 쓰기"
     }
 }
 

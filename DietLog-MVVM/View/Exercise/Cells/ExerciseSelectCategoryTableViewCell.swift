@@ -20,7 +20,7 @@ class ExerciseSelectCategoryTableViewCell: UITableViewCell {
         label.textAlignment = .center
         
         let view = UIView()
-        view.backgroundColor = section % 2 == 0 ? .customYellow : .customGreen
+        view.backgroundColor = .customYellow
         view.applyRadius()
         view.applyShadow()
         

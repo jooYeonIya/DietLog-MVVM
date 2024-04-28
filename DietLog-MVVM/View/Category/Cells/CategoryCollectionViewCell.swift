@@ -24,7 +24,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         
         let button = UIButton()
-        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.setImage(UIImage(named: "OptionMenu"), for: .normal)
         
         view.addSubviews([label, button])
         
@@ -35,7 +35,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         }
         
         button.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(4)
+            make.top.trailing.equalToSuperview().inset(8)
             make.width.height.equalTo(20)
         }
         

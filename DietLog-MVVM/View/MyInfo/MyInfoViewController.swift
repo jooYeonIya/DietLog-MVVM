@@ -95,7 +95,7 @@ class MyInfoViewController: BaseViewController {
     // MARK: - Setup Layout
     override func setupLayout() {
         welcomLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(48)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         
@@ -123,8 +123,9 @@ class MyInfoViewController: BaseViewController {
         }
         
         floatingButton.snp.makeConstraints { make in
+            make.top.equalTo(myInfoStackView.snp.bottom).offset(8)
             make.trailing.equalTo(welcomLabel)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-12)
             make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }

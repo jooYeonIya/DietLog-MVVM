@@ -28,6 +28,8 @@ class ExerciseTableViewCell: UITableViewCell {
         
         let titleLable = UILabel()
         titleLable.configure(text: "타이틀 테스트", font: .body)
+        titleLable.numberOfLines = 0
+        titleLable.lineBreakMode = .byCharWrapping
         
         let memoLable = UILabel()
         memoLable.configure(text: "메모 테스트", font: .smallBody)
@@ -35,7 +37,7 @@ class ExerciseTableViewCell: UITableViewCell {
         memoLable.lineBreakMode = .byCharWrapping
         
         let button = UIButton()
-        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.setImage(UIImage(named: "OptionMenu"), for: .normal)
         
         backgroundView.addSubviews([imageView, titleLable, memoLable, button])
         
@@ -49,6 +51,7 @@ class ExerciseTableViewCell: UITableViewCell {
         titleLable.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
+            make.trailing.lessThanOrEqualTo(button.snp.leading).offset(-8)
         }
         
         memoLable.snp.makeConstraints { make in
@@ -59,7 +62,7 @@ class ExerciseTableViewCell: UITableViewCell {
         
         button.snp.makeConstraints { make in
             make.centerY.equalTo(titleLable)
-            make.trailing.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
+            make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.width.height.equalTo(20)
         }
     }

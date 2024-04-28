@@ -41,10 +41,31 @@ class MyInfoViewController: BaseViewController {
     }
     
     // MARK: - Setup Bind
-    override func setupEvent() {
+    override func setupBinding() {
         viewModel.nickname
             .map {"\(MyInfoViewText.welcom.rawValue) \($0 ?? "닉네임")" }
             .bind(to: welcomLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getMyInfo(for: Date.now)
+        
+        viewModel.myInfo
+            .map { $0?.weight }
+            .observe(on: MainScheduler.instance)
+            .bind(to: weightTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfo
+            .map { $0?.muscle }
+            .observe(on: MainScheduler.instance)
+            .bind(to: muscleTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+
+        viewModel.myInfo
+            .map { $0?.fat }
+            .observe(on: MainScheduler.instance)
+            .bind(to: fatTextField.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -84,11 +105,14 @@ class MyInfoViewController: BaseViewController {
         myInfoStackView.distribution = .fillEqually
         
         let weightCardView = creatCardViewInStackView(text: MyInfoViewText.weight.rawValue,
-                                                  isEditable: true)
+                                                      textField: weightTextField,
+                                                      isEditable: true)
         let muscleCardView = creatCardViewInStackView(text: MyInfoViewText.muscle.rawValue,
-                                                  isEditable: true)
+                                                      textField: muscleTextField,
+                                                      isEditable: true)
         let fatCardView = creatCardViewInStackView(text: MyInfoViewText.fat.rawValue,
-                                               isEditable: true)
+                                                   textField: fatTextField,
+                                                   isEditable: true)
         
         myInfoStackView.addArrangedSubview(weightCardView)
         myInfoStackView.addArrangedSubview(muscleCardView)
@@ -141,7 +165,7 @@ class MyInfoViewController: BaseViewController {
 
 // MARK: - 메서드
 extension MyInfoViewController {
-    private func creatCardViewInStackView(text: String, isEditable: Bool) -> UIView {
+    private func creatCardViewInStackView(text: String, textField: UITextField, isEditable: Bool) -> UIView {
         let cardView = UIView()
         cardView.applyRadius()
         cardView.applyShadow()
@@ -160,7 +184,6 @@ extension MyInfoViewController {
         stackView.addArrangedSubview(label)
         
         if isEditable {
-            let textField = UITextField()
             textField.configure()
             textField.layer.cornerRadius = 14
             textField.keyboardType = .decimalPad

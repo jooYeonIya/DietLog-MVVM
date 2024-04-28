@@ -18,11 +18,11 @@ class BaseViewController: UIViewController {
         setupTopView()
         
         setupNavigationBar()
-        setupBinding()
         setupUI()
         setupLayout()
         setupDelegate()
         setupEvent()
+        setupBinding()
     }
     
     func setupNavigationBar() {

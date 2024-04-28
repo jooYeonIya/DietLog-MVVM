@@ -48,6 +48,7 @@
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
 		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
 		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
+		0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F52BDE20B70071FCBC /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		0AEAC2952BD7E6E20071FCBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0AEAC2F42BDE20980071FCBC /* Model */,
 				0AEAC2962BD7E6E60071FCBC /* ModelManager */,
 				0AEAC2972BD7E6ED0071FCBC /* NetworkService */,
 			);
@@ -368,6 +371,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0AEAC2F42BDE20980071FCBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2F52BDE20B70071FCBC /* Meal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,6 +482,7 @@
 				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
+				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,
 				0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,

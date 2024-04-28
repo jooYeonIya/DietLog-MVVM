@@ -10,7 +10,6 @@ import FSCalendar
 
 class MealViewController: BaseViewController {
     
-    
     // MARK: - Component
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
@@ -91,10 +90,23 @@ class MealViewController: BaseViewController {
         mealsDataTableView.dataSource = self
         mealsDataTableView.delegate = self
     }
+    
+    // MARK: - Set
+    override func setupEvent() {
+        floatingButton.addTarget(self, action: #selector(moveToMealEditView), for: .touchUpInside)
+    }
+}
+
+// MARK: - 메서드
+extension MealViewController {
+    @objc func moveToMealEditView() {
+        let viewController = MealEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - TableView DataSource
-extension MealViewController: UITableViewDataSource {
+extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mealsData.count
     }
@@ -110,8 +122,4 @@ extension MealViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-}
-
-// MARK: - TableView Delegate
-extension MealViewController: UITableViewDelegate {
 }

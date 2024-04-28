@@ -66,10 +66,11 @@ class CategoryViewController: BaseViewController {
     
     private func setupStackView() {
         let moveToCategoryEditViewButton = UIButton()
-        moveToCategoryEditViewButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToCategoryEditViewButton.titleLabel?.font = .smallBody
         
         let moveToExerciseEditViewButton = UIButton()
-        moveToExerciseEditViewButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToExerciseEditViewButton.configureFloatingButton(with: "운동", and: CGFloat(ComponentSize.floatingButton.rawValue))
         
         floatingStackView.axis = .vertical
         floatingStackView.spacing = 4

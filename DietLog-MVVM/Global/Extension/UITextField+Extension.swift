@@ -8,10 +8,10 @@
 import UIKit
 
 extension UITextField {
-    func configure() {
+    func configure(width: CGFloat = CGFloat(ComponentSize.textFieldHeight.rawValue)) {
         font = .body
         
-        layer.cornerRadius = CGFloat(ComponentSize.textFieldHeight.rawValue) / 2
+        layer.cornerRadius = width / 2
         layer.masksToBounds = true
         
         layer.borderColor = UIColor.customYellow.cgColor

@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import RxSwift
 
 enum MyInfoViewText: String {
     case welcom = "안녕하세요"
@@ -24,18 +25,63 @@ class MyInfoViewController: BaseViewController {
     private lazy var calendarBackgroundView = UIView()
     private lazy var myInfoLabel = UILabel()
     private lazy var myInfoStackView = UIStackView()
-    private lazy var weightTextField = UITextField()
-    private lazy var muscleTextField = UITextField()
-    private lazy var fatTextField = UITextField()
+    private lazy var weightLabel = UILabel()
+    private lazy var muscleLabel = UILabel()
+    private lazy var fatLabel = UILabel()
     private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
-    private let nickname: String = "nickname"
+    private let viewModel = MyInfoViewModel()
+    private let disposeBag = DisposeBag()
+    private var myInfo: MyInfo?
+    private var selectedDate: Date = Date.now
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(true)
+    }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel.nickname
+            .map {"\(MyInfoViewText.welcom.rawValue) \($0 ?? "닉네임")" }
+            .bind(to: welcomLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.getMyInfo(for: Date.now)
+        
+        viewModel.myInfo
+            .subscribe { result in
+                self.myInfo = result
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfo
+            .map { $0?.weight ?? "0" }
+            .observe(on: MainScheduler.instance)
+            .bind(to: weightLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfo
+            .map { $0?.muscle ?? "0" }
+            .observe(on: MainScheduler.instance)
+            .bind(to: muscleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+
+        viewModel.myInfo
+            .map { $0?.fat ?? "0" }
+            .observe(on: MainScheduler.instance)
+            .bind(to: fatLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfo
+            .map { myInfo in
+                myInfo == nil ? "추가" : "수정"
+            }
+            .bind(to: floatingButton.rx.title(for: . normal))
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Setup UI
@@ -54,10 +100,8 @@ class MyInfoViewController: BaseViewController {
         setFloatingButtonUI()
     }
     
-    private func setupWelcomLabelUI() {
-        let text = "\(MyInfoViewText.welcom.rawValue) \(nickname)"
-        
-        welcomLabel.configure(text: text, font: .largeTitle)
+    private func setupWelcomLabelUI() {        
+        welcomLabel.configure(text: "", font: .largeTitle)
     }
     
     private func setupCalendarViewUI() {
@@ -75,12 +119,12 @@ class MyInfoViewController: BaseViewController {
         myInfoStackView.spacing = 16
         myInfoStackView.distribution = .fillEqually
         
-        let weightCardView = creatCardViewInStackView(text: MyInfoViewText.weight.rawValue,
-                                                  isEditable: true)
-        let muscleCardView = creatCardViewInStackView(text: MyInfoViewText.muscle.rawValue,
-                                                  isEditable: true)
-        let fatCardView = creatCardViewInStackView(text: MyInfoViewText.fat.rawValue,
-                                               isEditable: true)
+        let weightCardView = creatCardViewInStackView(title: MyInfoViewText.weight.rawValue,
+                                                      label: weightLabel)
+        let muscleCardView = creatCardViewInStackView(title: MyInfoViewText.muscle.rawValue,
+                                                      label: muscleLabel)
+        let fatCardView = creatCardViewInStackView(title: MyInfoViewText.fat.rawValue,
+                                                   label: fatLabel)
         
         myInfoStackView.addArrangedSubview(weightCardView)
         myInfoStackView.addArrangedSubview(muscleCardView)
@@ -129,11 +173,22 @@ class MyInfoViewController: BaseViewController {
             make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
         }
     }
+    
+    // MARK: - Setup Delegate
+    override func setupDelegate() {
+        calendarView.delegate = self
+        calendarView.dataSource = self
+    }
+    
+    // MARK: - Setup Event
+    override func setupEvent() {
+        floatingButton.addTarget(self, action: #selector(moveToSaveMyInfoView), for: .touchUpInside)
+    }
 }
 
 // MARK: - 메서드
 extension MyInfoViewController {
-    private func creatCardViewInStackView(text: String, isEditable: Bool) -> UIView {
+    private func creatCardViewInStackView(title: String, label: UILabel) -> UIView {
         let cardView = UIView()
         cardView.applyRadius()
         cardView.applyShadow()
@@ -145,26 +200,19 @@ extension MyInfoViewController {
         stackView.alignment = .fill
         stackView.distribution = .fill
         
-        let label = UILabel()
-        label.configure(text: text, font: .smallBody)
-        label.textAlignment = .center
-        label.textColor = .systemGray
-        stackView.addArrangedSubview(label)
+        let titleLabel = UILabel()
+        titleLabel.configure(text: title, font: .smallBody)
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .systemGray
+        stackView.addArrangedSubview(titleLabel)
         
-        if isEditable {
-            let textField = UITextField()
-            textField.configure()
-            textField.layer.cornerRadius = 14
-            textField.keyboardType = .decimalPad
-            stackView.addArrangedSubview(textField)
-            textField.snp.makeConstraints { make in
-                make.height.equalTo(28)
-            }
-        } else {
-            let label = UILabel()
-            label.configure(text: "123", font: .title)
-            stackView.addArrangedSubview(label)
+        label.font = .title
+        label.textColor = .customYellow
+        label.textAlignment = .center
+        label.snp.makeConstraints { make in
+            make.height.equalTo(28)
         }
+        stackView.addArrangedSubview(label)
         
         cardView.addSubview(stackView)
         
@@ -174,4 +222,25 @@ extension MyInfoViewController {
         
         return cardView
     }
+    
+    @objc func moveToSaveMyInfoView() {
+        let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
+        viewController.onUpdate = {
+            self.viewModel.getMyInfo(for: self.selectedDate)
+        }
+        if let sheet = viewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(viewController, animated: true)
+    }
 }
+
+// MARK: - FSCalendar
+extension MyInfoViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        viewModel.getMyInfo(for: date)
+        selectedDate = date
+    }
+}
+

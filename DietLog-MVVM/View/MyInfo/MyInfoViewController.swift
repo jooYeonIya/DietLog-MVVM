@@ -67,6 +67,13 @@ class MyInfoViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind(to: fatLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.myInfo
+            .map { myInfo in
+                myInfo == nil ? "저장" : "수정"
+            }
+            .bind(to: floatingButton.rx.title(for: . normal))
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Setup UI

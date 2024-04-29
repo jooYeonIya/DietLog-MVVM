@@ -25,9 +25,9 @@ class MyInfoViewController: BaseViewController {
     private lazy var calendarBackgroundView = UIView()
     private lazy var myInfoLabel = UILabel()
     private lazy var myInfoStackView = UIStackView()
-    private lazy var weightTextField = UITextField()
-    private lazy var muscleTextField = UITextField()
-    private lazy var fatTextField = UITextField()
+    private lazy var weightLabel = UILabel()
+    private lazy var muscleLabel = UILabel()
+    private lazy var fatLabel = UILabel()
     private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
@@ -52,20 +52,20 @@ class MyInfoViewController: BaseViewController {
         viewModel.myInfo
             .map { $0?.weight }
             .observe(on: MainScheduler.instance)
-            .bind(to: weightTextField.rx.text)
+            .bind(to: weightLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.myInfo
             .map { $0?.muscle }
             .observe(on: MainScheduler.instance)
-            .bind(to: muscleTextField.rx.text)
+            .bind(to: muscleLabel.rx.text)
             .disposed(by: disposeBag)
         
 
         viewModel.myInfo
             .map { $0?.fat }
             .observe(on: MainScheduler.instance)
-            .bind(to: fatTextField.rx.text)
+            .bind(to: fatLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -104,15 +104,12 @@ class MyInfoViewController: BaseViewController {
         myInfoStackView.spacing = 16
         myInfoStackView.distribution = .fillEqually
         
-        let weightCardView = creatCardViewInStackView(text: MyInfoViewText.weight.rawValue,
-                                                      textField: weightTextField,
-                                                      isEditable: true)
-        let muscleCardView = creatCardViewInStackView(text: MyInfoViewText.muscle.rawValue,
-                                                      textField: muscleTextField,
-                                                      isEditable: true)
-        let fatCardView = creatCardViewInStackView(text: MyInfoViewText.fat.rawValue,
-                                                   textField: fatTextField,
-                                                   isEditable: true)
+        let weightCardView = creatCardViewInStackView(title: MyInfoViewText.weight.rawValue,
+                                                      label: weightLabel)
+        let muscleCardView = creatCardViewInStackView(title: MyInfoViewText.muscle.rawValue,
+                                                      label: muscleLabel)
+        let fatCardView = creatCardViewInStackView(title: MyInfoViewText.fat.rawValue,
+                                                   label: fatLabel)
         
         myInfoStackView.addArrangedSubview(weightCardView)
         myInfoStackView.addArrangedSubview(muscleCardView)
@@ -170,7 +167,7 @@ class MyInfoViewController: BaseViewController {
 
 // MARK: - 메서드
 extension MyInfoViewController {
-    private func creatCardViewInStackView(text: String, textField: UITextField, isEditable: Bool) -> UIView {
+    private func creatCardViewInStackView(title: String, label: UILabel) -> UIView {
         let cardView = UIView()
         cardView.applyRadius()
         cardView.applyShadow()
@@ -182,25 +179,16 @@ extension MyInfoViewController {
         stackView.alignment = .fill
         stackView.distribution = .fill
         
-        let label = UILabel()
-        label.configure(text: text, font: .smallBody)
-        label.textAlignment = .center
-        label.textColor = .systemGray
-        stackView.addArrangedSubview(label)
+        let titleLabel = UILabel()
+        titleLabel.configure(text: title, font: .smallBody)
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .systemGray
+        stackView.addArrangedSubview(titleLabel)
         
-        if isEditable {
-            textField.configure()
-            textField.layer.cornerRadius = 14
-            textField.keyboardType = .decimalPad
-            stackView.addArrangedSubview(textField)
-            textField.snp.makeConstraints { make in
-                make.height.equalTo(28)
-            }
-        } else {
-            let label = UILabel()
-            label.configure(text: "123", font: .title)
-            stackView.addArrangedSubview(label)
-        }
+        label.font = .title
+        label.textColor = .customYellow
+        label.textAlignment = .center
+        stackView.addArrangedSubview(label)
         
         cardView.addSubview(stackView)
         

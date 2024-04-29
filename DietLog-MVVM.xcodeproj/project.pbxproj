@@ -62,6 +62,7 @@
 		0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */; };
 		0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */; };
 		0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */; };
+		0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3152BDF8C1C0071FCBC /* SaveMyInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		0AEAC3152BDF8C1C0071FCBC /* SaveMyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2AC2BD8CA120071FCBC /* MyInfoViewController.swift */,
+				0AEAC3152BDF8C1C0071FCBC /* SaveMyInfoViewController.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
+				0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
 				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,

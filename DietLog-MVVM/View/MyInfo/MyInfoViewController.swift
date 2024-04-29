@@ -166,9 +166,15 @@ class MyInfoViewController: BaseViewController {
         }
     }
     
+    // MARK: - Setup Delegate
     override func setupDelegate() {
         calendarView.delegate = self
         calendarView.dataSource = self
+    }
+    
+    // MARK: - Setup Event
+    override func setupEvent() {
+        floatingButton.addTarget(self, action: #selector(moveToSaveMyInfoView), for: .touchUpInside)
     }
 }
 
@@ -207,6 +213,14 @@ extension MyInfoViewController {
         }
         
         return cardView
+    }
+    
+    @objc func moveToSaveMyInfoView() {
+        let viewController = SaveMyInfoViewController()
+        if let sheet = viewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        present(viewController, animated: true)
     }
 }
 

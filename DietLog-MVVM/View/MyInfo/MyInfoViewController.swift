@@ -50,20 +50,20 @@ class MyInfoViewController: BaseViewController {
         viewModel.getMyInfo(for: Date.now)
         
         viewModel.myInfo
-            .map { $0?.weight }
+            .map { $0?.weight ?? "0" }
             .observe(on: MainScheduler.instance)
             .bind(to: weightLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.myInfo
-            .map { $0?.muscle }
+            .map { $0?.muscle ?? "0"  }
             .observe(on: MainScheduler.instance)
             .bind(to: muscleLabel.rx.text)
             .disposed(by: disposeBag)
         
 
         viewModel.myInfo
-            .map { $0?.fat }
+            .map { $0?.fat ?? "0"  }
             .observe(on: MainScheduler.instance)
             .bind(to: fatLabel.rx.text)
             .disposed(by: disposeBag)

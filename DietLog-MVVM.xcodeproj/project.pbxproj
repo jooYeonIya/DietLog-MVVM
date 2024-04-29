@@ -64,6 +64,7 @@
 		0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */; };
 		0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3152BDF8C1C0071FCBC /* SaveMyInfoViewController.swift */; };
 		0AEAC3182BDF95780071FCBC /* DateFormmater+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3172BDF95780071FCBC /* DateFormmater+Extension.swift */; };
+		0AEAC31A2BDFA7E00071FCBC /* SaveMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3152BDF8C1C0071FCBC /* SaveMyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyInfoViewController.swift; sourceTree = "<group>"; };
 		0AEAC3172BDF95780071FCBC /* DateFormmater+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormmater+Extension.swift"; sourceTree = "<group>"; };
+		0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			children = (
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
 				0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */,
+				0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */,
 				0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */,
+				0AEAC31A2BDFA7E00071FCBC /* SaveMyInfoViewModel.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,

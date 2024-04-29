@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 enum SaveMyInfoViewText: String {
     case viewTitle = "내 정보 입력"
@@ -29,6 +30,8 @@ class SaveMyInfoViewController: BaseViewController {
     // MARK: - 변수
     private var myInfo: MyInfo?
     private var selectedDate: Date
+    private var viewModel = SaveMyInfoViewModel()
+    private var disposeBag = DisposeBag()
 
     // MARK: - 변수
     override func viewDidLoad() {
@@ -141,6 +144,44 @@ class SaveMyInfoViewController: BaseViewController {
             make.top.equalTo(fatLabel.snp.bottom).offset(8)
             make.leading.trailing.equalTo(selectedDateTitleLabel)
             make.height.equalTo(36)
+        }
+    }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        weightTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .bind(to: viewModel.weightTextField)
+            .disposed(by: disposeBag)
+        
+        muscleTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .bind(to: viewModel.muscleTextField)
+            .disposed(by: disposeBag)
+        
+        fatTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .bind(to: viewModel.fatTextField)
+            .disposed(by: disposeBag)
+    
+        doneButton.rx.tap
+            .bind { [weak self] in
+                if let result = self?.viewModel.saveMyInfo(for: self?.selectedDate ?? Date.now) {
+                    self?.isChcekTextFiedlEmpty(result)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - 메서드
+extension SaveMyInfoViewController {
+    private func isChcekTextFiedlEmpty(_ result: Bool) {
+        let message = result ? "저장했습니다" : "최소 한 영역은 입력해 주세요"
+        showAlertWithOKButton(title: "", message: message) {
+            if result {
+                self.dismiss(animated: true)
+            }
         }
     }
 }

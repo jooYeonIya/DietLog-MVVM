@@ -195,6 +195,9 @@ extension MyInfoViewController {
         label.font = .title
         label.textColor = .customYellow
         label.textAlignment = .center
+        label.snp.makeConstraints { make in
+            make.height.equalTo(28)
+        }
         stackView.addArrangedSubview(label)
         
         cardView.addSubview(stackView)

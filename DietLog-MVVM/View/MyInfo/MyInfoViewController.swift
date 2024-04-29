@@ -33,6 +33,8 @@ class MyInfoViewController: BaseViewController {
     // MARK: - 변수
     private let viewModel = MyInfoViewModel()
     private let disposeBag = DisposeBag()
+    private var myInfo: MyInfo?
+    private var selectedDate: Date = Date.now
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -50,20 +52,26 @@ class MyInfoViewController: BaseViewController {
         viewModel.getMyInfo(for: Date.now)
         
         viewModel.myInfo
+            .subscribe { result in
+                self.myInfo = result
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.myInfo
             .map { $0?.weight ?? "0" }
             .observe(on: MainScheduler.instance)
             .bind(to: weightLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.myInfo
-            .map { $0?.muscle ?? "0"  }
+            .map { $0?.muscle ?? "0" }
             .observe(on: MainScheduler.instance)
             .bind(to: muscleLabel.rx.text)
             .disposed(by: disposeBag)
         
 
         viewModel.myInfo
-            .map { $0?.fat ?? "0"  }
+            .map { $0?.fat ?? "0" }
             .observe(on: MainScheduler.instance)
             .bind(to: fatLabel.rx.text)
             .disposed(by: disposeBag)
@@ -216,7 +224,7 @@ extension MyInfoViewController {
     }
     
     @objc func moveToSaveMyInfoView() {
-        let viewController = SaveMyInfoViewController()
+        let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
         if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
         }
@@ -228,6 +236,7 @@ extension MyInfoViewController {
 extension MyInfoViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         viewModel.getMyInfo(for: date)
+        selectedDate = date
     }
 }
 

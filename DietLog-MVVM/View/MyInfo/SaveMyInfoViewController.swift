@@ -32,6 +32,7 @@ class SaveMyInfoViewController: BaseViewController {
     private var selectedDate: Date
     private var viewModel = SaveMyInfoViewModel()
     private var disposeBag = DisposeBag()
+    var onUpdate: (() -> Void)?
 
     // MARK: - 변수
     override func viewDidLoad() {
@@ -180,6 +181,7 @@ extension SaveMyInfoViewController {
         let message = result ? "저장했습니다" : "최소 한 영역은 입력해 주세요"
         showAlertWithOKButton(title: "", message: message) {
             if result {
+                self.onUpdate?()
                 self.dismiss(animated: true)
             }
         }

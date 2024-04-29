@@ -225,6 +225,9 @@ extension MyInfoViewController {
     
     @objc func moveToSaveMyInfoView() {
         let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
+        viewController.onUpdate = {
+            self.viewModel.getMyInfo(for: self.selectedDate)
+        }
         if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true

@@ -227,6 +227,7 @@ extension MyInfoViewController {
         let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
         if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
         }
         present(viewController, animated: true)
     }

@@ -70,7 +70,7 @@ class MyInfoViewController: BaseViewController {
         
         viewModel.myInfo
             .map { myInfo in
-                myInfo == nil ? "저장" : "수정"
+                myInfo == nil ? "추가" : "수정"
             }
             .bind(to: floatingButton.rx.title(for: . normal))
             .disposed(by: disposeBag)

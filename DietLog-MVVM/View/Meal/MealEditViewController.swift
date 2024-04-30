@@ -70,11 +70,21 @@ extension MealEditViewController {
     }
     
     @objc func openCamera() {
-        var viewControlle = UIImagePickerController()
-        viewControlle.sourceType = .camera
-        viewControlle.allowsEditing = false
-        viewControlle.delegate = self
-        present(viewControlle, animated: true)
+        AVCaptureDevice.requestAccess(for: .video) { result in
+            if result {
+                DispatchQueue.main.async {
+                    let viewControlle = UIImagePickerController()
+                    viewControlle.sourceType = .camera
+                    viewControlle.allowsEditing = false
+                    viewControlle.delegate = self
+                    self.present(viewControlle, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.displaySettingsApp()
+                }
+            }
+        }
     }
     
     private func createAccessoryView() {
@@ -131,6 +141,25 @@ extension MealEditViewController {
         }
         
         return isCntainsImage
+    }
+    
+    private func displaySettingsApp() {
+        let alertController = UIAlertController(title: "접근 권한 설정 필요",
+                                                message: "카메라에 대한 권한 설정을 해주세요",
+                                                preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
+            if let settingsAppURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsAppURL)
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alertController.addAction(action)
+        alertController.addAction(cancel)
+        
+        present(alertController, animated: true)
     }
 }
 

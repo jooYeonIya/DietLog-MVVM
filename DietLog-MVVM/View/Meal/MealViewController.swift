@@ -19,6 +19,7 @@ class MealViewController: BaseViewController {
     // MARK: - 변수
     // 임시
     private var mealsData: [UIImage] = [UIImage(named: "MealBasicImage")!]
+    private var selectedDate = Date()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -89,6 +90,9 @@ class MealViewController: BaseViewController {
     override func setupDelegate() {
         mealsDataTableView.dataSource = self
         mealsDataTableView.delegate = self
+        
+        calendarView.dataSource = self
+        calendarView.delegate = self
     }
     
     // MARK: - Set
@@ -100,7 +104,7 @@ class MealViewController: BaseViewController {
 // MARK: - 메서드
 extension MealViewController {
     @objc func moveToMealEditView() {
-        let viewController = MealEditViewController()
+        let viewController = MealEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -121,5 +125,12 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+// MARK: - FSCalendar
+extension MealViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
     }
 }

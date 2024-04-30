@@ -70,7 +70,11 @@ extension MealEditViewController {
     }
     
     @objc func openCamera() {
-        insertImageIntoTextView(UIImage(systemName: "heart")!)
+        var viewControlle = UIImagePickerController()
+        viewControlle.sourceType = .camera
+        viewControlle.allowsEditing = false
+        viewControlle.delegate = self
+        present(viewControlle, animated: true)
     }
     
     private func createAccessoryView() {
@@ -144,5 +148,20 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+// MARK: - UIIMagePickerView
+extension MealEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        DispatchQueue.main.async {
+            self.insertImageIntoTextView(image)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        memoTextView.becomeFirstResponder()
     }
 }

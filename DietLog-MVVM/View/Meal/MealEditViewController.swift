@@ -154,6 +154,8 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
 // MARK: - UIIMagePickerView
 extension MealEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true)
+        memoTextView.becomeFirstResponder()
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         DispatchQueue.main.async {
@@ -162,6 +164,7 @@ extension MealEditViewController: UIImagePickerControllerDelegate, UINavigationC
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
         memoTextView.becomeFirstResponder()
     }
 }

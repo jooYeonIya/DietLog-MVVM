@@ -53,6 +53,12 @@ class MealEditViewController: BaseViewController {
 // MARK: - 메서드
 extension MealEditViewController {
     @objc func openPhotoGallery() {
+
+        guard !isContainsImage(in: memoTextView) else {
+            showAlertWithOKButton(title: "", message: "사진은 한 장만 저장이 가능합니다\n먼저 사진을 삭제해 주세요")
+            return
+        }
+        
         var configuration = PHPickerConfiguration()
         configuration.selectionLimit = 1
         configuration.filter = .images
@@ -104,6 +110,24 @@ extension MealEditViewController {
         
         memoTextView.attributedText = attributedString
     }
+    
+    private func isContainsImage(in textView: UITextView) -> Bool {
+        
+        guard let attributedText = textView.attributedText else { return false }
+        
+        let range = NSRange(location: 0, length: attributedText.length)
+        
+        var isCntainsImage = false
+        
+        attributedText.enumerateAttribute(.attachment, in: range) { value, range, pointer in
+            if let attachment = value as? NSTextAttachment, attachment.image != nil {
+                pointer.pointee = true
+                isCntainsImage = true
+            }
+        }
+        
+        return isCntainsImage
+    }
 }
 
 // MARK: - PHPickerView
@@ -111,8 +135,8 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         
-        if let itemProvider = results.first?.itemProvider {
-            itemProvider.canLoadObject(ofClass: UIImage.self)
+        if let itemProvider = results.first?.itemProvider,
+           itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 guard let selectedImage = image as? UIImage else { return }
                 DispatchQueue.main.async {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class MealEditViewController: BaseViewController {
 
@@ -52,8 +53,14 @@ class MealEditViewController: BaseViewController {
 // MARK: - 메서드
 extension MealEditViewController {
     @objc func openPhotoGallery() {
-        insertImageIntoTextView(UIImage(systemName: "photo")!)
-
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        let viewController = PHPickerViewController(configuration: configuration)
+        viewController.delegate = self
+        present(viewController, animated: true)
+        
     }
     
     @objc func openCamera() {
@@ -80,17 +87,38 @@ extension MealEditViewController {
         let textAttachment = NSTextAttachment()
         
         if imageWidth > memoTextViewWidth {
-            let scale = imageWidth / (memoTextViewWidth - 12)
+            let scale = imageWidth / (memoTextViewWidth - 24)
             textAttachment.image = UIImage(cgImage: image.cgImage!, scale: scale, orientation: .up)
         } else {
             textAttachment.image = image
         }
         
-        let attributedStringWithImage = NSAttributedString(attachment: textAttachment)
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
         
         let attributedString = NSMutableAttributedString()
-        attributedString.append(attributedStringWithImage)
+        attributedString.append(NSAttributedString(string: "\n"))
+        attributedString.append(NSAttributedString(attachment: textAttachment))
+        attributedString.append(NSAttributedString(string: "\n"))
+        attributedString.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
         
         memoTextView.attributedText = attributedString
+    }
+}
+
+// MARK: - PHPickerView
+extension MealEditViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        
+        if let itemProvider = results.first?.itemProvider {
+            itemProvider.canLoadObject(ofClass: UIImage.self)
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                guard let selectedImage = image as? UIImage else { return }
+                DispatchQueue.main.async {
+                    self.insertImageIntoTextView(selectedImage)
+                }
+            }
+        }
     }
 }

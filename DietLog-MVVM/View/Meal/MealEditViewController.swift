@@ -7,15 +7,18 @@
 
 import UIKit
 import PhotosUI
+import RxSwift
 
 class MealEditViewController: BaseViewController {
 
     // MARK: - Component
     private lazy var memoTextView = UITextView()
+    private lazy var selectedImage: UIImage? = nil
     
     // MARK: - 변수
     private var viewModel = MealEditViewModel()
     private var selectedDate = Date()
+    private var disposeBag = DisposeBag()
     
     // MARK: - 초기화
     init(selectedDate: Date) {
@@ -62,6 +65,12 @@ class MealEditViewController: BaseViewController {
         
         navigationItem.title = "식단 쓰기"
     }
+    
+    override func setupBinding() {
+        memoTextView.rx.attributedText
+            .bind(to: viewModel.memoTextView)
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - 메서드
@@ -102,7 +111,15 @@ extension MealEditViewController {
     }
     
     @objc func saveMeal() {
-
+        let result = viewModel.saveMeal(for: selectedDate, and: selectedImage)
+        
+        if !result {
+            showAlertWithOKButton(title: "", message: "글 입력 혹은 이미지 추가를 해주세요")
+        } else {
+            showAlertWithOKButton(title: "", message: "저장했습니다") {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func createAccessoryView() {
@@ -134,13 +151,17 @@ extension MealEditViewController {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
-        let attributedString = NSMutableAttributedString()
+        var attributedString = NSMutableAttributedString()
         attributedString.append(NSAttributedString(string: "\n"))
         attributedString.append(NSAttributedString(attachment: textAttachment))
         attributedString.append(NSAttributedString(string: "\n"))
         attributedString.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
+
+        let existingAttributedString = NSMutableAttributedString(attributedString: memoTextView.attributedText ?? NSAttributedString())
+        existingAttributedString.append(attributedString)
+        existingAttributedString.append(NSAttributedString(string: "\n"))
         
-        memoTextView.attributedText = attributedString
+        memoTextView.attributedText = existingAttributedString
     }
     
     private func isContainsImage(in textView: UITextView) -> Bool {
@@ -192,6 +213,7 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
                 guard let selectedImage = image as? UIImage else { return }
                 DispatchQueue.main.async {
                     self.insertImageIntoTextView(selectedImage)
+                    self.selectedImage = selectedImage
                 }
             }
         }
@@ -207,6 +229,7 @@ extension MealEditViewController: UIImagePickerControllerDelegate, UINavigationC
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         DispatchQueue.main.async {
             self.insertImageIntoTextView(image)
+            self.selectedImage = image
         }
     }
     

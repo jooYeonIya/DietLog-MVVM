@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import RxSwift
 
 class MealViewController: BaseViewController {
     
@@ -17,14 +18,17 @@ class MealViewController: BaseViewController {
     private lazy var floatingButton = UIButton()
     
     // MARK: - 변수
-    // 임시
-    private var mealsData: [UIImage] = [UIImage(named: "MealBasicImage")!]
+    private var mealsData: [Meal] = []
     private var selectedDate = Date()
-
+    private var viewModel = MealViewModel()
+    private var disposeBag = DisposeBag()
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(true)
+        
+        viewModel.getMealData(for: Date.now)
     }
     
     // MARK: - Setup UI
@@ -95,9 +99,18 @@ class MealViewController: BaseViewController {
         calendarView.delegate = self
     }
     
-    // MARK: - Set
+    // MARK: - Setup Event
     override func setupEvent() {
         floatingButton.addTarget(self, action: #selector(moveToMealEditView), for: .touchUpInside)
+    }
+    
+    override func setupBinding() {
+        viewModel.mealsData
+            .subscribe { [weak self] result in
+                guard let result = result else { return }
+                self?.mealsData = result
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -118,7 +131,8 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MealsDataTableViewCell.identifier, for: indexPath) as? MealsDataTableViewCell else { return UITableViewCell() }
         
-        cell.configure(with: mealsData[indexPath.row])
+        guard let imageName = mealsData[indexPath.row].imageName else { return UITableViewCell() }
+        cell.configure(with: viewModel.getImgae(with: imageName))
         cell.selectionStyle = .none
         return cell
     }

@@ -11,11 +11,12 @@ class MealsDataTableViewCell: UITableViewCell {
     
     static let identifier = "MealsDataTableViewCell"
     
-    func configure(with image: UIImage) {
+    func configure(with image: UIImage?) {
         let imageView = UIImageView()
         imageView.applyRadius()
         imageView.applyShadow()
         imageView.applyBorderLine()
+        guard let image = image else { return }
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true

@@ -32,4 +32,14 @@ class ImageFileManager {
             print("이미지 저장 실패 \(error)")
         }
     }
+    
+    func loadImage(with imagePath: String) -> UIImage? {
+        guard let documentDirectory = documentDirectory else {
+            return UIImage(named: "FoodBasicImage")
+        }
+        
+        let imageDirectory = documentDirectory.appendingPathComponent(imagePath)
+        
+        return UIImage(contentsOfFile: imageDirectory.path)
+    }
 }

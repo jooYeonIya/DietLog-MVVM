@@ -67,6 +67,7 @@
 		0AEAC31A2BDFA7E00071FCBC /* SaveMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */; };
 		0AEAC31C2BE09FA30071FCBC /* MealEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */; };
 		0AEAC31E2BE0AD4D0071FCBC /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */; };
+		0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMyInfoViewModel.swift; sourceTree = "<group>"; };
 		0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditViewModel.swift; sourceTree = "<group>"; };
 		0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */,
 				0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */,
 				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
+				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,
+				0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0AEAC3182BDF95780071FCBC /* DateFormmater+Extension.swift in Sources */,
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,

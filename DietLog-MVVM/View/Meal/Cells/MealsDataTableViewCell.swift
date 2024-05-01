@@ -11,20 +11,27 @@ class MealsDataTableViewCell: UITableViewCell {
     
     static let identifier = "MealsDataTableViewCell"
     
-    func configure(with image: UIImage) {
-        let imageView = UIImageView()
-        imageView.applyRadius()
-        imageView.applyShadow()
-        imageView.applyBorderLine()
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+    private let mealImageView = UIImageView()
+    
+    func configure(with image: UIImage?) {
+
+        mealImageView.applyRadius()
+        mealImageView.applyShadow()
+        mealImageView.applyBorderLine()
+        guard let image = image else { return }
+        mealImageView.image = image
+        mealImageView.contentMode = .scaleAspectFill
+        mealImageView.clipsToBounds = true
         
         contentView.backgroundColor = .customGray
-        contentView.addSubview(imageView)
+        contentView.addSubview(mealImageView)
         
-        imageView.snp.makeConstraints { make in
+        mealImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    override func prepareForReuse() {
+        mealImageView.image = nil
     }
 }

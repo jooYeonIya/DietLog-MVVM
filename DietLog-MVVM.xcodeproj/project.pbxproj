@@ -71,6 +71,7 @@
 		0AEAC3242BE1CD8C0071FCBC /* MealEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */; };
 		0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */; };
 		0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */; };
+		0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditView.swift; sourceTree = "<group>"; };
 		0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReadAndModifyEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */,
 				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
 				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
+				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
+				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,

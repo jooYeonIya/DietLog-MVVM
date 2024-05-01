@@ -132,7 +132,7 @@ class MealViewController: BaseViewController {
 // MARK: - 메서드
 extension MealViewController {
     @objc func moveToMealEditView() {
-        let viewController = MealEditViewController(selectedDate: selectedDate)
+        let viewController = MealCreateEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

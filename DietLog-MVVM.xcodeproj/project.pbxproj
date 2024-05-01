@@ -69,6 +69,7 @@
 		0AEAC31E2BE0AD4D0071FCBC /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */; };
 		0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */; };
 		0AEAC3242BE1CD8C0071FCBC /* MealEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */; };
+		0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditView.swift; sourceTree = "<group>"; };
+		0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +450,7 @@
 			children = (
 				0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */,
 				0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */,
+				0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */,
 				0AEAC31A2BDFA7E00071FCBC /* SaveMyInfoViewModel.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
+				0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
 				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,

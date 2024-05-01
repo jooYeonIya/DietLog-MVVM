@@ -12,8 +12,7 @@ import RxSwift
 class MealEditViewController: BaseViewController {
 
     // MARK: - Component
-    private lazy var memoTextView = UITextView()
-    private lazy var selectedImage: UIImage? = nil
+    private lazy var mealEditView = MealEditView()
     
     // MARK: - 변수
     private var viewModel = MealEditViewModel()
@@ -31,31 +30,15 @@ class MealEditViewController: BaseViewController {
     }
     
     // MARK: - Life Cycle
+    override func loadView() {
+        super.loadView()
+        view = mealEditView
+        mealEditView.configure()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
-    }
-    
-    // MARK: - Setup UI
-    override func setupUI() {
-        view.addSubviews([memoTextView])
-        
-        setupMemoTextViewUI()
-    }
-    
-    private func setupMemoTextViewUI() {
-        memoTextView.becomeFirstResponder()
-        memoTextView.font = .body
-        memoTextView.backgroundColor = .customGray
-        
-        createAccessoryView()
-    }
-    
-    // MARK: - Setup Layout
-    override func setupLayout() {
-        memoTextView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
     }
     
     // MARK: - Setup NavigationBar
@@ -67,7 +50,7 @@ class MealEditViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        memoTextView.rx.attributedText
+        mealEditView.memoTextView.rx.attributedText
             .bind(to: viewModel.memoTextView)
             .disposed(by: disposeBag)
     }
@@ -75,43 +58,9 @@ class MealEditViewController: BaseViewController {
 
 // MARK: - 메서드
 extension MealEditViewController {
-    @objc func openPhotoGallery() {
 
-        guard !isContainsImage(in: memoTextView) else {
-            showAlertWithOKButton(title: "", message: "사진은 한 장만 저장이 가능합니다\n먼저 사진을 삭제해 주세요")
-            return
-        }
-        
-        var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 1
-        configuration.filter = .images
-        
-        let viewController = PHPickerViewController(configuration: configuration)
-        viewController.delegate = self
-        present(viewController, animated: true)
-        
-    }
-    
-    @objc func openCamera() {
-        AVCaptureDevice.requestAccess(for: .video) { result in
-            if result {
-                DispatchQueue.main.async {
-                    let viewControlle = UIImagePickerController()
-                    viewControlle.sourceType = .camera
-                    viewControlle.allowsEditing = false
-                    viewControlle.delegate = self
-                    self.present(viewControlle, animated: true)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.displaySettingsApp()
-                }
-            }
-        }
-    }
-    
     @objc func saveMeal() {
-        let result = viewModel.saveMeal(for: selectedDate, and: selectedImage)
+        let result = viewModel.saveMeal(for: selectedDate, and: mealEditView.selectedImage)
         
         if !result {
             showAlertWithOKButton(title: "", message: "글 입력 혹은 이미지 추가를 해주세요")
@@ -121,22 +70,9 @@ extension MealEditViewController {
             }
         }
     }
-    
-    private func createAccessoryView() {
-        let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(openPhotoGallery))
-        photoButton.tintColor = .customGreen
-        
-        let cameraButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(openCamera))
-        cameraButton.tintColor = .customGreen
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        toolBar.setItems([photoButton, cameraButton], animated: true)
-        memoTextView.inputAccessoryView = toolBar
-    }
-    
+
     private func insertImageIntoTextView(_ image: UIImage) {
-        let memoTextViewWidth = memoTextView.frame.size.width
+        let memoTextViewWidth = mealEditView.memoTextView.frame.size.width
         let imageWidth = image.size.width
         
         let textAttachment = NSTextAttachment()
@@ -157,11 +93,11 @@ extension MealEditViewController {
         attributedString.append(NSAttributedString(string: "\n"))
         attributedString.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
 
-        let existingAttributedString = NSMutableAttributedString(attributedString: memoTextView.attributedText ?? NSAttributedString())
+        let existingAttributedString = NSMutableAttributedString(attributedString: mealEditView.memoTextView.attributedText ?? NSAttributedString())
         existingAttributedString.append(attributedString)
         existingAttributedString.append(NSAttributedString(string: "\n"))
         
-        memoTextView.attributedText = existingAttributedString
+        mealEditView.memoTextView.attributedText = existingAttributedString
     }
     
     private func isContainsImage(in textView: UITextView) -> Bool {
@@ -213,7 +149,7 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
                 guard let selectedImage = image as? UIImage else { return }
                 DispatchQueue.main.async {
                     self.insertImageIntoTextView(selectedImage)
-                    self.selectedImage = selectedImage
+                    self.mealEditView.selectedImage = selectedImage
                 }
             }
         }
@@ -224,17 +160,17 @@ extension MealEditViewController: PHPickerViewControllerDelegate {
 extension MealEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
-        memoTextView.becomeFirstResponder()
+        mealEditView.memoTextView.becomeFirstResponder()
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         DispatchQueue.main.async {
             self.insertImageIntoTextView(image)
-            self.selectedImage = image
+            self.mealEditView.selectedImage = image
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
-        memoTextView.becomeFirstResponder()
+        mealEditView.memoTextView.becomeFirstResponder()
     }
 }

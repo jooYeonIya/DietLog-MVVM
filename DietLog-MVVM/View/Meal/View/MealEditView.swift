@@ -64,7 +64,8 @@ class MealEditView: UIView {
     // MARK: - Setup Layout
     private func setupLayout() {
         memoTextView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalTo(safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
         }
     }
     

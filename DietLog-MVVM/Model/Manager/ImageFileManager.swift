@@ -47,7 +47,6 @@ class ImageFileManager {
         guard let documentDirectory = documentDirectory else { return }
         
         let imagePath = imageName + ".png"
-        print(imagePath)
         let imageDirectory = documentDirectory.appendingPathComponent(imagePath)
         
         do {

@@ -110,6 +110,9 @@ extension MealReadAndModifyEditViewController {
     private func deleteMealData() {
         guard let mealData = mealData else { return }
         viewModel.deleteMealData(mealData)
-        navigationController?.popViewController(animated: true)
+        
+        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

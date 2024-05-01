@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class CategoryViewController: BaseViewController {
 
     // MARK: - Component
+    private lazy var noDataLabel = UILabel()
     private lazy var floatingButton = UIButton()
     private lazy var floatingStackView = UIStackView()
     private lazy var grayView: UIView = {
@@ -36,8 +38,10 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - 변수
     private let cellSpacing: CGFloat = 16
-    private var categoiesData: [String] = ["category test"]
+    private var categoriesData: [Category] = []
     private var isDisplyStackView: Bool = false
+    private var viewModel = CategoryViewModel()
+    private var disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -45,13 +49,23 @@ class CategoryViewController: BaseViewController {
         displayTopView(false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadData()
+    }
+    
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([categoryCollectionView, floatingButton, floatingStackView])
+        view.addSubviews([noDataLabel, categoryCollectionView, floatingButton, floatingStackView])
         
+        setupNoDataLabelUI()
         setupSearchBarUI()
         setupFloatingButtonUI()
         setupStackView()
+    }
+    
+    private func setupNoDataLabelUI() {
+        noDataLabel.configure(text: "데이터를 기록해 주세요", font: .body)
     }
     
     private func setupSearchBarUI() {
@@ -86,6 +100,10 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        noDataLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
+        
         categoryCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
@@ -118,10 +136,28 @@ class CategoryViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleFloatingButton))
         grayView.addGestureRecognizer(tapGesture)
     }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel.categoriesData
+            .subscribe { [weak self] result in
+                self?.categoriesData = result
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - 메서드
 extension CategoryViewController {
+    private func reloadData() {
+        viewModel.getCategories()
+        categoryCollectionView.reloadData()
+        
+        let hasData = !categoriesData.isEmpty
+        categoryCollectionView.isHidden = !hasData
+        noDataLabel.isHidden = hasData
+    }
+    
     @objc func toggleFloatingButton() {
         
         if isDisplyStackView {
@@ -147,11 +183,13 @@ extension CategoryViewController {
     @objc func moveToCategoryEditView() {
         let viewController = CategoryEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
+        toggleFloatingButton()
     }
     
     @objc func moveToExerciseEditView() {
         let viewController = ExerciseEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
+        toggleFloatingButton()
     }
 }
 
@@ -167,12 +205,12 @@ extension CategoryViewController: UISearchBarDelegate {
 // MARK: - CollerctionView DataSource
 extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoiesData.count
+        return categoriesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(with: categoiesData[indexPath.row])
+        cell.configure(with: categoriesData[indexPath.row].title)
         return cell
     }
     

@@ -8,11 +8,19 @@
 import UIKit
 import PhotosUI
 
+protocol MealEditViewDelegate: AnyObject {
+    func didTappedOpenPhotoGallayButton()
+    func didTappedOpenCameraAppButton()
+}
+
 class MealEditView: UIView {
     
     // MARK: - Component
     lazy var memoTextView = UITextView()
     lazy var selectedImage: UIImage? = nil
+    
+    // MARK: - 변수
+    weak var delegate: MealEditViewDelegate?
 
     func configure() {
         setupUI()
@@ -35,10 +43,16 @@ class MealEditView: UIView {
     }
     
     private func createAccessoryView() {
-        let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(openPhotoGallery))
+        let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"),
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(openPhotoGallery))
         photoButton.tintColor = .customGreen
         
-        let cameraButton = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: #selector(openCamera))
+        let cameraButton = UIBarButtonItem(image: UIImage(systemName: "camera"),
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(openCameraApp))
         cameraButton.tintColor = .customGreen
         
         let toolBar = UIToolbar()
@@ -47,18 +61,19 @@ class MealEditView: UIView {
         memoTextView.inputAccessoryView = toolBar
     }
     
-    @objc func openPhotoGallery() {
-
-    }
-    
-    @objc func openCamera() {
-
-    }
-    
     // MARK: - Setup Layout
     private func setupLayout() {
         memoTextView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    // MARK: - objc 메서드
+    @objc func openPhotoGallery() {
+        delegate?.didTappedOpenPhotoGallayButton()
+    }
+    
+    @objc func openCameraApp() {
+        delegate?.didTappedOpenCameraAppButton()
     }
 }

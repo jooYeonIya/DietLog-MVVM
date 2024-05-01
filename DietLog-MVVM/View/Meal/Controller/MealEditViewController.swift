@@ -33,12 +33,14 @@ class MealEditViewController: BaseViewController {
     override func loadView() {
         super.loadView()
         view = mealEditView
-        mealEditView.configure()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
+        
+        mealEditView.configure()
+        mealEditView.delegate = self
     }
     
     // MARK: - Setup NavigationBar
@@ -49,6 +51,7 @@ class MealEditViewController: BaseViewController {
         navigationItem.title = "식단 쓰기"
     }
     
+    // MARK: - Setup Bind
     override func setupBinding() {
         mealEditView.memoTextView.rx.attributedText
             .bind(to: viewModel.memoTextView)
@@ -87,7 +90,7 @@ extension MealEditViewController {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
-        var attributedString = NSMutableAttributedString()
+        let attributedString = NSMutableAttributedString()
         attributedString.append(NSAttributedString(string: "\n"))
         attributedString.append(NSAttributedString(attachment: textAttachment))
         attributedString.append(NSAttributedString(string: "\n"))
@@ -135,6 +138,42 @@ extension MealEditViewController {
         alertController.addAction(cancel)
         
         present(alertController, animated: true)
+    }
+}
+
+// MARK: - MealEditView
+extension MealEditViewController: MealEditViewDelegate {
+    func didTappedOpenPhotoGallayButton() {
+        guard !isContainsImage(in: mealEditView.memoTextView) else {
+            showAlertWithOKButton(title: "", message: "사진은 한 장만 저장이 가능합니다\n먼저 사진을 삭제해 주세요")
+            return
+        }
+        
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        let viewController = PHPickerViewController(configuration: configuration)
+        viewController.delegate = self
+        present(viewController, animated: true)
+    }
+    
+    func didTappedOpenCameraAppButton() {
+        AVCaptureDevice.requestAccess(for: .video) { result in
+            if result {
+                DispatchQueue.main.async {
+                    let viewControlle = UIImagePickerController()
+                    viewControlle.sourceType = .camera
+                    viewControlle.allowsEditing = false
+                    viewControlle.delegate = self
+                    self.present(viewControlle, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.displaySettingsApp()
+                }
+            }
+        }
     }
 }
 

@@ -250,7 +250,8 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
     }
     
     private func moveToModifyView(_ category: Category) {
-        
+        let viewController = CategoryEditViewController(category: category)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func deleteCategory(_ category: Category) {

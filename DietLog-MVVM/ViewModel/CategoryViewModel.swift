@@ -45,4 +45,14 @@ class CategoryViewModel {
     func deleteCategory(_ category: Category) {
         manager.deleteCategory(category)
     }
+    
+    func modifyCategory(_ category: Category) -> Bool {
+        if categoryName == "" {
+            return false
+        }
+        
+        manager.updateCategory(category, newTitle: categoryName ?? "카테고리")
+        
+        return true
+    }
 }

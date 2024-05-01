@@ -86,9 +86,8 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         
         DispatchQueue.main.async {
             self.mealEditView.memoTextView.text = mealData.memo
-
-            let image = ImageFileManager.shared.loadImage(with: mealData.imageName!)
-            self.insertImageIntoTextView(image ?? UIImage(named: "FoodBasicImage")!)
+            let image = self.viewModel.loadImage(with: mealData.imageName)
+            self.insertImageIntoTextView(image ?? UIImage())
         }
     }
 }

@@ -33,14 +33,18 @@ class MealEditViewModel {
             return false
         }
         
-        let selectedImage = image ?? UIImage(named: "MealBasicImage")!
-        let imageName = UUID().uuidString
-        ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: selectedImage)
-
         let meal = Meal()
         meal.postedDate = date
         meal.memo = memoText?.string
-        meal.imageName = imageName
+        
+        if let image = image {
+            let imageName = UUID().uuidString
+            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: image)
+            meal.imageName = imageName
+        } else {
+            meal.imageName = nil
+        }
+        
         manager.addMeal(meal)
         return true
     }
@@ -82,5 +86,14 @@ class MealEditViewModel {
         }
     
         manager.updateMeal(mealData, newMeal: newMeal)
+    }
+    
+    func loadImage(with imageName: String?) -> UIImage? {
+        if let imageName = imageName {
+            let image = ImageFileManager.shared.loadImage(with: imageName)
+            return image
+        } else {
+            return UIImage(named: "MealBasicImage")
+        }
     }
 }

@@ -35,7 +35,7 @@ class ImageFileManager {
     
     func loadImage(with imagePath: String) -> UIImage? {
         guard let documentDirectory = documentDirectory else {
-            return UIImage(named: "FoodBasicImage")
+            return UIImage(named: "MealBasicImage")
         }
         
         let imageDirectory = documentDirectory.appendingPathComponent(imagePath)

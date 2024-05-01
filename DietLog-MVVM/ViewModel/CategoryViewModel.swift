@@ -10,6 +10,7 @@ import RxSwift
 
 class CategoryViewModel {
     var categoryNameTextField: BehaviorSubject<String?> = BehaviorSubject(value: nil)
+    var categoriesData: BehaviorSubject<[Category]> = BehaviorSubject(value: [])
     
     private var manager = CatergoryManager.shared
     private var categoryName: String?
@@ -33,5 +34,11 @@ class CategoryViewModel {
         manager.addCategory(category)
         
         return true
+    }
+    
+    func getCategories(){
+        if let result = manager.getAllCategories() {
+            categoriesData.onNext(Array(result))
+        }
     }
 }

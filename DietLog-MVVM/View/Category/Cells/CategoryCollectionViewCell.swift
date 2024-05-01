@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol CategoryCollectionViewCellDelegate: AnyObject {
+    func didTappedOptionButton(_ cell: CategoryCollectionViewCell)
+}
+
 class CategoryCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryCollectionViewCell"
+    
+    weak var delegate: CategoryCollectionViewCellDelegate?
     
     var view = UIView()
     var label = UILabel()
@@ -26,6 +32,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         
         button.setImage(UIImage(named: "OptionMenu"), for: .normal)
+        button.addTarget(self, action: #selector(didTappedOptionButton), for: .touchUpInside)
         
         view.addSubviews([label, button])
         
@@ -49,5 +56,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+    
+    @objc func didTappedOptionButton() {
+        delegate?.didTappedOptionButton(self)
     }
 }

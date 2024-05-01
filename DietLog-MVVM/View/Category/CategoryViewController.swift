@@ -211,6 +211,7 @@ extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(with: categoriesData[indexPath.row].title)
+        cell.delegate = self
         return cell
     }
     
@@ -230,5 +231,34 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
         
         let height = width / 1.6
         return CGSize(width: width, height: height)
+    }
+}
+
+// MAKR: - 수정 삭제
+extension CategoryViewController: CategoryCollectionViewCellDelegate {
+
+    func didTappedOptionButton(_ cell: CategoryCollectionViewCell) {
+        guard let indexPath = categoryCollectionView.indexPath(for: cell) else { return }
+        let category = categoriesData[indexPath.row]
+        
+        showOptionMenuSheet {
+            self.moveToModifyView(category)
+        } deleteCompletion: {
+            self.deleteCategory(category)
+        }
+
+    }
+    
+    private func moveToModifyView(_ category: Category) {
+        
+    }
+    
+    private func deleteCategory(_ category: Category) {
+        viewModel.deleteCategory(category)
+        
+        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+            self.navigationController?.popViewController(animated: true)
+            self.reloadData()
+        }
     }
 }

@@ -41,4 +41,8 @@ class CategoryViewModel {
             categoriesData.onNext(Array(result))
         }
     }
+    
+    func deleteCategory(_ category: Category) {
+        manager.deleteCategory(category)
+    }
 }

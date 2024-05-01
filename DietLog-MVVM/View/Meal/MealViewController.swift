@@ -16,10 +16,11 @@ class MealViewController: BaseViewController {
     private lazy var calendarBackgroundView = UIView()
     private lazy var mealsDataTableView = UITableView()
     private lazy var floatingButton = UIButton()
+    private lazy var noDataLabel = UILabel()
     
     // MARK: - 변수
     private var mealsData: [Meal] = []
-    private var selectedDate = Date()
+    private var selectedDate = Date.now
     private var viewModel = MealViewModel()
     private var disposeBag = DisposeBag()
     
@@ -27,19 +28,24 @@ class MealViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(true)
-        
-        viewModel.getMealData(for: Date.now)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadData()
     }
     
     // MARK: - Setup UI
     override func setupUI() {
         view.addSubviews([calendarBackgroundView,
                           mealsDataTableView,
-                          floatingButton])
+                          floatingButton,
+                          noDataLabel])
         
         setupCalendarViewUI()
         setupTableViewUI()
         setupFloatingButtoUI()
+        setupNoDataLabelUI()
     }
     
     private func setupCalendarViewUI() {
@@ -62,6 +68,10 @@ class MealViewController: BaseViewController {
     
     private func setupFloatingButtoUI() {
         floatingButton.configureFloatingButton(width:CGFloat(ComponentSize.floatingButton.rawValue))
+    }
+    
+    private func setupNoDataLabelUI() {
+        noDataLabel.configure(text: "데이터를 기록해 주세요", font: .body)
     }
     
     // MARK: - Setup Layout
@@ -87,6 +97,11 @@ class MealViewController: BaseViewController {
             make.trailing.equalTo(calendarBackgroundView)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
             make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+        }
+        
+        noDataLabel.snp.makeConstraints { make in
+            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -120,6 +135,14 @@ extension MealViewController {
         let viewController = MealEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func reloadData() {
+        viewModel.getMealsData(for: selectedDate)
+        mealsDataTableView.reloadData()
+        let hasData = !mealsData.isEmpty
+        mealsDataTableView.isHidden = !hasData
+        noDataLabel.isHidden = hasData
+    }
 }
 
 // MARK: - TableView DataSource
@@ -146,5 +169,6 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
 extension MealViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
+        reloadData()
     }
 }

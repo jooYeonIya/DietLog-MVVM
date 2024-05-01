@@ -16,7 +16,7 @@ class MealViewModel {
     private let manager = MealManager.shared
     private let imageManager = ImageFileManager.shared
     
-    func getMealData(for date: Date) {
+    func getMealsData(for date: Date) {
         if let result = manager.getMeals(for: date) {
             mealsData.onNext(Array(result))
         }

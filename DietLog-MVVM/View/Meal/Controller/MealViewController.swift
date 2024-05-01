@@ -132,7 +132,7 @@ class MealViewController: BaseViewController {
 // MARK: - 메서드
 extension MealViewController {
     @objc func moveToMealEditView() {
-        let viewController = MealEditViewController(selectedDate: selectedDate)
+        let viewController = MealCreateEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -154,14 +154,24 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MealsDataTableViewCell.identifier, for: indexPath) as? MealsDataTableViewCell else { return UITableViewCell() }
         
-        guard let imageName = mealsData[indexPath.row].imageName else { return UITableViewCell() }
-        cell.configure(with: viewModel.getImgae(with: imageName))
+        
+        if let imageName = mealsData[indexPath.row].imageName {
+            cell.configure(with: viewModel.getImgae(with: imageName))
+        } else {
+            cell.configure(with: UIImage(named: "MealBasicImage"))
+        }
+        
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = MealReadAndModifyEditViewController(selectedDate: selectedDate, mealId: mealsData[indexPath.row].id)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

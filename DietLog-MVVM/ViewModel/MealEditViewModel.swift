@@ -8,9 +8,11 @@
 import Foundation
 import RxSwift
 import UIKit
+import RealmSwift
 
 class MealEditViewModel {
     var memoTextView = BehaviorSubject<NSAttributedString?>(value: nil)
+    var mealData: BehaviorSubject<Meal?> = BehaviorSubject(value: nil)
     
     private var memoText: NSAttributedString?
     
@@ -31,15 +33,67 @@ class MealEditViewModel {
             return false
         }
         
-        let selectedImage = image ?? UIImage(named: "MealBasicImage")!
-        let imageName = UUID().uuidString
-        ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: selectedImage)
-
         let meal = Meal()
         meal.postedDate = date
         meal.memo = memoText?.string
-        meal.imageName = imageName
+        
+        if let image = image {
+            let imageName = UUID().uuidString
+            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: image)
+            meal.imageName = imageName
+        } else {
+            meal.imageName = nil
+        }
+        
         manager.addMeal(meal)
         return true
+    }
+    
+    func getMealData(with id: ObjectId) {
+        if let result = manager.getMeal(for: id) {
+            mealData.onNext(result)
+        }
+    }
+    
+    func deleteMealData(_ mealData: Meal) {
+        if let imageName = mealData.imageName {
+            ImageFileManager.shared.removeImage(with: imageName)
+        }
+        
+        manager.deleteMeal(mealData)
+    }
+    
+    func modifyMealData(_ mealData: Meal,
+                        selectedDate: Date,
+                        memo: String?,
+                        selectedImage: UIImage?) {
+        
+        let newMeal = Meal()
+        newMeal.postedDate = selectedDate
+        newMeal.memo = memo
+        
+        if let selectedImage = selectedImage {
+            if let imageName = mealData.imageName {
+                ImageFileManager.shared.removeImage(with: imageName)
+            }
+            
+            let imageName = UUID().uuidString
+            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: selectedImage)
+            
+            newMeal.imageName = imageName
+        } else {
+            newMeal.imageName = nil
+        }
+    
+        manager.updateMeal(mealData, newMeal: newMeal)
+    }
+    
+    func loadImage(with imageName: String?) -> UIImage? {
+        if let imageName = imageName {
+            let image = ImageFileManager.shared.loadImage(with: imageName)
+            return image
+        } else {
+            return UIImage(named: "MealBasicImage")
+        }
     }
 }

@@ -72,4 +72,24 @@ extension BaseViewController {
         
         present(alert, animated: true)
     }
+    
+    func showOptionMenuSheet(modifyCompletion: (() -> Void)?,
+                             deleteCompletion: (() -> Void)?) {
+        let modify = UIAlertAction(title: "수정", style: .default) { _ in
+            modifyCompletion?()
+        }
+        
+        let delete = UIAlertAction(title: "삭제", style: .default) { _ in
+            deleteCompletion?()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(modify)
+        actionSheet.addAction(delete)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
+    }
 }

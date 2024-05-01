@@ -63,16 +63,12 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         mealEditView.memoTextView.rx.attributedText
             .bind(to: viewModel.memoTextView)
             .disposed(by: disposeBag)
-    
+        
         viewModel.mealData
             .subscribe { [weak self] result in
                 self?.mealData = result
             }
             .disposed(by: disposeBag)
-    }
-    
-    @objc func openOptionMenu() {
-        isEditable = true
     }
     
     private func reloadMealData() {
@@ -94,5 +90,26 @@ class MealReadAndModifyEditViewController: MealEditViewController {
             let image = ImageFileManager.shared.loadImage(with: mealData.imageName!)
             self.insertImageIntoTextView(image ?? UIImage(named: "FoodBasicImage")!)
         }
+    }
+}
+
+// Modify, Delete
+extension MealReadAndModifyEditViewController {
+    @objc func openOptionMenu() {
+        showOptionMenuSheet(modifyCompletion: {
+            self.modifyMealData()
+        }, deleteCompletion: {
+            self.deleteMealData()
+        })
+    }
+    
+    private func modifyMealData() {
+        
+    }
+    
+    private func deleteMealData() {
+        guard let mealData = mealData else { return }
+        viewModel.deleteMealData(mealData)
+        navigationController?.popViewController(animated: true)
     }
 }

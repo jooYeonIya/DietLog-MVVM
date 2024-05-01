@@ -50,4 +50,12 @@ class MealEditViewModel {
             mealData.onNext(result)
         }
     }
+    
+    func deleteMealData(_ mealData: Meal) {
+        if let imageName = mealData.imageName {
+            ImageFileManager.shared.removeImage(with: imageName)
+        }
+        
+        manager.deleteMeal(mealData)
+    }
 }

@@ -42,4 +42,18 @@ class ImageFileManager {
         
         return UIImage(contentsOfFile: imageDirectory.path)
     }
+    
+    func removeImage(with imageName: String) {
+        guard let documentDirectory = documentDirectory else { return }
+        
+        let imagePath = imageName + ".png"
+        print(imagePath)
+        let imageDirectory = documentDirectory.appendingPathComponent(imagePath)
+        
+        do {
+            try fileManager.removeItem(at: imageDirectory)
+        } catch {
+            print("Error removing file: \(error)")
+        }
+    }
 }

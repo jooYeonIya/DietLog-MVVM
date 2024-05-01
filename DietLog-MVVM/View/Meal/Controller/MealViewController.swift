@@ -163,6 +163,11 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = MealReadAndModifyEditViewController(selectedDate: selectedDate, mealId: mealsData[indexPath.row].id)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - FSCalendar

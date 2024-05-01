@@ -31,7 +31,7 @@ class MealEditViewController: BaseViewController {
 
 // MARK: - 메서드
 extension MealEditViewController {
-    private func insertImageIntoTextView(_ image: UIImage) {
+    func insertImageIntoTextView(_ image: UIImage) {
         let memoTextViewWidth = mealEditView.memoTextView.frame.size.width
         let imageWidth = image.size.width
         

@@ -8,9 +8,11 @@
 import Foundation
 import RxSwift
 import UIKit
+import RealmSwift
 
 class MealEditViewModel {
     var memoTextView = BehaviorSubject<NSAttributedString?>(value: nil)
+    var mealData: BehaviorSubject<Meal?> = BehaviorSubject(value: nil)
     
     private var memoText: NSAttributedString?
     
@@ -41,5 +43,11 @@ class MealEditViewModel {
         meal.imageName = imageName
         manager.addMeal(meal)
         return true
+    }
+    
+    func getMealData(with id: ObjectId) {
+        if let result = manager.getMeal(for: id) {
+            mealData.onNext(result)
+        }
     }
 }

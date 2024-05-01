@@ -97,14 +97,36 @@ class MealReadAndModifyEditViewController: MealEditViewController {
 extension MealReadAndModifyEditViewController {
     @objc func openOptionMenu() {
         showOptionMenuSheet(modifyCompletion: {
-            self.modifyMealData()
+            self.changeMemoViewEditable()
         }, deleteCompletion: {
             self.deleteMealData()
         })
     }
     
-    private func modifyMealData() {
+    private func changeMemoViewEditable() {
+        let button = UIBarButtonItem(title: "저장",
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(modifyMealData))
+        navigationItem.rightBarButtonItem = button
         
+        isEditable = true
+    }
+    
+    @objc func modifyMealData() {
+        let image: UIImage? = retrunImage()
+        
+        guard let mealData = mealData else { return }
+        viewModel.modifyMealData(mealData,
+                                 selectedDate: selectedDate ?? Date.now,
+                                 memo: mealEditView.memoTextView.text,
+                                 selectedImage: image)
+
+        showAlertWithOKButton(title: "", message: "수정했습니다") {
+            guard let mealId = self.mealId else { return }
+            self.viewModel.getMealData(with: mealId)
+            self.isEditable = false
+        }
     }
     
     private func deleteMealData() {
@@ -114,5 +136,23 @@ extension MealReadAndModifyEditViewController {
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func retrunImage() -> UIImage? {
+        guard let attributedText = mealEditView.memoTextView.attributedText else { return nil }
+        
+        let range = NSRange(location: 0, length: attributedText.length)
+        
+        var image: UIImage?
+        
+        attributedText.enumerateAttribute(.attachment, in: range) { value, range, pointer in
+            if let attachment = value as? NSTextAttachment,
+               let selectedImage = attachment.image {
+                pointer.pointee = true
+                image = selectedImage
+            }
+        }
+        
+        return image
     }
 }

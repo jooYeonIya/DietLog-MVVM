@@ -58,4 +58,29 @@ class MealEditViewModel {
         
         manager.deleteMeal(mealData)
     }
+    
+    func modifyMealData(_ mealData: Meal,
+                        selectedDate: Date,
+                        memo: String?,
+                        selectedImage: UIImage?) {
+        
+        let newMeal = Meal()
+        newMeal.postedDate = selectedDate
+        newMeal.memo = memo
+        
+        if let selectedImage = selectedImage {
+            if let imageName = mealData.imageName {
+                ImageFileManager.shared.removeImage(with: imageName)
+            }
+            
+            let imageName = UUID().uuidString
+            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: selectedImage)
+            
+            newMeal.imageName = imageName
+        } else {
+            newMeal.imageName = nil
+        }
+    
+        manager.updateMeal(mealData, newMeal: newMeal)
+    }
 }

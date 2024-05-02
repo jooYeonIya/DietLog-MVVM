@@ -49,6 +49,7 @@ class ExerciseEditViewController: BaseViewController {
         
         setupURLTextField()
         setupCategorySelect()
+        setupMemoTextView()
     }
     
     private func setupURLTextField() {
@@ -116,12 +117,38 @@ class ExerciseEditViewController: BaseViewController {
         }
     }
     
+    private func setupMemoTextView() {
+        let label = UILabel()
+        label.configure(text: "메모", font: .body)
+
+        memoTextBaseView.applyRadius()
+        memoTextBaseView.backgroundColor = .white
+        memoTextBaseView.addSubviews([label, memoTextView])
+        
+        memoTextView.applyRadius()
+        memoTextView.layer.borderColor = UIColor.systemGray6.cgColor
+        memoTextView.backgroundColor = .systemGray6
+        memoTextView.layer.borderWidth = 1.2
+
+        label.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+                                 
+        memoTextView.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(label)
+            make.bottom.equalToSuperview().offset(-24)
+//            make.height.equalTo(200)
+        }
+
+    }
+    
     // MARK: - Setup Layout
     override func setupLayout() {
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Padding.leftRightSpacing.rawValue)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Padding.leftRightSpacing.rawValue)
         }
     }
     

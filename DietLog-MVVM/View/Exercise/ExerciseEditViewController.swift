@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum ExerciseEditOption: Int {
     case URL, category, memo
@@ -25,6 +27,10 @@ class ExerciseEditViewController: BaseViewController {
     
     private lazy var memoTextBaseView = UIView()
     private lazy var memoTextView = UITextView()
+    
+    // MARK: - 변수
+    private var viewModel = ExerciseEditViewModel()
+    private var disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -73,9 +79,21 @@ class ExerciseEditViewController: BaseViewController {
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
     }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        URLTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .bind(to: viewModel.URLTextField)
+            .disposed(by: disposeBag)
+        
+        viewModel.URLErrorLabel
+            .bind(to: URLErrorLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
 }
 
-// MAKR: - Setup 메서드
+// MARK: - Setup 메서드
 extension ExerciseEditViewController {
     private func setupURLTextField() {
         let label = UILabel()

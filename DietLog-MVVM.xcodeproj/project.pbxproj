@@ -69,6 +69,7 @@
 		0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */; };
 		0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */; };
 		0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */; };
+		0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReadAndModifyEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
 				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
+				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
+				0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */,
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,

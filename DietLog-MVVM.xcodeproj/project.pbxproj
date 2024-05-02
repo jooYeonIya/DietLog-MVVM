@@ -42,9 +42,6 @@
 		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
 		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
 		0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */; };
-		0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */; };
-		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
-		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
 		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
 		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
@@ -110,9 +107,6 @@
 		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
 		0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
@@ -422,9 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */,
-				0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */,
-				0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */,
-				0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */,
 				0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */,
 			);
 			path = Cells;
@@ -581,10 +572,8 @@
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
-				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
 				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
-				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */,
@@ -605,7 +594,6 @@
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
 				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
-				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
 				0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */,
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,

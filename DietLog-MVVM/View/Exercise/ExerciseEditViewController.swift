@@ -120,6 +120,7 @@ extension ExerciseEditViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(moveToSelectCategoryView), for: .touchUpInside)
         
         categorySelecteBaseView.applyRadius()
         categorySelecteBaseView.backgroundColor = .white
@@ -140,6 +141,11 @@ extension ExerciseEditViewController {
             make.centerY.equalTo(categorySelectedLabel)
             make.width.greaterThanOrEqualTo(28)
         }
+    }
+    
+    @objc func moveToSelectCategoryView() {
+        let veiwController = ExerciseSelectCategoryViewController()
+        navigationController?.pushViewController(veiwController, animated: true)
     }
     
     private func setupMemoTextView() {

@@ -52,6 +52,31 @@ class ExerciseEditViewController: BaseViewController {
         setupMemoTextView()
     }
     
+    // MARK: - Setup Layout
+    override func setupLayout() {
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Padding.leftRightSpacing.rawValue)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Padding.leftRightSpacing.rawValue)
+        }
+    }
+    
+    // MARK: - Setup Delegate
+    override func setupDelegate() {
+    }
+    
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = backButton
+    }
+}
+
+// MAKR: - Setup 메서드
+extension ExerciseEditViewController {
     private func setupURLTextField() {
         let label = UILabel()
         label.configure(text: "URL" , font: .body)
@@ -69,7 +94,7 @@ class ExerciseEditViewController: BaseViewController {
         label.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
-
+        
         URLTextField.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom).offset(12)
             make.leading.trailing.equalTo(label)
@@ -103,13 +128,13 @@ class ExerciseEditViewController: BaseViewController {
         label.snp.makeConstraints { make in
             make.top.leading.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
-                                 
+        
         categorySelectedLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
             make.leading.equalTo(label.snp.trailing).offset(8)
             make.trailing.equalTo(button.snp.leading).offset(-8)
         }
-
+        
         button.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
             make.centerY.equalTo(categorySelectedLabel)
@@ -120,7 +145,7 @@ class ExerciseEditViewController: BaseViewController {
     private func setupMemoTextView() {
         let label = UILabel()
         label.configure(text: "메모", font: .body)
-
+        
         memoTextBaseView.applyRadius()
         memoTextBaseView.backgroundColor = .white
         memoTextBaseView.addSubviews([label, memoTextView])
@@ -129,39 +154,15 @@ class ExerciseEditViewController: BaseViewController {
         memoTextView.layer.borderColor = UIColor.systemGray6.cgColor
         memoTextView.backgroundColor = .systemGray6
         memoTextView.layer.borderWidth = 1.2
-
+        
         label.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
-                                 
+        
         memoTextView.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom).offset(12)
             make.leading.trailing.equalTo(label)
             make.bottom.equalToSuperview().offset(-24)
-//            make.height.equalTo(200)
         }
-
-    }
-    
-    // MARK: - Setup Layout
-    override func setupLayout() {
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(Padding.leftRightSpacing.rawValue)
-            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Padding.leftRightSpacing.rawValue)
-        }
-    }
-    
-    // MARK: - Setup Delegate
-    override func setupDelegate() {
-    }
-    
-    // MARK: - Setup NavigationBar
-    override func setupNavigationBar() {
-        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = button
-        
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        navigationItem.backBarButtonItem = backButton
     }
 }

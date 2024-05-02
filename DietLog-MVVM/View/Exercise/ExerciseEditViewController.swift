@@ -48,6 +48,7 @@ class ExerciseEditViewController: BaseViewController {
         stackView.addArrangedSubview(memoTextBaseView)
         
         setupURLTextField()
+        setupCategorySelect()
     }
     
     private func setupURLTextField() {
@@ -78,6 +79,40 @@ class ExerciseEditViewController: BaseViewController {
             make.top.equalTo(URLTextField.snp.bottom).offset(8)
             make.leading.trailing.equalTo(label)
             make.bottom.equalToSuperview().offset(-16)
+        }
+    }
+    
+    private func setupCategorySelect() {
+        let label = UILabel()
+        label.configure(text: "카테고리 선택" , font: .body)
+        
+        categorySelectedLabel.configure(text: "미선택" , font: .smallBody)
+        categorySelectedLabel.textAlignment = .right
+        categorySelectedLabel.numberOfLines = 0
+        categorySelectedLabel.lineBreakMode = .byCharWrapping
+        
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        
+        categorySelecteBaseView.applyRadius()
+        categorySelecteBaseView.backgroundColor = .white
+        categorySelecteBaseView.addSubviews([label, categorySelectedLabel, button])
+        
+        label.snp.makeConstraints { make in
+            make.top.leading.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+                                 
+        categorySelectedLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.leading.equalTo(label.snp.trailing).offset(8)
+            make.trailing.equalTo(button.snp.leading).offset(-8)
+        }
+
+        button.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.centerY.equalTo(categorySelectedLabel)
+            make.width.greaterThanOrEqualTo(28)
         }
     }
     

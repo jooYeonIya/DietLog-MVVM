@@ -15,7 +15,7 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     private lazy var categoryTableView = UITableView()
     
     // MARK: - 변수
-    private let viewModel = SelectCategoryViewModel()
+    var viewModel: SelectCategoryViewModel?
     private let disposeBag = DisposeBag()
     private var categoriesData: [Category] = []
     
@@ -29,8 +29,18 @@ class ExerciseSelectCategoryViewController: BaseViewController {
         reloadData()
     }
     
+    // MARK: - 초기화
+    init(viewModel: SelectCategoryViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func reloadData() {
-        viewModel.getCategorisData()
+        viewModel?.getCategorisData()
         categoryTableView.reloadData()
     }
     
@@ -89,7 +99,7 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     
     // MARK: - Setup Bind
     override func setupBinding() {
-        viewModel.categoriesData
+        viewModel?.categoriesData
             .subscribe { [weak self] result in
                 self?.categoriesData = result
             }
@@ -126,5 +136,10 @@ extension ExerciseSelectCategoryViewController: UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.selectedCategory.onNext(categoriesData[indexPath.section])
+        navigationController?.popViewController(animated: true)
     }
 }

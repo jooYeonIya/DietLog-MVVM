@@ -30,6 +30,7 @@ class ExerciseEditViewController: BaseViewController {
     
     // MARK: - 변수
     private var viewModel = ExerciseEditViewModel()
+    private var categoryViewModel = SelectCategoryViewModel()
     private var disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
@@ -89,6 +90,13 @@ class ExerciseEditViewController: BaseViewController {
         
         viewModel.URLErrorLabel
             .bind(to: URLErrorLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        categoryViewModel.selectedCategory
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] category in
+                self?.categorySelectedLabel.text = category?.title ?? "미선택"
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -162,8 +170,8 @@ extension ExerciseEditViewController {
     }
     
     @objc func moveToSelectCategoryView() {
-        let veiwController = ExerciseSelectCategoryViewController()
-        navigationController?.pushViewController(veiwController, animated: true)
+        let viewController = ExerciseSelectCategoryViewController(viewModel: categoryViewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func setupMemoTextView() {

@@ -10,6 +10,7 @@ import RxSwift
 
 class SelectCategoryViewModel {
     var categoriesData = BehaviorSubject<[Category]>(value: [])
+    var selectedCategory = BehaviorSubject<Category?>(value: nil)
     
     private let manager = CatergoryManager.shared
     

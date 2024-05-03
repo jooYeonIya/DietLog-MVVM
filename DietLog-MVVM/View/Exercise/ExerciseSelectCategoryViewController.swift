@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ExerciseSelectCategoryViewController: BaseViewController {
 
@@ -13,10 +14,24 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     private lazy var addCategoryButton = UIButton()
     private lazy var categoryTableView = UITableView()
     
+    // MARK: - 변수
+    private let viewModel = SelectCategoryViewModel()
+    private let disposeBag = DisposeBag()
+    private var categoriesData: [Category] = []
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadData()
+    }
+    
+    private func reloadData() {
+        viewModel.getCategorisData()
+        categoryTableView.reloadData()
     }
     
     // MARK: - Setup UI
@@ -65,12 +80,21 @@ class ExerciseSelectCategoryViewController: BaseViewController {
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
     }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel.categoriesData
+            .subscribe { [weak self] result in
+                self?.categoriesData = result
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - TableView
 extension ExerciseSelectCategoryViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return categoriesData.count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -89,7 +113,7 @@ extension ExerciseSelectCategoryViewController: UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseSelectCategoryTableViewCell.identifier, for: indexPath) as? ExerciseSelectCategoryTableViewCell else { return UITableViewCell() }
-        cell.configure(with: indexPath.section)
+        cell.configure(with: categoriesData[indexPath.section].title)
         cell.selectionStyle = .none
         return cell
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +239,7 @@
 				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
+				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
 				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
+				0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */,
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,

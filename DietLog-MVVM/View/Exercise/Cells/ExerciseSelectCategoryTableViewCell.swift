@@ -11,9 +11,9 @@ class ExerciseSelectCategoryTableViewCell: UITableViewCell {
 
     static let identifier = "ExerciseSelectCategoryTableViewCell"
     
-    func configure(with section: Int) {
+    func configure(with title: String) {
         let label = UILabel()
-        label.configure(text: "Exasfa", font: .body)
+        label.configure(text: title, font: .body)
         label.textColor = .black
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping

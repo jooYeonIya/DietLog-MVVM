@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import UIKit
+import RealmSwift
 
 enum ExerciseEditViewModelText: String {
     case error = "URL을 확인해 주세요"
@@ -17,9 +18,13 @@ enum ExerciseEditViewModelText: String {
 class ExerciseEditViewModel {
     var URLTextField = BehaviorSubject<String>(value: "")
     var URLErrorLabel = BehaviorSubject<String>(value: "")
+    var selectedCategoryId = BehaviorSubject<ObjectId?>(value: nil)
+    var memoTextView = BehaviorSubject<String?>(value: nil)
     
     private var disposeBag = DisposeBag()
-
+    private var isEnableURL: Bool = false
+    private var manager = ExerciseManager.shared
+    
     init() {
         URLTextField
             .map { [weak self] url -> String in
@@ -36,10 +41,32 @@ class ExerciseEditViewModel {
         if url.contains("youtube") || url.contains("youtu.be") || url.contains("youtube.com/shorts") {
             if let url = URL(string: url) {
                 result = UIApplication.shared.canOpenURL(url as URL)
-                print(url, result)
             }
         }
         
+        isEnableURL = result
         return result ? ExerciseEditViewModelText.OK.rawValue : ExerciseEditViewModelText.error.rawValue
+    }
+    
+    func saveData() -> Bool {
+        let id = try? selectedCategoryId.value()
+        
+        if !isEnableURL || id == nil {
+            return false
+        }
+        
+        guard let memo = try? memoTextView.value(),
+              let url = try? URLTextField.value() else { return false }
+        
+        let exercise = Exercise()
+        exercise.URL = url
+        exercise.categoryID = id!
+        exercise.memo = memo
+        exercise.thumbnailURL = ""
+        exercise.title = ""
+        
+        manager.addExercise(exercise)
+        
+        return true
     }
 }

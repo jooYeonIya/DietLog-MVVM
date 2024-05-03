@@ -74,11 +74,21 @@ class ExerciseEditViewController: BaseViewController {
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {
-        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveData))
         navigationItem.rightBarButtonItem = button
         
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
+    }
+    
+    @objc func saveData() {
+        let result = viewModel.saveData()
+        let message = result ? "저장했습니다" : "URL이 유효하지 않거나 카테고리가 선택되지 않았습니다"
+        showAlertWithOKButton(title: "", message: message) {
+            if result {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     // MARK: - Setup Bind
@@ -97,6 +107,15 @@ class ExerciseEditViewController: BaseViewController {
             .subscribe { [weak self] category in
                 self?.categorySelectedLabel.text = category?.title ?? "미선택"
             }
+            .disposed(by: disposeBag)
+        
+        categoryViewModel.selectedCategory
+            .map { $0?.id }
+            .bind(to: viewModel.selectedCategoryId)
+            .disposed(by: disposeBag)
+        
+        memoTextView.rx.text
+            .bind(to: viewModel.memoTextView)
             .disposed(by: disposeBag)
     }
 }

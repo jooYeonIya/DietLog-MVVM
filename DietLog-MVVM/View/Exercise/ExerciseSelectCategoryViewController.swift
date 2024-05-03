@@ -51,6 +51,12 @@ class ExerciseSelectCategoryViewController: BaseViewController {
         let buttonImage = UIImage(systemName: "plus",
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
         addCategoryButton.setImage(buttonImage, for: .normal)
+        addCategoryButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
+    }
+    
+    @objc func moveToCategoryEditView() {
+        let viewController = CategoryEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func setupTableViewUI() {

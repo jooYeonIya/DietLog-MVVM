@@ -51,10 +51,10 @@ class YoutubeService {
             }
     }
     
-    private func extractVideoId(from url: String) -> String? {
-        guard let url = URL(string: url) else { return "" }
+    private func extractVideoId(from urlString: String) -> String? {
+        guard let url = URL(string: urlString) else { return "" }
         
-        if let host = url.host, host.contains("youtu.be") {
+        if urlString.contains("youtu.be") || urlString.contains("shorts") {
             return url.lastPathComponent
         } else {
             if let item = URLComponents(url: url, resolvingAgainstBaseURL: true)?.queryItems {

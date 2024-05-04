@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum ExerciseEditOption: Int {
     case URL, category, memo
@@ -14,7 +16,22 @@ enum ExerciseEditOption: Int {
 class ExerciseEditViewController: BaseViewController {
     
     // MARK: - Componente
-    private lazy var exerciseEditTableView = UITableView(frame: .zero, style: .insetGrouped)
+    private lazy var stackView = UIStackView()
+    
+    private lazy var URLTextFieldBaseView = UIView()
+    private lazy var URLTextField = UITextField()
+    private lazy var URLErrorLabel = UILabel()
+    
+    private lazy var categorySelecteBaseView = UIView()
+    private lazy var categorySelectedLabel = UILabel()
+    
+    private lazy var memoTextBaseView = UIView()
+    private lazy var memoTextView = UITextView()
+    
+    // MARK: - 변수
+    private var viewModel = ExerciseEditViewModel()
+    private var categoryViewModel = SelectCategoryViewModel()
+    private var disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -24,101 +41,179 @@ class ExerciseEditViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubview(exerciseEditTableView)
+        view.addSubview(stackView)
         
-        setupTableViewUI()
+        setupStackView()
     }
     
-    private func setupTableViewUI() {
-        exerciseEditTableView.register(ExerciseEditTableViewCell.self,
-                                       forCellReuseIdentifier: ExerciseEditTableViewCell.indetifier)
-        exerciseEditTableView.register(ExerciseEditTextFieldTableViewCell.self,
-                                       forCellReuseIdentifier: ExerciseEditTextFieldTableViewCell.indetifier)
-        exerciseEditTableView.register(ExerciseEditTextViewTableViewCell.self,
-                                       forCellReuseIdentifier: ExerciseEditTextViewTableViewCell.indetifier)
-        exerciseEditTableView.showsVerticalScrollIndicator = false
-        exerciseEditTableView.backgroundColor = .clear
+    private func setupStackView() {
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        
+        stackView.addArrangedSubview(URLTextFieldBaseView)
+        stackView.addArrangedSubview(categorySelecteBaseView)
+        stackView.addArrangedSubview(memoTextBaseView)
+        
+        setupURLTextField()
+        setupCategorySelect()
+        setupMemoTextView()
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        exerciseEditTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(Padding.leftRightSpacing.rawValue)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Padding.leftRightSpacing.rawValue)
         }
     }
     
     // MARK: - Setup Delegate
     override func setupDelegate() {
-        exerciseEditTableView.dataSource = self
-        exerciseEditTableView.delegate = self
     }
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {
-        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveData))
         navigationItem.rightBarButtonItem = button
         
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
     }
-}
-
-// MARK: - TableView
-extension ExerciseEditViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .customGray
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .customGray
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
-        if section == ExerciseEditOption.URL.rawValue {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseEditTextFieldTableViewCell.indetifier) as? ExerciseEditTextFieldTableViewCell {
-                cell.configure()
-                cell.selectionStyle = .none
-                return cell
-            }
-        } else if section == ExerciseEditOption.category.rawValue {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseEditTableViewCell.indetifier) as? ExerciseEditTableViewCell {
-                cell.configure()
-                cell.selectionStyle = .none
-                cell.accessoryType = .disclosureIndicator
-                return cell
-            }
-        } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseEditTextViewTableViewCell.indetifier) as? ExerciseEditTextViewTableViewCell {
-                cell.configure()
-                cell.selectionStyle = .none
-                return cell
+    @objc func saveData() {
+        let result = viewModel.saveData()
+        let message = result ? "저장했습니다" : "URL 입력 및 카테고리를 선택해 주세요"
+        self.showAlertWithOKButton(title: "", message: message) {
+            if result {
+                self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        URLTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .bind(to: viewModel.URLTextField)
+            .disposed(by: disposeBag)
         
-        return UITableViewCell()
+        viewModel.URLErrorLabel
+            .bind(to: URLErrorLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        categoryViewModel.selectedCategory
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] category in
+                self?.categorySelectedLabel.text = category?.title ?? "미선택"
+            }
+            .disposed(by: disposeBag)
+        
+        categoryViewModel.selectedCategory
+            .map { $0?.id }
+            .bind(to: viewModel.selectedCategoryId)
+            .disposed(by: disposeBag)
+        
+        memoTextView.rx.text
+            .bind(to: viewModel.memoTextView)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Setup 메서드
+extension ExerciseEditViewController {
+    private func setupURLTextField() {
+        let label = UILabel()
+        label.configure(text: "URL" , font: .body)
+        
+        URLErrorLabel.configure(text: "", font: .smallBody)
+        URLErrorLabel.textColor = .systemRed
+        URLErrorLabel.textAlignment = .right
+        
+        URLTextFieldBaseView.applyRadius()
+        URLTextFieldBaseView.backgroundColor = .white
+        URLTextFieldBaseView.addSubviews([label, URLTextField, URLErrorLabel])
+        
+        URLTextField.configure()
+        
+        label.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        URLTextField.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(label)
+            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+        }
+        
+        URLErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(URLTextField.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(label)
+            make.bottom.equalToSuperview().offset(-16)
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    private func setupCategorySelect() {
+        let label = UILabel()
+        label.configure(text: "카테고리 선택" , font: .body)
+        
+        categorySelectedLabel.configure(text: "미선택" , font: .smallBody)
+        categorySelectedLabel.textAlignment = .right
+        categorySelectedLabel.numberOfLines = 0
+        categorySelectedLabel.lineBreakMode = .byCharWrapping
+        
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(moveToSelectCategoryView), for: .touchUpInside)
+        
+        categorySelecteBaseView.applyRadius()
+        categorySelecteBaseView.backgroundColor = .white
+        categorySelecteBaseView.addSubviews([label, categorySelectedLabel, button])
+        
+        label.snp.makeConstraints { make in
+            make.top.leading.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        categorySelectedLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.leading.equalTo(label.snp.trailing).offset(8)
+            make.trailing.equalTo(button.snp.leading).offset(-8)
+        }
+        
+        button.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.centerY.equalTo(categorySelectedLabel)
+            make.width.greaterThanOrEqualTo(28)
+        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == ExerciseEditOption.category.rawValue {
-            let viewController = ExerciseSelectCategoryViewController()
-            navigationController?.pushViewController(viewController, animated: true)
+    @objc func moveToSelectCategoryView() {
+        let viewController = ExerciseSelectCategoryViewController(viewModel: categoryViewModel)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func setupMemoTextView() {
+        let label = UILabel()
+        label.configure(text: "메모", font: .body)
+        
+        memoTextBaseView.applyRadius()
+        memoTextBaseView.backgroundColor = .white
+        memoTextBaseView.addSubviews([label, memoTextView])
+        
+        memoTextView.applyRadius()
+        memoTextView.layer.borderColor = UIColor.systemGray6.cgColor
+        memoTextView.backgroundColor = .systemGray6
+        memoTextView.layer.borderWidth = 1.2
+        
+        label.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        memoTextView.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(label)
+            make.bottom.equalToSuperview().offset(-24)
         }
     }
 }

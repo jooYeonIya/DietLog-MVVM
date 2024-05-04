@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
+		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
+		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
+		0A16C5A22BE4FC66006E5308 /* YoutubeAPIKey.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
@@ -42,9 +46,6 @@
 		0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */; };
 		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
 		0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */; };
-		0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */; };
-		0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */; };
-		0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */; };
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
 		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
 		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
@@ -72,9 +73,13 @@
 		0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */; };
 		0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */; };
 		0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */; };
+		0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
+		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
+		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,9 +115,6 @@
 		0AEAC2DF2BDA0ED40071FCBC /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
 		0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTextViewTableViewCell.swift; sourceTree = "<group>"; };
-		0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0AEAC2F52BDE20B70071FCBC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfo.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReadAndModifyEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 				0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */,
 				0AEAC30A2BDE38140071FCBC /* RxCocoa in Frameworks */,
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
+				0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */,
 				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +198,7 @@
 		0AEAC2942BD7E6C90071FCBC /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */,
 				0AEAC28E2BD7DE860071FCBC /* Info.plist */,
 				0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */,
 				0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */,
@@ -227,6 +232,7 @@
 		0AEAC2972BD7E6ED0071FCBC /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
 				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
+				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
+				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -422,9 +430,6 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */,
-				0AEAC2E72BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift */,
-				0AEAC2E92BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift */,
-				0AEAC2EB2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift */,
 				0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */,
 			);
 			path = Cells;
@@ -493,6 +498,7 @@
 				0AEAC2F22BDE202E0071FCBC /* RealmSwift */,
 				0AEAC3092BDE38140071FCBC /* RxCocoa */,
 				0AEAC30B2BDE38140071FCBC /* RxSwift */,
+				0A16C59C2BE4F1BD006E5308 /* RxAlamofire */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -527,6 +533,7 @@
 				0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -544,6 +551,7 @@
 			files = (
 				0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */,
 				0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */,
+				0A16C5A22BE4FC66006E5308 /* YoutubeAPIKey.xcconfig in Resources */,
 				0AEAC28D2BD7DE860071FCBC /* LaunchScreen.storyboard in Resources */,
 				0AEAC28A2BD7DE860071FCBC /* Assets.xcassets in Resources */,
 			);
@@ -564,6 +572,7 @@
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
+				0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */,
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,
@@ -581,10 +590,8 @@
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
 				0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
-				0AEAC2E82BDA98B70071FCBC /* ExerciseEditTextFieldTableViewCell.swift in Sources */,
 				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
-				0AEAC2EC2BDA9E1D0071FCBC /* ExerciseEditTableViewCell.swift in Sources */,
 				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
 				0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */,
@@ -596,16 +603,17 @@
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
+				0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
 				0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
 				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
+				0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */,
 				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
 				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
-				0AEAC2EA2BDA9D880071FCBC /* ExerciseEditTextViewTableViewCell.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
 				0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */,
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
@@ -744,6 +752,7 @@
 		};
 		0AEAC2922BD7DE860071FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -771,6 +780,7 @@
 		};
 		0AEAC2932BD7DE860071FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -820,6 +830,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -855,6 +873,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A16C59C2BE4F1BD006E5308 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
 		0AEAC2C92BD8E00D0071FCBC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */;

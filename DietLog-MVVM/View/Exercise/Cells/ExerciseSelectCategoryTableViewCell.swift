@@ -11,15 +11,17 @@ class ExerciseSelectCategoryTableViewCell: UITableViewCell {
 
     static let identifier = "ExerciseSelectCategoryTableViewCell"
     
-    func configure(with section: Int) {
-        let label = UILabel()
-        label.configure(text: "Exasfa", font: .body)
+    let label = UILabel()
+    let view = UIView()
+    
+    func configure(with title: String) {
+
+        label.configure(text: title, font: .body)
         label.textColor = .black
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         label.textAlignment = .center
-        
-        let view = UIView()
+    
         view.backgroundColor = .customYellow
         view.applyRadius()
         view.applyShadow()
@@ -37,5 +39,9 @@ class ExerciseSelectCategoryTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ExerciseSelectCategoryViewController: BaseViewController {
 
@@ -13,10 +14,34 @@ class ExerciseSelectCategoryViewController: BaseViewController {
     private lazy var addCategoryButton = UIButton()
     private lazy var categoryTableView = UITableView()
     
+    // MARK: - 변수
+    var viewModel: SelectCategoryViewModel?
+    private let disposeBag = DisposeBag()
+    private var categoriesData: [Category] = []
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadData()
+    }
+    
+    // MARK: - 초기화
+    init(viewModel: SelectCategoryViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func reloadData() {
+        viewModel?.getCategorisData()
+        categoryTableView.reloadData()
     }
     
     // MARK: - Setup UI
@@ -36,6 +61,12 @@ class ExerciseSelectCategoryViewController: BaseViewController {
         let buttonImage = UIImage(systemName: "plus",
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
         addCategoryButton.setImage(buttonImage, for: .normal)
+        addCategoryButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
+    }
+    
+    @objc func moveToCategoryEditView() {
+        let viewController = CategoryEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func setupTableViewUI() {
@@ -65,12 +96,21 @@ class ExerciseSelectCategoryViewController: BaseViewController {
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
     }
+    
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel?.categoriesData
+            .subscribe { [weak self] result in
+                self?.categoriesData = result
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - TableView
 extension ExerciseSelectCategoryViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return categoriesData.count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -89,12 +129,17 @@ extension ExerciseSelectCategoryViewController: UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseSelectCategoryTableViewCell.identifier, for: indexPath) as? ExerciseSelectCategoryTableViewCell else { return UITableViewCell() }
-        cell.configure(with: indexPath.section)
+        cell.configure(with: categoriesData[indexPath.section].title)
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.selectedCategory.onNext(categoriesData[indexPath.section])
+        navigationController?.popViewController(animated: true)
     }
 }

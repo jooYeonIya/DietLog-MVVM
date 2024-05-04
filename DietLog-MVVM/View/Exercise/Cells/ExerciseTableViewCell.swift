@@ -7,14 +7,21 @@
 
 import UIKit
 
+protocol ExerciseTableViewCellDelegate: AnyObject {
+    func didTappedOptionButton(_ cell: ExerciseTableViewCell)
+}
+
 class ExerciseTableViewCell: UITableViewCell {
     
     static let identifier = "ExerciseTableViewCell"
+    
+    weak var delegate: ExerciseTableViewCellDelegate?
     
     private let backgroundWhiteView = UIView()
     let thumbnailImageView = UIImageView()
     let titleLabel = UILabel()
     let memoLabel = UILabel()
+    let optionButton = UIButton()
     
     func configure(exercise: Exercise) {
     
@@ -35,10 +42,10 @@ class ExerciseTableViewCell: UITableViewCell {
         memoLabel.numberOfLines = 0
         memoLabel.lineBreakMode = .byCharWrapping
         
-        let button = UIButton()
-        button.setImage(UIImage(named: "OptionMenu"), for: .normal)
+        optionButton.setImage(UIImage(named: "OptionMenu"), for: .normal)
+        optionButton.addTarget(self, action: #selector(didTappedOptionbutton), for: .touchUpInside)
         
-        backgroundWhiteView.addSubviews([thumbnailImageView, titleLabel, memoLabel, button])
+        backgroundWhiteView.addSubviews([thumbnailImageView, titleLabel, memoLabel, optionButton])
         
         thumbnailImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
@@ -50,7 +57,7 @@ class ExerciseTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(thumbnailImageView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
-            make.trailing.lessThanOrEqualTo(button.snp.leading).offset(-8)
+            make.trailing.lessThanOrEqualTo(optionButton.snp.leading).offset(-8)
         }
         
         memoLabel.snp.makeConstraints { make in
@@ -59,11 +66,15 @@ class ExerciseTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-12)
         }
         
-        button.snp.makeConstraints { make in
+        optionButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.top)
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.width.height.equalTo(20)
         }
+    }
+    
+    @objc func didTappedOptionbutton() {
+        delegate?.didTappedOptionButton(self)
     }
     
     override func prepareForReuse() {

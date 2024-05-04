@@ -31,5 +31,9 @@ class ExerciseViewModel {
                 return UIImage(data: data)
             })
     }
+    
+    func deleteExercise(_ exercise: Exercise) {
+        manager.deleteExercise(exercise)
+    }
 }
 

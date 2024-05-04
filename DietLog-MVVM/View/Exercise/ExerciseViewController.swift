@@ -125,6 +125,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
                 
         cell.configure(exercise: exerciseData[indexPath.section])
         cell.selectionStyle = .none
+        cell.delegate = self
         return cell
     }
     
@@ -133,3 +134,29 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
 }
 
+// MARK: - 옵션 수정 삭제
+extension ExerciseViewController: ExerciseTableViewCellDelegate {
+    func didTappedOptionButton(_ cell: ExerciseTableViewCell) {
+        guard let indexPath = exerciseDataTableView.indexPath(for: cell) else { return }
+        let exercise = exerciseData[indexPath.row]
+        
+        showOptionMenuSheet {
+            self.moveToModifyView(exercise)
+        } deleteCompletion: {
+            self.deleteExercise(exercise)
+        }
+
+    }
+    
+    private func moveToModifyView(_ exercise: Exercise) {
+     
+    }
+    
+    private func deleteExercise(_ exercise: Exercise) {
+        viewModel.deleteExercise(exercise)
+        
+        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+            self.reloadData()
+        }
+    }
+}

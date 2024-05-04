@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A020ABD2BE654AA00D3850A /* ExerciseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditView.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
@@ -161,6 +163,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A020ABB2BE6547500D3850A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2E42BDA51A90071FCBC /* Cells */,
+				0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A020ABE2BE654D200D3850A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */,
+				0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */,
+				0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0A2FA9E72BDC81C20065BDCF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,10 +408,8 @@
 		0AEAC2A62BD8C9550071FCBC /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				0AEAC2E42BDA51A90071FCBC /* Cells */,
-				0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */,
-				0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */,
-				0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */,
+				0A020ABB2BE6547500D3850A /* View */,
+				0A020ABE2BE654D200D3850A /* Controller */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -576,6 +595,7 @@
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
 				0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */,
+				0A020ABD2BE654AA00D3850A /* ExerciseEditView.swift in Sources */,
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,

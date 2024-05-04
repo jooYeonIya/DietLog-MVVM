@@ -40,8 +40,8 @@ class YoutubeService {
                         if let snippet = item["snippet"] as? [String: Any],
                            let title = snippet["title"] as? String,
                            let thumbnails = snippet["thumbnails"] as? [String: Any],
-                           let defaultThumbnail = thumbnails["default"] as? [String: Any],
-                           let thumbnailURL = defaultThumbnail["url"] as? String {
+                           let maxresThumbnail = thumbnails["maxres"] as? [String: Any],
+                           let thumbnailURL = maxresThumbnail["url"] as? String {
                             result["title"] = title
                             result["thumbnailURL"] = thumbnailURL
                         }

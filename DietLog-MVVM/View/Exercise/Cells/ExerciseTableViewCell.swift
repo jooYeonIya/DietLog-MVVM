@@ -8,62 +8,65 @@
 import UIKit
 
 class ExerciseTableViewCell: UITableViewCell {
+    
     static let identifier = "ExerciseTableViewCell"
     
-    func configure() {
+    private let backgroundWhiteView = UIView()
+    let thumbnailImageView = UIImageView()
+    let titleLabel = UILabel()
+    let memoLabel = UILabel()
+    
+    func configure(exercise: Exercise) {
+    
+        backgroundWhiteView.applyRadius()
+        backgroundWhiteView.applyShadow()
+        backgroundWhiteView.backgroundColor = .white
         
-        let backgroundView = UIView()
-        backgroundView.applyRadius()
-        backgroundView.applyShadow()
-        backgroundView.backgroundColor = .white
+        contentView.addSubview(backgroundWhiteView)
         
-        contentView.addSubview(backgroundView)
-        
-        backgroundView.snp.makeConstraints { make in
+        backgroundWhiteView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        titleLabel.configure(text: exercise.title, font: .body)
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byCharWrapping
         
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
-        
-        let titleLable = UILabel()
-        titleLable.configure(text: "타이틀 테스트", font: .body)
-        titleLable.numberOfLines = 0
-        titleLable.lineBreakMode = .byCharWrapping
-        
-        let memoLable = UILabel()
-        memoLable.configure(text: "메모 테스트", font: .smallBody)
-        memoLable.numberOfLines = 0
-        memoLable.lineBreakMode = .byCharWrapping
+        memoLabel.configure(text: exercise.memo ?? "", font: .smallBody)
+        memoLabel.numberOfLines = 0
+        memoLabel.lineBreakMode = .byCharWrapping
         
         let button = UIButton()
         button.setImage(UIImage(named: "OptionMenu"), for: .normal)
         
-        backgroundView.addSubviews([imageView, titleLable, memoLable, button])
+        backgroundWhiteView.addSubviews([thumbnailImageView, titleLabel, memoLabel, button])
         
-        imageView.snp.makeConstraints { make in
+        thumbnailImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             
             // 나중에 섬네일 높이를 화면 너비로 나눠서 스케일 지정해줘야함
             make.height.equalTo(200)
         }
         
-        titleLable.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(12)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
             make.trailing.lessThanOrEqualTo(button.snp.leading).offset(-8)
         }
         
-        memoLable.snp.makeConstraints { make in
-            make.top.equalTo(titleLable.snp.bottom).offset(12)
+        memoLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
             make.bottom.equalToSuperview().offset(-12)
         }
         
         button.snp.makeConstraints { make in
-            make.centerY.equalTo(titleLable)
+            make.top.equalTo(titleLabel.snp.top)
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.width.height.equalTo(20)
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }

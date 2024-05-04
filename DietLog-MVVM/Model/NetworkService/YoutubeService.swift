@@ -41,9 +41,9 @@ class YoutubeService {
                            let title = snippet["title"] as? String,
                            let thumbnails = snippet["thumbnails"] as? [String: Any],
                            let defaultThumbnail = thumbnails["default"] as? [String: Any],
-                           let thumbnailUrl = defaultThumbnail["url"] as? String {
+                           let thumbnailURL = defaultThumbnail["url"] as? String {
                             result["title"] = title
-                            result["thumbnailUrl"] = thumbnailUrl
+                            result["thumbnailURL"] = thumbnailURL
                         }
                     }
                 }

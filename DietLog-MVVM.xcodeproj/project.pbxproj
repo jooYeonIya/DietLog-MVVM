@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A020ABD2BE654AA00D3850A /* ExerciseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */; };
+		0A020AC02BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ABF2BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift */; };
+		0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
@@ -27,7 +29,7 @@
 		0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */; };
 		0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */; };
 		0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */; };
-		0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */; };
+		0AEAC2B92BD8CA890071FCBC /* ExerciseBaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2B82BD8CA890071FCBC /* ExerciseBaseEditViewController.swift */; };
 		0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */; };
 		0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */; };
 		0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditView.swift; sourceTree = "<group>"; };
+		0A020ABF2BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCreateEditViewController.swift; sourceTree = "<group>"; };
+		0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModifyEditViewController.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
@@ -100,7 +104,7 @@
 		0AEAC2B22BD8CA4B0071FCBC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		0AEAC2B42BD8CA5F0071FCBC /* CategoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
-		0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC2B82BD8CA890071FCBC /* ExerciseBaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseBaseEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSelectCategoryViewController.swift; sourceTree = "<group>"; };
 		0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LINESeedKR-Rg.otf"; sourceTree = "<group>"; };
@@ -176,7 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2B62BD8CA770071FCBC /* ExerciseViewController.swift */,
-				0AEAC2B82BD8CA890071FCBC /* ExerciseEditViewController.swift */,
+				0AEAC2B82BD8CA890071FCBC /* ExerciseBaseEditViewController.swift */,
+				0A020ABF2BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift */,
+				0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */,
 				0AEAC2BA2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift */,
 			);
 			path = Controller;
@@ -590,6 +596,7 @@
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
 				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
+				0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
@@ -602,6 +609,7 @@
 				0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0AEAC3182BDF95780071FCBC /* DateFormmater+Extension.swift in Sources */,
+				0A020AC02BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift in Sources */,
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0AEAC31E2BE0AD4D0071FCBC /* ImageFileManager.swift in Sources */,
@@ -632,7 +640,7 @@
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
 				0AEAC2CE2BD8E49C0071FCBC /* UIView+Extension.swift in Sources */,
 				0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */,
-				0AEAC2B92BD8CA890071FCBC /* ExerciseEditViewController.swift in Sources */,
+				0AEAC2B92BD8CA890071FCBC /* ExerciseBaseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
 				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,

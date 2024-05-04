@@ -187,7 +187,7 @@ extension CategoryViewController {
     }
     
     @objc func moveToExerciseEditView() {
-        let viewController = ExerciseEditViewController()
+        let viewController = ExerciseCreateEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
         toggleFloatingButton()
     }

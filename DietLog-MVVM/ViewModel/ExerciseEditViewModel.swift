@@ -24,6 +24,7 @@ class ExerciseEditViewModel {
     private var disposeBag = DisposeBag()
     private var isEnableURL: Bool = false
     private var manager = ExerciseManager.shared
+    private var service = YoutubeService.shared
     
     init() {
         URLTextField
@@ -58,14 +59,16 @@ class ExerciseEditViewModel {
         guard let memo = try? memoTextView.value(),
               let url = try? URLTextField.value() else { return false }
         
-        let exercise = Exercise()
-        exercise.URL = url
-        exercise.categoryID = id!
-        exercise.memo = memo
-        exercise.thumbnailURL = ""
-        exercise.title = ""
-        
-        manager.addExercise(exercise)
+        service.getVideoInfo(for: url)
+            .subscribe(onNext: { [weak self] result in
+                let exercise = Exercise()
+                exercise.URL = url
+                exercise.categoryID = id!
+                exercise.memo = memo
+                exercise.thumbnailURL = result["thumbnailURL"] ?? ""
+                exercise.title = result["title"] ?? ""
+                self?.manager.addExercise(exercise)
+            }).disposed(by: disposeBag)
         
         return true
     }

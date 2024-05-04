@@ -83,8 +83,8 @@ class ExerciseEditViewController: BaseViewController {
     
     @objc func saveData() {
         let result = viewModel.saveData()
-        let message = result ? "저장했습니다" : "URL이 유효하지 않거나 카테고리가 선택되지 않았습니다"
-        showAlertWithOKButton(title: "", message: message) {
+        let message = result ? "저장했습니다" : "URL 입력 및 카테고리를 선택해 주세요"
+        self.showAlertWithOKButton(title: "", message: message) {
             if result {
                 self.navigationController?.popViewController(animated: true)
             }

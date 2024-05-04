@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
+		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
+		0A16C5A22BE4FC66006E5308 /* YoutubeAPIKey.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
@@ -76,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
+		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
+		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +198,7 @@
 		0AEAC2942BD7E6C90071FCBC /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */,
 				0AEAC28E2BD7DE860071FCBC /* Info.plist */,
 				0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */,
 				0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */,
@@ -227,6 +232,7 @@
 		0AEAC2972BD7E6ED0071FCBC /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 			files = (
 				0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */,
 				0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */,
+				0A16C5A22BE4FC66006E5308 /* YoutubeAPIKey.xcconfig in Resources */,
 				0AEAC28D2BD7DE860071FCBC /* LaunchScreen.storyboard in Resources */,
 				0AEAC28A2BD7DE860071FCBC /* Assets.xcassets in Resources */,
 			);
@@ -596,6 +603,7 @@
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
+				0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
 				0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,
@@ -744,6 +752,7 @@
 		};
 		0AEAC2922BD7DE860071FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -771,6 +780,7 @@
 		};
 		0AEAC2932BD7DE860071FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

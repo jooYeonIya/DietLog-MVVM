@@ -132,6 +132,11 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = WebViewController(youtubeURL: exerciseData[indexPath.section].URL)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - 옵션 수정 삭제

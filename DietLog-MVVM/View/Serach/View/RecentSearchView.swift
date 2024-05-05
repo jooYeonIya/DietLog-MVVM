@@ -37,6 +37,7 @@ class RecentSearchView: UIView {
         setupUI()
         setupLayout()
         setupDelegate()
+        setupEvent()
         setupBinding()
     }
 
@@ -74,9 +75,11 @@ class RecentSearchView: UIView {
         recentWordCollectionView.delegate = self
     }
     
+    private func setupEvent() {
+        recentWordAllDeleteButton.addTarget(self, action: #selector(didTappedAllRecentSearchWordsButton), for: .touchUpInside)
+    }
+    
     private func setupBinding() {
-        viewModel.getRecentSearchWords()
-        
         viewModel.recentSearchWords
             .subscribe { [weak self] result in
                 if let result = result {
@@ -85,6 +88,15 @@ class RecentSearchView: UIView {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    func reloadData() {
+        viewModel.getRecentSearchWords()
+    }
+    
+    @objc func didTappedAllRecentSearchWordsButton() {
+        viewModel.deleteAllRecenteSearchWords()
+        reloadData()
     }
 }
 

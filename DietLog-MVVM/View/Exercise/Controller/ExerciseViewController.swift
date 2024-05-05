@@ -151,7 +151,6 @@ extension ExerciseViewController: ExerciseTableViewCellDelegate {
         } deleteCompletion: {
             self.deleteExercise(exercise)
         }
-
     }
     
     private func moveToModifyView(_ exercise: Exercise) {

@@ -29,6 +29,7 @@ class SearchViewController: BaseViewController {
     private lazy var noDataLabel = UILabel()
     
     // MARK: - 변수
+    private var reusltData: Exercise?
     private let viewModel = ExerciseViewModel()
     private let disposeBag = DisposeBag()
 
@@ -125,12 +126,15 @@ class SearchViewController: BaseViewController {
 
                 guard let self = self else { return }
 
+                self.reusltData = item
+                
                 self.viewModel.getThumbnailImage(with: item.thumbnailURL)
                     .subscribe(onNext: { image in
                         cell.thumbnailImageView.image = image
                     }).disposed(by: self.disposeBag)
                 
                 cell.configure(exercise: item)
+                cell.delegate = self
             }
             .disposed(by: disposeBag)
         
@@ -173,5 +177,33 @@ class SearchViewController: BaseViewController {
             
             self?.underlineView.superview?.layoutIfNeeded()
         })
+    }
+}
+
+
+// MARK: - 옵션 수정 삭제
+extension SearchViewController: ExerciseTableViewCellDelegate {
+    func didTappedOptionButton(_ cell: ExerciseTableViewCell) {
+        guard let exercise = reusltData else { return }
+
+        showOptionMenuSheet {
+            self.moveToModifyView(exercise)
+        } deleteCompletion: {
+            self.deleteExercise(exercise)
+        }
+    }
+    
+    private func moveToModifyView(_ exercise: Exercise) {
+        let viewController = ExerciseModifyEditViewController()
+        viewController.exercise = exercise
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func deleteExercise(_ exercise: Exercise) {
+        viewModel.deleteExercise(exercise)
+        
+        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+            self.reloadData(with: nil)
+        }
     }
 }

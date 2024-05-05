@@ -25,6 +25,12 @@ class ExerciseViewModel {
         }
     }
     
+    func getExerciseData(at column:SearchSegmentOption, with serchWord: String?) {
+        if let result = manager.getAllExercise(at: column, with: serchWord) {
+            exerciseData.onNext(Array(result))
+        }
+    }
+    
     func getThumbnailImage(with url: String) -> Observable<UIImage?> {
         return RxAlamofire.requestData(.get, url)
             .map ({ (response, data) -> UIImage? in

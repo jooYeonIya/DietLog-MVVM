@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum SearchViewText: String {
     case recentWord = "최근 검색어"
@@ -17,10 +19,18 @@ class SearchViewController: BaseViewController {
     // MARK: - Component
     private lazy var recentSearchView = RecentSearchView()
     
+    private lazy var searchBar = UISearchBar()
+    
     private lazy var resultLabel = UILabel()
-    private lazy var segmentedControl = UISegmentedControl(items: ["메모", "URL"])
+    private lazy var segmentedControl = UISegmentedControl(items: [SearchSegmentOption.title.title,
+                                                                   SearchSegmentOption.memo.title])
     private lazy var underlineView = UIView()
     private lazy var resultTableView = UITableView()
+    private lazy var noDataLabel = UILabel()
+    
+    // MARK: - 변수
+    private let viewModel = ExerciseViewModel()
+    private let disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -32,13 +42,15 @@ class SearchViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([recentSearchView,
+        view.addSubviews([noDataLabel,
+                          recentSearchView,
                           resultLabel,
                           segmentedControl,
                           underlineView,
                           resultTableView])
         
         resultLabel.configure(text: SearchViewText.result.rawValue , font: .title)
+        noDataLabel.configure(text: "데이터가 없습니다", font: .body)
 
         setupSearchBarUI()
         setupSegmentedControlUI()
@@ -46,13 +58,14 @@ class SearchViewController: BaseViewController {
     }
     
     private func setupSearchBarUI() {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
         navigationItem.titleView = searchBar
     }
     
     private func setupSegmentedControlUI() {
+        let textAttributes = [NSAttributedString.Key.font: UIFont.body]
+        segmentedControl.setTitleTextAttributes(textAttributes, for: .normal)
         segmentedControl.setBackgroundWhiteImage()
+        segmentedControl.selectedSegmentIndex = 0
         underlineView.backgroundColor = .customYellow
     }
     
@@ -61,10 +74,15 @@ class SearchViewController: BaseViewController {
         resultTableView.showsVerticalScrollIndicator = false
         resultTableView.separatorStyle = .none
         resultTableView.backgroundColor = .clear
+        resultTableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        noDataLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
         recentSearchView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
@@ -99,31 +117,34 @@ class SearchViewController: BaseViewController {
         }
     }
 
-    // MARK: - Setup Delegate
-    override func setupDelegate() {
-        resultTableView.dataSource = self
-        resultTableView.delegate = self
-    }
-}
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel.exerciseData
+            .observe(on: MainScheduler.instance)
+            .bind(to: resultTableView.rx.items(cellIdentifier: ExerciseTableViewCell.identifier, cellType: ExerciseTableViewCell.self)) { [weak self] index, item, cell in
 
-// MARK: - SerachBar
-extension SearchViewController: UISearchBarDelegate {
-    
-}
+                guard let self = self else { return }
 
-// MARK: - TableView
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+                self.viewModel.getThumbnailImage(with: item.thumbnailURL)
+                    .subscribe(onNext: { image in
+                        cell.thumbnailImageView.image = image
+                    }).disposed(by: self.disposeBag)
+                
+                cell.configure(exercise: item)
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.text
+            .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe { [weak self] text in
+                self?.reloadData(with: text)
+            }
+            .disposed(by: disposeBag)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
-//        cell.configure(
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    private func reloadData(with searchWord: String?) {
+        guard let column = SearchSegmentOption(rawValue: segmentedControl.selectedSegmentIndex) else { return }
+        viewModel.getExerciseData(at: column, with: searchWord)
     }
 }

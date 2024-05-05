@@ -134,8 +134,9 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = WebViewController(youtubeURL: exerciseData[indexPath.section].URL)
-        navigationController?.pushViewController(vc, animated: true)
+        let viewController = WebViewController(youtubeURL: exerciseData[indexPath.section].URL)
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

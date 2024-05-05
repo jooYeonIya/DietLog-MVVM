@@ -141,10 +141,29 @@ class SearchViewController: BaseViewController {
                 self?.reloadData(with: text)
             }
             .disposed(by: disposeBag)
+        
+        segmentedControl.rx.selectedSegmentIndex
+            .skip(1)
+            .subscribe { [weak self] index in
+                self?.changeSegmentedControlUnderline(index: CGFloat(index))
+            }
+            .disposed(by: disposeBag)
     }
     
     private func reloadData(with searchWord: String?) {
         guard let column = SearchSegmentOption(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         viewModel.getExerciseData(at: column, with: searchWord)
+    }
+    
+    private func changeSegmentedControlUnderline(index: CGFloat) {
+        let segmentWidth = segmentedControl.frame.width / 2
+        let leadingDistance = segmentWidth * index
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.underlineView.snp.updateConstraints({ make in
+                make.leading.equalTo(self!.segmentedControl.snp.leading).offset(leadingDistance)
+            })
+            
+            self?.underlineView.superview?.layoutIfNeeded()
+        })
     }
 }

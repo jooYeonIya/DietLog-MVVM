@@ -73,6 +73,29 @@ extension BaseViewController {
         present(alert, animated: true)
     }
     
+    func showAlertTwoButton(title: String?,
+                            message: String?,
+                            actionTitle: String = "확인",
+                            actionCompletion: (() -> Void)? = nil,
+                            cancelTitle: String = "취소",
+                            cancelCompletion: (() -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: cancelTitle, style: .cancel) { _ in
+            cancelCompletion?()
+        }
+        
+        let action = UIAlertAction(title: actionTitle, style: .default) { _ in
+            actionCompletion?()
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func showOptionMenuSheet(modifyCompletion: (() -> Void)?,
                              deleteCompletion: (() -> Void)?) {
         let modify = UIAlertAction(title: "수정", style: .default) { _ in

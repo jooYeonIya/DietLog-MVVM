@@ -109,6 +109,7 @@ extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentWordCollectionViewCell.identified, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(text: recentSearchWords[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -124,5 +125,13 @@ extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDataSource
         let width = textWidth + delegateButtonWidth + spacing
         
         return CGSize(width: width, height: 20)
+    }
+}
+
+extension RecentSearchView: RecentWordCollectionViewCellDelegate {
+    func didTappedDeleteButton(_ cell: RecentWordCollectionViewCell) {
+        guard let indexPath = recentWordCollectionView.indexPath(for: cell) else { return }
+        viewModel.deleteRecenteSearchWord(at: indexPath.row)
+        reloadData()
     }
 }

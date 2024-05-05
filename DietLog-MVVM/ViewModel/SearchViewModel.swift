@@ -25,4 +25,8 @@ class SearchViewModel {
     func deleteAllRecenteSearchWords() {
         manager.deleteAllRecentSearchWord()
     }
+    
+    func deleteRecenteSearchWord(at index: Int) {
+        manager.deleteSearch(at: index)
+    }
 }

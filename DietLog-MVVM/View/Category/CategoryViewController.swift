@@ -187,7 +187,7 @@ extension CategoryViewController {
     }
     
     @objc func moveToExerciseEditView() {
-        let viewController = ExerciseEditViewController()
+        let viewController = ExerciseCreateEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
         toggleFloatingButton()
     }
@@ -216,7 +216,7 @@ extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = ExerciseViewController()
+        let viewController = ExerciseViewController(categoryId: categoriesData[indexPath.row].id)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

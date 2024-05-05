@@ -36,10 +36,11 @@ class ExerciseManager: RealmManager {
         return realm.objects(Exercise.self).filter(query)
     }
     
-    func updateExercise(_ exercise: Exercise, newCategoryID: ObjectId) {
+    func updateExercise(_ exercise: Exercise, newExercise: Exercise) {
         do {
             try realm.write {
-                exercise.categoryID = newCategoryID
+                exercise.categoryID = newExercise.categoryID
+                exercise.memo = newExercise.memo
             }
         } catch {
             print("Error updateExercise(_ exercise: Exercise, newCategoryID: ObjectId) \(error)")

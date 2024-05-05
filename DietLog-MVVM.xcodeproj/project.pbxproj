@@ -14,6 +14,8 @@
 		0A020AC72BE720CC00D3850A /* WebViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC62BE720CC00D3850A /* WebViewToolBar.swift */; };
 		0A020ACA2BE730FC00D3850A /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC92BE730FC00D3850A /* RecentSearchView.swift */; };
 		0A020ACD2BE73F8B00D3850A /* SearchSegmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */; };
+		0A020ACF2BE76C0E00D3850A /* RecentSearchWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACE2BE76C0E00D3850A /* RecentSearchWordManager.swift */; };
+		0A020AD12BE76CCA00D3850A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
@@ -92,6 +94,8 @@
 		0A020AC62BE720CC00D3850A /* WebViewToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewToolBar.swift; sourceTree = "<group>"; };
 		0A020AC92BE730FC00D3850A /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSegmentOption.swift; sourceTree = "<group>"; };
+		0A020ACE2BE76C0E00D3850A /* RecentSearchWordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchWordManager.swift; sourceTree = "<group>"; };
+		0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
 				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
 				0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */,
+				0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 			children = (
 				0AEAC3112BDE6EC10071FCBC /* UserInfoManager.swift */,
 				0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */,
+				0A020ACE2BE76C0E00D3850A /* RecentSearchWordManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
 				0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
+				0A020ACF2BE76C0E00D3850A /* RecentSearchWordManager.swift in Sources */,
 				0AEAC2C52BD8D3510071FCBC /* UIFont+Extension.swift in Sources */,
 				0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */,
 				0AEAC2D22BD8ED630071FCBC /* UITextField+Extension.swift in Sources */,
@@ -646,6 +653,7 @@
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0AEAC3182BDF95780071FCBC /* DateFormmater+Extension.swift in Sources */,
 				0A020AC02BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift in Sources */,
+				0A020AD12BE76CCA00D3850A /* SearchViewModel.swift in Sources */,
 				0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */,
 				0AEAC2D92BD902790071FCBC /* FSCalendarView+Extension.swift in Sources */,
 				0A020AC72BE720CC00D3850A /* WebViewToolBar.swift in Sources */,

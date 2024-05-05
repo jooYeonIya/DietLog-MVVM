@@ -153,6 +153,16 @@ class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        searchBar.rx.searchButtonClicked
+            .subscribe { [weak self] _ in
+                if let searchText = self?.searchBar.text, !searchText.isEmpty {
+                    self?.recentSearchView.viewModel.addRecentSearchWord(with: searchText)
+                    self?.recentSearchView.viewModel.getRecentSearchWords()
+                }
+                self?.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+        
         segmentedControl.rx.selectedSegmentIndex
             .skip(1)
             .subscribe { [weak self] index in

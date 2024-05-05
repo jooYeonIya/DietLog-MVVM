@@ -11,12 +11,13 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
     
     static let identified = "RecentWordCollectionViewCell"
     
+    let label = UILabel()
+    let button = UIButton()
+    
     func configure(text: String) {
-        let label = UILabel()
         label.configure(text: text, font: .smallBody)
         label.textColor = .customGreen
         
-        let button = UIButton()
         let buttonImage = UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 10))
         button.setImage(buttonImage, for: .normal)
         button.tintColor = .customGreen
@@ -39,4 +40,7 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }

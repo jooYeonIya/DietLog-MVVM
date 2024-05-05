@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class RecentSearchView: UIView {
     // MARK: - Component
@@ -20,11 +21,13 @@ class RecentSearchView: UIView {
         return collectionView
     }()
     
-    // MARK: - 변수
-    var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
-    
     private lazy var recentWordLabel = UILabel()
     private lazy var recentWordAllDeleteButton = UIButton()
+    
+    // MARK: - 변수
+    var recentSearchWords: [String] = []
+    let viewModel = SearchViewModel()
+    let disposeBag = DisposeBag()
     
     func configure() {
         addSubviews([recentWordLabel,
@@ -34,6 +37,7 @@ class RecentSearchView: UIView {
         setupUI()
         setupLayout()
         setupDelegate()
+        setupBinding()
     }
 
     private func setupUI() {
@@ -69,23 +73,36 @@ class RecentSearchView: UIView {
         recentWordCollectionView.dataSource = self
         recentWordCollectionView.delegate = self
     }
+    
+    private func setupBinding() {
+        viewModel.getRecentSearchWords()
+        
+        viewModel.recentSearchWords
+            .subscribe { [weak self] result in
+                if let result = result {
+                    self?.recentSearchWords = result
+                    self?.recentWordCollectionView.reloadData()
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - CollectionView
 extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recentWords.count
+        return recentSearchWords.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentWordCollectionViewCell.identified, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(text: recentWords[indexPath.row])
+        cell.configure(text: recentSearchWords[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let text = recentWords[indexPath.row]
+        let text = recentSearchWords[indexPath.row]
         let textAttributes = [NSAttributedString.Key.font: UIFont.smallBody]
         let textWidth = (text as NSString).size(withAttributes: textAttributes).width
         

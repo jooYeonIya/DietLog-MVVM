@@ -149,7 +149,9 @@ extension ExerciseViewController: ExerciseTableViewCellDelegate {
     }
     
     private func moveToModifyView(_ exercise: Exercise) {
-     
+        let viewController = ExerciseModifyEditViewController()
+        viewController.exercise = exercise
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func deleteExercise(_ exercise: Exercise) {

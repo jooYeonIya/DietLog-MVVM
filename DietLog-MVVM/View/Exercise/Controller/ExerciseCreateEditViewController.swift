@@ -11,11 +11,9 @@ import RxSwift
 class ExerciseCreateEditViewController: ExerciseBaseEditViewController {
 
     // MARK: - Life Cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {

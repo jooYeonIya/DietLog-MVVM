@@ -89,7 +89,7 @@ class ExerciseEditView: UIView {
         let label = UILabel()
         label.configure(text: "카테고리 선택" , font: .body)
         
-        categorySelectedLabel.configure(text: "미선택" , font: .smallBody)
+        categorySelectedLabel.font = .smallBody
         categorySelectedLabel.textAlignment = .right
         categorySelectedLabel.numberOfLines = 0
         categorySelectedLabel.lineBreakMode = .byCharWrapping

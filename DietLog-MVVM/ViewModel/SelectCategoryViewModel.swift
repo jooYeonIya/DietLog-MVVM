@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 
 class SelectCategoryViewModel {
     var categoriesData = BehaviorSubject<[Category]>(value: [])
@@ -18,5 +19,9 @@ class SelectCategoryViewModel {
         if let result = manager.getAllCategories() {
             categoriesData.onNext(Array(result))
         }
+    }
+    
+    func getCategoryData(at id: ObjectId) {
+        selectedCategory.onNext(manager.getCategory(at: id))
     }
 }

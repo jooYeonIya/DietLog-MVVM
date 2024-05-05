@@ -72,4 +72,17 @@ class ExerciseEditViewModel {
         
         return true
     }
+    
+    func updateData(_ exercise: Exercise) -> Bool {
+        guard let id = try? selectedCategoryId.value(),
+              let memo = try? memoTextView.value() else { return false }
+        
+        let newExericse = Exercise()
+        newExericse.categoryID = id
+        newExericse.memo = memo
+        
+        manager.updateExercise(exercise, newExercise: newExericse)
+        
+        return true
+    }
 }

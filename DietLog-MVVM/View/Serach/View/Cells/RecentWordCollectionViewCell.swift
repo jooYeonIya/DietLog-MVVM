@@ -7,19 +7,27 @@
 
 import UIKit
 
+protocol RecentWordCollectionViewCellDelegate: AnyObject {
+    func didTappedDeleteButton(_ cell: RecentWordCollectionViewCell)
+}
+
 class RecentWordCollectionViewCell: UICollectionViewCell {
     
     static let identified = "RecentWordCollectionViewCell"
     
+    weak var delegate: RecentWordCollectionViewCellDelegate?
+    
+    let label = UILabel()
+    let button = UIButton()
+    
     func configure(text: String) {
-        let label = UILabel()
         label.configure(text: text, font: .smallBody)
         label.textColor = .customGreen
         
-        let button = UIButton()
         let buttonImage = UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 10))
         button.setImage(buttonImage, for: .normal)
         button.tintColor = .customGreen
+        button.addTarget(self, action: #selector(didTappedDelegateButton), for: .touchUpInside)
         
         contentView.layer.cornerRadius = 10
         contentView.layer.borderColor = UIColor.customGreen.cgColor
@@ -39,4 +47,11 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    @objc func didTappedDelegateButton() {
+        delegate?.didTappedDeleteButton(self)
+    }
 }

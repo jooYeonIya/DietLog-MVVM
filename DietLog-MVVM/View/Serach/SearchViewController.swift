@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum SearchViewText: String {
     case recentWord = "최근 검색어"
@@ -15,73 +17,56 @@ enum SearchViewText: String {
 class SearchViewController: BaseViewController {
     
     // MARK: - Component
-    private lazy var recentWordCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 8
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.register(RecentWordCollectionViewCell.self, forCellWithReuseIdentifier: RecentWordCollectionViewCell.identified)
-        collectionView.backgroundColor = .clear
-        return collectionView
-    }()
+    private lazy var recentSearchView = RecentSearchView()
     
-    private lazy var resultLabel: UILabel = {
-        let label = UILabel()
-        label.configure(text: SearchViewText.result.rawValue , font: .title)
-        return label
-    }()
+    private lazy var searchBar = UISearchBar()
     
-    private lazy var recentWordLabel = UILabel()
-    private lazy var recentWordAllDeleteButton = UIButton()
-    private lazy var segmentedControl = UISegmentedControl(items: ["메모", "URL"])
+    private lazy var resultLabel = UILabel()
+    private lazy var segmentedControl = UISegmentedControl(items: [SearchSegmentOption.title.title,
+                                                                   SearchSegmentOption.memo.title])
     private lazy var underlineView = UIView()
     private lazy var resultTableView = UITableView()
+    private lazy var noDataLabel = UILabel()
     
     // MARK: - 변수
-    var recentWords: [String] = ["최근", "검색어", "최근 검색어"]
+    private var reusltData: Exercise?
+    private let viewModel = ExerciseViewModel()
+    private let disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         displayTopView(false)
+        recentSearchView.configure()
     }
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([recentWordLabel, 
-                          recentWordCollectionView,
-                          recentWordAllDeleteButton,
+        view.addSubviews([noDataLabel,
+                          recentSearchView,
                           resultLabel,
                           segmentedControl,
                           underlineView,
                           resultTableView])
         
+        resultLabel.configure(text: SearchViewText.result.rawValue , font: .title)
+        noDataLabel.configure(text: "데이터가 없습니다", font: .body)
+
         setupSearchBarUI()
-        setupRecentWordSectionUI()
         setupSegmentedControlUI()
         setupResultTableViewUI()
     }
     
     private func setupSearchBarUI() {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
         navigationItem.titleView = searchBar
     }
     
-    private func setupRecentWordSectionUI() {
-        recentWordLabel.configure(text: SearchViewText.recentWord.rawValue, font: .title)
-        recentWordLabel.textColor = .black
-        
-        recentWordAllDeleteButton.setTitle("전체 삭제", for: .normal)
-        recentWordAllDeleteButton.setTitleColor(.systemGray, for: .normal)
-        recentWordAllDeleteButton.titleLabel?.font = .smallBody
-    }
-    
     private func setupSegmentedControlUI() {
+        let textAttributes = [NSAttributedString.Key.font: UIFont.body]
+        segmentedControl.setTitleTextAttributes(textAttributes, for: .normal)
         segmentedControl.setBackgroundWhiteImage()
-
+        segmentedControl.selectedSegmentIndex = 0
         underlineView.backgroundColor = .customYellow
     }
     
@@ -90,32 +75,24 @@ class SearchViewController: BaseViewController {
         resultTableView.showsVerticalScrollIndicator = false
         resultTableView.separatorStyle = .none
         resultTableView.backgroundColor = .clear
+        resultTableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        recentWordLabel.snp.makeConstraints { make in
+        noDataLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        recentSearchView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
-            make.leading.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.trailing.lessThanOrEqualTo(recentWordAllDeleteButton.snp.leading)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.height.equalTo(80)
         }
-        
-        recentWordCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(recentWordLabel.snp.bottom).offset(12)
-            make.leading.equalTo(recentWordLabel)
-            make.trailing.equalTo(recentWordAllDeleteButton)
-            make.height.equalTo(24)
-        }
-        
-        recentWordAllDeleteButton.snp.makeConstraints { make in
-            make.centerY.equalTo(recentWordLabel)
-            make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
-        }
-        
+
         resultLabel.snp.makeConstraints { make in
-            make.top.equalTo(recentWordCollectionView.snp.bottom).offset(24)
-            make.leading.equalTo(recentWordLabel.snp.leading)
-            make.trailing.equalTo(recentWordAllDeleteButton.snp.trailing)
+            make.top.equalTo(recentSearchView.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(recentSearchView)
         }
         
         segmentedControl.snp.makeConstraints { make in
@@ -141,61 +118,109 @@ class SearchViewController: BaseViewController {
         }
     }
 
-    // MARK: - Setup Delegate
-    override func setupDelegate() {
-        recentWordCollectionView.dataSource = self
-        recentWordCollectionView.delegate = self
+    // MARK: - Setup Bind
+    override func setupBinding() {
+        viewModel.exerciseData
+            .observe(on: MainScheduler.instance)
+            .bind(to: resultTableView.rx.items(cellIdentifier: ExerciseTableViewCell.identifier, cellType: ExerciseTableViewCell.self)) { [weak self] index, item, cell in
+
+                guard let self = self else { return }
+
+                self.reusltData = item
+                
+                self.viewModel.getThumbnailImage(with: item.thumbnailURL)
+                    .subscribe(onNext: { image in
+                        cell.thumbnailImageView.image = image
+                    }).disposed(by: self.disposeBag)
+                
+                cell.configure(exercise: item)
+                cell.delegate = self
+            }
+            .disposed(by: disposeBag)
         
-        resultTableView.dataSource = self
-        resultTableView.delegate = self
+        resultTableView.rx.modelSelected(Exercise.self)
+            .subscribe { [weak self] item in
+                let viewController = WebViewController(youtubeURL: item.URL)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.text
+            .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe { [weak self] text in
+                self?.reloadData(with: text)
+            }
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.searchButtonClicked
+            .subscribe { [weak self] _ in
+                if let searchText = self?.searchBar.text, !searchText.isEmpty {
+                    self?.recentSearchView.viewModel.addRecentSearchWord(with: searchText)
+                    self?.recentSearchView.reloadData()
+                }
+                self?.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+        
+        segmentedControl.rx.selectedSegmentIndex
+            .skip(1)
+            .subscribe { [weak self] index in
+                self?.changeSegmentedControlUnderline(index: CGFloat(index))
+                self?.reloadData(with: self?.searchBar.text)
+            }
+            .disposed(by: disposeBag)
+        
+        recentSearchView.recentWordCollectionView.rx.modelSelected(String.self)
+            .subscribe(onNext: { [weak self] text in
+                self?.searchBar.text = text
+                self?.reloadData(with: text)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func reloadData(with searchWord: String?) {
+        guard let column = SearchSegmentOption(rawValue: segmentedControl.selectedSegmentIndex) else { return }
+        viewModel.getExerciseData(at: column, with: searchWord)
+    }
+    
+    private func changeSegmentedControlUnderline(index: CGFloat) {
+        let segmentWidth = segmentedControl.frame.width / 2
+        let leadingDistance = segmentWidth * index
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.underlineView.snp.updateConstraints({ make in
+                make.leading.equalTo(self!.segmentedControl.snp.leading).offset(leadingDistance)
+            })
+            
+            self?.underlineView.superview?.layoutIfNeeded()
+        })
     }
 }
 
-// MARK: - SerachBar
-extension SearchViewController: UISearchBarDelegate {
-    
-}
 
-// MARK: - CollectionView
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recentWords.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentWordCollectionViewCell.identified, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(text: recentWords[indexPath.row])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let text = recentWords[indexPath.row]
-        let textAttributes = [NSAttributedString.Key.font: UIFont.smallBody]
-        let textWidth = (text as NSString).size(withAttributes: textAttributes).width
-        
-        let delegateButtonWidth: CGFloat = 20
-        let spacing: CGFloat = (8 * 2) + 4
-        
-        let width = textWidth + delegateButtonWidth + spacing
-        
-        return CGSize(width: width, height: 20)
-    }
-}
+// MARK: - 옵션 수정 삭제
+extension SearchViewController: ExerciseTableViewCellDelegate {
+    func didTappedOptionButton(_ cell: ExerciseTableViewCell) {
+        guard let exercise = reusltData else { return }
 
-// MARK: - TableView
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        showOptionMenuSheet {
+            self.moveToModifyView(exercise)
+        } deleteCompletion: {
+            self.deleteExercise(exercise)
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
-//        cell.configure(
-        return cell
+    private func moveToModifyView(_ exercise: Exercise) {
+        let viewController = ExerciseModifyEditViewController()
+        viewController.exercise = exercise
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    private func deleteExercise(_ exercise: Exercise) {
+        viewModel.deleteExercise(exercise)
+        
+        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+            self.reloadData(with: nil)
+        }
     }
 }

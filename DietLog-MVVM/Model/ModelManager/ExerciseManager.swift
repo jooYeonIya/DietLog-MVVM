@@ -31,8 +31,8 @@ class ExerciseManager: RealmManager {
         return realm.objects(Exercise.self).filter(query)
     }
     
-    func getAllExercise(with searchWord: String) -> Results<Exercise>? {
-        let query = NSPredicate(format: "title CONTAINS[c] %@", searchWord)
+    func getAllExercise(at column: SearchSegmentOption, with searchWord: String?) -> Results<Exercise>? {
+        var query = NSPredicate(format: "\(column) CONTAINS[c] %@", searchWord ?? "")
         return realm.objects(Exercise.self).filter(query)
     }
     

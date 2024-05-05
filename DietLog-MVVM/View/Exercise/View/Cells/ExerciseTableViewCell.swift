@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol ExerciseTableViewCellDelegate: AnyObject {
     func didTappedOptionButton(_ cell: ExerciseTableViewCell)
@@ -24,6 +25,8 @@ class ExerciseTableViewCell: UITableViewCell {
     let optionButton = UIButton()
     
     func configure(exercise: Exercise) {
+        
+        selectionStyle = .none
     
         backgroundWhiteView.applyRadius()
         backgroundWhiteView.applyShadow()
@@ -49,8 +52,6 @@ class ExerciseTableViewCell: UITableViewCell {
         
         thumbnailImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            
-            // 나중에 섬네일 높이를 화면 너비로 나눠서 스케일 지정해줘야함
             make.height.equalTo(200)
         }
         

@@ -12,6 +12,7 @@
 		0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */; };
 		0A020AC52BE71F8A00D3850A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC42BE71F8A00D3850A /* WebViewController.swift */; };
 		0A020AC72BE720CC00D3850A /* WebViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC62BE720CC00D3850A /* WebViewToolBar.swift */; };
+		0A020ACA2BE730FC00D3850A /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC92BE730FC00D3850A /* RecentSearchView.swift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
@@ -88,6 +89,7 @@
 		0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModifyEditViewController.swift; sourceTree = "<group>"; };
 		0A020AC42BE71F8A00D3850A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0A020AC62BE720CC00D3850A /* WebViewToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewToolBar.swift; sourceTree = "<group>"; };
+		0A020AC92BE730FC00D3850A /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
@@ -199,6 +201,15 @@
 				0A020AC62BE720CC00D3850A /* WebViewToolBar.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		0A020AC82BE730DE00D3850A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A2FA9E72BDC81C20065BDCF /* Cells */,
+				0A020AC92BE730FC00D3850A /* RecentSearchView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0A2FA9E72BDC81C20065BDCF /* Cells */ = {
@@ -437,7 +448,7 @@
 		0AEAC2A72BD8C9660071FCBC /* Serach */ = {
 			isa = PBXGroup;
 			children = (
-				0A2FA9E72BDC81C20065BDCF /* Cells */,
+				0A020AC82BE730DE00D3850A /* View */,
 				0AEAC2BC2BD8CAC10071FCBC /* SearchViewController.swift */,
 			);
 			path = Serach;
@@ -651,6 +662,7 @@
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */,
 				0A020AC52BE71F8A00D3850A /* WebViewController.swift in Sources */,
+				0A020ACA2BE730FC00D3850A /* RecentSearchView.swift in Sources */,
 				0AEAC2BD2BD8CAC10071FCBC /* SearchViewController.swift in Sources */,
 				0AEAC3162BDF8C1C0071FCBC /* SaveMyInfoViewController.swift in Sources */,
 				0AEAC2C32BD8D00B0071FCBC /* UIColor+Extension.swift in Sources */,

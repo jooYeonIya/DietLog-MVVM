@@ -10,7 +10,7 @@ import RxSwift
 
 class RecentSearchView: UIView {
     // MARK: - Component
-    private lazy var recentWordCollectionView: UICollectionView = {
+    lazy var recentWordCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 8
@@ -34,9 +34,9 @@ class RecentSearchView: UIView {
                      recentWordCollectionView,
                      recentWordAllDeleteButton])
         
+        reloadData()
         setupUI()
         setupLayout()
-        setupDelegate()
         setupEvent()
         setupBinding()
     }
@@ -70,11 +70,6 @@ class RecentSearchView: UIView {
         }
     }
     
-    private func setupDelegate() {
-        recentWordCollectionView.dataSource = self
-        recentWordCollectionView.delegate = self
-    }
-    
     private func setupEvent() {
         recentWordAllDeleteButton.addTarget(self, action: #selector(didTappedAllRecentSearchWordsButton), for: .touchUpInside)
     }
@@ -82,10 +77,18 @@ class RecentSearchView: UIView {
     private func setupBinding() {
         viewModel.recentSearchWords
             .subscribe { [weak self] result in
-                if let result = result {
-                    self?.recentSearchWords = result
-                    self?.recentWordCollectionView.reloadData()
-                }
+                self?.recentSearchWords = result
+                self?.recentWordCollectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        recentWordCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+
+        viewModel.recentSearchWords
+            .bind(to: recentWordCollectionView.rx.items(cellIdentifier: RecentWordCollectionViewCell.identified, cellType: RecentWordCollectionViewCell.self)) { index, model, cell in
+                
+                cell.configure(text: model)
+                cell.delegate = self
             }
             .disposed(by: disposeBag)
     }
@@ -101,18 +104,8 @@ class RecentSearchView: UIView {
 }
 
 // MARK: - CollectionView
-extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recentSearchWords.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentWordCollectionViewCell.identified, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(text: recentSearchWords[indexPath.row])
-        cell.delegate = self
-        return cell
-    }
-    
+extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let text = recentSearchWords[indexPath.row]

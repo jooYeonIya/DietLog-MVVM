@@ -10,7 +10,7 @@ import RxSwift
 
 class SearchViewModel {
 
-    var recentSearchWords = BehaviorSubject<[String]?>(value: nil)
+    var recentSearchWords = BehaviorSubject<[String]>(value: [])
     
     private var manager = RecentSearchWordManager.shared
     

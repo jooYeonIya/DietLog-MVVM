@@ -25,6 +25,8 @@ class ExerciseTableViewCell: UITableViewCell {
     let optionButton = UIButton()
     
     func configure(exercise: Exercise) {
+        
+        selectionStyle = .none
     
         backgroundWhiteView.applyRadius()
         backgroundWhiteView.applyShadow()

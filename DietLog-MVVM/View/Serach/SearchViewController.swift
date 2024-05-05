@@ -134,6 +134,13 @@ class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        resultTableView.rx.modelSelected(Exercise.self)
+            .subscribe { [weak self] item in
+                let viewController = WebViewController(youtubeURL: item.URL)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
         searchBar.rx.text
             .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance)
             .distinctUntilChanged()

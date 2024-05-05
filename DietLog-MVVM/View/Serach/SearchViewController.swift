@@ -146,6 +146,7 @@ class SearchViewController: BaseViewController {
             .skip(1)
             .subscribe { [weak self] index in
                 self?.changeSegmentedControlUnderline(index: CGFloat(index))
+                self?.reloadData(with: self?.searchBar.text)
             }
             .disposed(by: disposeBag)
     }

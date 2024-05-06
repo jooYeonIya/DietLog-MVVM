@@ -36,7 +36,6 @@ class ShareViewController: UIViewController {
         setUI()
         setLayout()
         setBinding()
-
     }
     
     private func setNavigationBar() {
@@ -49,7 +48,7 @@ class ShareViewController: UIViewController {
         navigationItem.rightBarButtonItem = doneButton
         
         
-        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: nil)
+        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(didTappedCancelButton))
         cancelButton.tintColor = UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0)
         cancelButton.setTitleTextAttributes(attributies as [NSAttributedString.Key : Any], for: .normal)
         navigationItem.leftBarButtonItem = cancelButton
@@ -104,5 +103,12 @@ class ShareViewController: UIViewController {
             make.leading.trailing.equalTo(selectCategoryTitleLabel)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+}
+
+extension ShareViewController {
+    
+    @objc func didTappedCancelButton() {
+        extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
     }
 }

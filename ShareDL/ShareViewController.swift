@@ -26,6 +26,8 @@ class ShareViewController: UIViewController {
     var cellIsSelected = false
     var categoryId: ObjectId?
     
+    var urlSubject = PublishSubject<String>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,24 +128,31 @@ extension ShareViewController {
     
     @objc func didTappedDoneButton() {
         if cellIsSelected {
-            saveData()
+            getULR()
+            urlSubject.subscribe(onNext: { [weak self] url in
+                self?.saveData(with: url)
+            }).disposed(by: disposeBag)
         } else {
             showAlert(message: "카테고리를 선택해 주세요")
         }
     }
     
-    private func saveData(){
-        var url = "https://youtube.com"
+    private func getULR() {
         guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return }
         
         guard let provider = contextItem.attachments?.first as? NSItemProvider else { return }
         
-        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { result, error in
+        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { [weak self] result, error in
             if let shareULR = result as? URL {
-                url = shareULR.absoluteString
+                
+                DispatchQueue.main.async {
+                    self?.urlSubject.onNext(shareULR.absoluteString)
+                }
             }
         }
-        
+    }
+    
+    private func saveData(with url: String) {
         YoutubeService.shared.getVideoInfo(for: url)
             .subscribe(onNext: { [weak self] result in
                 guard let id = self?.categoryId else { return }
@@ -156,14 +165,19 @@ extension ShareViewController {
                 exercise.title = result["title"] ?? ""
                 ExerciseManager.shared.addExercise(exercise)
                 
-                self?.showAlert(message: "저장했습니다")
-                self?.didTappedCancelButton()
+                self?.showAlert(message: "저장했습니다") {
+                    self?.didTappedCancelButton()
+                }
             })
             .disposed(by: disposeBag)
     }
     
-    private func showAlert(message: String) {
-        let action = UIAlertAction(title: "확인", style: .default)
+    
+    private func showAlert(message: String, completion: (()->Void)? = nil) {
+       
+        let action = UIAlertAction(title: "확인", style: .default) {_ in
+            completion?()
+        }
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(action)

@@ -34,10 +34,10 @@
 		0A020B202BE887FD00D3850A /* LINESeedKR-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */; };
 		0A020B212BE8880500D3850A /* LINESeedKR-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */; };
 		0A020B222BE8888300D3850A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
-		0A020B232BE8889400D3850A /* SearchSegmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */; };
 		0A020B242BE888AC00D3850A /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
 		0A020B262BE8D93600D3850A /* SelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020B252BE8D93600D3850A /* SelectCategoryTableViewCell.swift */; };
 		0A020B282BE8F03B00D3850A /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020B272BE8F03B00D3850A /* BackgroundViewController.swift */; };
+		0A020B2A2BE9076500D3850A /* SearchSegmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
@@ -769,8 +769,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A020B2A2BE9076500D3850A /* SearchSegmentOption.swift in Sources */,
 				0A020B242BE888AC00D3850A /* YoutubeService.swift in Sources */,
-				0A020B232BE8889400D3850A /* SearchSegmentOption.swift in Sources */,
 				0A020B222BE8888300D3850A /* RealmManager.swift in Sources */,
 				0A020B262BE8D93600D3850A /* SelectCategoryTableViewCell.swift in Sources */,
 				0A020B152BE8866000D3850A /* SelectCategoryViewModel.swift in Sources */,

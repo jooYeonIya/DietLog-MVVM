@@ -9,6 +9,8 @@ import UIKit
 import Social
 import SnapKit
 import RxSwift
+import RxCocoa
+import RealmSwift
 
 class ShareViewController: UIViewController {
     // MARK: - Component
@@ -20,6 +22,9 @@ class ShareViewController: UIViewController {
     // MARK: - 변수
     let viewModel = SelectCategoryViewModel()
     let disposeBag = DisposeBag()
+    
+    var cellIsSelected = false
+    var categoryId: ObjectId?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +47,7 @@ class ShareViewController: UIViewController {
 
         let attributies = [NSAttributedString.Key.font: UIFont(name: "LINESeedSansKR-Regular", size: 16)]
         
-        let doneButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: nil)
+        let doneButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(didTappedDoneButton))
         doneButton.tintColor = UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0)
         doneButton.setTitleTextAttributes(attributies as [NSAttributedString.Key : Any], for: .normal)
         navigationItem.rightBarButtonItem = doneButton
@@ -78,6 +83,13 @@ class ShareViewController: UIViewController {
                 cell.configure(with: item.title)
             }
             .disposed(by: disposeBag)
+        
+        selectCategoryTableView.rx.modelSelected(Category.self)
+            .subscribe(onNext: { [weak self] result in
+                self?.cellIsSelected = true
+                self?.categoryId = result.id
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
@@ -110,5 +122,52 @@ extension ShareViewController {
     
     @objc func didTappedCancelButton() {
         extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+    }
+    
+    @objc func didTappedDoneButton() {
+        if cellIsSelected {
+            saveData()
+        } else {
+            showAlert(message: "카테고리를 선택해 주세요")
+        }
+    }
+    
+    private func saveData(){
+        var url = "https://youtube.com"
+        guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return }
+        
+        guard let provider = contextItem.attachments?.first as? NSItemProvider else { return }
+        
+        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { result, error in
+            if let shareULR = result as? URL {
+                url = shareULR.absoluteString
+            }
+        }
+        
+        YoutubeService.shared.getVideoInfo(for: url)
+            .subscribe(onNext: { [weak self] result in
+                guard let id = self?.categoryId else { return }
+                
+                let exercise = Exercise()
+                exercise.URL = url
+                exercise.categoryID = id
+                exercise.memo = self?.memoTextView.text
+                exercise.thumbnailURL = result["thumbnailURL"] ?? ""
+                exercise.title = result["title"] ?? ""
+                ExerciseManager.shared.addExercise(exercise)
+                
+                self?.showAlert(message: "저장했습니다")
+                self?.didTappedCancelButton()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showAlert(message: String) {
+        let action = UIAlertAction(title: "확인", style: .default)
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        
+        present(alert, animated: true)
     }
 }

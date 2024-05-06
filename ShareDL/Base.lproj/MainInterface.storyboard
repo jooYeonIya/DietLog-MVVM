@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Background View Controller-->
         <scene sceneID="ceB-am-kn3">
             <objects>
-                <viewController id="j1y-V4-xli" sceneMemberID="viewController">
+                <viewController id="j1y-V4-xli" customClass="BackgroundViewController" customModule="ShareDL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,6 +39,7 @@
                     <view key="view" contentMode="scaleToFill" id="Y1u-C0-ugz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cRn-MT-0fD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="CRO-cw-vhX"/>
@@ -50,6 +51,7 @@
         <!--Navigation Controller-->
         <scene sceneID="XEd-Qh-4P5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9i-Bn-sx1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mbA-TJ-qER" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iSe-09-jYp">
@@ -61,7 +63,6 @@
                         <segue destination="qtP-m8-fs0" kind="relationship" relationship="rootViewController" id="oXx-9x-1Ji"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C9i-Bn-sx1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="156" y="-177"/>
         </scene>

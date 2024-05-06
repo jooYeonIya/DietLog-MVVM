@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dite Log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCF-vN-fa0">
-                                <rect key="frame" x="89.333333333333329" y="404" width="214.33333333333337" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diet Log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCF-vN-fa0">
+                                <rect key="frame" x="89" y="404" width="215" height="69"/>
                                 <fontDescription key="fontDescription" name="LINESeedSansKR-Bold" family="LINE Seed Sans KR" pointSize="52"/>
                                 <color key="textColor" name="customGreen"/>
                                 <nil key="highlightedColor"/>

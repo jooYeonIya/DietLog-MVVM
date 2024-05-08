@@ -326,6 +326,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0A71686D2BEB33440049A58C /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
+				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
+			);
+			path = Meal;
+			sourceTree = "<group>";
+		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -403,11 +412,10 @@
 		0AEAC2982BD7E6F60071FCBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A71686D2BEB33440049A58C /* Meal */,
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
 				0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */,
 				0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */,
-				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
-				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
 				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,

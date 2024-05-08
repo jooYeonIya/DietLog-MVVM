@@ -46,6 +46,7 @@
 		0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
+		0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7168702BEB5ECB0049A58C /* LocalizedText.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -158,6 +159,7 @@
 		0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
+		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -335,6 +337,14 @@
 			path = Meal;
 			sourceTree = "<group>";
 		};
+		0A71686E2BEB5E460049A58C /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				0A7168702BEB5ECB0049A58C /* LocalizedText.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +461,7 @@
 		0AEAC29B2BD7E7100071FCBC /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				0A71686E2BEB5E460049A58C /* Text */,
 				0AEAC29C2BD7E7220071FCBC /* Resource */,
 				0AEAC29F2BD7E73B0071FCBC /* Extension */,
 				0AEAC2A02BD7E7410071FCBC /* Enum */,
@@ -863,6 +874,7 @@
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 				0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */,
+				0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

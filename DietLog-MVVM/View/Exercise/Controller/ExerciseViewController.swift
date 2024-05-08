@@ -63,7 +63,7 @@ class ExerciseViewController: BaseViewController {
         exerciseDataTableView.register(ExerciseTableViewCell.self,
                                        forCellReuseIdentifier: ExerciseTableViewCell.identifier)
         
-        noDataLabel.configure(text: "데이터를 추가해 주세요", font: .body)
+        noDataLabel.configure(text: LocalizedText.plusData, font: .body)
     }
     
     // MARK: - Setup Layout

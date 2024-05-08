@@ -122,7 +122,6 @@ class MealViewController: BaseViewController {
     override func setupBinding() {
         viewModel.mealsData
             .subscribe { [weak self] result in
-                guard let result = result else { return }
                 self?.mealsData = result
             }
             .disposed(by: disposeBag)
@@ -137,7 +136,7 @@ extension MealViewController {
     }
     
     private func reloadData() {
-        viewModel.getMealsData(for: selectedDate)
+        viewModel.findMealsData(byDate: selectedDate)
         mealsDataTableView.reloadData()
         let hasData = !mealsData.isEmpty
         mealsDataTableView.isHidden = !hasData
@@ -156,7 +155,7 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
         
         
         if let imageName = mealsData[indexPath.row].imageName {
-            cell.configure(with: viewModel.getImgae(with: imageName))
+            cell.configure(with: viewModel.findImage(byName: imageName))
         } else {
             cell.configure(with: UIImage(named: "MealBasicImage"))
         }

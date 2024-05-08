@@ -9,4 +9,5 @@ import Foundation
 
 enum LocalizedText {
     static let plusData = "데이터를 기록해 주세요"
+    static let savedData = "저장했습니다"
 }

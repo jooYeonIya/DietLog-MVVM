@@ -98,7 +98,7 @@ extension CategoryEditViewController {
             result = viewModel.saveCategory()
         }
         
-        let message = result ? "저장했습니다" : CategoryEditViewText.emptyCategoryName.rawValue
+        let message = result ? LocalizedText.savedData : CategoryEditViewText.emptyCategoryName.rawValue
         
         showAlertWithOKButton(title: "", message: message) {
             if result {

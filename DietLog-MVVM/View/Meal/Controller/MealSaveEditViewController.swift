@@ -45,7 +45,7 @@ class MealSaveEditViewController: MealEditViewController {
         if !result {
             showAlertWithOKButton(title: "", message: "글 입력 혹은 이미지 추가를 해주세요")
         } else {
-            showAlertWithOKButton(title: "", message: "저장했습니다") {
+            showAlertWithOKButton(title: "", message: LocalizedText.savedData) {
                 self.navigationController?.popViewController(animated: true)
             }
         }

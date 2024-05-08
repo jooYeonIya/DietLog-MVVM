@@ -178,7 +178,7 @@ class SaveMyInfoViewController: BaseViewController {
 // MARK: - 메서드
 extension SaveMyInfoViewController {
     private func isChcekTextFiedlEmpty(_ result: Bool) {
-        let message = result ? "저장했습니다" : "최소 한 영역은 입력해 주세요"
+        let message = result ? LocalizedText.savedData : "최소 한 영역은 입력해 주세요"
         showAlertWithOKButton(title: "", message: message) {
             if result {
                 self.onUpdate?()

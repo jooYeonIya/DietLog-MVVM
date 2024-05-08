@@ -44,8 +44,10 @@
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
 		0A16C5A22BE4FC66006E5308 /* YoutubeAPIKey.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */; };
 		0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */; };
+		0A2B9F832BEBAAE400F3A079 /* UIimage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
+		0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7168702BEB5ECB0049A58C /* LocalizedText.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -103,8 +105,8 @@
 		0AEAC31E2BE0AD4D0071FCBC /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */; };
 		0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */; };
 		0AEAC3242BE1CD8C0071FCBC /* MealEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */; };
-		0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */; };
-		0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */; };
+		0AEAC3262BE1D96A0071FCBC /* MealSaveEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */; };
+		0AEAC3282BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */; };
 		0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */; };
 		0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -156,8 +158,10 @@
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
 		0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extension.swift"; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
+		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,8 +215,8 @@
 		0AEAC31D2BE0AD4D0071FCBC /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditView.swift; sourceTree = "<group>"; };
-		0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateEditViewController.swift; sourceTree = "<group>"; };
-		0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReadAndModifyEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSaveEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFindAndModifyEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,6 +330,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0A71686D2BEB33440049A58C /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
+				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
+			);
+			path = Meal;
+			sourceTree = "<group>";
+		};
+		0A71686E2BEB5E460049A58C /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				0A7168702BEB5ECB0049A58C /* LocalizedText.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -403,11 +424,10 @@
 		0AEAC2982BD7E6F60071FCBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A71686D2BEB33440049A58C /* Meal */,
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
 				0AEAC3132BDE96F60071FCBC /* MyInfoViewModel.swift */,
 				0AEAC3192BDFA7E00071FCBC /* SaveMyInfoViewModel.swift */,
-				0AEAC31B2BE09FA30071FCBC /* MealEditViewModel.swift */,
-				0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */,
 				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
 				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
@@ -443,6 +463,7 @@
 		0AEAC29B2BD7E7100071FCBC /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				0A71686E2BEB5E460049A58C /* Text */,
 				0AEAC29C2BD7E7220071FCBC /* Resource */,
 				0AEAC29F2BD7E73B0071FCBC /* Extension */,
 				0AEAC2A02BD7E7410071FCBC /* Enum */,
@@ -489,6 +510,7 @@
 				0AEAC2D82BD902790071FCBC /* FSCalendarView+Extension.swift */,
 				0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */,
 				0AEAC3172BDF95780071FCBC /* DateFormmater+Extension.swift */,
+				0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -626,8 +648,8 @@
 			children = (
 				0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */,
 				0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */,
-				0AEAC3252BE1D96A0071FCBC /* MealCreateEditViewController.swift */,
-				0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */,
+				0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */,
+				0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -822,13 +844,13 @@
 				0AEAC3062BDE303C0071FCBC /* ExerciseManager.swift in Sources */,
 				0AEAC31A2BDFA7E00071FCBC /* SaveMyInfoViewModel.swift in Sources */,
 				0AEAC2CC2BD8E2C60071FCBC /* UILable+Extension.swift in Sources */,
-				0AEAC3262BE1D96A0071FCBC /* MealCreateEditViewController.swift in Sources */,
+				0AEAC3262BE1D96A0071FCBC /* MealSaveEditViewController.swift in Sources */,
 				0AEAC2AD2BD8CA120071FCBC /* MyInfoViewController.swift in Sources */,
 				0AEAC2FE2BDE24300071FCBC /* RealmManager.swift in Sources */,
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
-				0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */,
+				0AEAC3282BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */,
 				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,
@@ -854,7 +876,9 @@
 				0AEAC3042BDE2CFA0071FCBC /* CategoryManager.swift in Sources */,
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
+				0A2B9F832BEBAAE400F3A079 /* UIimage+Extension.swift in Sources */,
 				0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */,
+				0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -895,7 +919,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -906,7 +930,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM.ShareDL";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog.ShareDL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -921,7 +945,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -932,7 +956,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM.ShareDL";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog.ShareDL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1065,9 +1089,10 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1077,7 +1102,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1095,9 +1120,10 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1107,7 +1133,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -1,5 +1,5 @@
 //
-//  MealReadAndModifyEditViewController.swift
+//  MealFindAndModifyEditViewController.swift
 //  DietLog-MVVM
 //
 //  Created by Jooyeon Kang on 2024/05/01.
@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 
-class MealReadAndModifyEditViewController: MealEditViewController {
+class MealFindAndModifyEditViewController: MealEditViewController {
 
     // MARK: - 변수
     private var selectedDate: Date?
@@ -37,14 +37,14 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         self.mealId = mealId
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cylce
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadMealData()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup NavigationBar
@@ -54,7 +54,6 @@ class MealReadAndModifyEditViewController: MealEditViewController {
                                      target: self,
                                      action: #selector(openOptionMenu))
         navigationItem.rightBarButtonItem = button
-        
         navigationItem.title = "내 식단"
     }
     
@@ -73,7 +72,7 @@ class MealReadAndModifyEditViewController: MealEditViewController {
     
     private func reloadMealData() {
         if let mealId = mealId {
-            viewModel.getMealData(with: mealId)
+            viewModel.findMealData(by: mealId)
         }
         
         updateUI()
@@ -86,19 +85,19 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         
         DispatchQueue.main.async {
             self.mealEditView.memoTextView.text = mealData.memo
-            let image = self.viewModel.loadImage(with: mealData.imageName)
+            let image = self.viewModel.findImage(byName: mealData.imageName)
             self.insertImageIntoTextView(image ?? UIImage())
         }
     }
 }
 
 // Modify, Delete
-extension MealReadAndModifyEditViewController {
+extension MealFindAndModifyEditViewController {
     @objc func openOptionMenu() {
         showOptionMenuSheet(modifyCompletion: {
             self.changeMemoViewEditable()
         }, deleteCompletion: {
-            self.deleteMealData()
+            self.removeMealData()
         })
     }
     
@@ -113,31 +112,31 @@ extension MealReadAndModifyEditViewController {
     }
     
     @objc func modifyMealData() {
-        let image: UIImage? = retrunImage()
+        let image: UIImage? = extractImageFromMemoView()
         
         guard let mealData = mealData else { return }
-        viewModel.modifyMealData(mealData,
-                                 selectedDate: selectedDate ?? Date.now,
-                                 memo: mealEditView.memoTextView.text,
-                                 selectedImage: image)
+        viewModel.modify(mealData,
+                         withDate: selectedDate ?? Date.now,
+                         memo: mealEditView.memoTextView.text,
+                         image: image)
 
         showAlertWithOKButton(title: "", message: "수정했습니다") {
             guard let mealId = self.mealId else { return }
-            self.viewModel.getMealData(with: mealId)
+            self.viewModel.findMealData(by: mealId)
             self.isEditable = false
         }
     }
     
-    private func deleteMealData() {
+    private func removeMealData() {
         guard let mealData = mealData else { return }
-        viewModel.deleteMealData(mealData)
+        viewModel.remove(mealData)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.navigationController?.popViewController(animated: true)
         }
     }
     
-    private func retrunImage() -> UIImage? {
+    private func extractImageFromMemoView() -> UIImage? {
         guard let attributedText = mealEditView.memoTextView.attributedText else { return nil }
         
         let range = NSRange(location: 0, length: attributedText.length)
@@ -147,6 +146,7 @@ extension MealReadAndModifyEditViewController {
         attributedText.enumerateAttribute(.attachment, in: range) { value, range, pointer in
             if let attachment = value as? NSTextAttachment,
                let selectedImage = attachment.image {
+                // enumerateAttribute의 반복을 중단하기 위해 pointer의 값을 true로 설정
                 pointer.pointee = true
                 image = selectedImage
             }

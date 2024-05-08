@@ -65,7 +65,7 @@ class CategoryViewController: BaseViewController {
     }
     
     private func setupNoDataLabelUI() {
-        noDataLabel.configure(text: "데이터를 기록해 주세요", font: .body)
+        noDataLabel.configure(text: LocalizedText.plusData, font: .body)
     }
     
     private func setupSearchBarUI() {

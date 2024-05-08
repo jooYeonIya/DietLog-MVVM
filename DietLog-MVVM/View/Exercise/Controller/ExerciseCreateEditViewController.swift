@@ -23,7 +23,7 @@ class ExerciseCreateEditViewController: ExerciseBaseEditViewController {
     
     @objc func saveData() {
         let result = viewModel.saveData()
-        let message = result ? "저장했습니다" : "URL 입력 및 카테고리를 선택해 주세요"
+        let message = result ? LocalizedText.savedData : "URL 입력 및 카테고리를 선택해 주세요"
         self.showAlertWithOKButton(title: "", message: message) {
             if result {
                 self.navigationController?.popViewController(animated: true)

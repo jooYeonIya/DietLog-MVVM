@@ -41,7 +41,7 @@ class MealCreateEditViewController: MealEditViewController {
     }
     
     @objc func saveMeal() {
-        let result = viewModel.saveMeal(for: selectedDate, and: mealEditView.selectedImage)
+        let result = viewModel.saveMealData(by: selectedDate, withImage: mealEditView.selectedImage)
         
         if !result {
             showAlertWithOKButton(title: "", message: "글 입력 혹은 이미지 추가를 해주세요")

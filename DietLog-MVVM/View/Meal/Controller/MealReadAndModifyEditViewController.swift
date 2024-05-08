@@ -73,7 +73,7 @@ class MealReadAndModifyEditViewController: MealEditViewController {
     
     private func reloadMealData() {
         if let mealId = mealId {
-            viewModel.getMealData(with: mealId)
+            viewModel.findMealData(by: mealId)
         }
         
         updateUI()
@@ -86,7 +86,7 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         
         DispatchQueue.main.async {
             self.mealEditView.memoTextView.text = mealData.memo
-            let image = self.viewModel.loadImage(with: mealData.imageName)
+            let image = self.viewModel.findImage(byName: mealData.imageName)
             self.insertImageIntoTextView(image ?? UIImage())
         }
     }
@@ -116,21 +116,21 @@ extension MealReadAndModifyEditViewController {
         let image: UIImage? = retrunImage()
         
         guard let mealData = mealData else { return }
-        viewModel.modifyMealData(mealData,
-                                 selectedDate: selectedDate ?? Date.now,
-                                 memo: mealEditView.memoTextView.text,
-                                 selectedImage: image)
+        viewModel.modify(mealData,
+                         withDate: selectedDate ?? Date.now,
+                         memo: mealEditView.memoTextView.text,
+                         image: image)
 
         showAlertWithOKButton(title: "", message: "수정했습니다") {
             guard let mealId = self.mealId else { return }
-            self.viewModel.getMealData(with: mealId)
+            self.viewModel.findMealData(by: mealId)
             self.isEditable = false
         }
     }
     
     private func deleteMealData() {
         guard let mealData = mealData else { return }
-        viewModel.deleteMealData(mealData)
+        viewModel.remove(mealData)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.navigationController?.popViewController(animated: true)

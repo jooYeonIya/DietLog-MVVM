@@ -39,10 +39,10 @@ class MealEditView: UIView {
         memoTextView.font = .body
         memoTextView.backgroundColor = .customGray
         
-        inputAccessoryView()
+        insertButtonsIntoAccessoryView()
     }
     
-    private func inputAccessoryView() {
+    private func insertButtonsIntoAccessoryView() {
         let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo"),
                                           style: .plain,
                                           target: self,

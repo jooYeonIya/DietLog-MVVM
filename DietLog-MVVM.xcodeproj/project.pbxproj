@@ -105,7 +105,7 @@
 		0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */; };
 		0AEAC3242BE1CD8C0071FCBC /* MealEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */; };
 		0AEAC3262BE1D96A0071FCBC /* MealSaveEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */; };
-		0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */; };
+		0AEAC3282BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */; };
 		0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */; };
 		0AEAC32C2BE35E7B0071FCBC /* ExerciseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -214,7 +214,7 @@
 		0AEAC31F2BE0D9D90071FCBC /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		0AEAC3232BE1CD8C0071FCBC /* MealEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealEditView.swift; sourceTree = "<group>"; };
 		0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSaveEditViewController.swift; sourceTree = "<group>"; };
-		0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealReadAndModifyEditViewController.swift; sourceTree = "<group>"; };
+		0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFindAndModifyEditViewController.swift; sourceTree = "<group>"; };
 		0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -646,7 +646,7 @@
 				0AEAC2AE2BD8CA2F0071FCBC /* MealViewController.swift */,
 				0AEAC2B02BD8CA3E0071FCBC /* MealEditViewController.swift */,
 				0AEAC3252BE1D96A0071FCBC /* MealSaveEditViewController.swift */,
-				0AEAC3272BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift */,
+				0AEAC3272BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -847,7 +847,7 @@
 				0AEAC2E02BDA0ED40071FCBC /* TabBarOption.swift in Sources */,
 				0AEAC3122BDE6EC10071FCBC /* UserInfoManager.swift in Sources */,
 				0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */,
-				0AEAC3282BE1E0240071FCBC /* MealReadAndModifyEditViewController.swift in Sources */,
+				0AEAC3282BE1E0240071FCBC /* MealFindAndModifyEditViewController.swift in Sources */,
 				0AEAC2B32BD8CA4B0071FCBC /* CategoryViewController.swift in Sources */,
 				0AEAC3142BDE96F60071FCBC /* MyInfoViewModel.swift in Sources */,
 				0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */,

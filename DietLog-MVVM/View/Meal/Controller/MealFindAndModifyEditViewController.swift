@@ -1,5 +1,5 @@
 //
-//  MealReadAndModifyEditViewController.swift
+//  MealFindAndModifyEditViewController.swift
 //  DietLog-MVVM
 //
 //  Created by Jooyeon Kang on 2024/05/01.
@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 
-class MealReadAndModifyEditViewController: MealEditViewController {
+class MealFindAndModifyEditViewController: MealEditViewController {
 
     // MARK: - 변수
     private var selectedDate: Date?
@@ -37,14 +37,14 @@ class MealReadAndModifyEditViewController: MealEditViewController {
         self.mealId = mealId
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cylce
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadMealData()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup NavigationBar
@@ -54,7 +54,6 @@ class MealReadAndModifyEditViewController: MealEditViewController {
                                      target: self,
                                      action: #selector(openOptionMenu))
         navigationItem.rightBarButtonItem = button
-        
         navigationItem.title = "내 식단"
     }
     
@@ -93,12 +92,12 @@ class MealReadAndModifyEditViewController: MealEditViewController {
 }
 
 // Modify, Delete
-extension MealReadAndModifyEditViewController {
+extension MealFindAndModifyEditViewController {
     @objc func openOptionMenu() {
         showOptionMenuSheet(modifyCompletion: {
             self.changeMemoViewEditable()
         }, deleteCompletion: {
-            self.deleteMealData()
+            self.removeMealData()
         })
     }
     
@@ -128,7 +127,7 @@ extension MealReadAndModifyEditViewController {
         }
     }
     
-    private func deleteMealData() {
+    private func removeMealData() {
         guard let mealData = mealData else { return }
         viewModel.remove(mealData)
         

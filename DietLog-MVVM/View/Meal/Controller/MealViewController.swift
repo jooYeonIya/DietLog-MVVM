@@ -143,7 +143,7 @@ class MealViewController: BaseViewController {
         mealsDataTableView.rx.modelSelected(Meal.self)
             .subscribe(onNext: { [weak self] item in
                 guard let self = self else { return }
-                let viewController = MealReadAndModifyEditViewController(selectedDate: self.selectedDate, mealId: item.id)
+                let viewController = MealFindAndModifyEditViewController(selectedDate: self.selectedDate, mealId: item.id)
                 self.navigationController?.pushViewController(viewController, animated: true)
             })
             .disposed(by: disposeBag)

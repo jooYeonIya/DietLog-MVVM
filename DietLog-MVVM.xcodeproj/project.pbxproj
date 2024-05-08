@@ -915,7 +915,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -926,7 +926,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM.ShareDL";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog.ShareDL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -941,7 +941,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -952,7 +952,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM.ShareDL";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog.ShareDL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1085,9 +1085,10 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1097,7 +1098,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1115,9 +1116,10 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TA3LDAD85;
+				DEVELOPMENT_TEAM = 87GJA6959V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1127,7 +1129,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.studyiOS.DietLog-MVVM";
+				PRODUCT_BUNDLE_IDENTIFIER = com.studyiOS.DietLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

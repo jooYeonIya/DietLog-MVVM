@@ -17,7 +17,8 @@ class MealEditViewModel {
     
     private let disposeBag = DisposeBag()
     private let manager = MealManager.shared
-    
+    private let imageManager = ImageFileManager.shared
+
     init() {
         memoTextView
             .subscribe { [weak self] memoText in
@@ -38,7 +39,7 @@ class MealEditViewModel {
         
         if let image = image {
             let imageName = UUID().uuidString
-            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: image)
+            imageManager.saveImage(imageName: "\(imageName).png", image: image)
             mealData.imageName = imageName
         } else {
             mealData.imageName = nil
@@ -57,7 +58,7 @@ class MealEditViewModel {
     
     func remove(_ mealData: Meal) {
         if let imageName = mealData.imageName {
-            ImageFileManager.shared.removeImage(with: imageName)
+            imageManager.removeImage(with: imageName)
         }
         
         manager.deleteMeal(mealData)
@@ -71,11 +72,11 @@ class MealEditViewModel {
         
         if let selectedImage = image {
             if let imageName = oldMealData.imageName {
-                ImageFileManager.shared.removeImage(with: imageName)
+                imageManager.removeImage(with: imageName)
             }
             
             let imageName = UUID().uuidString
-            ImageFileManager.shared.saveImage(imageName: "\(imageName).png", image: selectedImage)
+            imageManager.saveImage(imageName: "\(imageName).png", image: selectedImage)
             
             newMealData.imageName = imageName
         } else {
@@ -87,7 +88,7 @@ class MealEditViewModel {
     
     func findImage(byName imageName: String?) -> UIImage? {
         if let imageName = imageName {
-            let image = ImageFileManager.shared.loadImage(with: imageName)
+            let image = imageManager.loadImage(with: imageName)
             return image
         } else {
             return UIImage(named: "MealBasicImage")

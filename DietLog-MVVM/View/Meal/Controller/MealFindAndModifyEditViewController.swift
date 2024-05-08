@@ -112,7 +112,7 @@ extension MealFindAndModifyEditViewController {
     }
     
     @objc func modifyMealData() {
-        let image: UIImage? = retrunImage()
+        let image: UIImage? = extractImageFromMemoView()
         
         guard let mealData = mealData else { return }
         viewModel.modify(mealData,
@@ -136,7 +136,7 @@ extension MealFindAndModifyEditViewController {
         }
     }
     
-    private func retrunImage() -> UIImage? {
+    private func extractImageFromMemoView() -> UIImage? {
         guard let attributedText = mealEditView.memoTextView.attributedText else { return nil }
         
         let range = NSRange(location: 0, length: attributedText.length)
@@ -146,6 +146,7 @@ extension MealFindAndModifyEditViewController {
         attributedText.enumerateAttribute(.attachment, in: range) { value, range, pointer in
             if let attachment = value as? NSTextAttachment,
                let selectedImage = attachment.image {
+                // enumerateAttribute의 반복을 중단하기 위해 pointer의 값을 true로 설정
                 pointer.pointee = true
                 image = selectedImage
             }

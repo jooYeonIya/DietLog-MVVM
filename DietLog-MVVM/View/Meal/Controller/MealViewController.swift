@@ -19,7 +19,6 @@ class MealViewController: BaseViewController {
     private lazy var noDataLabel = UILabel()
     
     // MARK: - 변수
-    private var mealsData: [Meal] = []
     private var selectedDate = Date.now
     private var viewModel = MealViewModel()
     private var disposeBag = DisposeBag()
@@ -37,10 +36,10 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([calendarBackgroundView,
+        view.addSubviews([noDataLabel,
+                          calendarBackgroundView,
                           mealsDataTableView,
-                          floatingButton,
-                          noDataLabel])
+                          floatingButton])
         
         setupCalendarViewUI()
         setupTableViewUI()
@@ -64,6 +63,7 @@ class MealViewController: BaseViewController {
         mealsDataTableView.separatorStyle = .none
         mealsDataTableView.backgroundColor = .clear
         mealsDataTableView.showsVerticalScrollIndicator = false
+        mealsDataTableView.rowHeight = 100
     }
     
     private func setupFloatingButtoUI() {
@@ -107,9 +107,6 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup Delegate
     override func setupDelegate() {
-        mealsDataTableView.dataSource = self
-        mealsDataTableView.delegate = self
-        
         calendarView.dataSource = self
         calendarView.delegate = self
     }
@@ -121,9 +118,25 @@ class MealViewController: BaseViewController {
     
     override func setupBinding() {
         viewModel.mealsData
-            .subscribe { [weak self] result in
-                self?.mealsData = result
+            .observe(on: MainScheduler.instance)
+            .bind(to: mealsDataTableView.rx.items(cellIdentifier: MealsDataTableViewCell.identifier,
+                                                  cellType: MealsDataTableViewCell.self)) { [weak self] index, item, cell in
+                if let imageName = item.imageName {
+                    cell.configure(with: self?.viewModel.findImage(byName: imageName))
+                } else {
+                    cell.configure(with: UIImage(named: "MealBasicImage"))
+                }
+
+                cell.selectionStyle = .none
             }
+            .disposed(by: disposeBag)
+        
+        mealsDataTableView.rx.modelSelected(Meal.self)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                let viewController = MealReadAndModifyEditViewController(selectedDate: self.selectedDate, mealId: item.id)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -138,39 +151,6 @@ extension MealViewController {
     private func reloadData() {
         viewModel.findMealsData(byDate: selectedDate)
         mealsDataTableView.reloadData()
-        let hasData = !mealsData.isEmpty
-        mealsDataTableView.isHidden = !hasData
-        noDataLabel.isHidden = hasData
-    }
-}
-
-// MARK: - TableView DataSource
-extension MealViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mealsData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MealsDataTableViewCell.identifier, for: indexPath) as? MealsDataTableViewCell else { return UITableViewCell() }
-        
-        
-        if let imageName = mealsData[indexPath.row].imageName {
-            cell.configure(with: viewModel.findImage(byName: imageName))
-        } else {
-            cell.configure(with: UIImage(named: "MealBasicImage"))
-        }
-        
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = MealReadAndModifyEditViewController(selectedDate: selectedDate, mealId: mealsData[indexPath.row].id)
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

@@ -45,13 +45,13 @@ class MealEditViewModel {
             mealData.imageName = nil
         }
         
-        manager.addMeal(mealData)
+        manager.create(mealData)
         
         return true
     }
     
     func findMealData(by id: ObjectId) {
-        if let result = manager.getMeal(for: id) {
+        if let result = manager.loadMealData(for: id) {
             mealData.onNext(result)
         }
     }
@@ -61,7 +61,7 @@ class MealEditViewModel {
             imageManager.removeImage(with: imageName)
         }
         
-        manager.deleteMeal(mealData)
+        manager.delete(mealData)
     }
     
     func modify(_ oldMealData: Meal, withDate date: Date, memo: String?, image: UIImage?) {
@@ -83,7 +83,7 @@ class MealEditViewModel {
             newMealData.imageName = nil
         }
     
-        manager.updateMeal(oldMealData, newMeal: newMealData)
+        manager.update(oldMealData, newMealData: newMealData)
     }
     
     func findImage(byName imageName: String?) -> UIImage? {

@@ -12,7 +12,7 @@ class MealManager: RealmManager {
     
     static let shared = MealManager()
     
-    func addMeal(_ meal: Meal) {
+    func create(_ meal: Meal) {
         do {
             try realm.write {
                 realm.add(meal)
@@ -22,16 +22,11 @@ class MealManager: RealmManager {
         }
     }
 
-    func getAllMeals() -> Results<Meal>? {
+    func loadAllMealsData() -> Results<Meal>? {
         return realm.objects(Meal.self)
     }
     
-    func getMeal(for id: ObjectId) -> Meal? {
-        let query = NSPredicate(format: "id == %@", id)
-        return realm.objects(Meal.self).filter(query).first
-    }
-    
-    func getMeals(for date: Date) -> Results<Meal>? {
+    func loadMealsData(for date: Date) -> Results<Meal>? {
         let calendar = Calendar.current
         let startDate = calendar.startOfDay(for: date)
         let endDate = calendar.date(byAdding: .day, value: 1, to: startDate) ?? startDate
@@ -39,23 +34,28 @@ class MealManager: RealmManager {
         let meals = realm.objects(Meal.self).filter("postedDate >= %@ AND postedDate < %@", startDate, endDate)
         return meals
     }
+    
+    func loadMealData(for id: ObjectId) -> Meal? {
+        let query = NSPredicate(format: "id == %@", id)
+        return realm.objects(Meal.self).filter(query).first
+    }
 
-    func updateMeal(_ meal: Meal, newMeal: Meal){
+    func update(_ oldMealData: Meal, newMealData: Meal){
         do {
             try realm.write {
-                meal.postedDate = newMeal.postedDate
-                meal.imageName = newMeal.imageName
-                meal.memo = newMeal.memo
+                oldMealData.postedDate = newMealData.postedDate
+                oldMealData.imageName = newMealData.imageName
+                oldMealData.memo = newMealData.memo
             }
         } catch {
             print("Error func updateMeal \(error)")
         }
     }
 
-    func deleteMeal(_ meal: Meal) {
+    func delete(_ mealData: Meal) {
         do {
             try realm.write {
-                realm.delete(meal)
+                realm.delete(mealData)
             }
         } catch {
             print("Error func deleteMeal \(error)")

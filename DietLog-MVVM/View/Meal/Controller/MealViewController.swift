@@ -113,7 +113,7 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup Event
     override func setupEvent() {
-        floatingButton.addTarget(self, action: #selector(moveToMealEditView), for: .touchUpInside)
+        floatingButton.addTarget(self, action: #selector(moveToSaveMealDataView), for: .touchUpInside)
     }
     
     override func setupBinding() {
@@ -152,8 +152,8 @@ class MealViewController: BaseViewController {
 
 // MARK: - 메서드
 extension MealViewController {
-    @objc func moveToMealEditView() {
-        let viewController = MealCreateEditViewController(selectedDate: selectedDate)
+    @objc func moveToSaveMealDataView() {
+        let viewController = MealSaveEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

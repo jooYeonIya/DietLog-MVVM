@@ -146,7 +146,7 @@ class MyInfoViewController: BaseViewController {
         calendarBackgroundView.snp.makeConstraints { make in
             make.top.equalTo(welcomLabel.snp.bottom).offset(24)
             make.leading.trailing.equalTo(welcomLabel)
-            make.height.equalTo(360)
+            make.height.equalTo(ComponentSize.calendarHeight.rawValue)
         }
         
         calendarView.snp.makeConstraints { make in

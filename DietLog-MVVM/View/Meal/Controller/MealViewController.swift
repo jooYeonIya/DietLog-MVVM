@@ -79,7 +79,7 @@ class MealViewController: BaseViewController {
         calendarBackgroundView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.height.equalTo(360)
+            make.height.equalTo(ComponentSize.calendarHeight.rawValue)
         }
         
         calendarView.snp.makeConstraints { make in

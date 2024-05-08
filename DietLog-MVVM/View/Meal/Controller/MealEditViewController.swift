@@ -32,6 +32,8 @@ class MealEditViewController: BaseViewController {
 // MARK: - 메서드
 extension MealEditViewController {
     func insertImageIntoTextView(_ image: UIImage) {
+        let newImage = image.fixOrientation()!
+        
         let attributedString = NSMutableAttributedString()
 
         // 기존 텍스트가 있으면 추가
@@ -42,14 +44,14 @@ extension MealEditViewController {
 
         // 이미지 사이즈 조정
         let memoTextViewWidth = mealEditView.memoTextView.frame.size.width
-        let imageWidth = image.size.width
+        let imageWidth = newImage.size.width
         let textAttachment = NSTextAttachment()
         
         if imageWidth > memoTextViewWidth {
             let scale = imageWidth / (memoTextViewWidth - 12)
-            textAttachment.image = UIImage(cgImage: image.cgImage!, scale: scale, orientation: .up)
+            textAttachment.image = UIImage(cgImage: newImage.cgImage!, scale: scale, orientation: .up)
         } else {
-            textAttachment.image = image
+            textAttachment.image = newImage
         }
 
         // 이미지 중앙 정렬

@@ -100,7 +100,7 @@ class MealViewController: BaseViewController {
         }
         
         noDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
+            make.centerY.equalTo(mealsDataTableView)
             make.centerX.equalToSuperview()
         }
     }
@@ -129,6 +129,15 @@ class MealViewController: BaseViewController {
 
                 cell.selectionStyle = .none
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.mealsData
+            .subscribe(onNext: { [weak self] mealsData in
+                let hasData = mealsData.isEmpty
+                
+                self?.noDataLabel.isHidden = !hasData
+                self?.mealsDataTableView.isHidden = hasData
+            })
             .disposed(by: disposeBag)
         
         mealsDataTableView.rx.modelSelected(Meal.self)

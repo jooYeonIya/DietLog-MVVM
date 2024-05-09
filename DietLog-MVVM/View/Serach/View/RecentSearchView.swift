@@ -94,19 +94,18 @@ class RecentSearchView: UIView {
     }
     
     func reloadData() {
-        viewModel.getRecentSearchWords()
+        viewModel.findRecentSearchWords()
     }
     
     @objc func didTappedAllRecentSearchWordsButton() {
         viewModel.searchBar.onNext(true)
-        viewModel.deleteAllRecenteSearchWords()
+        viewModel.removeAllRecenteSearchWords()
         reloadData()
     }
 }
 
 // MARK: - CollectionView
 extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let text = recentSearchWords[indexPath.row]
@@ -125,7 +124,7 @@ extension RecentSearchView: UICollectionViewDelegate, UICollectionViewDelegateFl
 extension RecentSearchView: RecentWordCollectionViewCellDelegate {
     func didTappedDeleteButton(_ cell: RecentWordCollectionViewCell) {
         guard let indexPath = recentWordCollectionView.indexPath(for: cell) else { return }
-        viewModel.deleteRecenteSearchWord(at: indexPath.row)
+        viewModel.removeRecenteSearchWord(at: indexPath.row)
         viewModel.searchBar.onNext(true)
         reloadData()
     }

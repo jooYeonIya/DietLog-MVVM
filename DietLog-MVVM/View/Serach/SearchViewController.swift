@@ -149,7 +149,7 @@ class SearchViewController: BaseViewController {
             .subscribe { [weak self] _ in
                 if let searchText = self?.searchBar.text, !searchText.isEmpty {
                     self?.reloadData(with: searchText)
-                    self?.recentSearchView.viewModel.addRecentSearchWord(with: searchText)
+                    self?.recentSearchView.viewModel.saveRecentSearchWord(with: searchText)
                     self?.recentSearchView.reloadData()
                 }
                 self?.searchBar.resignFirstResponder()

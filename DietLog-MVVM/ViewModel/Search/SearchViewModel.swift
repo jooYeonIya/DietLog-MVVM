@@ -15,19 +15,19 @@ class SearchViewModel {
     
     private var manager = RecentSearchWordManager.shared
     
-    func addRecentSearchWord(with word: String) {
+    func saveRecentSearchWord(with word: String) {
         manager.add(to: word)
     }
     
-    func getRecentSearchWords() {
+    func findRecentSearchWords() {
         recentSearchWords.onNext(manager.getAllRecentSearchWord())
     }
     
-    func deleteAllRecenteSearchWords() {
+    func removeAllRecenteSearchWords() {
         manager.deleteAllRecentSearchWord()
     }
     
-    func deleteRecenteSearchWord(at index: Int) {
+    func removeRecenteSearchWord(at index: Int) {
         manager.deleteSearch(at: index)
     }
 }

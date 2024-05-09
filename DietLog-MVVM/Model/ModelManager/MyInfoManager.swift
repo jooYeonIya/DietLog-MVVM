@@ -12,21 +12,21 @@ class MyInfoManager: RealmManager {
     
     static let shared = MyInfoManager()
 
-    func addMyInfo(_ info: MyInfo) {
+    func create(_ myInfo: MyInfo) {
         do {
             try realm.write{
-                realm.add(info)
+                realm.add(myInfo)
             }
         } catch {
             print("Error func addMyInfo \(error)")
         }
     }
     
-    func getAllMyInfo() -> Results<MyInfo>? {
+    func loadAllMyInfo() -> Results<MyInfo>? {
         return realm.objects(MyInfo.self)
     }
     
-    func getMyInfo(for date: Date) -> MyInfo? {
+    func loadMyInfo(for date: Date) -> MyInfo? {
         let calendar = Calendar.current
         let startDate = calendar.startOfDay(for: date)
         let endDate = calendar.date(byAdding: .day, value: 1, to: startDate) ?? startDate
@@ -36,22 +36,22 @@ class MyInfoManager: RealmManager {
     }
 
 
-    func updateMyInfo(_ info: MyInfo, newInfo: MyInfo) {
+    func update(_ oldMyInfo: MyInfo, newInfo: MyInfo) {
         do {
             try realm.write {
-                info.weight = newInfo.weight
-                info.muscle = newInfo.muscle
-                info.fat = newInfo.fat
+                oldMyInfo.weight = newInfo.weight
+                oldMyInfo.muscle = newInfo.muscle
+                oldMyInfo.fat = newInfo.fat
             }
         } catch {
             print("Error func updateMyInfo \(error)")
         }
     }
 
-    func deleteMyInfo(_ info: MyInfo) {
+    func delete(_ myInfo: MyInfo) {
         do {
             try realm.write {
-                realm.delete(info)
+                realm.delete(myInfo)
             }
         } catch {
             print("Error func deleteMyInfo \(error)")

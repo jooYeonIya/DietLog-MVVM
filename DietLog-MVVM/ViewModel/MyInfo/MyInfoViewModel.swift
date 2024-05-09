@@ -18,10 +18,10 @@ class MyInfoViewModel {
     private let myInfoManager = MyInfoManager()
     
     init() {
-        nickname.onNext(manager.getNickname())
+        nickname.onNext(manager.loadNickname())
     }
     
-    func getMyInfo(for date: Date) {
-        myInfo.onNext(myInfoManager.getMyInfo(for: date))
+    func findMyInfo(by date: Date) {
+        myInfo.onNext(myInfoManager.loadMyInfo(for: date))
     }
 }

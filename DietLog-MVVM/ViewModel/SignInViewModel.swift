@@ -27,7 +27,7 @@ class SignInViewModel {
                     return false
                 }
                 
-                self.manager.addUserInfo(nickname: nickname)
+                self.manager.createUserInfo(nickname: nickname)
                 return true
             }
             .bind(to: signInResult)

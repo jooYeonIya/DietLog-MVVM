@@ -85,11 +85,11 @@ class MyInfoViewController: BaseViewController {
         myInfoStackView.spacing = 16
         myInfoStackView.distribution = .fillEqually
         
-        let weightCardView = creatCardViewInStackView(title: MyInfoViewText.weight.rawValue,
+        let weightCardView = insertCardViewIntoStackView(title: MyInfoViewText.weight.rawValue,
                                                       label: weightLabel)
-        let muscleCardView = creatCardViewInStackView(title: MyInfoViewText.muscle.rawValue,
+        let muscleCardView = insertCardViewIntoStackView(title: MyInfoViewText.muscle.rawValue,
                                                       label: muscleLabel)
-        let fatCardView = creatCardViewInStackView(title: MyInfoViewText.fat.rawValue,
+        let fatCardView = insertCardViewIntoStackView(title: MyInfoViewText.fat.rawValue,
                                                    label: fatLabel)
         
         myInfoStackView.addArrangedSubview(weightCardView)
@@ -104,7 +104,6 @@ class MyInfoViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        
         modifyNicknameButton.snp.makeConstraints { make in
             make.centerY.equalTo(welcomLabel)
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
@@ -176,7 +175,7 @@ class MyInfoViewController: BaseViewController {
             .bind(to: welcomLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.getMyInfo(for: Date.now)
+        viewModel.findMyInfo(by: Date.now)
         
         viewModel.myInfo
             .subscribe { result in
@@ -196,7 +195,6 @@ class MyInfoViewController: BaseViewController {
             .bind(to: muscleLabel.rx.text)
             .disposed(by: disposeBag)
         
-
         viewModel.myInfo
             .map { $0?.fat ?? "0" }
             .observe(on: MainScheduler.instance)
@@ -210,12 +208,11 @@ class MyInfoViewController: BaseViewController {
             .bind(to: floatingButton.rx.title(for: . normal))
             .disposed(by: disposeBag)
     }
-    
 }
 
 // MARK: - 메서드
 extension MyInfoViewController {
-    private func creatCardViewInStackView(title: String, label: UILabel) -> UIView {
+    private func insertCardViewIntoStackView(title: String, label: UILabel) -> UIView {
         let cardView = UIView()
         cardView.applyRadius()
         cardView.applyShadow()
@@ -251,7 +248,6 @@ extension MyInfoViewController {
     }
     
     @objc func showModifyNicknameTextField() {
-        
         let alert = UIAlertController(title: nil, message: "닉네임을 입력해 주세요", preferredStyle: .alert)
         alert.addTextField()
         
@@ -272,7 +268,7 @@ extension MyInfoViewController {
     @objc func moveToSaveMyInfoView() {
         let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
         viewController.onUpdate = {
-            self.viewModel.getMyInfo(for: self.selectedDate)
+            self.viewModel.findMyInfo(by: self.selectedDate)
         }
         if let sheet = viewController.sheetPresentationController {
             sheet.prefersGrabberVisible = true
@@ -284,7 +280,7 @@ extension MyInfoViewController {
 // MARK: - FSCalendar
 extension MyInfoViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        viewModel.getMyInfo(for: date)
+        viewModel.findMyInfo(by: date)
         selectedDate = date
     }
 }

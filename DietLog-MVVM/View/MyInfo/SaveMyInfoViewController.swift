@@ -97,7 +97,6 @@ class SaveMyInfoViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        
         doneButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.centerY.equalTo(selectedDateTitleLabel)

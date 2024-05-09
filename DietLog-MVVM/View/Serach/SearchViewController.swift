@@ -145,17 +145,10 @@ class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        searchBar.rx.text
-            .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe { [weak self] text in
-                self?.reloadData(with: text)
-            }
-            .disposed(by: disposeBag)
-        
         searchBar.rx.searchButtonClicked
             .subscribe { [weak self] _ in
                 if let searchText = self?.searchBar.text, !searchText.isEmpty {
+                    self?.reloadData(with: searchText)
                     self?.recentSearchView.viewModel.addRecentSearchWord(with: searchText)
                     self?.recentSearchView.reloadData()
                 }

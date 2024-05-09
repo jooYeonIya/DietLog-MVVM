@@ -12,6 +12,7 @@ import RxSwift
 class MealViewController: BaseViewController {
     
     // MARK: - Component
+    private lazy var welcomLabel = UILabel()
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
     private lazy var mealsDataTableView = UITableView()
@@ -36,15 +37,22 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([noDataLabel,
+        view.addSubviews([welcomLabel,
+                          noDataLabel,
                           calendarBackgroundView,
                           mealsDataTableView,
                           floatingButton])
         
+        setupWelcomLabelUI()
         setupCalendarViewUI()
         setupTableViewUI()
         setupFloatingButtoUI()
         setupNoDataLabelUI()
+    }
+    
+    private func setupWelcomLabelUI() {
+        welcomLabel.configure(text: "setupWelcomLabelUI", font: .largeTitle)
+        welcomLabel.textColor = .clear
     }
     
     private func setupCalendarViewUI() {
@@ -76,9 +84,14 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        calendarBackgroundView.snp.makeConstraints { make in
+        welcomLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        calendarBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(welcomLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(welcomLabel)
             make.height.equalTo(ComponentSize.calendarHeight.rawValue)
         }
         
@@ -87,22 +100,22 @@ class MealViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(8)
         }
         
-        mealsDataTableView.snp.makeConstraints { make in
-            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
-            make.leading.trailing.equalTo(calendarBackgroundView)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        
-        floatingButton.snp.makeConstraints { make in
-            make.trailing.equalTo(calendarBackgroundView)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
-        }
-        
-        noDataLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(mealsDataTableView)
-            make.centerX.equalToSuperview()
-        }
+//        mealsDataTableView.snp.makeConstraints { make in
+//            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
+//            make.leading.trailing.equalTo(calendarBackgroundView)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//        }
+//        
+//        floatingButton.snp.makeConstraints { make in
+//            make.trailing.equalTo(calendarBackgroundView)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+//            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+//        }
+//        
+//        noDataLabel.snp.makeConstraints { make in
+//            make.centerY.equalTo(mealsDataTableView)
+//            make.centerX.equalToSuperview()
+//        }
     }
     
     // MARK: - Setup Delegate
@@ -116,6 +129,12 @@ class MealViewController: BaseViewController {
         floatingButton.addTarget(self, action: #selector(moveToSaveMealDataView), for: .touchUpInside)
     }
     
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    // MARK: - Setup Bind
     override func setupBinding() {
         viewModel.mealsData
             .observe(on: MainScheduler.instance)

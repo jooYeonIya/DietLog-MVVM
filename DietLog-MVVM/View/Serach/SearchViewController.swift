@@ -145,18 +145,11 @@ class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        searchBar.rx.text
-            .debounce(RxTimeInterval.microseconds(5), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe { [weak self] text in
-                self?.reloadData(with: text)
-            }
-            .disposed(by: disposeBag)
-        
         searchBar.rx.searchButtonClicked
             .subscribe { [weak self] _ in
                 if let searchText = self?.searchBar.text, !searchText.isEmpty {
-                    self?.recentSearchView.viewModel.addRecentSearchWord(with: searchText)
+                    self?.reloadData(with: searchText)
+                    self?.recentSearchView.viewModel.saveRecentSearchWord(with: searchText)
                     self?.recentSearchView.reloadData()
                 }
                 self?.searchBar.resignFirstResponder()
@@ -175,6 +168,12 @@ class SearchViewController: BaseViewController {
             .subscribe(onNext: { [weak self] text in
                 self?.searchBar.text = text
                 self?.reloadData(with: text)
+            })
+            .disposed(by: disposeBag)
+        
+        recentSearchView.viewModel.searchBar
+            .subscribe(onNext:  { [weak self] _ in
+                self?.searchBar.text = nil
             })
             .disposed(by: disposeBag)
     }

@@ -339,6 +339,14 @@
 			path = MyInfo;
 			sourceTree = "<group>";
 		};
+		0A4F74BD2BECFCAD005ECAB1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		0A71686D2BEB33440049A58C /* Meal */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +441,7 @@
 		0AEAC2982BD7E6F60071FCBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A4F74BD2BECFCAD005ECAB1 /* Search */,
 				0A4F74BC2BECF08E005ECAB1 /* MyInfo */,
 				0A71686D2BEB33440049A58C /* Meal */,
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
@@ -440,7 +449,6 @@
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
 				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
 				0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */,
-				0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

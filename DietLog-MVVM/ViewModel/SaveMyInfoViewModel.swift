@@ -47,8 +47,8 @@ class SaveMyInfoViewModel {
             return false
         }
         
-        if let result = manager.getMyInfo(for: postedDate) {
-            manager.deleteMyInfo(result)
+        if let result = manager.loadMyInfo(for: postedDate) {
+            manager.delete(result)
         }
         
         let myInfo = MyInfo()
@@ -57,7 +57,7 @@ class SaveMyInfoViewModel {
         myInfo.muscle = muscle
         myInfo.fat = fat
         
-        manager.addMyInfo(myInfo)
+        manager.create(myInfo)
         
         return true
     }

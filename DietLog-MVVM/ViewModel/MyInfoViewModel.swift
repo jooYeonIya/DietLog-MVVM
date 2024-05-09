@@ -22,6 +22,6 @@ class MyInfoViewModel {
     }
     
     func getMyInfo(for date: Date) {
-        myInfo.onNext(myInfoManager.getMyInfo(for: date))
+        myInfo.onNext(myInfoManager.loadMyInfo(for: date))
     }
 }

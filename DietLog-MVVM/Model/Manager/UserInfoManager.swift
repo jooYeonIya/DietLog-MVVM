@@ -17,16 +17,16 @@ class UserInfoManager {
     static let shared = UserInfoManager()
     let userDefaults = UserDefaults.standard
     
-    func addUserInfo(nickname: String) {
+    func createUserInfo(nickname: String) {
         userDefaults.setValue(nickname, forKey: UserInfoKeys.nickName)
         userDefaults.setValue(true, forKey: UserInfoKeys.isCompletedFirstFaunch)
     }
     
-    func getIsCompletedFirstFaunch() -> Bool {
+    func loadIsCompletedFirstFaunch() -> Bool {
         return userDefaults.bool(forKey: UserInfoKeys.isCompletedFirstFaunch)
     }
 
-    func getNickname() -> String {
+    func loadNickname() -> String {
         return userDefaults.string(forKey: UserInfoKeys.nickName) ?? "닉네임"
     }
 }

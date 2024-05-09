@@ -170,6 +170,12 @@ class SearchViewController: BaseViewController {
                 self?.reloadData(with: text)
             })
             .disposed(by: disposeBag)
+        
+        recentSearchView.viewModel.searchBar
+            .subscribe(onNext:  { [weak self] _ in
+                self?.searchBar.text = nil
+            })
+            .disposed(by: disposeBag)
     }
     
     private func reloadData(with searchWord: String?) {

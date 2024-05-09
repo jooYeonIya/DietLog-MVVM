@@ -11,6 +11,7 @@ import RxSwift
 class SearchViewModel {
 
     var recentSearchWords = BehaviorSubject<[String]>(value: [])
+    var searchBar = PublishSubject<Bool>()
     
     private var manager = RecentSearchWordManager.shared
     

@@ -98,6 +98,7 @@ class RecentSearchView: UIView {
     }
     
     @objc func didTappedAllRecentSearchWordsButton() {
+        viewModel.searchBar.onNext(true)
         viewModel.deleteAllRecenteSearchWords()
         reloadData()
     }
@@ -125,6 +126,7 @@ extension RecentSearchView: RecentWordCollectionViewCellDelegate {
     func didTappedDeleteButton(_ cell: RecentWordCollectionViewCell) {
         guard let indexPath = recentWordCollectionView.indexPath(for: cell) else { return }
         viewModel.deleteRecenteSearchWord(at: indexPath.row)
+        viewModel.searchBar.onNext(true)
         reloadData()
     }
 }

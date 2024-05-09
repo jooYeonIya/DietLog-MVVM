@@ -12,6 +12,7 @@ import RxSwift
 class MealViewController: BaseViewController {
     
     // MARK: - Component
+    private lazy var welcomLabel = UILabel()
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
     private lazy var mealsDataTableView = UITableView()
@@ -36,15 +37,22 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([noDataLabel,
+        view.addSubviews([welcomLabel,
+                          noDataLabel,
                           calendarBackgroundView,
                           mealsDataTableView,
                           floatingButton])
         
+        setupWelcomLabelUI()
         setupCalendarViewUI()
         setupTableViewUI()
         setupFloatingButtoUI()
         setupNoDataLabelUI()
+    }
+    
+    private func setupWelcomLabelUI() {
+        welcomLabel.configure(text: "setupWelcomLabelUI", font: .largeTitle)
+        welcomLabel.textColor = .clear
     }
     
     private func setupCalendarViewUI() {
@@ -76,10 +84,17 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        calendarBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
+        welcomLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(36)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.height.equalTo(ComponentSize.calendarHeight.rawValue)
+        }
+        
+        calendarBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(welcomLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(welcomLabel)
+            
+            let height = view.frame.height / 2.8
+            make.height.equalTo(height)
         }
         
         calendarView.snp.makeConstraints { make in
@@ -116,6 +131,12 @@ class MealViewController: BaseViewController {
         floatingButton.addTarget(self, action: #selector(moveToSaveMealDataView), for: .touchUpInside)
     }
     
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    // MARK: - Setup Bind
     override func setupBinding() {
         viewModel.mealsData
             .observe(on: MainScheduler.instance)

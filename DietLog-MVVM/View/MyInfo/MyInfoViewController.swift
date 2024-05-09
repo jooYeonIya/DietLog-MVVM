@@ -42,6 +42,113 @@ class MyInfoViewController: BaseViewController {
         displayTopView(true)
     }
     
+    // MARK: - Setup UI
+    override func setupUI() {
+        view.addSubviews([welcomLabel,
+                          calendarBackgroundView,
+                          myInfoLabel,
+                          myInfoStackView,
+                          floatingButton])
+        
+        calendarBackgroundView.addSubview(calendarView)
+        
+        setupWelcomLabelUI()
+        setupCalendarViewUI()
+        setupStackViewUI()
+        setFloatingButtonUI()
+    }
+    
+    private func setupWelcomLabelUI() {        
+        welcomLabel.configure(text: "setupWelcomLabelUI", font: .largeTitle)
+    }
+    
+    private func setupCalendarViewUI() {
+        calendarView.configure()
+        
+        calendarBackgroundView.backgroundColor = .white
+        calendarBackgroundView.applyShadow()
+        calendarBackgroundView.applyRadius()
+    }
+    
+    private func setupStackViewUI() {
+        myInfoLabel.configure(text: MyInfoViewText.myInfo.rawValue, font: .title)
+        
+        myInfoStackView.axis = .horizontal
+        myInfoStackView.spacing = 16
+        myInfoStackView.distribution = .fillEqually
+        
+        let weightCardView = creatCardViewInStackView(title: MyInfoViewText.weight.rawValue,
+                                                      label: weightLabel)
+        let muscleCardView = creatCardViewInStackView(title: MyInfoViewText.muscle.rawValue,
+                                                      label: muscleLabel)
+        let fatCardView = creatCardViewInStackView(title: MyInfoViewText.fat.rawValue,
+                                                   label: fatLabel)
+        
+        myInfoStackView.addArrangedSubview(weightCardView)
+        myInfoStackView.addArrangedSubview(muscleCardView)
+        myInfoStackView.addArrangedSubview(fatCardView)
+    }
+    
+    private func setFloatingButtonUI() {
+        floatingButton.configureFloatingButton(with: "저장",
+                                               and: CGFloat(ComponentSize.floatingButton.rawValue))
+    }
+    
+    // MARK: - Setup Layout
+    override func setupLayout() {
+        welcomLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(36)
+            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+        }
+        
+        calendarBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(welcomLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(welcomLabel)
+            
+            let height = view.frame.height / 2.8
+            make.height.equalTo(height)
+        }
+        
+        calendarView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        myInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(36)
+            make.leading.trailing.equalTo(welcomLabel).inset(16)
+        }
+        
+        myInfoStackView.snp.makeConstraints { make in
+            make.top.equalTo(myInfoLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(myInfoLabel)
+            let size = view.frame.size.width - (16 * 4) - (24 * 2)
+            make.height.equalTo(size / 3)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(calendarBackgroundView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+        }
+    }
+    
+    // MARK: - Setup Delegate
+    override func setupDelegate() {
+        calendarView.delegate = self
+        calendarView.dataSource = self
+    }
+    
+    // MARK: - Setup Event
+    override func setupEvent() {
+        floatingButton.addTarget(self, action: #selector(moveToSaveMyInfoView), for: .touchUpInside)
+    }
+    
+    // MARK: - Setup NavigationBar
+    override func setupNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Setup Bind
     override func setupBinding() {
         viewModel.nickname
@@ -84,106 +191,6 @@ class MyInfoViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Setup UI
-    override func setupUI() {
-        view.addSubviews([welcomLabel,
-                          calendarBackgroundView,
-                          myInfoLabel,
-                          myInfoStackView,
-                          floatingButton])
-        
-        calendarBackgroundView.addSubview(calendarView)
-        
-        setupWelcomLabelUI()
-        setupCalendarViewUI()
-        setupStackViewUI()
-        setFloatingButtonUI()
-    }
-    
-    private func setupWelcomLabelUI() {        
-        welcomLabel.configure(text: "", font: .largeTitle)
-    }
-    
-    private func setupCalendarViewUI() {
-        calendarView.configure()
-        
-        calendarBackgroundView.backgroundColor = .white
-        calendarBackgroundView.applyShadow()
-        calendarBackgroundView.applyRadius()
-    }
-    
-    private func setupStackViewUI() {
-        myInfoLabel.configure(text: MyInfoViewText.myInfo.rawValue, font: .title)
-        
-        myInfoStackView.axis = .horizontal
-        myInfoStackView.spacing = 16
-        myInfoStackView.distribution = .fillEqually
-        
-        let weightCardView = creatCardViewInStackView(title: MyInfoViewText.weight.rawValue,
-                                                      label: weightLabel)
-        let muscleCardView = creatCardViewInStackView(title: MyInfoViewText.muscle.rawValue,
-                                                      label: muscleLabel)
-        let fatCardView = creatCardViewInStackView(title: MyInfoViewText.fat.rawValue,
-                                                   label: fatLabel)
-        
-        myInfoStackView.addArrangedSubview(weightCardView)
-        myInfoStackView.addArrangedSubview(muscleCardView)
-        myInfoStackView.addArrangedSubview(fatCardView)
-    }
-    
-    private func setFloatingButtonUI() {
-        floatingButton.configureFloatingButton(with: "저장",
-                                               and: CGFloat(ComponentSize.floatingButton.rawValue))
-    }
-    
-    // MARK: - Setup Layout
-    override func setupLayout() {
-        welcomLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
-            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-        }
-        
-        calendarBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(welcomLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalTo(welcomLabel)
-            make.height.equalTo(ComponentSize.calendarHeight.rawValue)
-        }
-        
-        calendarView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(8)
-        }
-        
-        myInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
-            make.leading.trailing.equalTo(welcomLabel).inset(16)
-        }
-        
-        myInfoStackView.snp.makeConstraints { make in
-            make.top.equalTo(myInfoLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(myInfoLabel)
-            let size = view.frame.size.width - (16 * 4) - (24 * 2)
-            make.height.equalTo(size / 3)
-        }
-        
-        floatingButton.snp.makeConstraints { make in
-            make.top.equalTo(myInfoStackView.snp.bottom).offset(8)
-            make.trailing.equalTo(welcomLabel)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-12)
-            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
-        }
-    }
-    
-    // MARK: - Setup Delegate
-    override func setupDelegate() {
-        calendarView.delegate = self
-        calendarView.dataSource = self
-    }
-    
-    // MARK: - Setup Event
-    override func setupEvent() {
-        floatingButton.addTarget(self, action: #selector(moveToSaveMyInfoView), for: .touchUpInside)
-    }
 }
 
 // MARK: - 메서드

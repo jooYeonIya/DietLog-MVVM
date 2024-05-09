@@ -176,7 +176,7 @@ class MyInfoViewController: BaseViewController {
             .bind(to: welcomLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.getMyInfo(for: Date.now)
+        viewModel.findMyInfo(by: Date.now)
         
         viewModel.myInfo
             .subscribe { result in
@@ -272,7 +272,7 @@ extension MyInfoViewController {
     @objc func moveToSaveMyInfoView() {
         let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
         viewController.onUpdate = {
-            self.viewModel.getMyInfo(for: self.selectedDate)
+            self.viewModel.findMyInfo(by: self.selectedDate)
         }
         if let sheet = viewController.sheetPresentationController {
             sheet.prefersGrabberVisible = true
@@ -284,7 +284,7 @@ extension MyInfoViewController {
 // MARK: - FSCalendar
 extension MyInfoViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        viewModel.getMyInfo(for: date)
+        viewModel.findMyInfo(by: date)
         selectedDate = date
     }
 }

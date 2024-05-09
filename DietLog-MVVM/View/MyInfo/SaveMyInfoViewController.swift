@@ -68,6 +68,9 @@ class SaveMyInfoViewController: BaseViewController {
         let textFieldLabel = [weightLabel, muscleLabel, fatLabel]
         let textFieldValue = [myInfo?.weight, myInfo?.muscle, myInfo?.fat]
         
+        
+        weightTextField.becomeFirstResponder()
+        
         for i in 0..<3 {
             textField[i].configure(width: 36)
             textField[i].keyboardType = .decimalPad

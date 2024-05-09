@@ -20,6 +20,7 @@ enum MyInfoViewText: String {
 class MyInfoViewController: BaseViewController {
     
     // MARK: - Component
+    private lazy var modifyNicknameButton = UIButton()
     private lazy var welcomLabel = UILabel()
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
@@ -44,7 +45,8 @@ class MyInfoViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([welcomLabel,
+        view.addSubviews([modifyNicknameButton,
+                          welcomLabel,
                           calendarBackgroundView,
                           myInfoLabel,
                           myInfoStackView,
@@ -52,10 +54,16 @@ class MyInfoViewController: BaseViewController {
         
         calendarBackgroundView.addSubview(calendarView)
         
+        setupModifyNicknameButtonUI()
         setupWelcomLabelUI()
         setupCalendarViewUI()
         setupStackViewUI()
         setFloatingButtonUI()
+    }
+    
+    private func setupModifyNicknameButtonUI() {
+        modifyNicknameButton.setImage(UIImage(systemName: "pencil.tip.crop.circle"), for: .normal)
+        modifyNicknameButton.tintColor = .systemGray
     }
     
     private func setupWelcomLabelUI() {        
@@ -96,14 +104,23 @@ class MyInfoViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        
+        modifyNicknameButton.snp.makeConstraints { make in
+            make.centerY.equalTo(welcomLabel)
+            make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
+            make.width.height.equalTo(welcomLabel.font.lineHeight)
+        }
+        
         welcomLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(36)
-            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.leading.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
+            make.trailing.equalTo(modifyNicknameButton.snp.leading).offset(-4)
         }
         
         calendarBackgroundView.snp.makeConstraints { make in
             make.top.equalTo(welcomLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalTo(welcomLabel)
+            make.leading.equalTo(welcomLabel)
+            make.trailing.equalTo(modifyNicknameButton)
             
             let height = view.frame.height / 2.8
             make.height.equalTo(height)
@@ -116,12 +133,14 @@ class MyInfoViewController: BaseViewController {
         
         myInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(calendarBackgroundView.snp.bottom).offset(36)
-            make.leading.trailing.equalTo(welcomLabel).inset(16)
+            make.leading.equalTo(welcomLabel)
+            make.trailing.equalTo(modifyNicknameButton)
         }
         
         myInfoStackView.snp.makeConstraints { make in
             make.top.equalTo(myInfoLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(myInfoLabel)
+            make.leading.equalTo(welcomLabel)
+            make.trailing.equalTo(modifyNicknameButton)
             let size = view.frame.size.width - (16 * 4) - (24 * 2)
             make.height.equalTo(size / 3)
         }
@@ -141,6 +160,7 @@ class MyInfoViewController: BaseViewController {
     
     // MARK: - Setup Event
     override func setupEvent() {
+        modifyNicknameButton.addTarget(self, action: #selector(showModifyNicknameTextField), for: .touchUpInside)
         floatingButton.addTarget(self, action: #selector(moveToSaveMyInfoView), for: .touchUpInside)
     }
     
@@ -230,13 +250,31 @@ extension MyInfoViewController {
         return cardView
     }
     
+    @objc func showModifyNicknameTextField() {
+        
+        let alert = UIAlertController(title: nil, message: "닉네임을 입력해 주세요", preferredStyle: .alert)
+        alert.addTextField()
+        
+        let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            if let textField = alert.textFields?.first, let text = textField.text {
+                self?.viewModel.nickname.onNext(text)
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(action)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
     @objc func moveToSaveMyInfoView() {
         let viewController = SaveMyInfoViewController(myInfo: myInfo, selectedDate: selectedDate)
         viewController.onUpdate = {
             self.viewModel.getMyInfo(for: self.selectedDate)
         }
         if let sheet = viewController.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
         }
         present(viewController, animated: true)

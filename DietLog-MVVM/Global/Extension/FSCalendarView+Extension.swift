@@ -12,14 +12,14 @@ extension FSCalendar {
         scope = .month
         
         scrollEnabled = true
-        scrollDirection = .vertical
+        scrollDirection = .horizontal
         
         // 헤더
         appearance.headerTitleFont = .title
         appearance.headerTitleColor = .black
         appearance.headerDateFormat = "YYYY년 MM월"
-        appearance.headerTitleAlignment = .left
-        appearance.headerTitleOffset = CGPoint(x: 12, y: 0)
+        appearance.headerTitleAlignment = .center
+        appearance.headerTitleOffset = CGPoint(x: 0, y: -4)
         appearance.headerMinimumDissolvedAlpha = 0.0
         
         headerHeight = 60

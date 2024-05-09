@@ -112,24 +112,23 @@ class MyInfoViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(8)
         }
         
-//        myInfoLabel.snp.makeConstraints { make in
-//            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
-//            make.leading.trailing.equalTo(welcomLabel).inset(16)
-//        }
-//        
-//        myInfoStackView.snp.makeConstraints { make in
-//            make.top.equalTo(myInfoLabel.snp.bottom).offset(12)
-//            make.leading.trailing.equalTo(myInfoLabel)
-//            let size = view.frame.size.width - (16 * 4) - (24 * 2)
-//            make.height.equalTo(size / 3)
-//        }
-//        
-//        floatingButton.snp.makeConstraints { make in
-//            make.top.equalTo(myInfoStackView.snp.bottom).offset(8)
-//            make.trailing.equalTo(welcomLabel)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-12)
-//            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
-//        }
+        myInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(36)
+            make.leading.trailing.equalTo(welcomLabel).inset(16)
+        }
+        
+        myInfoStackView.snp.makeConstraints { make in
+            make.top.equalTo(myInfoLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalTo(myInfoLabel)
+            let size = view.frame.size.width - (16 * 4) - (24 * 2)
+            make.height.equalTo(size / 3)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(calendarBackgroundView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+        }
     }
     
     // MARK: - Setup Delegate

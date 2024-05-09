@@ -100,22 +100,22 @@ class MealViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(8)
         }
         
-//        mealsDataTableView.snp.makeConstraints { make in
-//            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
-//            make.leading.trailing.equalTo(calendarBackgroundView)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-//        }
-//        
-//        floatingButton.snp.makeConstraints { make in
-//            make.trailing.equalTo(calendarBackgroundView)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-//            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
-//        }
-//        
-//        noDataLabel.snp.makeConstraints { make in
-//            make.centerY.equalTo(mealsDataTableView)
-//            make.centerX.equalToSuperview()
-//        }
+        mealsDataTableView.snp.makeConstraints { make in
+            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(calendarBackgroundView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(calendarBackgroundView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+        }
+        
+        noDataLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(mealsDataTableView)
+            make.centerX.equalToSuperview()
+        }
     }
     
     // MARK: - Setup Delegate

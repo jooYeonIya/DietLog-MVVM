@@ -97,14 +97,16 @@ class MyInfoViewController: BaseViewController {
     // MARK: - Setup Layout
     override func setupLayout() {
         welcomLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(36)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         
         calendarBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(welcomLabel.snp.bottom).offset(12)
+            make.top.equalTo(welcomLabel.snp.bottom).offset(24)
             make.leading.trailing.equalTo(welcomLabel)
-            make.height.equalTo(ComponentSize.calendarHeight.rawValue)
+            
+            let height = view.frame.height / 2.8
+            make.height.equalTo(height)
         }
         
         calendarView.snp.makeConstraints { make in

@@ -37,6 +37,8 @@ class ExerciseModifyEditViewController: ExerciseBaseEditViewController {
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {
+        super.setupNavigationBar()
+        
         let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(updateData))
         navigationItem.rightBarButtonItem = button
     }

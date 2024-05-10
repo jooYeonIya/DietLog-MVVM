@@ -44,7 +44,7 @@ class ExerciseViewController: BaseViewController {
     
     private func reloadData() {
         if let categoryId = categoryId {
-            viewModel.getExerciseData(categoryId: categoryId)
+            viewModel.findExerciseData(by: categoryId)
             exerciseDataTableView.reloadData()
         }
         
@@ -118,7 +118,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
         
-        viewModel.getThumbnailImage(with: exerciseData[indexPath.section].thumbnailURL)
+        viewModel.findThumbnailImage(with: exerciseData[indexPath.section].thumbnailURL)
             .subscribe(onNext: { image in
                 cell.thumbnailImageView.image = image
             }).disposed(by: disposeBag)
@@ -160,7 +160,7 @@ extension ExerciseViewController: ExerciseTableViewCellDelegate {
     }
     
     private func deleteExercise(_ exercise: Exercise) {
-        viewModel.deleteExercise(exercise)
+        viewModel.delete(exercise)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.reloadData()

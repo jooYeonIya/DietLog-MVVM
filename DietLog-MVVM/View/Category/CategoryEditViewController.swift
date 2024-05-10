@@ -46,6 +46,7 @@ class CategoryEditViewController: BaseViewController {
                              font: .title)
         
         categoryNameTextField.configure()
+        categoryNameTextField.becomeFirstResponder()
         
         if let category = category {
             categoryNameTextField.text = category.title

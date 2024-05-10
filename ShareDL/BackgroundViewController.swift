@@ -29,8 +29,6 @@ class BackgroundViewController: UIViewController {
     
     var cellIsSelected = false
     var categoryId: ObjectId?
-    
-    var urlSubject = PublishSubject<String>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,7 +208,6 @@ extension BackgroundViewController {
 }
 
 extension BackgroundViewController: UIGestureRecognizerDelegate {
-    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return touch.view is UITableView
     }
@@ -221,26 +218,35 @@ extension BackgroundViewController: UIGestureRecognizerDelegate {
     
     @objc func didTappedDoneButton() {
         if cellIsSelected {
-            getULR()
-            urlSubject.subscribe(onNext: { [weak self] url in
-                self?.saveData(with: url)
-            }).disposed(by: disposeBag)
+            let URL = extractULR()
+            if let URL = URL {
+                saveData(with: URL)
+            } else {
+                showAlert(message: "Youtube 동영상만 등록할 수 있습니다")
+            }
         } else {
             showAlert(message: "카테고리를 선택해 주세요")
         }
     }
     
-    private func getULR() {
-        guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return }
-        guard let provider = contextItem.attachments?.first as? NSItemProvider else { return }
-        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { [weak self] result, error in
+    private func extractULR() -> String? {
+        guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return nil }
+        guard let provider = contextItem.attachments?.first as? NSItemProvider else { return nil }
+        
+        var returnURL: String?
+        
+        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { result, error in
             if let shareULR = result as? URL {
                 
-                DispatchQueue.main.async {
-                    self?.urlSubject.onNext(shareULR.absoluteString)
+                let URLString = shareULR.absoluteString
+                      
+                if URLString.contains("youtube") || URLString.contains("youtu.be") {
+                    returnURL = URLString
                 }
             }
         }
+        
+        return returnURL
     }
     
     private func saveData(with url: String) {

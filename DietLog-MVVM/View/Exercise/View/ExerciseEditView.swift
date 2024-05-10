@@ -67,6 +67,7 @@ class ExerciseEditView: UIView {
         URLTextFieldBaseView.addSubviews([label, URLTextField, URLErrorLabel])
         
         URLTextField.configure()
+        URLTextField.becomeFirstResponder()
         
         label.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)

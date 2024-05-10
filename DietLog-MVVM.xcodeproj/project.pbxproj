@@ -35,7 +35,7 @@
 		0A020B222BE8888300D3850A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2FD2BDE24300071FCBC /* RealmManager.swift */; };
 		0A020B242BE888AC00D3850A /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
 		0A020B262BE8D93600D3850A /* SelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020B252BE8D93600D3850A /* SelectCategoryTableViewCell.swift */; };
-		0A020B282BE8F03B00D3850A /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020B272BE8F03B00D3850A /* BackgroundViewController.swift */; };
+		0A020B282BE8F03B00D3850A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020B272BE8F03B00D3850A /* ShareViewController.swift */; };
 		0A020B2A2BE9076500D3850A /* SearchSegmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */; };
 		0A020B2D2BE90B9600D3850A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B2C2BE90B9600D3850A /* IQKeyboardManagerSwift */; };
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
@@ -151,7 +151,7 @@
 		0A020AE62BE861B200D3850A /* ShareDL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareDL.entitlements; sourceTree = "<group>"; };
 		0A020B0E2BE884DE00D3850A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A020B252BE8D93600D3850A /* SelectCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		0A020B272BE8F03B00D3850A /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		0A020B272BE8F03B00D3850A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
 		0A16C5A12BE4FC66006E5308 /* YoutubeAPIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = YoutubeAPIKey.xcconfig; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				0A020AE62BE861B200D3850A /* ShareDL.entitlements */,
-				0A020B272BE8F03B00D3850A /* BackgroundViewController.swift */,
+				0A020B272BE8F03B00D3850A /* ShareViewController.swift */,
 				0A020B252BE8D93600D3850A /* SelectCategoryTableViewCell.swift */,
 				0A020ADA2BE84F4100D3850A /* MainInterface.storyboard */,
 				0A020ADD2BE84F4100D3850A /* Info.plist */,
@@ -831,7 +831,7 @@
 				0A020B132BE8861100D3850A /* CategoryManager.swift in Sources */,
 				0A020B122BE8860D00D3850A /* ExerciseManager.swift in Sources */,
 				0A020B112BE885ED00D3850A /* Category.swift in Sources */,
-				0A020B282BE8F03B00D3850A /* BackgroundViewController.swift in Sources */,
+				0A020B282BE8F03B00D3850A /* ShareViewController.swift in Sources */,
 				0A020B102BE885DE00D3850A /* Exercise.swift in Sources */,
 				0A00BD8A2BEE0C0D00F740C1 /* SelectCategoryViewModel.swift in Sources */,
 			);

@@ -12,10 +12,10 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
-class BackgroundViewController: UIViewController {
+class ShareViewController: UIViewController {
     
     // MARK: - Component
-    private lazy var mainView = UIView()
+    private lazy var backgroundView = UIView()
     private lazy var cancelButton = UIButton()
     private lazy var doneButton = UIButton()
     private lazy var selectCategoryTitleLabel = UILabel()
@@ -37,33 +37,33 @@ class BackgroundViewController: UIViewController {
         grayView.backgroundColor = .systemGray
         view.insertSubview(grayView, at: 0)
         view.backgroundColor = .clear
-        view.addSubview(mainView)
+        view.addSubview(backgroundView)
         
         viewConfigure()
     }
     
     private func viewConfigure() {
-        setupMainView()
+        setupBackgroundView()
         setupUI()
         setupLayout()
         setupBinding()
         setupNotification()
     }
     
-    private func setupMainView() {
+    private func setupBackgroundView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.delegate = self
-        mainView.addGestureRecognizer(tapGesture)
+        backgroundView.addGestureRecognizer(tapGesture)
         
-        mainView.backgroundColor = .white
-        mainView.layer.cornerRadius = 16
+        backgroundView.backgroundColor = .white
+        backgroundView.layer.cornerRadius = 16
         
-        mainView.addSubview(cancelButton)
-        mainView.addSubview(doneButton)
-        mainView.addSubview(selectCategoryTitleLabel)
-        mainView.addSubview(selectCategoryTableView)
-        mainView.addSubview(memoTitleLabel)
-        mainView.addSubview(memoTextView)
+        backgroundView.addSubview(cancelButton)
+        backgroundView.addSubview(doneButton)
+        backgroundView.addSubview(selectCategoryTitleLabel)
+        backgroundView.addSubview(selectCategoryTableView)
+        backgroundView.addSubview(memoTitleLabel)
+        backgroundView.addSubview(memoTextView)
     }
     
     private func setupUI() {
@@ -94,7 +94,7 @@ class BackgroundViewController: UIViewController {
     }
     
     private func setupLayout() {
-        mainView.snp.makeConstraints { make in
+        backgroundView.snp.makeConstraints { make in
             make.height.equalTo(view.frame.size.height / 2)
             make.bottom.leading.trailing.equalToSuperview()
         }
@@ -162,7 +162,7 @@ class BackgroundViewController: UIViewController {
 }
 
 // MARK: - 키보드 관련
-extension BackgroundViewController {
+extension ShareViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -171,7 +171,7 @@ extension BackgroundViewController {
                 
                 let height = (self.view.frame.size.height / 2) + keyboardSize.height
                 
-                self.mainView.snp.updateConstraints { make in
+                self.backgroundView.snp.updateConstraints { make in
                     make.height.equalTo(height)
                 }
                 
@@ -189,7 +189,7 @@ extension BackgroundViewController {
             
             UIView.animate(withDuration: 0.3) {
                 
-                self.mainView.snp.updateConstraints { make in
+                self.backgroundView.snp.updateConstraints { make in
                     make.height.equalTo(self.view.frame.size.height / 2)
                 }
                 
@@ -207,7 +207,7 @@ extension BackgroundViewController {
     }
 }
 
-extension BackgroundViewController: UIGestureRecognizerDelegate {
+extension ShareViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return touch.view is UITableView
     }

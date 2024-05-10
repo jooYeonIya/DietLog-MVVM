@@ -166,7 +166,7 @@ class CategoryViewController: BaseViewController {
 // MARK: - 메서드
 extension CategoryViewController {
     private func reloadData() {
-        viewModel.getCategories()
+        viewModel.findCategories()
         categoryCollectionView.reloadData()
         
         let hasData = !categoriesData.isEmpty
@@ -275,7 +275,7 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
             exerciseViewModle.deleteExercise($0)
         }
         
-        viewModel.deleteCategory(category)
+        viewModel.remove(category)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.navigationController?.popViewController(animated: true)

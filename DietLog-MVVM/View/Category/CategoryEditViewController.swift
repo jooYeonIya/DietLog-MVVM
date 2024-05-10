@@ -94,7 +94,7 @@ extension CategoryEditViewController {
         var result = false
         
         if let category = category {
-            result = viewModel.modifyCategory(category)
+            result = viewModel.modify(category)
         } else {
             result = viewModel.saveCategory()
         }

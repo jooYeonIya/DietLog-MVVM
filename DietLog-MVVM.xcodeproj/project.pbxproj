@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A00BD8A2BEE0C0D00F740C1 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A020ABD2BE654AA00D3850A /* ExerciseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ABC2BE654AA00D3850A /* ExerciseEditView.swift */; };
 		0A020AC02BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ABF2BE6FBFB00D3850A /* ExerciseCreateEditViewController.swift */; };
 		0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AC12BE6FC2300D3850A /* ExerciseModifyEditViewController.swift */; };
@@ -25,7 +26,6 @@
 		0A020B112BE885ED00D3850A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
 		0A020B122BE8860D00D3850A /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 		0A020B132BE8861100D3850A /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */; };
-		0A020B152BE8866000D3850A /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A020B172BE886D500D3850A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B162BE886D500D3850A /* RealmSwift */; };
 		0A020B192BE886DC00D3850A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B182BE886DC00D3850A /* RxCocoa */; };
 		0A020B1B2BE886DC00D3850A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B1A2BE886DC00D3850A /* RxSwift */; };
@@ -254,6 +254,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A00BD892BEE0B3500F740C1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
+				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		0A020ABB2BE6547500D3850A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,13 +450,12 @@
 		0AEAC2982BD7E6F60071FCBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A00BD892BEE0B3500F740C1 /* Category */,
 				0A4F74BD2BECFCAD005ECAB1 /* Search */,
 				0A4F74BC2BECF08E005ECAB1 /* MyInfo */,
 				0A71686D2BEB33440049A58C /* Meal */,
 				0AEAC30D2BDE39320071FCBC /* SignInViewModel.swift */,
-				0AEAC3292BE212360071FCBC /* CategoryViewModel.swift */,
 				0AEAC32B2BE35E7B0071FCBC /* ExerciseEditViewModel.swift */,
-				0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */,
 				0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */,
 			);
 			path = ViewModel;
@@ -815,13 +823,13 @@
 				0A020B242BE888AC00D3850A /* YoutubeService.swift in Sources */,
 				0A020B222BE8888300D3850A /* RealmManager.swift in Sources */,
 				0A020B262BE8D93600D3850A /* SelectCategoryTableViewCell.swift in Sources */,
-				0A020B152BE8866000D3850A /* SelectCategoryViewModel.swift in Sources */,
 				0A020B132BE8861100D3850A /* CategoryManager.swift in Sources */,
 				0A020B122BE8860D00D3850A /* ExerciseManager.swift in Sources */,
 				0A020B112BE885ED00D3850A /* Category.swift in Sources */,
 				0A020B282BE8F03B00D3850A /* BackgroundViewController.swift in Sources */,
 				0A020B102BE885DE00D3850A /* Exercise.swift in Sources */,
 				0A020AD92BE84F4100D3850A /* ShareViewController.swift in Sources */,
+				0A00BD8A2BEE0C0D00F740C1 /* SelectCategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

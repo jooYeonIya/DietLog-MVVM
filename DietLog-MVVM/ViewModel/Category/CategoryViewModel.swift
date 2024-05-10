@@ -36,17 +36,17 @@ class CategoryViewModel {
         return true
     }
     
-    func getCategories(){
+    func findCategories(){
         if let result = manager.loadAllCategories() {
             categoriesData.onNext(Array(result))
         }
     }
     
-    func deleteCategory(_ category: Category) {
+    func remove(_ category: Category) {
         manager.delete(category)
     }
     
-    func modifyCategory(_ category: Category) -> Bool {
+    func modify(_ category: Category) -> Bool {
         if categoryName == "" {
             return false
         }

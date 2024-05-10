@@ -72,6 +72,10 @@ class ExerciseTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.width.height.equalTo(20)
         }
+        
+        backgroundWhiteView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-8)
+        }
     }
     
     @objc func didTappedOptionbutton() {

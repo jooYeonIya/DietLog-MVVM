@@ -17,7 +17,6 @@
 		0A020ACD2BE73F8B00D3850A /* SearchSegmentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACC2BE73F8B00D3850A /* SearchSegmentOption.swift */; };
 		0A020ACF2BE76C0E00D3850A /* RecentSearchWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020ACE2BE76C0E00D3850A /* RecentSearchWordManager.swift */; };
 		0A020AD12BE76CCA00D3850A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */; };
-		0A020AD92BE84F4100D3850A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A020AD82BE84F4100D3850A /* ShareViewController.swift */; };
 		0A020ADC2BE84F4100D3850A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A020ADA2BE84F4100D3850A /* MainInterface.storyboard */; };
 		0A020AE02BE84F4100D3850A /* ShareDL.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0A020AD62BE84F4100D3850A /* ShareDL.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0A020AE92BE870E600D3850A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020AE82BE870E600D3850A /* SnapKit */; };
@@ -146,7 +145,6 @@
 		0A020ACE2BE76C0E00D3850A /* RecentSearchWordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchWordManager.swift; sourceTree = "<group>"; };
 		0A020AD02BE76CCA00D3850A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		0A020AD62BE84F4100D3850A /* ShareDL.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareDL.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A020AD82BE84F4100D3850A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		0A020ADB2BE84F4100D3850A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		0A020ADD2BE84F4100D3850A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A020AE52BE8618700D3850A /* DietLog-MVVM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DietLog-MVVM.entitlements"; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 			children = (
 				0A020AE62BE861B200D3850A /* ShareDL.entitlements */,
 				0A020B272BE8F03B00D3850A /* BackgroundViewController.swift */,
-				0A020AD82BE84F4100D3850A /* ShareViewController.swift */,
 				0A020B252BE8D93600D3850A /* SelectCategoryTableViewCell.swift */,
 				0A020ADA2BE84F4100D3850A /* MainInterface.storyboard */,
 				0A020ADD2BE84F4100D3850A /* Info.plist */,
@@ -836,7 +833,6 @@
 				0A020B112BE885ED00D3850A /* Category.swift in Sources */,
 				0A020B282BE8F03B00D3850A /* BackgroundViewController.swift in Sources */,
 				0A020B102BE885DE00D3850A /* Exercise.swift in Sources */,
-				0A020AD92BE84F4100D3850A /* ShareViewController.swift in Sources */,
 				0A00BD8A2BEE0C0D00F740C1 /* SelectCategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

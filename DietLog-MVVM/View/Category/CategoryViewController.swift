@@ -82,12 +82,14 @@ class CategoryViewController: BaseViewController {
     
     private func setupStackView() {
         let moveToCategoryEditViewButton = UIButton()
-        moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", 
+                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
         moveToCategoryEditViewButton.titleLabel?.font = .smallBody
         moveToCategoryEditViewButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
         
         let moveToExerciseEditViewButton = UIButton()
-        moveToExerciseEditViewButton.configureFloatingButton(with: "운동", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToExerciseEditViewButton.configureFloatingButton(with: "운동", 
+                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
         moveToExerciseEditViewButton.addTarget(self, action: #selector(moveToExerciseEditView), for: .touchUpInside)
 
         
@@ -133,9 +135,6 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup Delegate
     override func setupDelegate() {
-        categoryCollectionView.dataSource = self
-        categoryCollectionView.delegate = self
-        
         searchBar.delegate = self
     }
     
@@ -152,6 +151,24 @@ class CategoryViewController: BaseViewController {
         viewModel.categoriesData
             .subscribe { [weak self] result in
                 self?.categoriesData = result
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.categoriesData
+            .observe(on: MainScheduler.instance)
+            .bind(to: categoryCollectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier,
+                                                      cellType: CategoryCollectionViewCell.self)) { index, item, cell in
+                cell.configure(with: item.title)
+                cell.delegate = self
+            }
+            .disposed(by: disposeBag)
+        
+        categoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        categoryCollectionView.rx.modelSelected(Category.self)
+            .subscribe { [weak self] item in
+                let viewController = ExerciseViewController(categoryId: item.id)
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
         
@@ -218,25 +235,6 @@ extension CategoryViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - CollerctionView DataSource
-extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(with: categoriesData[indexPath.row].title)
-        cell.delegate = self
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = ExerciseViewController(categoryId: categoriesData[indexPath.row].id)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
 // MARK: - CollerctionView Flowlayout
 extension CategoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -249,7 +247,7 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MAKR: - 수정 삭제
+// MARK: - 수정 삭제
 extension CategoryViewController: CategoryCollectionViewCellDelegate {
 
     func didTappedOptionButton(_ cell: CategoryCollectionViewCell) {

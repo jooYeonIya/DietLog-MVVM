@@ -11,6 +11,7 @@ import WebKit
 class WebViewController: BaseViewController {
     
     // MARK: - Component
+    private lazy var activityIndicator = UIActivityIndicatorView()
     private lazy var webView: WKWebView = {
         let view = WKWebView()
         view.allowsBackForwardNavigationGestures = true
@@ -42,6 +43,9 @@ class WebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.style = .large
+        view.addSubview(activityIndicator)
+        
         if let youtubeURL = URL(string: youtubeURL ?? "https://www.youtube.com/") {
             let request = URLRequest(url: youtubeURL)
             webView.load(request)
@@ -50,11 +54,15 @@ class WebViewController: BaseViewController {
     
     // MARK: - setup UI
     override func setupUI() {
-        view.addSubviews([webView, webViewToolbar])
+        view.addSubviews([activityIndicator, webView, webViewToolbar])
     }
     
     // MARK: - setup Layout
     override func setupLayout() {
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
         webView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(webViewToolbar.snp.top)
@@ -136,6 +144,18 @@ extension WebViewController: WKUIDelegate, WKNavigationDelegate {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
     }
 }
 

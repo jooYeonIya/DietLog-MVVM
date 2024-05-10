@@ -128,7 +128,7 @@ class SearchViewController: BaseViewController {
 
                 self.reusltData = item
                 
-                self.viewModel.getThumbnailImage(with: item.thumbnailURL)
+                self.viewModel.findThumbnailImage(with: item.thumbnailURL)
                     .subscribe(onNext: { image in
                         cell.thumbnailImageView.image = image
                     }).disposed(by: self.disposeBag)
@@ -180,7 +180,7 @@ class SearchViewController: BaseViewController {
     
     private func reloadData(with searchWord: String?) {
         guard let column = SearchSegmentOption(rawValue: segmentedControl.selectedSegmentIndex) else { return }
-        viewModel.getExerciseData(at: column, with: searchWord)
+        viewModel.findExerciseData(at: column, with: searchWord)
     }
     
     private func changeSegmentedControlUnderline(index: CGFloat) {
@@ -216,7 +216,7 @@ extension SearchViewController: ExerciseTableViewCellDelegate {
     }
     
     private func deleteExercise(_ exercise: Exercise) {
-        viewModel.deleteExercise(exercise)
+        viewModel.remove(exercise)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.reloadData(with: nil)

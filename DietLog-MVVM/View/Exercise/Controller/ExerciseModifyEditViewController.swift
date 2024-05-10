@@ -37,13 +37,15 @@ class ExerciseModifyEditViewController: ExerciseBaseEditViewController {
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {
-        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(updateData))
+        super.setupNavigationBar()
+        
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(modifyExerciseData))
         navigationItem.rightBarButtonItem = button
     }
     
-    @objc func updateData() {
+    @objc func modifyExerciseData() {
         guard let exercise = exercise else { return }
-        let result = viewModel.updateData(exercise)
+        let result = viewModel.modify(exercise)
         let message = result ? LocalizedText.savedData : "예기치 못 한 문제가 발생했습니다. 한 번 더 시도해주세요"
         self.showAlertWithOKButton(title: "", message: message) {
             if result {

@@ -67,6 +67,7 @@ class ExerciseEditView: UIView {
         URLTextFieldBaseView.addSubviews([label, URLTextField, URLErrorLabel])
         
         URLTextField.configure()
+        URLTextField.becomeFirstResponder()
         
         label.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
@@ -97,8 +98,11 @@ class ExerciseEditView: UIView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(moveToSelectCategoryView), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
         
+        let tapGesture = UITapGestureRecognizer(target: self, action:  #selector(moveToSelectCategoryView))
+        categorySelecteBaseView.addGestureRecognizer(tapGesture)
+        categorySelecteBaseView.isUserInteractionEnabled = true
         categorySelecteBaseView.applyRadius()
         categorySelecteBaseView.backgroundColor = .white
         categorySelecteBaseView.addSubviews([label, categorySelectedLabel, button])

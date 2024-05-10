@@ -38,7 +38,7 @@ class ExerciseViewModel {
             })
     }
     
-    func delete(_ exercise: Exercise) {
+    func remove(_ exercise: Exercise) {
         manager.delete(exercise)
     }
 }

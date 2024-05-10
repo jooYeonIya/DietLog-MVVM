@@ -216,7 +216,7 @@ extension SearchViewController: ExerciseTableViewCellDelegate {
     }
     
     private func deleteExercise(_ exercise: Exercise) {
-        viewModel.delete(exercise)
+        viewModel.remove(exercise)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.reloadData(with: nil)

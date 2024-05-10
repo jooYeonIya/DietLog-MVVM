@@ -270,7 +270,7 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
     private func deleteCategory(_ category: Category) {
         exerciseViewModle.findExerciseData(by: category.id)
         exerciseData.forEach {
-            exerciseViewModle.delete($0)
+            exerciseViewModle.remove($0)
         }
         
         viewModel.remove(category)

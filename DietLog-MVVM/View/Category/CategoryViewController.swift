@@ -37,7 +37,7 @@ class CategoryViewController: BaseViewController {
     }()
     
     // MARK: - 변수
-    private let cellSpacing: CGFloat = 16
+    private let cellSpacing: CGFloat = 12
     private var categoriesData: [Category] = []
     private var isDisplyStackView: Bool = false
     private var viewModel = CategoryViewModel()
@@ -229,8 +229,7 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
                      - cellSpacing)
                     / 2
         
-        let height = width / 1.6
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: width)
     }
 }
 

@@ -17,9 +17,9 @@ class ExerciseViewController: BaseViewController {
     
     // MARK: - 변수
     private var exerciseData: [Exercise] = []
-    private var viewModel = ExerciseViewModel()
-    private var disposeBag = DisposeBag()
-    private var categoryId: ObjectId?
+    private let viewModel = ExerciseViewModel()
+    private let disposeBag = DisposeBag()
+    private let categoryId: ObjectId?
     
     // MARK: - 초기화
     init(categoryId: ObjectId) {
@@ -160,7 +160,7 @@ extension ExerciseViewController: ExerciseTableViewCellDelegate {
     }
     
     private func deleteExercise(_ exercise: Exercise) {
-        viewModel.delete(exercise)
+        viewModel.remove(exercise)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.reloadData()

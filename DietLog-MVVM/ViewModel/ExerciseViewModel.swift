@@ -20,7 +20,7 @@ class ExerciseViewModel {
     private var disposeBag = DisposeBag()
     
     func getExerciseData(categoryId: ObjectId) {
-        if let result = manager.getAllExercise(for: categoryId) {
+        if let result = manager.loadAllExercise(for: categoryId) {
             exerciseData.onNext(Array(result))
         }
     }
@@ -39,7 +39,7 @@ class ExerciseViewModel {
     }
     
     func deleteExercise(_ exercise: Exercise) {
-        manager.deleteExercise(exercise)
+        manager.delete(exercise)
     }
 }
 

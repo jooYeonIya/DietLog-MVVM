@@ -67,7 +67,7 @@ class ExerciseEditViewModel {
                 exercise.memo = memo
                 exercise.thumbnailURL = result["thumbnailURL"] ?? ""
                 exercise.title = result["title"] ?? ""
-                self?.manager.addExercise(exercise)
+                self?.manager.create(exercise)
             }).disposed(by: disposeBag)
         
         return true
@@ -81,7 +81,7 @@ class ExerciseEditViewModel {
         newExericse.categoryID = id
         newExericse.memo = memo
         
-        manager.updateExercise(exercise, newExercise: newExericse)
+        manager.update(exercise, newExercise: newExericse)
         
         return true
     }

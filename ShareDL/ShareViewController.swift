@@ -163,7 +163,7 @@ extension ShareViewController {
                 exercise.memo = self?.memoTextView.text
                 exercise.thumbnailURL = result["thumbnailURL"] ?? ""
                 exercise.title = result["title"] ?? ""
-                ExerciseManager.shared.addExercise(exercise)
+                ExerciseManager.shared.create(exercise)
                 
                 self?.showAlert(message: "저장했습니다") {
                     self?.didTappedCancelButton()

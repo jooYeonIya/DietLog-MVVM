@@ -15,9 +15,9 @@ class ExerciseViewModel {
     
     var exerciseData: BehaviorSubject<[Exercise]> = BehaviorSubject(value: [])
     
-    private var manager = ExerciseManager()
-    private var service = YoutubeService.shared
-    private var disposeBag = DisposeBag()
+    private let manager = ExerciseManager()
+    private let service = YoutubeService.shared
+    private let disposeBag = DisposeBag()
     
     func findExerciseData(by categoryId: ObjectId) {
         if let result = manager.loadAllExercise(for: categoryId) {

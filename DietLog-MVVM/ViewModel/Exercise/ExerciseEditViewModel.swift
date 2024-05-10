@@ -21,10 +21,10 @@ class ExerciseEditViewModel {
     var selectedCategoryId = BehaviorSubject<ObjectId?>(value: nil)
     var memoTextView = BehaviorSubject<String?>(value: nil)
     
-    private var disposeBag = DisposeBag()
     private var isEnableURL: Bool = false
-    private var manager = ExerciseManager.shared
-    private var service = YoutubeService.shared
+    private let disposeBag = DisposeBag()
+    private let manager = ExerciseManager.shared
+    private let service = YoutubeService.shared
     
     init() {
         URLTextField
@@ -73,7 +73,7 @@ class ExerciseEditViewModel {
         return true
     }
     
-    func updateData(_ exercise: Exercise) -> Bool {
+    func update(_ oldExercise: Exercise) -> Bool {
         guard let id = try? selectedCategoryId.value(),
               let memo = try? memoTextView.value() else { return false }
         
@@ -81,7 +81,7 @@ class ExerciseEditViewModel {
         newExericse.categoryID = id
         newExericse.memo = memo
         
-        manager.update(exercise, newExercise: newExericse)
+        manager.update(oldExercise, newExercise: newExericse)
         
         return true
     }

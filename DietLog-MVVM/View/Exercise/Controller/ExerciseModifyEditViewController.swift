@@ -45,7 +45,7 @@ class ExerciseModifyEditViewController: ExerciseBaseEditViewController {
     
     @objc func updateData() {
         guard let exercise = exercise else { return }
-        let result = viewModel.updateData(exercise)
+        let result = viewModel.update(exercise)
         let message = result ? LocalizedText.savedData : "예기치 못 한 문제가 발생했습니다. 한 번 더 시도해주세요"
         self.showAlertWithOKButton(title: "", message: message) {
             if result {

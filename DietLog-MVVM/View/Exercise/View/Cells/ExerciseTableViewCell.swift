@@ -33,6 +33,7 @@ class ExerciseTableViewCell: UITableViewCell {
         backgroundWhiteView.backgroundColor = .white
         
         contentView.addSubview(backgroundWhiteView)
+        contentView.backgroundColor = .customGray
         
         backgroundWhiteView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

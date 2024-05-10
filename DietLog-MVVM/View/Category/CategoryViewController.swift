@@ -11,6 +11,7 @@ import RxSwift
 class CategoryViewController: BaseViewController {
 
     // MARK: - Component
+    private lazy var searchBar = UISearchBar()
     private lazy var noDataLabel = UILabel()
     private lazy var floatingButton = UIButton()
     private lazy var floatingStackView = UIStackView()
@@ -59,7 +60,7 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([noDataLabel, categoryCollectionView, floatingButton, floatingStackView])
+        view.addSubviews([searchBar, noDataLabel, categoryCollectionView, floatingButton, floatingStackView])
         
         setupNoDataLabelUI()
         setupSearchBarUI()
@@ -72,9 +73,7 @@ class CategoryViewController: BaseViewController {
     }
     
     private func setupSearchBarUI() {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        navigationItem.titleView = searchBar
+        searchBar.searchBarStyle = .minimal
     }
     
     private func setupFloatingButtonUI() {
@@ -103,12 +102,18 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview().inset(12)
+        }
+        
         noDataLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
         
         categoryCollectionView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         
@@ -130,6 +135,8 @@ class CategoryViewController: BaseViewController {
     override func setupDelegate() {
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
+        
+        searchBar.delegate = self
     }
     
     // MARK: - Setup Event

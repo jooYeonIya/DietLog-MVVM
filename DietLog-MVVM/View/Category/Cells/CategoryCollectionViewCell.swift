@@ -25,8 +25,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         view.applyShadow()
         view.backgroundColor = .customYellow
         
-        label.configure(text: text, font: .boldBody)
-        label.textColor = .white
+        label.configure(text: text, font: .body)
+        label.textColor = .black
         label.textAlignment = .center
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0

@@ -33,6 +33,7 @@ class CategoryViewController: BaseViewController {
         collectionView.register(CategoryCollectionViewCell.self,
                                 forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     

@@ -12,7 +12,7 @@ class CatergoryManager: RealmManager {
     
     static let shared = CatergoryManager()
     
-    func addCategory(_ category: Category) {
+    func create(_ category: Category) {
         do {
             try realm.write {
                 realm.add(category)
@@ -22,26 +22,26 @@ class CatergoryManager: RealmManager {
         }
     }
 
-    func getAllCategories() -> Results<Category>? {
+    func loadAllCategories() -> Results<Category>? {
         return realm.objects(Category.self)
     }
     
-    func getCategory(at id: ObjectId) -> Category? {
+    func loadCategory(at id: ObjectId) -> Category? {
         let query = NSPredicate(format: "id == %@", id)
         return realm.objects(Category.self).filter(query).first
     }
 
-    func updateCategory(_ category: Category, newTitle: String){
+    func update(_ oldCategory: Category, newTitle: String){
         do {
             try realm.write {
-                category.title = newTitle
+                oldCategory.title = newTitle
             }
         } catch {
             print("Error func updateExerciseCategory \(error)")
         }
     }
 
-    func deleteCategory(_ category: Category) {
+    func delete(_ category: Category) {
         do {
             try realm.write {
                 realm.delete(category)

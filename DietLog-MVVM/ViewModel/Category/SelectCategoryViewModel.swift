@@ -16,12 +16,12 @@ class SelectCategoryViewModel {
     private let manager = CatergoryManager.shared
     
     func getCategorisData() {
-        if let result = manager.getAllCategories() {
+        if let result = manager.loadAllCategories() {
             categoriesData.onNext(Array(result))
         }
     }
     
     func getCategoryData(at id: ObjectId) {
-        selectedCategory.onNext(manager.getCategory(at: id))
+        selectedCategory.onNext(manager.loadCategory(at: id))
     }
 }

@@ -31,27 +31,27 @@ class CategoryViewModel {
         
         let category = Category()
         category.title = categoryName ?? "카테고리"
-        manager.addCategory(category)
+        manager.create(category)
         
         return true
     }
     
-    func getCategories(){
-        if let result = manager.getAllCategories() {
+    func findCategories(){
+        if let result = manager.loadAllCategories() {
             categoriesData.onNext(Array(result))
         }
     }
     
-    func deleteCategory(_ category: Category) {
-        manager.deleteCategory(category)
+    func remove(_ category: Category) {
+        manager.delete(category)
     }
     
-    func modifyCategory(_ category: Category) -> Bool {
+    func modify(_ category: Category) -> Bool {
         if categoryName == "" {
             return false
         }
         
-        manager.updateCategory(category, newTitle: categoryName ?? "카테고리")
+        manager.update(category, newTitle: categoryName ?? "카테고리")
         
         return true
     }

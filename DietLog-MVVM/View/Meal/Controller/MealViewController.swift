@@ -85,7 +85,8 @@ class MealViewController: BaseViewController {
     // MARK: - Setup Layout
     override func setupLayout() {
         welcomLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(36)
+            guard let height = navigationController?.navigationBar.frame.height else { return }
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-height)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         
@@ -129,11 +130,6 @@ class MealViewController: BaseViewController {
     // MARK: - Setup Event
     override func setupEvent() {
         floatingButton.addTarget(self, action: #selector(moveToSaveMealDataView), for: .touchUpInside)
-    }
-    
-    // MARK: - Setup NavigationBar
-    override func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: - Setup Bind

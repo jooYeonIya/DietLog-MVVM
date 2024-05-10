@@ -11,6 +11,7 @@ import RxSwift
 class CategoryViewController: BaseViewController {
 
     // MARK: - Component
+    private lazy var searchBar = UISearchBar()
     private lazy var noDataLabel = UILabel()
     private lazy var floatingButton = UIButton()
     private lazy var floatingStackView = UIStackView()
@@ -33,15 +34,18 @@ class CategoryViewController: BaseViewController {
         collectionView.register(CategoryCollectionViewCell.self,
                                 forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
     // MARK: - 변수
-    private let cellSpacing: CGFloat = 16
+    private let cellSpacing: CGFloat = 12
     private var categoriesData: [Category] = []
+    private var exerciseData: [Exercise] = []
     private var isDisplyStackView: Bool = false
-    private var viewModel = CategoryViewModel()
-    private var disposeBag = DisposeBag()
+    private let viewModel = CategoryViewModel()
+    private let exerciseViewModle = ExerciseViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -56,7 +60,7 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([noDataLabel, categoryCollectionView, floatingButton, floatingStackView])
+        view.addSubviews([searchBar, noDataLabel, categoryCollectionView, floatingButton, floatingStackView])
         
         setupNoDataLabelUI()
         setupSearchBarUI()
@@ -69,9 +73,7 @@ class CategoryViewController: BaseViewController {
     }
     
     private func setupSearchBarUI() {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        navigationItem.titleView = searchBar
+        searchBar.searchBarStyle = .minimal
     }
     
     private func setupFloatingButtonUI() {
@@ -80,12 +82,14 @@ class CategoryViewController: BaseViewController {
     
     private func setupStackView() {
         let moveToCategoryEditViewButton = UIButton()
-        moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", 
+                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
         moveToCategoryEditViewButton.titleLabel?.font = .smallBody
         moveToCategoryEditViewButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
         
         let moveToExerciseEditViewButton = UIButton()
-        moveToExerciseEditViewButton.configureFloatingButton(with: "운동", and: CGFloat(ComponentSize.floatingButton.rawValue))
+        moveToExerciseEditViewButton.configureFloatingButton(with: "운동", 
+                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
         moveToExerciseEditViewButton.addTarget(self, action: #selector(moveToExerciseEditView), for: .touchUpInside)
 
         
@@ -100,12 +104,18 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview().inset(12)
+        }
+        
         noDataLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
         
         categoryCollectionView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
         
@@ -125,8 +135,7 @@ class CategoryViewController: BaseViewController {
     
     // MARK: - Setup Delegate
     override func setupDelegate() {
-        categoryCollectionView.dataSource = self
-        categoryCollectionView.delegate = self
+        searchBar.delegate = self
     }
     
     // MARK: - Setup Event
@@ -144,13 +153,37 @@ class CategoryViewController: BaseViewController {
                 self?.categoriesData = result
             }
             .disposed(by: disposeBag)
+        
+        viewModel.categoriesData
+            .observe(on: MainScheduler.instance)
+            .bind(to: categoryCollectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier,
+                                                      cellType: CategoryCollectionViewCell.self)) { index, item, cell in
+                cell.configure(with: item.title)
+                cell.delegate = self
+            }
+            .disposed(by: disposeBag)
+        
+        categoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        categoryCollectionView.rx.modelSelected(Category.self)
+            .subscribe { [weak self] item in
+                let viewController = ExerciseViewController(categoryId: item.id)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        exerciseViewModle.exerciseData
+            .subscribe { [weak self] result in
+                self?.exerciseData = result
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - 메서드
 extension CategoryViewController {
     private func reloadData() {
-        viewModel.getCategories()
+        viewModel.findCategories()
         categoryCollectionView.reloadData()
         
         let hasData = !categoriesData.isEmpty
@@ -202,25 +235,6 @@ extension CategoryViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - CollerctionView DataSource
-extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(with: categoriesData[indexPath.row].title)
-        cell.delegate = self
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = ExerciseViewController(categoryId: categoriesData[indexPath.row].id)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
 // MARK: - CollerctionView Flowlayout
 extension CategoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -229,12 +243,11 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
                      - cellSpacing)
                     / 2
         
-        let height = width / 1.6
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: width)
     }
 }
 
-// MAKR: - 수정 삭제
+// MARK: - 수정 삭제
 extension CategoryViewController: CategoryCollectionViewCellDelegate {
 
     func didTappedOptionButton(_ cell: CategoryCollectionViewCell) {
@@ -255,7 +268,12 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
     }
     
     private func deleteCategory(_ category: Category) {
-        viewModel.deleteCategory(category)
+        exerciseViewModle.getExerciseData(categoryId: category.id)
+        exerciseData.forEach {
+            exerciseViewModle.deleteExercise($0)
+        }
+        
+        viewModel.remove(category)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {
             self.navigationController?.popViewController(animated: true)

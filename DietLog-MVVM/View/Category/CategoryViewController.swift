@@ -40,9 +40,11 @@ class CategoryViewController: BaseViewController {
     // MARK: - 변수
     private let cellSpacing: CGFloat = 12
     private var categoriesData: [Category] = []
+    private var exerciseData: [Exercise] = []
     private var isDisplyStackView: Bool = false
-    private var viewModel = CategoryViewModel()
-    private var disposeBag = DisposeBag()
+    private let viewModel = CategoryViewModel()
+    private let exerciseViewModle = ExerciseViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -143,6 +145,12 @@ class CategoryViewController: BaseViewController {
         viewModel.categoriesData
             .subscribe { [weak self] result in
                 self?.categoriesData = result
+            }
+            .disposed(by: disposeBag)
+        
+        exerciseViewModle.exerciseData
+            .subscribe { [weak self] result in
+                self?.exerciseData = result
             }
             .disposed(by: disposeBag)
     }
@@ -255,6 +263,11 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
     }
     
     private func deleteCategory(_ category: Category) {
+        exerciseViewModle.getExerciseData(categoryId: category.id)
+        exerciseData.forEach {
+            exerciseViewModle.deleteExercise($0)
+        }
+        
         viewModel.deleteCategory(category)
         
         showAlertWithOKButton(title: "", message: "삭제했습니다") {

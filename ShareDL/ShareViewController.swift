@@ -11,6 +11,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import RealmSwift
+import UniformTypeIdentifiers
+import MobileCoreServices
 
 class ShareViewController: UIViewController {
     
@@ -29,9 +31,13 @@ class ShareViewController: UIViewController {
     
     var cellIsSelected = false
     var categoryId: ObjectId?
+    
+    var shareURL: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        extractShareULR()
         
         let grayView = UIView()
         grayView.backgroundColor = .systemGray
@@ -67,16 +73,16 @@ class ShareViewController: UIViewController {
     }
     
     private func setupUI() {
-        let attributies = [NSAttributedString.Key.font: UIFont(name: "LINESeedSansKR-Regular", size: 16)]
-        
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.setTitleColor(UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0), for: .normal)
         cancelButton.addTarget(self, action: #selector(didTappedCancelButton), for: .touchUpInside)
+        cancelButton.titleLabel?.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
         
         doneButton.setTitle("저장", for: .normal)
         doneButton.setTitleColor(UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0), for: .normal)
         doneButton.addTarget(self, action: #selector(didTappedDoneButton), for: .touchUpInside)
-        
+        doneButton.titleLabel?.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
+
         selectCategoryTitleLabel.text = "카테고리 선택"
         selectCategoryTitleLabel.font = UIFont(name: "LINESeedSansKR-Bold", size: 16)
         
@@ -91,6 +97,7 @@ class ShareViewController: UIViewController {
         
         memoTextView.backgroundColor = .systemGray4
         memoTextView.layer.cornerRadius = 16
+        memoTextView.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
     }
     
     private func setupLayout() {
@@ -134,6 +141,7 @@ class ShareViewController: UIViewController {
     
     private func setupBinding() {
         viewModel.getCategorisData()
+        
         viewModel.categoriesData
             .bind(to: selectCategoryTableView.rx.items(cellIdentifier: "SelectCategoryTableViewCell", cellType: SelectCategoryTableViewCell.self)) { index, item, cell in
                 cell.configure(with: item.title)
@@ -218,35 +226,44 @@ extension ShareViewController: UIGestureRecognizerDelegate {
     
     @objc func didTappedDoneButton() {
         if cellIsSelected {
-            let URL = extractULR()
-            if let URL = URL {
-                saveData(with: URL)
-            } else {
-                showAlert(message: "Youtube 동영상만 등록할 수 있습니다")
+            if let URL = shareURL {
+                if URL.contains("youtube") || URL.contains("youtu.be") {
+                    saveData(with: URL)
+                } else {
+                    showAlert(message: "Youtube 동영상만 등록할 수 있습니다")
+                }
             }
         } else {
             showAlert(message: "카테고리를 선택해 주세요")
         }
     }
     
-    private func extractULR() -> String? {
-        guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return nil }
-        guard let provider = contextItem.attachments?.first as? NSItemProvider else { return nil }
-        
-        var returnURL: String?
-        
-        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { result, error in
-            if let shareULR = result as? URL {
-                
-                let URLString = shareULR.absoluteString
-                      
-                if URLString.contains("youtube") || URLString.contains("youtu.be") {
-                    returnURL = URLString
+    private func extractShareULR(){
+        if let content = extensionContext?.inputItems.first as? NSExtensionItem {
+            if let contents = content.attachments {
+                for attachment in contents {
+                    if attachment.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+                        attachment.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { (data, error) in
+                            DispatchQueue.main.async {
+                                if let URL = data as? URL {
+                                    self.shareURL = URL.absoluteString
+                                }
+                            }
+                        }
+                    }
+
+                    if attachment.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) {
+                        attachment.loadItem(forTypeIdentifier: UTType.plainText.identifier, options: nil) { (data, error) in
+                            DispatchQueue.main.async {
+                                if let URL = data as? String {
+                                    self.shareURL = URL
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        
-        return returnURL
     }
     
     private func saveData(with url: String) {

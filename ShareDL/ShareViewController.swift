@@ -11,6 +11,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import RealmSwift
+import UniformTypeIdentifiers
+import MobileCoreServices
 
 class ShareViewController: UIViewController {
     
@@ -29,9 +31,13 @@ class ShareViewController: UIViewController {
     
     var cellIsSelected = false
     var categoryId: ObjectId?
+    
+    var URL: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        extractULR()
         
         let grayView = UIView()
         grayView.backgroundColor = .systemGray
@@ -218,35 +224,44 @@ extension ShareViewController: UIGestureRecognizerDelegate {
     
     @objc func didTappedDoneButton() {
         if cellIsSelected {
-            let URL = extractULR()
             if let URL = URL {
-                saveData(with: URL)
-            } else {
-                showAlert(message: "Youtube 동영상만 등록할 수 있습니다")
+                if URL.contains("youtube") || URL.contains("youtu.be") {
+                    saveData(with: URL)
+                } else {
+                    showAlert(message: "Youtube 동영상만 등록할 수 있습니다")
+                }
             }
         } else {
             showAlert(message: "카테고리를 선택해 주세요")
         }
     }
     
-    private func extractULR() -> String? {
-        guard let contextItem = extensionContext?.inputItems.first as? NSExtensionItem else { return nil }
-        guard let provider = contextItem.attachments?.first as? NSItemProvider else { return nil }
-        
-        var returnURL: String?
-        
-        provider.loadItem(forTypeIdentifier: "public.url", options: nil) { result, error in
-            if let shareULR = result as? URL {
-                
-                let URLString = shareULR.absoluteString
-                      
-                if URLString.contains("youtube") || URLString.contains("youtu.be") {
-                    returnURL = URLString
+    private func extractULR(){
+        if let content = extensionContext?.inputItems.first as? NSExtensionItem {
+            if let contents = content.attachments {
+                for attachment in contents {
+                    if attachment.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+                        attachment.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { (data, error) in
+                            DispatchQueue.main.async {
+                                if let URL = data as? URL {
+                                    self.URL = URL.absoluteString
+                                }
+                            }
+                        }
+                    }
+
+                    if attachment.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) {
+                        attachment.loadItem(forTypeIdentifier: UTType.plainText.identifier, options: nil) { (data, error) in
+                            DispatchQueue.main.async {
+                                if let URL = data as? String {
+                                    self.URL = URL
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        
-        return returnURL
     }
     
     private func saveData(with url: String) {

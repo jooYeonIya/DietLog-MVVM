@@ -257,7 +257,7 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
         showOptionMenuSheet {
             self.moveToModifyView(category)
         } deleteCompletion: {
-            self.showAlertTwoButton(title: "", message: "삭제하시겠습니까?", actionCompletion: {
+            self.showAlertTwoButton(title: "", message: LocalizedText.willDelete, actionCompletion: {
                 self.deleteCategory(category)
             })
         }
@@ -277,7 +277,7 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
         
         viewModel.remove(category)
         
-        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+        showAlertWithOKButton(title: "", message: LocalizedText.didDelete) {
             self.navigationController?.popViewController(animated: true)
             self.reloadData()
         }

@@ -205,7 +205,7 @@ extension SearchViewController: ExerciseTableViewCellDelegate {
         showOptionMenuSheet {
             self.moveToModifyView(exercise)
         } deleteCompletion: {
-            self.showAlertTwoButton(title: "", message: "삭제하시겠습니까?", actionCompletion: {
+            self.showAlertTwoButton(title: "", message: LocalizedText.willDelete, actionCompletion: {
                 self.deleteExercise(exercise)
             })
         }
@@ -220,7 +220,7 @@ extension SearchViewController: ExerciseTableViewCellDelegate {
     private func deleteExercise(_ exercise: Exercise) {
         viewModel.remove(exercise)
         
-        showAlertWithOKButton(title: "", message: "삭제했습니다") {
+        showAlertWithOKButton(title: "", message: LocalizedText.didDelete) {
             self.reloadData(with: nil)
         }
     }

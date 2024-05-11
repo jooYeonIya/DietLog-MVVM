@@ -1,5 +1,5 @@
 //
-//  MealCreateEditViewController.swift
+//  MealSaveEditViewController.swift
 //  DietLog-MVVM
 //
 //  Created by Jooyeon Kang on 2024/05/01.
@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class MealCreateEditViewController: MealEditViewController {
+class MealSaveEditViewController: MealEditViewController {
     
     // MARK: - 변수
     private var selectedDate: Date = Date.now
@@ -27,9 +27,8 @@ class MealCreateEditViewController: MealEditViewController {
     
     // MARK: - Setup NavigationBar
     override func setupNavigationBar() {
-        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveMeal))
+        let button = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveMealData))
         navigationItem.rightBarButtonItem = button
-        
         navigationItem.title = "식단 쓰기"
     }
     
@@ -40,13 +39,13 @@ class MealCreateEditViewController: MealEditViewController {
             .disposed(by: disposeBag)
     }
     
-    @objc func saveMeal() {
-        let result = viewModel.saveMeal(for: selectedDate, and: mealEditView.selectedImage)
+    @objc func saveMealData() {
+        let result = viewModel.saveMealData(by: selectedDate, withImage: mealEditView.selectedImage)
         
         if !result {
             showAlertWithOKButton(title: "", message: "글 입력 혹은 이미지 추가를 해주세요")
         } else {
-            showAlertWithOKButton(title: "", message: "저장했습니다") {
+            showAlertWithOKButton(title: "", message: LocalizedText.savedData) {
                 self.navigationController?.popViewController(animated: true)
             }
         }

@@ -23,8 +23,10 @@ class MealsDataTableViewCell: UITableViewCell {
         mealImageView.contentMode = .scaleAspectFill
         mealImageView.clipsToBounds = true
         
-        contentView.backgroundColor = .customGray
+        contentView.backgroundColor = .clear
         contentView.addSubview(mealImageView)
+        
+        backgroundColor = .clear
         
         mealImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -33,5 +35,10 @@ class MealsDataTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         mealImageView.image = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0))
     }
 }

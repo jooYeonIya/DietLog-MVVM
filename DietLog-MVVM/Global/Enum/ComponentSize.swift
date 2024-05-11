@@ -9,5 +9,6 @@ import Foundation
 
 enum ComponentSize: Int {
     case textFieldHeight = 44
-    case floatingButton = 60
+    case floatingButton = 56
+    case calendarHeight = 320
 }

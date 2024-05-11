@@ -21,10 +21,10 @@ class ExerciseEditViewModel {
     var selectedCategoryId = BehaviorSubject<ObjectId?>(value: nil)
     var memoTextView = BehaviorSubject<String?>(value: nil)
     
-    private var disposeBag = DisposeBag()
     private var isEnableURL: Bool = false
-    private var manager = ExerciseManager.shared
-    private var service = YoutubeService.shared
+    private let disposeBag = DisposeBag()
+    private let manager = ExerciseManager.shared
+    private let service = YoutubeService.shared
     
     init() {
         URLTextField
@@ -67,13 +67,13 @@ class ExerciseEditViewModel {
                 exercise.memo = memo
                 exercise.thumbnailURL = result["thumbnailURL"] ?? ""
                 exercise.title = result["title"] ?? ""
-                self?.manager.addExercise(exercise)
+                self?.manager.create(exercise)
             }).disposed(by: disposeBag)
         
         return true
     }
     
-    func updateData(_ exercise: Exercise) -> Bool {
+    func modify(_ oldExercise: Exercise) -> Bool {
         guard let id = try? selectedCategoryId.value(),
               let memo = try? memoTextView.value() else { return false }
         
@@ -81,7 +81,7 @@ class ExerciseEditViewModel {
         newExericse.categoryID = id
         newExericse.memo = memo
         
-        manager.updateExercise(exercise, newExercise: newExericse)
+        manager.update(oldExercise, newExercise: newExericse)
         
         return true
     }

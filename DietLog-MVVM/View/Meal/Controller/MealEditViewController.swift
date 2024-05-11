@@ -32,34 +32,39 @@ class MealEditViewController: BaseViewController {
 // MARK: - 메서드
 extension MealEditViewController {
     func insertImageIntoTextView(_ image: UIImage) {
-        let memoTextViewWidth = mealEditView.memoTextView.frame.size.width
-        let imageWidth = image.size.width
+        let newImage = image.fixOrientation()!
         
+        let attributedString = NSMutableAttributedString()
+
+        // 기존 텍스트가 있으면 추가
+        if !mealEditView.memoTextView.attributedText.string.isEmpty {
+            let existingText = NSMutableAttributedString(attributedString: mealEditView.memoTextView.attributedText)
+            attributedString.append(existingText)
+        }
+
+        // 이미지 사이즈 조정
+        let memoTextViewWidth = mealEditView.memoTextView.frame.size.width
+        let imageWidth = newImage.size.width
         let textAttachment = NSTextAttachment()
         
         if imageWidth > memoTextViewWidth {
-            let scale = imageWidth / (memoTextViewWidth - 24)
-            textAttachment.image = UIImage(cgImage: image.cgImage!, scale: scale, orientation: .up)
+            let scale = imageWidth / (memoTextViewWidth - 12)
+            textAttachment.image = UIImage(cgImage: newImage.cgImage!, scale: scale, orientation: .up)
         } else {
-            textAttachment.image = image
+            textAttachment.image = newImage
         }
-        
-        let style = NSMutableParagraphStyle()
-        style.alignment = .center
-        
-        let attributedString = NSMutableAttributedString()
-        attributedString.append(NSAttributedString(string: "\n"))
-        attributedString.append(NSAttributedString(attachment: textAttachment))
-        attributedString.append(NSAttributedString(string: "\n"))
-        attributedString.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
 
-        let existingAttributedString = NSMutableAttributedString(attributedString: mealEditView.memoTextView.attributedText ?? NSAttributedString())
-        existingAttributedString.append(attributedString)
-        existingAttributedString.append(NSAttributedString(string: "\n"))
-        
-        mealEditView.memoTextView.attributedText = existingAttributedString
+        // 이미지 중앙 정렬
+        let imageText = NSAttributedString(attachment: textAttachment)
+        attributedString.append(imageText)
+
+        attributedString.addAttributes([.font: UIFont.preferredFont(forTextStyle: .body)], 
+                                       range: NSRange(location: 0, length: attributedString.length))
+
+        // 결과를 TextView에 설정
+        mealEditView.memoTextView.attributedText = attributedString
     }
-    
+
     private func isContainsImage(in textView: UITextView) -> Bool {
         guard let attributedText = textView.attributedText else { return false }
         

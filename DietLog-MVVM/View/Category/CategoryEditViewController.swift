@@ -46,6 +46,7 @@ class CategoryEditViewController: BaseViewController {
                              font: .title)
         
         categoryNameTextField.configure()
+        categoryNameTextField.becomeFirstResponder()
         
         if let category = category {
             categoryNameTextField.text = category.title
@@ -93,12 +94,12 @@ extension CategoryEditViewController {
         var result = false
         
         if let category = category {
-            result = viewModel.modifyCategory(category)
+            result = viewModel.modify(category)
         } else {
             result = viewModel.saveCategory()
         }
         
-        let message = result ? "저장했습니다" : CategoryEditViewText.emptyCategoryName.rawValue
+        let message = result ? LocalizedText.savedData : CategoryEditViewText.emptyCategoryName.rawValue
         
         showAlertWithOKButton(title: "", message: message) {
             if result {

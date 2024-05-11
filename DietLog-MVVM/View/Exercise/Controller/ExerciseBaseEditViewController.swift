@@ -19,9 +19,9 @@ class ExerciseBaseEditViewController: BaseViewController {
     lazy var exerciseEditView = ExerciseEditView()
     
     // MARK: - 변수
-    var viewModel = ExerciseEditViewModel()
-    var categoryViewModel = SelectCategoryViewModel()
-    var disposeBag = DisposeBag()
+    let viewModel = ExerciseEditViewModel()
+    let categoryViewModel = SelectCategoryViewModel()
+    let disposeBag = DisposeBag()
 
     // MARK: - Life Cycle
     override func loadView() {

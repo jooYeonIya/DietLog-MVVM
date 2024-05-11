@@ -25,8 +25,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         view.applyShadow()
         view.backgroundColor = .customYellow
         
-        label.configure(text: text, font: .title)
-        label.textColor = .white
+        label.configure(text: text, font: .body)
+        label.textColor = .black
         label.textAlignment = .center
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
@@ -37,9 +37,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         view.addSubviews([label, button])
         
         label.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.top.equalTo(button.snp.bottom)
-            make.width.equalToSuperview().inset(12)
+            make.top.greaterThanOrEqualTo(button.snp.bottom).offset(2)
+            make.bottom.leading.trailing.equalToSuperview().inset(8)
+            make.centerYWithinMargins.equalToSuperview()
         }
         
         button.snp.makeConstraints { make in
@@ -50,7 +50,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(view)
         
         view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(4)
         }
     }
     

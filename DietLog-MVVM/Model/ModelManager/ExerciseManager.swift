@@ -12,7 +12,7 @@ class ExerciseManager: RealmManager {
     
     static let shared = ExerciseManager()
     
-    func addExercise(_ exercise: Exercise) {
+    func create(_ exercise: Exercise) {
         do {
             try realm.write {
                 realm.add(exercise)
@@ -22,32 +22,32 @@ class ExerciseManager: RealmManager {
         }
     }
     
-    func getAllExercise() -> Results<Exercise>? {
+    func loadAllExercise() -> Results<Exercise>? {
         return realm.objects(Exercise.self)
     }
     
-    func getAllExercise(for categoryID: ObjectId) -> Results<Exercise>? {
+    func loadAllExercise(for categoryID: ObjectId) -> Results<Exercise>? {
         let query = NSPredicate(format: "categoryID == %@", categoryID)
         return realm.objects(Exercise.self).filter(query)
     }
     
     func getAllExercise(at column: SearchSegmentOption, with searchWord: String?) -> Results<Exercise>? {
-        var query = NSPredicate(format: "\(column) CONTAINS[c] %@", searchWord ?? "")
+        let query = NSPredicate(format: "\(column) CONTAINS[c] %@", searchWord ?? "")
         return realm.objects(Exercise.self).filter(query)
     }
     
-    func updateExercise(_ exercise: Exercise, newExercise: Exercise) {
+    func update(_ oldExercise: Exercise, newExercise: Exercise) {
         do {
             try realm.write {
-                exercise.categoryID = newExercise.categoryID
-                exercise.memo = newExercise.memo
+                oldExercise.categoryID = newExercise.categoryID
+                oldExercise.memo = newExercise.memo
             }
         } catch {
             print("Error updateExercise(_ exercise: Exercise, newCategoryID: ObjectId) \(error)")
         }
     }
     
-    func deleteExercise(_ exercise: Exercise) {
+    func delete(_ exercise: Exercise) {
         do {
             try realm.write {
                 realm.delete(exercise)

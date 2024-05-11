@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>YoutubeAPIKey</key>
-	<string>$(YOUTUBE_API_KEY)</string>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 접근을 허락해 주세요</string>
 	<key>UIAppFonts</key>
@@ -28,5 +26,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>YoutubeAPIKey</key>
+	<string>$(YOUTUBE_API_KEY)</string>
 </dict>
 </plist>

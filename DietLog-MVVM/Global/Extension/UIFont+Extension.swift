@@ -23,6 +23,11 @@ extension UIFont {
         return font
     }
     
+    static var boldBody: UIFont {
+        guard let font = UIFont(name: FontName.bold, size: 16) else { return .boldSystemFont(ofSize: 16) }
+        return font
+    }
+    
     static var body: UIFont {
         guard let font = UIFont(name: FontName.regular, size: 16) else { return systemFont(ofSize: 16) }
         return font

@@ -68,6 +68,9 @@ class SaveMyInfoViewController: BaseViewController {
         let textFieldLabel = [weightLabel, muscleLabel, fatLabel]
         let textFieldValue = [myInfo?.weight, myInfo?.muscle, myInfo?.fat]
         
+        
+        weightTextField.becomeFirstResponder()
+        
         for i in 0..<3 {
             textField[i].configure(width: 36)
             textField[i].keyboardType = .decimalPad
@@ -94,7 +97,6 @@ class SaveMyInfoViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        
         doneButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.centerY.equalTo(selectedDateTitleLabel)
@@ -178,7 +180,7 @@ class SaveMyInfoViewController: BaseViewController {
 // MARK: - 메서드
 extension SaveMyInfoViewController {
     private func isChcekTextFiedlEmpty(_ result: Bool) {
-        let message = result ? "저장했습니다" : "최소 한 영역은 입력해 주세요"
+        let message = result ? LocalizedText.savedData : "최소 한 영역은 입력해 주세요"
         showAlertWithOKButton(title: "", message: message) {
             if result {
                 self.onUpdate?()

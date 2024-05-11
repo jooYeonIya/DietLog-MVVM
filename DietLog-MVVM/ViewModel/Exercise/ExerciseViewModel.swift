@@ -15,31 +15,31 @@ class ExerciseViewModel {
     
     var exerciseData: BehaviorSubject<[Exercise]> = BehaviorSubject(value: [])
     
-    private var manager = ExerciseManager()
-    private var service = YoutubeService.shared
-    private var disposeBag = DisposeBag()
+    private let manager = ExerciseManager()
+    private let service = YoutubeService.shared
+    private let disposeBag = DisposeBag()
     
-    func getExerciseData(categoryId: ObjectId) {
-        if let result = manager.getAllExercise(for: categoryId) {
+    func findExerciseData(by categoryId: ObjectId) {
+        if let result = manager.loadAllExercise(for: categoryId) {
             exerciseData.onNext(Array(result))
         }
     }
     
-    func getExerciseData(at column:SearchSegmentOption, with serchWord: String?) {
+    func findExerciseData(at column:SearchSegmentOption, with serchWord: String?) {
         if let result = manager.getAllExercise(at: column, with: serchWord) {
             exerciseData.onNext(Array(result))
         }
     }
     
-    func getThumbnailImage(with url: String) -> Observable<UIImage?> {
+    func findThumbnailImage(with url: String) -> Observable<UIImage?> {
         return RxAlamofire.requestData(.get, url)
             .map ({ (response, data) -> UIImage? in
                 return UIImage(data: data)
             })
     }
     
-    func deleteExercise(_ exercise: Exercise) {
-        manager.deleteExercise(exercise)
+    func remove(_ exercise: Exercise) {
+        manager.delete(exercise)
     }
 }
 

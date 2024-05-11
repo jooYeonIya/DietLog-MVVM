@@ -33,6 +33,7 @@ class ExerciseTableViewCell: UITableViewCell {
         backgroundWhiteView.backgroundColor = .white
         
         contentView.addSubview(backgroundWhiteView)
+        contentView.backgroundColor = .customGray
         
         backgroundWhiteView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -71,6 +72,10 @@ class ExerciseTableViewCell: UITableViewCell {
             make.top.equalTo(titleLabel.snp.top)
             make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.width.height.equalTo(20)
+        }
+        
+        backgroundWhiteView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-8)
         }
     }
     

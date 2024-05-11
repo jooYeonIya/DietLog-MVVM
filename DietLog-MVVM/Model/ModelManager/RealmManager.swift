@@ -10,7 +10,7 @@ import Foundation
 
 class RealmManager {
     var realm: Realm {
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.studyiOS.DietLog-MVVM")
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.studyiOS.DietLog")
         let realmURL = container?.appendingPathComponent("default.realm")
         let config = Realm.Configuration(fileURL: realmURL, schemaVersion: 1)
         do {

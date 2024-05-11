@@ -12,6 +12,7 @@ import RxSwift
 class MealViewController: BaseViewController {
     
     // MARK: - Component
+    private lazy var welcomLabel = UILabel()
     private lazy var calendarView = FSCalendar()
     private lazy var calendarBackgroundView = UIView()
     private lazy var mealsDataTableView = UITableView()
@@ -19,7 +20,6 @@ class MealViewController: BaseViewController {
     private lazy var noDataLabel = UILabel()
     
     // MARK: - 변수
-    private var mealsData: [Meal] = []
     private var selectedDate = Date.now
     private var viewModel = MealViewModel()
     private var disposeBag = DisposeBag()
@@ -37,15 +37,22 @@ class MealViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([calendarBackgroundView,
+        view.addSubviews([welcomLabel,
+                          noDataLabel,
+                          calendarBackgroundView,
                           mealsDataTableView,
-                          floatingButton,
-                          noDataLabel])
+                          floatingButton])
         
+        setupWelcomLabelUI()
         setupCalendarViewUI()
         setupTableViewUI()
         setupFloatingButtoUI()
         setupNoDataLabelUI()
+    }
+    
+    private func setupWelcomLabelUI() {
+        welcomLabel.configure(text: "setupWelcomLabelUI", font: .largeTitle)
+        welcomLabel.textColor = .clear
     }
     
     private func setupCalendarViewUI() {
@@ -64,6 +71,7 @@ class MealViewController: BaseViewController {
         mealsDataTableView.separatorStyle = .none
         mealsDataTableView.backgroundColor = .clear
         mealsDataTableView.showsVerticalScrollIndicator = false
+        mealsDataTableView.rowHeight = 100
     }
     
     private func setupFloatingButtoUI() {
@@ -71,15 +79,23 @@ class MealViewController: BaseViewController {
     }
     
     private func setupNoDataLabelUI() {
-        noDataLabel.configure(text: "데이터를 기록해 주세요", font: .body)
+        noDataLabel.configure(text: LocalizedText.plusData, font: .body)
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
-        calendarBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
+        welcomLabel.snp.makeConstraints { make in
+            guard let height = navigationController?.navigationBar.frame.height else { return }
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(-height)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.height.equalTo(360)
+        }
+        
+        calendarBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(welcomLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(welcomLabel)
+            
+            let height = view.frame.height / 2.8
+            make.height.equalTo(height)
         }
         
         calendarView.snp.makeConstraints { make in
@@ -100,78 +116,67 @@ class MealViewController: BaseViewController {
         }
         
         noDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(calendarBackgroundView.snp.bottom).offset(24)
+            make.centerY.equalTo(mealsDataTableView)
             make.centerX.equalToSuperview()
         }
     }
     
     // MARK: - Setup Delegate
     override func setupDelegate() {
-        mealsDataTableView.dataSource = self
-        mealsDataTableView.delegate = self
-        
         calendarView.dataSource = self
         calendarView.delegate = self
     }
     
     // MARK: - Setup Event
     override func setupEvent() {
-        floatingButton.addTarget(self, action: #selector(moveToMealEditView), for: .touchUpInside)
+        floatingButton.addTarget(self, action: #selector(moveToSaveMealDataView), for: .touchUpInside)
     }
     
+    // MARK: - Setup Bind
     override func setupBinding() {
         viewModel.mealsData
-            .subscribe { [weak self] result in
-                guard let result = result else { return }
-                self?.mealsData = result
+            .observe(on: MainScheduler.instance)
+            .bind(to: mealsDataTableView.rx.items(cellIdentifier: MealsDataTableViewCell.identifier,
+                                                  cellType: MealsDataTableViewCell.self)) { [weak self] index, item, cell in
+                if let imageName = item.imageName {
+                    cell.configure(with: self?.viewModel.findImage(byName: imageName))
+                } else {
+                    cell.configure(with: UIImage(named: "MealBasicImage"))
+                }
+
+                cell.selectionStyle = .none
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.mealsData
+            .subscribe(onNext: { [weak self] mealsData in
+                let hasData = mealsData.isEmpty
+                
+                self?.noDataLabel.isHidden = !hasData
+                self?.mealsDataTableView.isHidden = hasData
+            })
+            .disposed(by: disposeBag)
+        
+        mealsDataTableView.rx.modelSelected(Meal.self)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                let viewController = MealFindAndModifyEditViewController(selectedDate: self.selectedDate, mealId: item.id)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 }
 
 // MARK: - 메서드
 extension MealViewController {
-    @objc func moveToMealEditView() {
-        let viewController = MealCreateEditViewController(selectedDate: selectedDate)
+    @objc func moveToSaveMealDataView() {
+        let viewController = MealSaveEditViewController(selectedDate: selectedDate)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func reloadData() {
-        viewModel.getMealsData(for: selectedDate)
+        viewModel.findMealsData(byDate: selectedDate)
         mealsDataTableView.reloadData()
-        let hasData = !mealsData.isEmpty
-        mealsDataTableView.isHidden = !hasData
-        noDataLabel.isHidden = hasData
-    }
-}
-
-// MARK: - TableView DataSource
-extension MealViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mealsData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MealsDataTableViewCell.identifier, for: indexPath) as? MealsDataTableViewCell else { return UITableViewCell() }
-        
-        
-        if let imageName = mealsData[indexPath.row].imageName {
-            cell.configure(with: viewModel.getImgae(with: imageName))
-        } else {
-            cell.configure(with: UIImage(named: "MealBasicImage"))
-        }
-        
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = MealReadAndModifyEditViewController(selectedDate: selectedDate, mealId: mealsData[indexPath.row].id)
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

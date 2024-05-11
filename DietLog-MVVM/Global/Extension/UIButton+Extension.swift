@@ -18,7 +18,7 @@ extension UIButton {
     func configureFloatingButton(width: CGFloat) {
         configureCircleShape(width: width)
         
-        let buttonImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: width / 2, weight: .medium))
+        let buttonImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: width / 3, weight: .medium))
         setImage(buttonImage, for: .normal)
         tintColor = .white
     }

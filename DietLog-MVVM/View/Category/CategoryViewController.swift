@@ -257,7 +257,9 @@ extension CategoryViewController: CategoryCollectionViewCellDelegate {
         showOptionMenuSheet {
             self.moveToModifyView(category)
         } deleteCompletion: {
-            self.deleteCategory(category)
+            self.showAlertTwoButton(title: "", message: "삭제하시겠습니까?", actionCompletion: {
+                self.deleteCategory(category)
+            })
         }
 
     }

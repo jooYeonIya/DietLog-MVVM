@@ -97,7 +97,9 @@ extension MealFindAndModifyEditViewController {
         showOptionMenuSheet(modifyCompletion: {
             self.changeMemoViewEditable()
         }, deleteCompletion: {
-            self.removeMealData()
+            self.showAlertTwoButton(title: "", message: "삭제하시겠습니까?", actionCompletion: {
+                self.removeMealData()
+            })
         })
     }
     

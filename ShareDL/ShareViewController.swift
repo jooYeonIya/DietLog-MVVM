@@ -32,12 +32,12 @@ class ShareViewController: UIViewController {
     var cellIsSelected = false
     var categoryId: ObjectId?
     
-    var URL: String?
+    var shareURL: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        extractULR()
+        extractShareULR()
         
         let grayView = UIView()
         grayView.backgroundColor = .systemGray
@@ -73,16 +73,16 @@ class ShareViewController: UIViewController {
     }
     
     private func setupUI() {
-        let attributies = [NSAttributedString.Key.font: UIFont(name: "LINESeedSansKR-Regular", size: 16)]
-        
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.setTitleColor(UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0), for: .normal)
         cancelButton.addTarget(self, action: #selector(didTappedCancelButton), for: .touchUpInside)
+        cancelButton.titleLabel?.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
         
         doneButton.setTitle("저장", for: .normal)
         doneButton.setTitleColor(UIColor(red: 0.345, green: 0.737, blue: 0.627, alpha: 1.0), for: .normal)
         doneButton.addTarget(self, action: #selector(didTappedDoneButton), for: .touchUpInside)
-        
+        doneButton.titleLabel?.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
+
         selectCategoryTitleLabel.text = "카테고리 선택"
         selectCategoryTitleLabel.font = UIFont(name: "LINESeedSansKR-Bold", size: 16)
         
@@ -97,6 +97,7 @@ class ShareViewController: UIViewController {
         
         memoTextView.backgroundColor = .systemGray4
         memoTextView.layer.cornerRadius = 16
+        memoTextView.font = UIFont(name: "LINESeedSansKR-Regular", size: 16)
     }
     
     private func setupLayout() {
@@ -140,6 +141,7 @@ class ShareViewController: UIViewController {
     
     private func setupBinding() {
         viewModel.getCategorisData()
+        
         viewModel.categoriesData
             .bind(to: selectCategoryTableView.rx.items(cellIdentifier: "SelectCategoryTableViewCell", cellType: SelectCategoryTableViewCell.self)) { index, item, cell in
                 cell.configure(with: item.title)
@@ -224,7 +226,7 @@ extension ShareViewController: UIGestureRecognizerDelegate {
     
     @objc func didTappedDoneButton() {
         if cellIsSelected {
-            if let URL = URL {
+            if let URL = shareURL {
                 if URL.contains("youtube") || URL.contains("youtu.be") {
                     saveData(with: URL)
                 } else {
@@ -236,7 +238,7 @@ extension ShareViewController: UIGestureRecognizerDelegate {
         }
     }
     
-    private func extractULR(){
+    private func extractShareULR(){
         if let content = extensionContext?.inputItems.first as? NSExtensionItem {
             if let contents = content.attachments {
                 for attachment in contents {
@@ -244,7 +246,7 @@ extension ShareViewController: UIGestureRecognizerDelegate {
                         attachment.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { (data, error) in
                             DispatchQueue.main.async {
                                 if let URL = data as? URL {
-                                    self.URL = URL.absoluteString
+                                    self.shareURL = URL.absoluteString
                                 }
                             }
                         }
@@ -254,7 +256,7 @@ extension ShareViewController: UIGestureRecognizerDelegate {
                         attachment.loadItem(forTypeIdentifier: UTType.plainText.identifier, options: nil) { (data, error) in
                             DispatchQueue.main.async {
                                 if let URL = data as? String {
-                                    self.URL = URL
+                                    self.shareURL = URL
                                 }
                             }
                         }

@@ -29,6 +29,7 @@ class SignInViewController: BaseViewController {
     private lazy var emailTextField = UITextField()
     private lazy var passwordTextField = UITextField()
     private lazy var doneButton = UIButton()
+    private lazy var visibilityToggleButton = UIButton(type: .custom)
 
     // MARK: - 변수
     private let viewModel = SignInViewModel()
@@ -91,6 +92,19 @@ class SignInViewController: BaseViewController {
         
         passwordTextField.configure()
         passwordTextField.placeholder = SignInText.password
+        passwordTextField.isSecureTextEntry = true
+        
+        var buttonConfiguration = UIButton.Configuration.plain()
+        buttonConfiguration.imagePadding = 4
+        buttonConfiguration.baseBackgroundColor = .clear
+        buttonConfiguration.baseForegroundColor = .systemGray4
+        
+        visibilityToggleButton.setImage(UIImage(named: "eye-closed"), for: .normal)
+        visibilityToggleButton.setImage(UIImage(named: "eye-shown"), for: .selected)
+        visibilityToggleButton.configuration = buttonConfiguration
+
+        passwordTextField.rightView = visibilityToggleButton
+        passwordTextField.rightViewMode = .always
     }
     
     private func setupDoneButtonUI() {
@@ -150,6 +164,11 @@ class SignInViewController: BaseViewController {
         }
     }
     
+    // MARK: - Setup Event
+    override func setupEvent() {
+        visibilityToggleButton.addTarget(self, action: #selector(toggleVisibilityButton), for: .touchUpInside)
+    }
+    
     // MARK: - Setup Bind
     override func setupBinding() {
         doneButton.rx.tap
@@ -185,5 +204,10 @@ extension SignInViewController {
     private func moveToMyInfoView() {
         let viewController = TabBarViewController()
         view.window?.rootViewController = viewController
+    }
+    
+    @objc func toggleVisibilityButton() {
+        passwordTextField.isSecureTextEntry.toggle()
+        visibilityToggleButton.isSelected.toggle()
     }
 }

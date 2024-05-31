@@ -21,6 +21,8 @@ enum SignInText {
 class SignInViewController: BaseViewController {
     
     // MARK: - UI Componet
+    private lazy var scrollView = UIScrollView()
+    private lazy var contentView = UIView()
     private lazy var backgroundView = UIView()
     private lazy var dietLogLabel = UILabel()
     private lazy var titleLabel = UILabel()
@@ -49,8 +51,11 @@ class SignInViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([backgroundView,
-                          dietLogLabel])
+        view.addSubviews([dietLogLabel,
+                          scrollView])
+        
+        scrollView.addSubview(contentView)
+        contentView.addSubview(backgroundView)
         
         backgroundView.addSubviews([titleLabel,
                                     subTitleLabel,
@@ -63,6 +68,11 @@ class SignInViewController: BaseViewController {
         setupLabelslUI()
         setupTextFieldsUI()
         setupDoneButtonUI()
+    }
+    
+    private func setupScrollView() {
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
     }
     
     private func setupBackgroundViewUI() {
@@ -119,6 +129,26 @@ class SignInViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        
+        dietLogLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(topView)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(dietLogLabel.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(4)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+            
+            let screenHeight = UIScreen.main.bounds.height
+            make.height.equalTo(2000)
+        }
+        
         backgroundView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)

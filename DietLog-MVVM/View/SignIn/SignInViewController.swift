@@ -16,6 +16,7 @@ enum SignInText {
     static let nickname = "닉네임"
     static let email = "이메일"
     static let password = "비밀번호"
+    static let sns = "간단하게 가입해 보세요"
 }
 
 class SignInViewController: BaseViewController {
@@ -32,6 +33,8 @@ class SignInViewController: BaseViewController {
     private lazy var passwordTextField = UITextField()
     private lazy var doneButton = UIButton()
     private lazy var visibilityToggleButton = UIButton(type: .custom)
+    private lazy var stackVew = UIStackView()
+    private lazy var snsTitleLabel = UILabel()
 
     // MARK: - 변수
     private let viewModel = SignInViewModel()
@@ -51,11 +54,10 @@ class SignInViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([dietLogLabel,
-                          scrollView])
+        view.addSubviews([dietLogLabel, scrollView])
         
         scrollView.addSubview(contentView)
-        contentView.addSubview(backgroundView)
+        contentView.addSubviews([backgroundView, snsTitleLabel, stackVew])
         
         backgroundView.addSubviews([titleLabel,
                                     subTitleLabel,
@@ -68,6 +70,7 @@ class SignInViewController: BaseViewController {
         setupLabelslUI()
         setupTextFieldsUI()
         setupDoneButtonUI()
+        setupStackView()
     }
     
     private func setupScrollView() {
@@ -91,6 +94,9 @@ class SignInViewController: BaseViewController {
         
         subTitleLabel.configure(text: SignInText.subTitle, font: .body)
         subTitleLabel.textAlignment = .left
+        
+        snsTitleLabel.configure(text: SignInText.sns, font: .body)
+        snsTitleLabel.textAlignment = .center
     }
     
     private func setupTextFieldsUI() {
@@ -127,6 +133,31 @@ class SignInViewController: BaseViewController {
         doneButton.tintColor = .white
     }
     
+    private func setupStackView() {
+        stackVew.axis = .vertical
+        stackVew.spacing = 20
+        stackVew.alignment = .center
+        stackVew.distribution = .equalCentering
+        
+        let kakaoButton = UIButton()
+        kakaoButton.setTitle("카카오로 가입하기", for: .normal)
+        
+        let naverButton = UIButton()
+        naverButton.setTitle("네이버로 가입하기", for: .normal)
+        
+        [kakaoButton, naverButton].forEach {
+            stackVew.addArrangedSubview($0)
+            
+            $0.setTitleColor(.black, for: .normal)
+            $0.titleLabel?.font = .body
+            
+            $0.snp.makeConstraints { make in
+                make.height.equalTo(40)
+                make.width.equalToSuperview()
+            }
+        }
+    }
+    
     // MARK: - Setup Layout
     override func setupLayout() {
         
@@ -146,7 +177,7 @@ class SignInViewController: BaseViewController {
             make.width.equalToSuperview()
             
             let screenHeight = UIScreen.main.bounds.height
-            make.height.equalTo(2000)
+            make.height.equalTo(screenHeight)
         }
         
         backgroundView.snp.makeConstraints { make in
@@ -191,6 +222,17 @@ class SignInViewController: BaseViewController {
             make.top.equalTo(passwordTextField.snp.bottom).offset(24)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+        }
+        
+        snsTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(backgroundView.snp.bottom).offset(24)
+            make.bottom.equalTo(stackVew.snp.top).offset(-8)
+            make.leading.trailing.equalTo(titleLabel)
+        }
+        
+        stackVew.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(snsTitleLabel)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
     

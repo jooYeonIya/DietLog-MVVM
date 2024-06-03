@@ -125,7 +125,7 @@ class SignInViewController: BaseViewController {
     
     private func setupStackView() {
         stackVew.axis = .vertical
-        stackVew.spacing = 4
+        stackVew.spacing = 0
         stackVew.alignment = .center
         stackVew.distribution = .equalCentering
         
@@ -139,7 +139,7 @@ class SignInViewController: BaseViewController {
             stackVew.addArrangedSubview($0)
             
             $0.setTitleColor(.black, for: .normal)
-            $0.titleLabel?.font = .body
+            $0.titleLabel?.font = .smallBody
             
             $0.snp.makeConstraints { make in
                 make.height.equalTo(40)

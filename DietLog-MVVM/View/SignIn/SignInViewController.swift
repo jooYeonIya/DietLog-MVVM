@@ -22,8 +22,6 @@ enum SignInText {
 class SignInViewController: BaseViewController {
     
     // MARK: - UI Componet
-    private lazy var scrollView = UIScrollView()
-    private lazy var contentView = UIView()
     private lazy var backgroundView = UIView()
     private lazy var dietLogLabel = UILabel()
     private lazy var titleLabel = UILabel()
@@ -54,10 +52,7 @@ class SignInViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([dietLogLabel, scrollView])
-        
-        scrollView.addSubview(contentView)
-        contentView.addSubviews([backgroundView, snsTitleLabel, stackVew])
+        view.addSubviews([dietLogLabel, backgroundView, snsTitleLabel, stackVew])
         
         backgroundView.addSubviews([titleLabel,
                                     subTitleLabel,
@@ -71,11 +66,6 @@ class SignInViewController: BaseViewController {
         setupTextFieldsUI()
         setupDoneButtonUI()
         setupStackView()
-    }
-    
-    private func setupScrollView() {
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
     }
     
     private func setupBackgroundViewUI() {
@@ -164,20 +154,6 @@ class SignInViewController: BaseViewController {
         dietLogLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(topView)
-        }
-        
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(dietLogLabel.snp.bottom)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(4)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalToSuperview()
-            
-            let screenHeight = UIScreen.main.bounds.height
-            make.height.equalTo(screenHeight)
         }
         
         backgroundView.snp.makeConstraints { make in

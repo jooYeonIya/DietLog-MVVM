@@ -95,7 +95,7 @@ class SignInViewController: BaseViewController {
         subTitleLabel.configure(text: SignInText.subTitle, font: .body)
         subTitleLabel.textAlignment = .left
         
-        snsTitleLabel.configure(text: SignInText.sns, font: .body)
+        snsTitleLabel.configure(text: SignInText.sns, font: .boldBody)
         snsTitleLabel.textAlignment = .center
     }
     
@@ -135,7 +135,7 @@ class SignInViewController: BaseViewController {
     
     private func setupStackView() {
         stackVew.axis = .vertical
-        stackVew.spacing = 20
+        stackVew.spacing = 4
         stackVew.alignment = .center
         stackVew.distribution = .equalCentering
         
@@ -232,7 +232,6 @@ class SignInViewController: BaseViewController {
         
         stackVew.snp.makeConstraints { make in
             make.leading.trailing.equalTo(snsTitleLabel)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
     

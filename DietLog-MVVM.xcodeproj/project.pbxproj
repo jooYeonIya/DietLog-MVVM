@@ -783,6 +783,7 @@
 				0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				0A020B2B2BE90B9600D3850A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				0AEFA0582C134D5100D4C86B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -1248,6 +1249,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
+			};
+		};
+		0AEFA0582C134D5100D4C86B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

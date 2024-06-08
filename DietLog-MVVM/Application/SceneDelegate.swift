@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import KakaoSDKAuth
+import NaverThirdPartyLogin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -31,11 +32,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let url = URLContexts.first?.url {
-            if(AuthApi.isKakaoTalkLoginUrl(url)) {
-                _ = AuthController.handleOpenUrl(url: url)
-            }
+        guard let url = URLContexts.first?.url else { return }
+        
+        if(AuthApi.isKakaoTalkLoginUrl(url)) {
+            _ = AuthController.handleOpenUrl(url: url)
         }
+        
+        NaverThirdPartyLoginConnection
+            .getSharedInstance()
+            .receiveAccessToken(url)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

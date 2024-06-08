@@ -12,8 +12,8 @@ import SnapKit
 class SignInView: UIView {
     
     // MARK: - UI Componet
-    lazy var titleLabel = UILabel()
-    lazy var subTitleLabel = UILabel()
+    lazy var titleLabel = CustomLabel(text: SignInText.title, font: .title)
+    lazy var subTitleLabel = CustomLabel(text: SignInText.subTitle, font: .body)
     lazy var nicknameTextField = UITextField()
     lazy var emailTextField = UITextField()
     lazy var passwordTextField = UITextField()
@@ -30,7 +30,6 @@ class SignInView: UIView {
                      doneButton])
         
         setupBackgroundViewUI()
-        setupLabelslUI()
         setupTextFieldsUI()
         setupDoneButtonUI()
         
@@ -43,14 +42,7 @@ class SignInView: UIView {
         applyRadius()
     }
     
-    private func setupLabelslUI() {
-        titleLabel.configure(text: SignInText.title, font: .title)
-        titleLabel.textAlignment = .left
-        
-        subTitleLabel.configure(text: SignInText.subTitle, font: .body)
-        subTitleLabel.textAlignment = .left
-    }
-    
+     
     private func setupTextFieldsUI() {
         nicknameTextField.configure()
         nicknameTextField.placeholder = SignInText.nickname

@@ -12,7 +12,7 @@ class SnsLoginView: UIView {
     
     // MARK: - UI Component
     private lazy var stackVew = UIStackView()
-    private lazy var snsTitleLabel = UILabel()
+    private lazy var snsTitleLabel = CustomLabel(text: SignInText.sns, font: .boldBody)
     
     // MARK: - Setup UI
     func configure() {
@@ -24,7 +24,6 @@ class SnsLoginView: UIView {
     }
     
     private func setupLabelslUI() {
-        snsTitleLabel.configure(text: SignInText.sns, font: .boldBody)
         snsTitleLabel.textAlignment = .center
     }
     

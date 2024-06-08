@@ -12,7 +12,7 @@ import RxSwift
 class SignInViewController: BaseViewController {
     
     // MARK: - UI Component
-    private lazy var dietLogLabel = UILabel()
+    private lazy var dietLogLabel = CustomLabel(text: SignInText.dietLog, font: .largeTitle)
     private lazy var signInView = SignInView()
     private lazy var snsLoginView = SnsLoginView()
 
@@ -42,7 +42,6 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupDietLogLabelUI() {
-        dietLogLabel.configure(text: SignInText.dietLog, font: .largeTitle)
         dietLogLabel.textAlignment = .center
         dietLogLabel.textColor = .customGreen
     }

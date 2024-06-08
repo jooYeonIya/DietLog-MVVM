@@ -54,6 +54,7 @@
 		0A9BA2472C149C4200E99CD4 /* KakaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2462C149C4200E99CD4 /* KakaoService.swift */; };
 		0A9BA24C2C15029A00E99CD4 /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA24B2C15029A00E99CD4 /* NaverThirdPartyLogin */; };
 		0A9BA24E2C1507A400E99CD4 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24D2C1507A400E99CD4 /* NaverService.swift */; };
+		0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -188,6 +189,7 @@
 		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		0A9BA2462C149C4200E99CD4 /* KakaoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoService.swift; sourceTree = "<group>"; };
 		0A9BA24D2C1507A400E99CD4 /* NaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverService.swift; sourceTree = "<group>"; };
+		0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInText.swift; sourceTree = "<group>"; };
 		0AE6307B2C148D60000DB618 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */,
+				0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				0A9BA24E2C1507A400E99CD4 /* NaverService.swift in Sources */,
 				0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */,
 				0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */,
+				0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */,
 				0AEAC2D42BD8EFCE0071FCBC /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

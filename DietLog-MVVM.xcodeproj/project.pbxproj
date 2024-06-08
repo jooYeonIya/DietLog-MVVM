@@ -56,6 +56,7 @@
 		0A9BA24E2C1507A400E99CD4 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24D2C1507A400E99CD4 /* NaverService.swift */; };
 		0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */; };
 		0A9BA2522C150DC100E99CD4 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2512C150DC100E99CD4 /* ImageName.swift */; };
+		0A9BA2552C1510A300E99CD4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2542C1510A300E99CD4 /* SignInView.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -192,6 +193,7 @@
 		0A9BA24D2C1507A400E99CD4 /* NaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverService.swift; sourceTree = "<group>"; };
 		0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInText.swift; sourceTree = "<group>"; };
 		0A9BA2512C150DC100E99CD4 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
+		0A9BA2542C1510A300E99CD4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		0AE6307B2C148D60000DB618 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -414,6 +416,14 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		0A9BA2532C15104D00E99CD4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A9BA2542C1510A300E99CD4 /* SignInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +613,7 @@
 		0AEAC2A22BD8C92C0071FCBC /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				0A9BA2532C15104D00E99CD4 /* Views */,
 				0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */,
 				0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */,
 			);
@@ -930,6 +941,7 @@
 				0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */,
 				0AEAC2BB2BD8CAB00071FCBC /* ExerciseSelectCategoryViewController.swift in Sources */,
 				0AEAC2FC2BDE23CE0071FCBC /* Exercise.swift in Sources */,
+				0A9BA2552C1510A300E99CD4 /* SignInView.swift in Sources */,
 				0AEAC2B72BD8CA770071FCBC /* ExerciseViewController.swift in Sources */,
 				0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */,
 				0A020AC52BE71F8A00D3850A /* WebViewController.swift in Sources */,

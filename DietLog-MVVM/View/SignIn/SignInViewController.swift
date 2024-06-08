@@ -131,6 +131,7 @@ class SignInViewController: BaseViewController {
         
         let kakaoButton = UIButton()
         kakaoButton.setTitle("카카오로 가입하기", for: .normal)
+        kakaoButton.addTarget(self, action: #selector(loginWithKakao), for: .touchUpInside)
         
         let naverButton = UIButton()
         naverButton.setTitle("네이버로 가입하기", for: .normal)
@@ -256,5 +257,9 @@ extension SignInViewController {
     @objc func toggleVisibilityButton() {
         passwordTextField.isSecureTextEntry.toggle()
         visibilityToggleButton.isSelected.toggle()
+    }
+    
+    @objc func loginWithKakao() {
+        KakaoService.shared.loginWithKakao()
     }
 }

@@ -71,7 +71,7 @@ class YoutubeService {
     
     private func getYoutubeAPIKeyFromInfoPlist() -> String? {
         // share extension의 경우 Api Key 설정 필요
-        return Bundle.main.object(forInfoDictionaryKey: "YoutubeAPIKey") as? String
+        return Bundle.main.object(forInfoDictionaryKey: "YOUTUBE_API_KEY") as? String
     }
     
 }

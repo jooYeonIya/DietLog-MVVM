@@ -8,9 +8,14 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>kakao$(KAKAO_NATIVE_APP_KEY)</string>
+			</array>
 		</dict>
-		<dict/>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
@@ -38,7 +43,9 @@
 			</array>
 		</dict>
 	</dict>
-	<key>YoutubeAPIKey</key>
+	<key>YOUTUBE_API_KEY</key>
 	<string>$(YOUTUBE_API_KEY)</string>
+	<key>KAKAO_NATIVE_APP_KEY</key>
+	<string>$(KAKAO_NATIVE_APP_KEY)</string>
 </dict>
 </plist>

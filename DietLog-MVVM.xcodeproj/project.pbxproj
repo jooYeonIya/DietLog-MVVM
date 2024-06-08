@@ -25,10 +25,8 @@
 		0A020B112BE885ED00D3850A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
 		0A020B122BE8860D00D3850A /* ExerciseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3052BDE303C0071FCBC /* ExerciseManager.swift */; };
 		0A020B132BE8861100D3850A /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC3032BDE2CFA0071FCBC /* CategoryManager.swift */; };
-		0A020B172BE886D500D3850A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B162BE886D500D3850A /* RealmSwift */; };
 		0A020B192BE886DC00D3850A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B182BE886DC00D3850A /* RxCocoa */; };
 		0A020B1B2BE886DC00D3850A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B1A2BE886DC00D3850A /* RxSwift */; };
-		0A020B1D2BE886F100D3850A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B1C2BE886F100D3850A /* Realm */; };
 		0A020B1F2BE886FC00D3850A /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A020B1E2BE886FC00D3850A /* RxAlamofire */; };
 		0A020B202BE887FD00D3850A /* LINESeedKR-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BF2BD8CC8F0071FCBC /* LINESeedKR-Bd.otf */; };
 		0A020B212BE8880500D3850A /* LINESeedKR-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAC2BE2BD8CC8F0071FCBC /* LINESeedKR-Rg.otf */; };
@@ -41,12 +39,19 @@
 		0A16C5922BE4B9AF006E5308 /* SelectCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */; };
 		0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A16C59C2BE4F1BD006E5308 /* RxAlamofire */; };
 		0A16C5A02BE4FB2E006E5308 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */; };
-		0A16C5A22BE4FC66006E5308 /* APIKey.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */; };
 		0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */; };
+		0A2B86FE2C1492BE00CB5236 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FD2C1492BE00CB5236 /* RealmSwift */; };
+		0A2B87002C14934000CB5236 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FF2C14934000CB5236 /* RealmSwift */; };
+		0A2B87022C14934000CB5236 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FF2C14934000CB5236 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0A2B9F832BEBAAE400F3A079 /* UIimage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
 		0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7168702BEB5ECB0049A58C /* LocalizedText.swift */; };
+		0A9BA23D2C149A0400E99CD4 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FD2C1492BE00CB5236 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		0A9BA2412C149AB600E99CD4 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */; };
+		0A9BA2432C149AB600E99CD4 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */; };
+		0A9BA2452C149AB600E99CD4 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */; };
+		0A9BA2472C149C4200E99CD4 /* KakaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2462C149C4200E99CD4 /* KakaoService.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -81,8 +86,6 @@
 		0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E22BDA27260071FCBC /* CategoryCollectionViewCell.swift */; };
 		0AEAC2E62BDA51D30071FCBC /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2E52BDA51D30071FCBC /* ExerciseTableViewCell.swift */; };
 		0AEAC2EE2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2ED2BDAC1040071FCBC /* ExerciseSelectCategoryTableViewCell.swift */; };
-		0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F02BDE202E0071FCBC /* Realm */; };
-		0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEAC2F22BDE202E0071FCBC /* RealmSwift */; };
 		0AEAC2F62BDE20B70071FCBC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F52BDE20B70071FCBC /* Meal.swift */; };
 		0AEAC2F82BDE21D70071FCBC /* MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F72BDE21D70071FCBC /* MyInfo.swift */; };
 		0AEAC2FA2BDE222A0071FCBC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2F92BDE222A0071FCBC /* Category.swift */; };
@@ -132,6 +135,28 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0A2B87012C14934000CB5236 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A2B87022C14934000CB5236 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A9BA23E2C149A0400E99CD4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A9BA23D2C149A0400E99CD4 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -154,12 +179,13 @@
 		0A020B272BE8F03B00D3850A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		0A16C5912BE4B9AF006E5308 /* SelectCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewModel.swift; sourceTree = "<group>"; };
 		0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeService.swift; sourceTree = "<group>"; };
-		0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0A16C5A32BE60798006E5308 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extension.swift"; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
+		0A9BA2462C149C4200E99CD4 /* KakaoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoService.swift; sourceTree = "<group>"; };
+		0AE6307B2C148D60000DB618 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,8 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A020B1D2BE886F100D3850A /* Realm in Frameworks */,
-				0A020B172BE886D500D3850A /* RealmSwift in Frameworks */,
+				0A2B87002C14934000CB5236 /* RealmSwift in Frameworks */,
 				0A020AE92BE870E600D3850A /* SnapKit in Frameworks */,
 				0A020B1B2BE886DC00D3850A /* RxSwift in Frameworks */,
 				0A020B192BE886DC00D3850A /* RxCocoa in Frameworks */,
@@ -240,12 +265,14 @@
 			files = (
 				0AEAC30C2BDE38140071FCBC /* RxSwift in Frameworks */,
 				0A020B2D2BE90B9600D3850A /* IQKeyboardManagerSwift in Frameworks */,
-				0AEAC2F32BDE202E0071FCBC /* RealmSwift in Frameworks */,
-				0AEAC2F12BDE202E0071FCBC /* Realm in Frameworks */,
+				0A2B86FE2C1492BE00CB5236 /* RealmSwift in Frameworks */,
 				0AEAC30A2BDE38140071FCBC /* RxCocoa in Frameworks */,
+				0A9BA2432C149AB600E99CD4 /* KakaoSDKCommon in Frameworks */,
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
 				0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */,
 				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
+				0A9BA2452C149AB600E99CD4 /* KakaoSDKUser in Frameworks */,
+				0A9BA2412C149AB600E99CD4 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,10 +441,10 @@
 		0AEAC2942BD7E6C90071FCBC /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */,
 				0AEAC28E2BD7DE860071FCBC /* Info.plist */,
 				0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */,
 				0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */,
+				0AE6307B2C148D60000DB618 /* APIKey.xcconfig */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -448,6 +475,7 @@
 		0AEAC2972BD7E6ED0071FCBC /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				0A9BA2462C149C4200E99CD4 /* KakaoService.swift */,
 				0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */,
 			);
 			path = NetworkService;
@@ -702,6 +730,7 @@
 				0A020AD22BE84F4100D3850A /* Sources */,
 				0A020AD32BE84F4100D3850A /* Frameworks */,
 				0A020AD42BE84F4100D3850A /* Resources */,
+				0A2B87012C14934000CB5236 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -710,11 +739,10 @@
 			name = ShareDL;
 			packageProductDependencies = (
 				0A020AE82BE870E600D3850A /* SnapKit */,
-				0A020B162BE886D500D3850A /* RealmSwift */,
 				0A020B182BE886DC00D3850A /* RxCocoa */,
 				0A020B1A2BE886DC00D3850A /* RxSwift */,
-				0A020B1C2BE886F100D3850A /* Realm */,
 				0A020B1E2BE886FC00D3850A /* RxAlamofire */,
+				0A2B86FF2C14934000CB5236 /* RealmSwift */,
 			);
 			productName = ShareDL;
 			productReference = 0A020AD62BE84F4100D3850A /* ShareDL.appex */;
@@ -728,6 +756,7 @@
 				0AEAC27A2BD7DE860071FCBC /* Frameworks */,
 				0AEAC27B2BD7DE860071FCBC /* Resources */,
 				0A020AE12BE84F4200D3850A /* Embed Foundation Extensions */,
+				0A9BA23E2C149A0400E99CD4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -738,12 +767,14 @@
 			packageProductDependencies = (
 				0AEAC2C92BD8E00D0071FCBC /* SnapKit */,
 				0AEAC2D62BD8FC4E0071FCBC /* FSCalendar */,
-				0AEAC2F02BDE202E0071FCBC /* Realm */,
-				0AEAC2F22BDE202E0071FCBC /* RealmSwift */,
 				0AEAC3092BDE38140071FCBC /* RxCocoa */,
 				0AEAC30B2BDE38140071FCBC /* RxSwift */,
 				0A16C59C2BE4F1BD006E5308 /* RxAlamofire */,
 				0A020B2C2BE90B9600D3850A /* IQKeyboardManagerSwift */,
+				0A2B86FD2C1492BE00CB5236 /* RealmSwift */,
+				0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */,
+				0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */,
+				0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -779,11 +810,11 @@
 			packageReferences = (
 				0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				0A020B2B2BE90B9600D3850A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				0AEFA0582C134D5100D4C86B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -812,7 +843,6 @@
 			files = (
 				0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */,
 				0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */,
-				0A16C5A22BE4FC66006E5308 /* APIKey.xcconfig in Resources */,
 				0AEAC28D2BD7DE860071FCBC /* LaunchScreen.storyboard in Resources */,
 				0AEAC28A2BD7DE860071FCBC /* Assets.xcassets in Resources */,
 			);
@@ -899,6 +929,7 @@
 				0AEAC2B92BD8CA890071FCBC /* ExerciseBaseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
+				0A9BA2472C149C4200E99CD4 /* KakaoService.swift in Sources */,
 				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
@@ -944,7 +975,6 @@
 /* Begin XCBuildConfiguration section */
 		0A020AE22BE84F4200D3850A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -971,7 +1001,6 @@
 		};
 		0A020AE32BE84F4200D3850A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1112,7 +1141,6 @@
 		};
 		0AEAC2922BD7DE860071FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1143,7 +1171,6 @@
 		};
 		0AEAC2932BD7DE860071FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A16C5A12BE4FC66006E5308 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1221,12 +1248,28 @@
 				minimumVersion = 6.1.0;
 			};
 		};
+		0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.50.1;
+			};
+		};
+		0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.7.1;
 			};
 		};
 		0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
@@ -1234,15 +1277,7 @@
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
+				minimumVersion = 2.8.4;
 			};
 		};
 		0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */ = {
@@ -1250,15 +1285,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		0AEFA0582C134D5100D4C86B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
+				minimumVersion = 6.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1269,11 +1296,6 @@
 			package = 0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		0A020B162BE886D500D3850A /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		0A020B182BE886DC00D3850A /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */;
@@ -1283,11 +1305,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC3082BDE38140071FCBC /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		0A020B1C2BE886F100D3850A /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
 		};
 		0A020B1E2BE886FC00D3850A /* RxAlamofire */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1304,6 +1321,31 @@
 			package = 0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
 			productName = RxAlamofire;
 		};
+		0A2B86FD2C1492BE00CB5236 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0A2B86FF2C14934000CB5236 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
 		0AEAC2C92BD8E00D0071FCBC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -1313,16 +1355,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AEAC2D52BD8FC4E0071FCBC /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
-		};
-		0AEAC2F02BDE202E0071FCBC /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		0AEAC2F22BDE202E0071FCBC /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AEAC2EF2BDE202E0071FCBC /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		0AEAC3092BDE38140071FCBC /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

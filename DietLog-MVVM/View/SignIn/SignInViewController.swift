@@ -95,8 +95,8 @@ class SignInViewController: BaseViewController {
         buttonConfiguration.baseBackgroundColor = .clear
         buttonConfiguration.baseForegroundColor = .systemGray4
         
-        visibilityToggleButton.setImage(UIImage(named: "eye-closed"), for: .normal)
-        visibilityToggleButton.setImage(UIImage(named: "eye-shown"), for: .selected)
+        visibilityToggleButton.setImage(.eyeClosed, for: .normal)
+        visibilityToggleButton.setImage(.eyeOpen, for: .selected)
         visibilityToggleButton.configuration = buttonConfiguration
 
         passwordTextField.rightView = visibilityToggleButton
@@ -107,7 +107,7 @@ class SignInViewController: BaseViewController {
         let width: CGFloat = CGFloat(ComponentSize.textFieldHeight.rawValue)
         doneButton.configureCircleShape(width: width)
         
-        let buttonImgae = UIImage(systemName: "arrowshape.turn.up.right",
+        let buttonImgae = UIImage(systemName: ImageName.rightArrow,
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: width / 2, weight: .medium))
         doneButton.setImage(buttonImgae, for: .normal)
         doneButton.tintColor = .white

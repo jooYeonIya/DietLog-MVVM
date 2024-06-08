@@ -7,6 +7,17 @@
 
 import UIKit
 
+//MARK: - 이미지 관리
+extension UIImage {
+    static var eyeClosed: UIImage? {
+        return UIImage(named: ImageName.eyeClosed)
+    }
+    static var eyeOpen: UIImage? {
+        return UIImage(named: ImageName.eyeOpen)
+    }   
+}
+
+
 extension UIImage {
     
     func fixOrientation() -> UIImage? {

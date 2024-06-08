@@ -7,17 +7,28 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import KakaoSDKCommon
+import NaverThirdPartyLogin
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.resignOnTouchOutside = true
+        
+        let nativeKey = Bundle.main.object(forInfoDictionaryKey: "KAKAO_NATIVE_APP_KEY") as? String
+        KakaoSDK.initSDK(appKey: nativeKey ?? "")
+        
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+        instance?.isInAppOauthEnable = true
+        instance?.serviceUrlScheme = "com.studyiOS.DietLog"
+        instance?.consumerKey = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_KEY") as? String
+        instance?.consumerSecret = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_SECRET") as? String
+        instance?.appName = "DietLog"
         
         return true
     }

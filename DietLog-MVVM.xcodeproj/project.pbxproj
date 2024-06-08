@@ -57,6 +57,7 @@
 		0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */; };
 		0A9BA2522C150DC100E99CD4 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2512C150DC100E99CD4 /* ImageName.swift */; };
 		0A9BA2552C1510A300E99CD4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2542C1510A300E99CD4 /* SignInView.swift */; };
+		0A9BA2582C1515A500E99CD4 /* SnsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
 		0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2842BD7DE860071FCBC /* TabBarViewController.swift */; };
@@ -194,6 +195,7 @@
 		0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInText.swift; sourceTree = "<group>"; };
 		0A9BA2512C150DC100E99CD4 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 		0A9BA2542C1510A300E99CD4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsLoginView.swift; sourceTree = "<group>"; };
 		0AE6307B2C148D60000DB618 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				0A9BA2542C1510A300E99CD4 /* SignInView.swift */,
+				0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
 				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
+				0A9BA2582C1515A500E99CD4 /* SnsLoginView.swift in Sources */,
 				0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0A020ACF2BE76C0E00D3850A /* RecentSearchWordManager.swift in Sources */,

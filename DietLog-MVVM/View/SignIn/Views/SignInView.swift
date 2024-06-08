@@ -12,7 +12,6 @@ import SnapKit
 class SignInView: UIView {
     
     // MARK: - UI Componet
-    lazy var backgroundView = UIView()
     lazy var titleLabel = UILabel()
     lazy var subTitleLabel = UILabel()
     lazy var nicknameTextField = UITextField()
@@ -39,9 +38,9 @@ class SignInView: UIView {
     }
     
     private func setupBackgroundViewUI() {
-        backgroundView.backgroundColor = .white
-        backgroundView.applyShadow()
-        backgroundView.applyRadius()
+        backgroundColor = .white
+        applyShadow()
+        applyRadius()
     }
     
     private func setupLabelslUI() {

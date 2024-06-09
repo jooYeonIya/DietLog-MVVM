@@ -77,19 +77,19 @@ class CategoryViewController: BaseViewController {
     }
     
     private func setupFloatingButtonUI() {
-        floatingButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton.rawValue))
+        floatingButton.configureFloatingButton(width: CGFloat(ComponentSize.floatingButton))
     }
     
     private func setupStackView() {
         let moveToCategoryEditViewButton = UIButton()
         moveToCategoryEditViewButton.configureFloatingButton(with: "카테고리", 
-                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
+                                                             and: CGFloat(ComponentSize.floatingButton))
         moveToCategoryEditViewButton.titleLabel?.font = .smallBody
         moveToCategoryEditViewButton.addTarget(self, action: #selector(moveToCategoryEditView), for: .touchUpInside)
         
         let moveToExerciseEditViewButton = UIButton()
         moveToExerciseEditViewButton.configureFloatingButton(with: "운동", 
-                                                             and: CGFloat(ComponentSize.floatingButton.rawValue))
+                                                             and: CGFloat(ComponentSize.floatingButton))
         moveToExerciseEditViewButton.addTarget(self, action: #selector(moveToExerciseEditView), for: .touchUpInside)
 
         
@@ -122,14 +122,14 @@ class CategoryViewController: BaseViewController {
         floatingButton.snp.makeConstraints { make in
             make.trailing.equalTo(categoryCollectionView)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+            make.width.height.equalTo(ComponentSize.floatingButton)
         }
         
         floatingStackView.snp.makeConstraints { make in
             make.bottom.equalTo(floatingButton.snp.top).offset(-4)
             make.trailing.equalTo(floatingButton)
-            make.width.equalTo(ComponentSize.floatingButton.rawValue)
-            make.height.equalTo(ComponentSize.floatingButton.rawValue * 2)
+            make.width.equalTo(ComponentSize.floatingButton)
+            make.height.equalTo(ComponentSize.floatingButton * 2)
         }
     }
     

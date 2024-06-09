@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum ComponentSize: Int {
-    case textFieldHeight = 44
-    case floatingButton = 56
-    case calendarHeight = 320
+enum ComponentSize{    
+    static let textFieldHeight = 44
+    static let floatingButton = 56
+    static let logoButton = 40
+    static let calendarHeight = 320
 }

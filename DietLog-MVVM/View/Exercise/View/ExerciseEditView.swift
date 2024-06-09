@@ -76,7 +76,7 @@ class ExerciseEditView: UIView {
         URLTextField.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom).offset(12)
             make.leading.trailing.equalTo(label)
-            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+            make.height.equalTo(ComponentSize.textFieldHeight)
         }
         
         URLErrorLabel.snp.makeConstraints { make in

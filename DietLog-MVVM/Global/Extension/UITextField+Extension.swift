@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    func configure(width: CGFloat = CGFloat(ComponentSize.textFieldHeight.rawValue)) {
+    func configure(width: CGFloat = CGFloat(ComponentSize.textFieldHeight)) {
         font = .body
         
         layer.cornerRadius = width / 2

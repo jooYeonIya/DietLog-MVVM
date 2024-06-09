@@ -75,7 +75,7 @@ class MealViewController: BaseViewController {
     }
     
     private func setupFloatingButtoUI() {
-        floatingButton.configureFloatingButton(width:CGFloat(ComponentSize.floatingButton.rawValue))
+        floatingButton.configureFloatingButton(width:CGFloat(ComponentSize.floatingButton))
     }
     
     private func setupNoDataLabelUI() {
@@ -112,7 +112,7 @@ class MealViewController: BaseViewController {
         floatingButton.snp.makeConstraints { make in
             make.trailing.equalTo(calendarBackgroundView)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+            make.width.height.equalTo(ComponentSize.floatingButton)
         }
         
         noDataLabel.snp.makeConstraints { make in

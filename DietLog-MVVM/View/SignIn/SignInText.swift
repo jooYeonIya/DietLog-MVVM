@@ -10,7 +10,7 @@ import Foundation
 enum SignInText {
     static let dietLog = "DIET LOG"
     static let title = "안녕하세요"
-    static let subTitle = "회원 가입을 진행해 주세요~"
+    static let subTitle = "회원 가입을 진행해 주세요"
     static let nickname = "닉네임"
     static let email = "이메일"
     static let password = "비밀번호"

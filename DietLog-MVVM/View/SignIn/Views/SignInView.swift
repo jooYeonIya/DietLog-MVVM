@@ -14,6 +14,7 @@ class SignInView: UIView {
     // MARK: - UI Componet
     lazy var titleLabel = CustomLabel(text: SignInText.title, font: .title)
     lazy var subTitleLabel = CustomLabel(text: SignInText.subTitle, font: .body)
+    lazy var stackView = UIStackView()
     lazy var nicknameTextField = UITextField()
     lazy var emailTextField = UITextField()
     lazy var passwordTextField = UITextField()
@@ -22,15 +23,10 @@ class SignInView: UIView {
     
     // MARK: - setup UI
     func configure() {
-        addSubviews([titleLabel,
-                     subTitleLabel,
-                     nicknameTextField,
-                     emailTextField,
-                     passwordTextField,
-                     doneButton])
+        addSubviews([titleLabel, subTitleLabel, stackView, doneButton])
         
         setupBackgroundViewUI()
-        setupTextFieldsUI()
+        setupStackView()
         setupDoneButtonUI()
         
         setupLayout()
@@ -42,17 +38,25 @@ class SignInView: UIView {
         applyRadius()
     }
     
+    private func setupStackView() {
+        let nicknameLabel = CustomLabel(text: SignInText.nickname, font: .smallBody)
+        let emailLabel = CustomLabel(text: SignInText.email, font: .smallBody)
+        let passwordLabel = CustomLabel(text: SignInText.password, font: .smallBody)
+        
+        setupTextFieldsUI()
+        
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        
+        stackView.addArrangedSubviews([nicknameLabel, nicknameTextField,
+                                      emailLabel, emailTextField,
+                                      passwordLabel, passwordTextField])
+    }
      
     private func setupTextFieldsUI() {
-        nicknameTextField.configure()
-        nicknameTextField.placeholder = SignInText.nickname
-        
-        emailTextField.configure()
-        emailTextField.placeholder = SignInText.email
-        
-        passwordTextField.configure()
-        passwordTextField.placeholder = SignInText.password
-        passwordTextField.isSecureTextEntry = true
+        [nicknameTextField, emailTextField, passwordTextField].forEach {
+            $0.configure()
+        }
         
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 4
@@ -63,6 +67,7 @@ class SignInView: UIView {
         visibilityToggleButton.setImage(.eyeOpen, for: .selected)
         visibilityToggleButton.configuration = buttonConfiguration
 
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.rightView = visibilityToggleButton
         passwordTextField.rightViewMode = .always
     }
@@ -82,32 +87,25 @@ class SignInView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
         }
-        
+               
         subTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4).priority(.required)
             make.leading.trailing.equalTo(titleLabel)
         }
         
-        nicknameTextField.snp.makeConstraints { make in
-            make.bottom.equalTo(emailTextField.snp.top).offset(-20)
+        stackView.snp.makeConstraints { make in
+            make.bottom.equalTo(doneButton.snp.top).offset(-12)
             make.leading.trailing.equalTo(titleLabel)
-            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
         }
         
-        emailTextField.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.trailing.equalTo(titleLabel)
-            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+        [nicknameTextField, emailTextField, passwordTextField].forEach {
+            $0.snp.makeConstraints { make in
+                make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+            }
         }
-        
-        passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).offset(20)
-            make.leading.trailing.equalTo(titleLabel)
-            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
-        }
-        
+      
         doneButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(24)
+            make.bottom.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(ComponentSize.textFieldHeight.rawValue)
         }

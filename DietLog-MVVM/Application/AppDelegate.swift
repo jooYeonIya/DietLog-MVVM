@@ -9,7 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import KakaoSDKCommon
 import NaverThirdPartyLogin
-
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.consumerKey = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_KEY") as? String
         instance?.consumerSecret = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_SECRET") as? String
         instance?.appName = "DietLog"
+        
+        FirebaseApp.configure()
         
         return true
     }

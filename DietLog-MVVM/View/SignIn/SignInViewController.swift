@@ -65,14 +65,15 @@ class SignInViewController: BaseViewController {
             make.top.equalTo(signInView.snp.bottom).offset(28)
         }
     }
-    
-    // MARK: - Setup Event
-    override func setupEvent() {
-//        visibilityToggleButton.addTarget(self, action: #selector(toggleVisibilityButton), for: .touchUpInside)
-    }
-    
+
     // MARK: - Setup Bind
     override func setupBinding() {
+        signInView.visibilityToggleButton.rx.tap
+            .bind {
+                self.toggleVisibilityButton()
+            }
+            .disposed(by: disposeBag)
+        
 //        doneButton.rx.tap
 //            .withLatestFrom(nicknameTextField.rx.text)
 //            .map {
@@ -108,9 +109,9 @@ extension SignInViewController {
         view.window?.rootViewController = viewController
     }
     
-    @objc func toggleVisibilityButton() {
-//        passwordTextField.isSecureTextEntry.toggle()
-//        visibilityToggleButton.isSelected.toggle()
+    func toggleVisibilityButton() {
+        signInView.passwordTextField.isSecureTextEntry.toggle()
+        signInView.visibilityToggleButton.isSelected.toggle()
     }
     
     @objc func loginWithKakao() {

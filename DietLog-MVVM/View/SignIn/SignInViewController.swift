@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import RxSwift
+import FirebaseAuth
+import FirebaseCore
 
 class SignInViewController: BaseViewController {
     
@@ -19,13 +21,6 @@ class SignInViewController: BaseViewController {
     // MARK: - 변수
     private let viewModel = SignInViewModel()
     private let disposeBag = DisposeBag()
-    private var isCompletedNickNameCheck = false {
-        willSet {
-            if newValue {
-                moveToMyInfoView()
-            }
-        }
-    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -74,39 +69,39 @@ class SignInViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-//        doneButton.rx.tap
-//            .withLatestFrom(nicknameTextField.rx.text)
-//            .map {
-//                $0?.trimmingCharacters(in: .whitespacesAndNewlines)
-//            }
-//            .subscribe() { [weak self] nickname in
-//                self?.viewModel.nickname.onNext(nickname)
-//            }.disposed(by: disposeBag)
+        signInView.doneButton.rx.tap
+            .withLatestFrom(Observable.combineLatest(
+                signInView.nicknameTextField.rx.text,
+                signInView.emailTextField.rx.text,
+                signInView.passwordTextField.rx.text
+            ) { nickname, email, password in
+                return (
+                    nickname?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    email?.trimmingCharacters(in: .whitespacesAndNewlines),
+                    password?.trimmingCharacters(in: .whitespacesAndNewlines)
+                )
+            })
+            .subscribe() { [weak self] (nickname, email, password) in
+                let inputData = SignInInputData(nickname: nickname, email: email, password: password)
+                self?.viewModel.emptyCheckTextFields(inputData)
+                self?.viewModel.delegate = self
+            }.disposed(by: disposeBag)
         
         
         viewModel.signInResult
-            .subscribe() { [weak self] result in
-                var message = ""
-                
-                if result {
-                    message = SignInText.welcom
-                } else {
-                    message = SignInText.nicknameEmptyError
-                }
-                
-                self?.showAlertWithOKButton(title: nil, message: message) {
-                    self?.isCompletedNickNameCheck = result
-                }
-                
+            .subscribe() { [weak self] message in
+                self?.showAlertWithOKButton(title: nil, message: message)                
             }.disposed(by: disposeBag)
     }
 }
 
 // MARK: - 메서드
-extension SignInViewController {
-    private func moveToMyInfoView() {
-        let viewController = TabBarViewController()
-        view.window?.rootViewController = viewController
+extension SignInViewController: SignInViewModelDelegate {
+    func moveToMyInfoView() {
+        showAlertWithOKButton(title: nil, message: SignInText.signInSecces) {
+            let viewController = TabBarViewController()
+            self.view.window?.rootViewController = viewController
+        }
     }
     
     func toggleVisibilityButton() {

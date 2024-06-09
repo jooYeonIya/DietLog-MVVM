@@ -99,7 +99,7 @@ class MyInfoViewController: BaseViewController {
     
     private func setFloatingButtonUI() {
         floatingButton.configureFloatingButton(with: "저장",
-                                               and: CGFloat(ComponentSize.floatingButton.rawValue))
+                                               and: CGFloat(ComponentSize.floatingButton))
     }
     
     // MARK: - Setup Layout
@@ -147,7 +147,7 @@ class MyInfoViewController: BaseViewController {
         floatingButton.snp.makeConstraints { make in
             make.trailing.equalTo(calendarBackgroundView)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.width.height.equalTo(ComponentSize.floatingButton.rawValue)
+            make.width.height.equalTo(ComponentSize.floatingButton)
         }
     }
     

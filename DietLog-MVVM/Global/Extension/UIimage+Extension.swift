@@ -15,6 +15,12 @@ extension UIImage {
     static var eyeOpen: UIImage? {
         return UIImage(named: ImageName.eyeOpen)
     }   
+    static var naverLogo: UIImage? {
+        return UIImage(named: ImageName.naverLogo)
+    }
+    static var kakaoLogo: UIImage? {
+        return UIImage(named: ImageName.kakaoLogo)
+    }
 }
 
 

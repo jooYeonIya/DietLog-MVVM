@@ -73,7 +73,7 @@ class SignInView: UIView {
     }
     
     private func setupDoneButtonUI() {
-        let width: CGFloat = CGFloat(ComponentSize.textFieldHeight.rawValue)
+        let width: CGFloat = CGFloat(ComponentSize.textFieldHeight)
         doneButton.configureCircleShape(width: width)
         
         let buttonImgae = UIImage(systemName: ImageName.rightArrow,
@@ -100,14 +100,14 @@ class SignInView: UIView {
         
         [nicknameTextField, emailTextField, passwordTextField].forEach {
             $0.snp.makeConstraints { make in
-                make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+                make.height.equalTo(ComponentSize.textFieldHeight)
             }
         }
       
         doneButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+            make.width.height.equalTo(ComponentSize.textFieldHeight)
         }
     }
 }

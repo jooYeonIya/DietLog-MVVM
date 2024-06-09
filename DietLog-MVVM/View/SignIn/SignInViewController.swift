@@ -62,7 +62,7 @@ class SignInViewController: BaseViewController {
         
         snsLoginView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(signInView)
-            make.top.equalTo(signInView.snp.bottom).offset(24)
+            make.top.equalTo(signInView.snp.bottom).offset(28)
         }
     }
     

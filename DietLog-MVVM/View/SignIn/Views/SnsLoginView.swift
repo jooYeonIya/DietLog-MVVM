@@ -28,26 +28,22 @@ class SnsLoginView: UIView {
     }
     
     private func setupStackView() {
-        stackVew.axis = .vertical
-        stackVew.spacing = 0
+        stackVew.axis = .horizontal
+        stackVew.spacing = 24
         stackVew.alignment = .center
         stackVew.distribution = .equalCentering
         
         let kakaoButton = UIButton()
-        kakaoButton.setTitle("카카오로 가입하기", for: .normal)
+        kakaoButton.setImage(.kakaoLogo, for: .normal)
         
         let naverButton = UIButton()
-        naverButton.setTitle("네이버로 가입하기", for: .normal)
+        naverButton.setImage(.naverLogo, for: .normal)
         
-        [kakaoButton, naverButton].forEach {
-            stackVew.addArrangedSubview($0)
+        [kakaoButton, naverButton].forEach { button in
+            stackVew.addArrangedSubview(button)
             
-            $0.setTitleColor(.black, for: .normal)
-            $0.titleLabel?.font = .smallBody
-            
-            $0.snp.makeConstraints { make in
-                make.height.equalTo(40)
-                make.width.equalToSuperview()
+            button.snp.makeConstraints { make in
+                make.width.height.equalTo(ComponentSize.logoButton)
             }
         }
     }
@@ -57,11 +53,15 @@ class SnsLoginView: UIView {
         
         snsTitleLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(stackVew.snp.top).offset(-8)
         }
         
         stackVew.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(snsTitleLabel)
+            make.top.equalTo(snsTitleLabel.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(ComponentSize.logoButton)
+            
+            let width = ComponentSize.logoButton * 2 + 24
+            make.width.equalTo(width)
         }
     }
 }

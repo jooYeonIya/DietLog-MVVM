@@ -65,7 +65,7 @@ class CategoryEditViewController: BaseViewController {
         categoryNameTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLable.snp.bottom).offset(12)
             make.leading.trailing.equalTo(titleLable)
-            make.height.equalTo(ComponentSize.textFieldHeight.rawValue)
+            make.height.equalTo(ComponentSize.textFieldHeight)
         }
     }
     

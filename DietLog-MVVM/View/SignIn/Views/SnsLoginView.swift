@@ -13,6 +13,8 @@ class SnsLoginView: UIView {
     // MARK: - UI Component
     private lazy var stackVew = UIStackView()
     private lazy var snsTitleLabel = CustomLabel(text: SignInText.sns, font: .boldBody)
+    lazy var kakaoButton = UIButton()
+    lazy var naverButton = UIButton()
     
     // MARK: - Setup UI
     func configure() {
@@ -33,10 +35,8 @@ class SnsLoginView: UIView {
         stackVew.alignment = .center
         stackVew.distribution = .equalCentering
         
-        let kakaoButton = UIButton()
         kakaoButton.setImage(.kakaoLogo, for: .normal)
         
-        let naverButton = UIButton()
         naverButton.setImage(.naverLogo, for: .normal)
         
         [kakaoButton, naverButton].forEach { button in

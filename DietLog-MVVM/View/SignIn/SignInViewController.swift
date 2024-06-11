@@ -57,7 +57,7 @@ class SignInViewController: BaseViewController {
         
         snsLoginView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(signInView)
-            make.top.equalTo(signInView.snp.bottom)
+            make.top.equalTo(signInView.snp.bottom).offset(28)
             make.height.equalTo(100)
         }
     }
@@ -123,11 +123,13 @@ extension SignInViewController: SignInViewModelDelegate {
         signInView.visibilityToggleButton.isSelected.toggle()
     }
     
-    @objc func loginWithKakao() {
+    func loginWithKakao() {
         KakaoService.shared.loginWithKakao()
+        moveToMyInfoView()
     }
     
-    @objc func loginWithNaver() {
+    func loginWithNaver() {
         NaverService.share.loginWithNaver()
+        moveToMyInfoView()
     }
 }

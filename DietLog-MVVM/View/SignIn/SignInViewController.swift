@@ -57,15 +57,16 @@ class SignInViewController: BaseViewController {
         
         snsLoginView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(signInView)
-            make.top.equalTo(signInView.snp.bottom).offset(28)
+            make.top.equalTo(signInView.snp.bottom)
+            make.height.equalTo(100)
         }
     }
 
     // MARK: - Setup Bind
     override func setupBinding() {
         signInView.visibilityToggleButton.rx.tap
-            .bind {
-                self.toggleVisibilityButton()
+            .bind { [weak self] _ in
+                self?.toggleVisibilityButton()
             }
             .disposed(by: disposeBag)
         
@@ -85,13 +86,26 @@ class SignInViewController: BaseViewController {
                 let inputData = SignInInputData(nickname: nickname, email: email, password: password)
                 self?.viewModel.emptyCheckTextFields(inputData)
                 self?.viewModel.delegate = self
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         
+        snsLoginView.kakaoButton.rx.tap
+            .bind() { [weak self] _ in
+                self?.loginWithKakao()
+            }
+            .disposed(by: disposeBag)
+        
+        snsLoginView.naverButton.rx.tap
+            .bind() { [weak self] _ in
+                self?.loginWithNaver()
+            }
+            .disposed(by: disposeBag)
         
         viewModel.signInResult
             .subscribe() { [weak self] message in
                 self?.showAlertWithOKButton(title: nil, message: message)                
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

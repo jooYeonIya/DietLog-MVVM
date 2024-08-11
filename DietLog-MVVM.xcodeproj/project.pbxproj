@@ -46,7 +46,6 @@
 		0A2B9F832BEBAAE400F3A079 /* UIimage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */; };
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
-		0A317AC12C155487006C7805 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A317AC02C155487006C7805 /* GoogleService-Info.plist */; };
 		0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7168702BEB5ECB0049A58C /* LocalizedText.swift */; };
 		0A9BA23D2C149A0400E99CD4 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FD2C1492BE00CB5236 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */; };
@@ -184,7 +183,6 @@
 		0A2B9F822BEBAAE400F3A079 /* UIimage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extension.swift"; sourceTree = "<group>"; };
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
-		0A317AC02C155487006C7805 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
 		0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInText.swift; sourceTree = "<group>"; };
 		0A9BA2512C150DC100E99CD4 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
@@ -451,7 +449,6 @@
 		0AEAC2942BD7E6C90071FCBC /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				0A317AC02C155487006C7805 /* GoogleService-Info.plist */,
 				0AEAC28E2BD7DE860071FCBC /* Info.plist */,
 				0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */,
 				0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */,
@@ -853,7 +850,6 @@
 			files = (
 				0AEAC2C02BD8CC8F0071FCBC /* LINESeedKR-Rg.otf in Resources */,
 				0AEAC2C12BD8CC8F0071FCBC /* LINESeedKR-Bd.otf in Resources */,
-				0A317AC12C155487006C7805 /* GoogleService-Info.plist in Resources */,
 				0AEAC28D2BD7DE860071FCBC /* LaunchScreen.storyboard in Resources */,
 				0AEAC28A2BD7DE860071FCBC /* Assets.xcassets in Resources */,
 			);
@@ -989,6 +985,7 @@
 /* Begin XCBuildConfiguration section */
 		0A020AE22BE84F4200D3850A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1015,6 +1012,7 @@
 		};
 		0A020AE32BE84F4200D3850A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1041,6 +1039,7 @@
 		};
 		0AEAC28F2BD7DE860071FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1101,6 +1100,7 @@
 		};
 		0AEAC2902BD7DE860071FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1155,6 +1155,7 @@
 		};
 		0AEAC2922BD7DE860071FCBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1185,6 +1186,7 @@
 		};
 		0AEAC2932BD7DE860071FCBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6307B2C148D60000DB618 /* APIKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

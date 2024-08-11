@@ -14,6 +14,7 @@ class ExerciseViewController: BaseViewController {
     // MARK: - Component
     private lazy var exerciseDataTableView = UITableView()
     private lazy var noDataLabel = UILabel()
+    private lazy var playerView = UIView()
     
     // MARK: - 변수
     private var exerciseData: [Exercise] = []
@@ -50,12 +51,13 @@ class ExerciseViewController: BaseViewController {
         
         let hasData = !exerciseData.isEmpty
         exerciseDataTableView.isHidden = !hasData
+        playerView.isHidden = !hasData
         noDataLabel.isHidden = hasData
     }
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([exerciseDataTableView, noDataLabel])
+        view.addSubviews([playerView, exerciseDataTableView, noDataLabel])
         
         exerciseDataTableView.separatorStyle = .none
         exerciseDataTableView.backgroundColor = .clear
@@ -64,12 +66,20 @@ class ExerciseViewController: BaseViewController {
                                        forCellReuseIdentifier: ExerciseTableViewCell.identifier)
         
         noDataLabel.configure(text: LocalizedText.plusData, font: .body)
+        
+        playerView.backgroundColor = .orange
     }
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        playerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalToSuperview()
+            make.height.equalTo(playerView.snp.width).multipliedBy(9.0/16.0)
+        }
+        
         exerciseDataTableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
+            make.top.equalTo(playerView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -134,9 +144,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = WebViewController(youtubeURL: exerciseData[indexPath.section].URL)
-        viewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(viewController, animated: true)
+
     }
 }
 

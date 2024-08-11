@@ -47,21 +47,11 @@
 		0A2FA9E92BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */; };
 		0A2FA9EB2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */; };
 		0A317AC12C155487006C7805 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A317AC02C155487006C7805 /* GoogleService-Info.plist */; };
-		0A317AC42C1554F3006C7805 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A317AC32C1554F3006C7805 /* FirebaseAnalytics */; };
-		0A317AC62C155850006C7805 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A317AC52C155850006C7805 /* FirebaseAuth */; };
-		0A317AC82C157FB3006C7805 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A317AC72C157FB3006C7805 /* FirebaseService.swift */; };
 		0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7168702BEB5ECB0049A58C /* LocalizedText.swift */; };
 		0A9BA23D2C149A0400E99CD4 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B86FD2C1492BE00CB5236 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		0A9BA2412C149AB600E99CD4 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */; };
-		0A9BA2432C149AB600E99CD4 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */; };
-		0A9BA2452C149AB600E99CD4 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */; };
-		0A9BA2472C149C4200E99CD4 /* KakaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2462C149C4200E99CD4 /* KakaoService.swift */; };
-		0A9BA24C2C15029A00E99CD4 /* NaverThirdPartyLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9BA24B2C15029A00E99CD4 /* NaverThirdPartyLogin */; };
-		0A9BA24E2C1507A400E99CD4 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24D2C1507A400E99CD4 /* NaverService.swift */; };
 		0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */; };
 		0A9BA2522C150DC100E99CD4 /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2512C150DC100E99CD4 /* ImageName.swift */; };
 		0A9BA2552C1510A300E99CD4 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2542C1510A300E99CD4 /* SignInView.swift */; };
-		0A9BA2582C1515A500E99CD4 /* SnsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */; };
 		0A9BA25A2C151F2100E99CD4 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BA2592C151F2100E99CD4 /* UIStackView+Extension.swift */; };
 		0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2802BD7DE860071FCBC /* AppDelegate.swift */; };
 		0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAC2822BD7DE860071FCBC /* SceneDelegate.swift */; };
@@ -195,14 +185,10 @@
 		0A2FA9E82BDC81DB0065BDCF /* RecentWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWordCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A2FA9EA2BDC8D8F0065BDCF /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		0A317AC02C155487006C7805 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0A317AC72C157FB3006C7805 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		0A7168702BEB5ECB0049A58C /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
-		0A9BA2462C149C4200E99CD4 /* KakaoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KakaoService.swift; sourceTree = "<group>"; };
-		0A9BA24D2C1507A400E99CD4 /* NaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverService.swift; sourceTree = "<group>"; };
 		0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInText.swift; sourceTree = "<group>"; };
 		0A9BA2512C150DC100E99CD4 /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 		0A9BA2542C1510A300E99CD4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsLoginView.swift; sourceTree = "<group>"; };
 		0A9BA2592C151F2100E99CD4 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		0AE6307B2C148D60000DB618 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DietLog-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,17 +270,11 @@
 			files = (
 				0AEAC30C2BDE38140071FCBC /* RxSwift in Frameworks */,
 				0A020B2D2BE90B9600D3850A /* IQKeyboardManagerSwift in Frameworks */,
-				0A317AC42C1554F3006C7805 /* FirebaseAnalytics in Frameworks */,
 				0A2B86FE2C1492BE00CB5236 /* RealmSwift in Frameworks */,
-				0A9BA24C2C15029A00E99CD4 /* NaverThirdPartyLogin in Frameworks */,
 				0AEAC30A2BDE38140071FCBC /* RxCocoa in Frameworks */,
-				0A9BA2432C149AB600E99CD4 /* KakaoSDKCommon in Frameworks */,
 				0AEAC2CA2BD8E00D0071FCBC /* SnapKit in Frameworks */,
 				0A16C59D2BE4F1BD006E5308 /* RxAlamofire in Frameworks */,
 				0AEAC2D72BD8FC4E0071FCBC /* FSCalendar in Frameworks */,
-				0A317AC62C155850006C7805 /* FirebaseAuth in Frameworks */,
-				0A9BA2452C149AB600E99CD4 /* KakaoSDKUser in Frameworks */,
-				0A9BA2412C149AB600E99CD4 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,15 +408,6 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
-		0A9BA2532C15104D00E99CD4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0A9BA2542C1510A300E99CD4 /* SignInView.swift */,
-				0A9BA2572C1515A500E99CD4 /* SnsLoginView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		0AEAC2742BD7DE860071FCBC = {
 			isa = PBXGroup;
 			children = (
@@ -507,10 +478,7 @@
 		0AEAC2972BD7E6ED0071FCBC /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				0A9BA2462C149C4200E99CD4 /* KakaoService.swift */,
 				0A16C59F2BE4FB2E006E5308 /* YoutubeService.swift */,
-				0A9BA24D2C1507A400E99CD4 /* NaverService.swift */,
-				0A317AC72C157FB3006C7805 /* FirebaseService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -629,7 +597,7 @@
 		0AEAC2A22BD8C92C0071FCBC /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				0A9BA2532C15104D00E99CD4 /* Views */,
+				0A9BA2542C1510A300E99CD4 /* SignInView.swift */,
 				0AEAC2A92BD8C9EE0071FCBC /* SignInViewController.swift */,
 				0A9BA24F2C150C8C00E99CD4 /* SignInText.swift */,
 			);
@@ -810,12 +778,6 @@
 				0A16C59C2BE4F1BD006E5308 /* RxAlamofire */,
 				0A020B2C2BE90B9600D3850A /* IQKeyboardManagerSwift */,
 				0A2B86FD2C1492BE00CB5236 /* RealmSwift */,
-				0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */,
-				0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */,
-				0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */,
-				0A9BA24B2C15029A00E99CD4 /* NaverThirdPartyLogin */,
-				0A317AC32C1554F3006C7805 /* FirebaseAnalytics */,
-				0A317AC52C155850006C7805 /* FirebaseAuth */,
 			);
 			productName = "DietLog-MVVM";
 			productReference = 0AEAC27D2BD7DE860071FCBC /* DietLog-MVVM.app */;
@@ -855,9 +817,6 @@
 				0A16C59B2BE4F1BD006E5308 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				0A020B2B2BE90B9600D3850A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-				0A9BA24A2C15029A00E99CD4 /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios" */,
-				0A317AC22C1554F3006C7805 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 0AEAC27E2BD7DE860071FCBC /* Products */;
 			projectDirPath = "";
@@ -920,7 +879,6 @@
 				0AEAC2B52BD8CA5F0071FCBC /* CategoryEditViewController.swift in Sources */,
 				0AEAC2D02BD8EACA0071FCBC /* Padding.swift in Sources */,
 				0AEAC3022BDE28300071FCBC /* MyInfoManager.swift in Sources */,
-				0A9BA2582C1515A500E99CD4 /* SnsLoginView.swift in Sources */,
 				0A020AC22BE6FC2300D3850A /* ExerciseModifyEditViewController.swift in Sources */,
 				0AEAC2B12BD8CA3E0071FCBC /* MealEditViewController.swift in Sources */,
 				0A020ACF2BE76C0E00D3850A /* RecentSearchWordManager.swift in Sources */,
@@ -932,7 +890,6 @@
 				0AEAC2E32BDA27260071FCBC /* CategoryCollectionViewCell.swift in Sources */,
 				0AEAC2DE2BD98E460071FCBC /* MealsDataTableViewCell.swift in Sources */,
 				0AEAC2DB2BD9775D0071FCBC /* ComponentSize.swift in Sources */,
-				0A317AC82C157FB3006C7805 /* FirebaseService.swift in Sources */,
 				0AEAC3202BE0D9D90071FCBC /* MealViewModel.swift in Sources */,
 				0AEAC2852BD7DE860071FCBC /* TabBarViewController.swift in Sources */,
 				0AEAC3182BDF95780071FCBC /* DateFormmater+Extension.swift in Sources */,
@@ -978,7 +935,6 @@
 				0AEAC2B92BD8CA890071FCBC /* ExerciseBaseEditViewController.swift in Sources */,
 				0AEAC2812BD7DE860071FCBC /* AppDelegate.swift in Sources */,
 				0AEAC30E2BDE39320071FCBC /* SignInViewModel.swift in Sources */,
-				0A9BA2472C149C4200E99CD4 /* KakaoService.swift in Sources */,
 				0AEAC32A2BE212360071FCBC /* CategoryViewModel.swift in Sources */,
 				0AEAC2C72BD8DDBE0071FCBC /* BaseViewController.swift in Sources */,
 				0AEAC2832BD7DE860071FCBC /* SceneDelegate.swift in Sources */,
@@ -986,7 +942,6 @@
 				0AEAC3002BDE26A20071FCBC /* MealManager.swift in Sources */,
 				0AEAC2AF2BD8CA2F0071FCBC /* MealViewController.swift in Sources */,
 				0A2B9F832BEBAAE400F3A079 /* UIimage+Extension.swift in Sources */,
-				0A9BA24E2C1507A400E99CD4 /* NaverService.swift in Sources */,
 				0A16C5A42BE60798006E5308 /* ExerciseViewModel.swift in Sources */,
 				0A7168712BEB5ECB0049A58C /* LocalizedText.swift in Sources */,
 				0A9BA2502C150C8C00E99CD4 /* SignInText.swift in Sources */,
@@ -1030,7 +985,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87GJA6959V;
+				DEVELOPMENT_TEAM = 7TA3LDAD85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -1056,7 +1011,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDL/ShareDL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87GJA6959V;
+				DEVELOPMENT_TEAM = 7TA3LDAD85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShareDL/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShareDL;
@@ -1199,7 +1154,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87GJA6959V;
+				DEVELOPMENT_TEAM = 7TA3LDAD85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
@@ -1229,7 +1184,7 @@
 				CODE_SIGN_ENTITLEMENTS = "DietLog-MVVM/DietLog-MVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87GJA6959V;
+				DEVELOPMENT_TEAM = 7TA3LDAD85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DietLog-MVVM/Application/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근을 허락해 주세요";
@@ -1307,30 +1262,6 @@
 				minimumVersion = 10.50.1;
 			};
 		};
-		0A317AC22C1554F3006C7805 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.27.0;
-			};
-		};
-		0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		0A9BA24A2C15029A00E99CD4 /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/naver/naveridlogin-sdk-ios";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		0AEAC2C82BD8E00D0071FCBC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1397,36 +1328,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A2B86FC2C1492BE00CB5236 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		0A317AC32C1554F3006C7805 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A317AC22C1554F3006C7805 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		0A317AC52C155850006C7805 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A317AC22C1554F3006C7805 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		0A9BA2402C149AB600E99CD4 /* KakaoSDKAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKAuth;
-		};
-		0A9BA2422C149AB600E99CD4 /* KakaoSDKCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKCommon;
-		};
-		0A9BA2442C149AB600E99CD4 /* KakaoSDKUser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A9BA23F2C149AB600E99CD4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKUser;
-		};
-		0A9BA24B2C15029A00E99CD4 /* NaverThirdPartyLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A9BA24A2C15029A00E99CD4 /* XCRemoteSwiftPackageReference "naveridlogin-sdk-ios" */;
-			productName = NaverThirdPartyLogin;
 		};
 		0AEAC2C92BD8E00D0071FCBC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,9 +7,6 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import KakaoSDKCommon
-import NaverThirdPartyLogin
-import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,19 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.resignOnTouchOutside = true
-        
-        let nativeKey = Bundle.main.object(forInfoDictionaryKey: "KAKAO_NATIVE_APP_KEY") as? String
-        KakaoSDK.initSDK(appKey: nativeKey ?? "")
-        
-        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
-        instance?.isInAppOauthEnable = true
-        instance?.serviceUrlScheme = "com.studyiOS.DietLog"
-        instance?.consumerKey = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_KEY") as? String
-        instance?.consumerSecret = Bundle.main.object(forInfoDictionaryKey: "NAVER_CONSUMER_SECRET") as? String
-        instance?.appName = "DietLog"
-        
-        FirebaseApp.configure()
-        
+
         return true
     }
 

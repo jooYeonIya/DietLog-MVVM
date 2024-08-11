@@ -8,15 +8,12 @@
 import UIKit
 import SnapKit
 import RxSwift
-import FirebaseAuth
-import FirebaseCore
 
 class SignInViewController: BaseViewController {
     
     // MARK: - UI Component
     private lazy var dietLogLabel = CustomLabel(text: SignInText.dietLog, font: .largeTitle)
     private lazy var signInView = SignInView()
-    private lazy var snsLoginView = SnsLoginView()
 
     // MARK: - 변수
     private let viewModel = SignInViewModel()
@@ -29,11 +26,10 @@ class SignInViewController: BaseViewController {
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([dietLogLabel, signInView, snsLoginView])
+        view.addSubviews([dietLogLabel, signInView])
         
         setupDietLogLabelUI()
         signInView.configure()
-        snsLoginView.configure()
     }
     
     private func setupDietLogLabelUI() {
@@ -54,56 +50,25 @@ class SignInViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
             make.height.equalTo(view.snp.height).dividedBy(2)
         }
-        
-        snsLoginView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(signInView)
-            make.top.equalTo(signInView.snp.bottom).offset(28)
-            make.height.equalTo(100)
-        }
     }
 
     // MARK: - Setup Bind
-    override func setupBinding() {
-        signInView.visibilityToggleButton.rx.tap
-            .bind { [weak self] _ in
-                self?.toggleVisibilityButton()
-            }
-            .disposed(by: disposeBag)
-        
+    override func setupBinding() {        
         signInView.doneButton.rx.tap
-            .withLatestFrom(Observable.combineLatest(
-                signInView.nicknameTextField.rx.text,
-                signInView.emailTextField.rx.text,
-                signInView.passwordTextField.rx.text
-            ) { nickname, email, password in
-                return (
-                    nickname?.trimmingCharacters(in: .whitespacesAndNewlines),
-                    email?.trimmingCharacters(in: .whitespacesAndNewlines),
-                    password?.trimmingCharacters(in: .whitespacesAndNewlines)
-                )
-            })
-            .subscribe() { [weak self] (nickname, email, password) in
-                let inputData = SignInInputData(nickname: nickname, email: email, password: password)
-                self?.viewModel.emptyCheckTextFields(inputData)
+            .subscribe() { [weak self] nickname in
+                let nicknameTextField = self?.signInView.nicknameTextField.text
+                self?.viewModel.emptyCheckTextFields(nicknameTextField)
                 self?.viewModel.delegate = self
             }
             .disposed(by: disposeBag)
         
-        snsLoginView.kakaoButton.rx.tap
-            .bind() { [weak self] _ in
-                self?.loginWithKakao()
-            }
-            .disposed(by: disposeBag)
-        
-        snsLoginView.naverButton.rx.tap
-            .bind() { [weak self] _ in
-                self?.loginWithNaver()
-            }
-            .disposed(by: disposeBag)
-        
         viewModel.signInResult
-            .subscribe() { [weak self] message in
-                self?.showAlertWithOKButton(title: nil, message: message)                
+            .subscribe() { [weak self] result in
+                if result {
+                    self?.moveToMyInfoView()
+                } else {
+                    self?.showAlertWithOKButton(title: nil, message: SignInText.emptyCheckError)
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -116,20 +81,5 @@ extension SignInViewController: SignInViewModelDelegate {
             let viewController = TabBarViewController()
             self.view.window?.rootViewController = viewController
         }
-    }
-    
-    func toggleVisibilityButton() {
-        signInView.passwordTextField.isSecureTextEntry.toggle()
-        signInView.visibilityToggleButton.isSelected.toggle()
-    }
-    
-    func loginWithKakao() {
-        KakaoService.shared.loginWithKakao()
-        moveToMyInfoView()
-    }
-    
-    func loginWithNaver() {
-        NaverService.share.loginWithNaver()
-        moveToMyInfoView()
     }
 }

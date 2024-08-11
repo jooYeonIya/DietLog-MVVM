@@ -21,12 +21,7 @@ class SignInViewModel {
     private let disposeBag = DisposeBag()
     private let manager = UserInfoManager()
     
-    func emptyCheckTextFields(_ nickname: String?) {
-        
-        if nickname != nil {
-            signInResult.onNext(true)
-        } else {
-            signInResult.onNext(false)
-        }
+    func emptyCheckTextField(_ nickname: String?) {
+        signInResult.onNext(nickname != "")
     }
 }

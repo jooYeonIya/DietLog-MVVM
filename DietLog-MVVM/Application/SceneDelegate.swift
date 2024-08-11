@@ -17,9 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let manager = UserInfoManager.shared
-        let result = false
-        
+        let result = UserInfoManager.shared.loadIsCompletedFirstFaunch()
+
         if result {
             window?.rootViewController = TabBarViewController()
         } else {

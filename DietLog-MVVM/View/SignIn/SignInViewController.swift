@@ -57,7 +57,7 @@ class SignInViewController: BaseViewController {
         signInView.doneButton.rx.tap
             .subscribe() { [weak self] nickname in
                 let nicknameTextField = self?.signInView.nicknameTextField.text
-                self?.viewModel.emptyCheckTextFields(nicknameTextField)
+                self?.viewModel.emptyCheckTextField(nicknameTextField)
                 self?.viewModel.delegate = self
             }
             .disposed(by: disposeBag)
@@ -78,6 +78,9 @@ class SignInViewController: BaseViewController {
 extension SignInViewController: SignInViewModelDelegate {
     func moveToMyInfoView() {
         showAlertWithOKButton(title: nil, message: SignInText.signInSecces) {
+            if let nickname = self.signInView.nicknameTextField.text {
+                UserInfoManager.shared.createUserInfo(nickname: nickname)
+            }
             let viewController = TabBarViewController()
             self.view.window?.rootViewController = viewController
         }

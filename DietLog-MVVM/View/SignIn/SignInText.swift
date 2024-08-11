@@ -15,6 +15,6 @@ enum SignInText {
     static let email = "이메일"
     static let password = "비밀번호"
     static let welcom = "환영합니다"
-    static let emptyCheckError = "모든 필드를 입력해 주세요"
+    static let emptyCheckError = "닉네임을 입력해 주세요"
     static let signInSecces = "회원 가입 성공 앞으로 화이팅!!"
 }

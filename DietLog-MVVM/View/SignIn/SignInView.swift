@@ -82,7 +82,7 @@ class SignInView: UIView {
         }
         
         stackView.snp.makeConstraints { make in
-            make.bottom.equalTo(doneButton.snp.top).offset(-12)
+            make.centerY.equalToSuperview()
             make.leading.trailing.equalTo(titleLabel)
         }
         

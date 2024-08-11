@@ -48,7 +48,7 @@ class SignInViewController: BaseViewController {
         signInView.snp.makeConstraints { make in
             make.top.equalTo(dietLogLabel.snp.bottom).offset(48)
             make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.height.equalTo(view.snp.height).dividedBy(2)
+            make.height.equalTo(view.snp.height).dividedBy(3)
         }
     }
 

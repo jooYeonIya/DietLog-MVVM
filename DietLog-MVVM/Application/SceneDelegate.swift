@@ -7,8 +7,6 @@
 
 import UIKit
 import Foundation
-import KakaoSDKAuth
-import NaverThirdPartyLogin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,9 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let manager = UserInfoManager.shared
-        let result = manager.loadIsCompletedFirstFaunch()
-        
+        let result = UserInfoManager.shared.loadIsCompletedFirstFaunch()
+
         if result {
             window?.rootViewController = TabBarViewController()
         } else {
@@ -31,18 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let url = URLContexts.first?.url else { return }
-        
-        if(AuthApi.isKakaoTalkLoginUrl(url)) {
-            _ = AuthController.handleOpenUrl(url: url)
-        }
-        
-        NaverThirdPartyLoginConnection
-            .getSharedInstance()
-            .receiveAccessToken(url)
-    }
-
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

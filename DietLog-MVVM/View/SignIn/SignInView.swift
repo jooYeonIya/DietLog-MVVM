@@ -16,8 +16,6 @@ class SignInView: UIView {
     lazy var subTitleLabel = CustomLabel(text: SignInText.subTitle, font: .body)
     lazy var stackView = UIStackView()
     lazy var nicknameTextField = UITextField()
-    lazy var emailTextField = UITextField()
-    lazy var passwordTextField = UITextField()
     lazy var doneButton = UIButton()
     lazy var visibilityToggleButton = UIButton(type: .custom)
     
@@ -40,23 +38,17 @@ class SignInView: UIView {
     
     private func setupStackView() {
         let nicknameLabel = CustomLabel(text: SignInText.nickname, font: .smallBody)
-        let emailLabel = CustomLabel(text: SignInText.email, font: .smallBody)
-        let passwordLabel = CustomLabel(text: SignInText.password, font: .smallBody)
         
-        setupTextFieldsUI()
+        setupTextFieldUI()
         
         stackView.axis = .vertical
         stackView.spacing = 12
         
-        stackView.addArrangedSubviews([nicknameLabel, nicknameTextField,
-                                      emailLabel, emailTextField,
-                                      passwordLabel, passwordTextField])
+        stackView.addArrangedSubviews([nicknameLabel, nicknameTextField])
     }
      
-    private func setupTextFieldsUI() {
-        [nicknameTextField, emailTextField, passwordTextField].forEach {
-            $0.configure()
-        }
+    private func setupTextFieldUI() {
+        nicknameTextField.configure()
         
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 4
@@ -66,10 +58,6 @@ class SignInView: UIView {
         visibilityToggleButton.setImage(.eyeClosed, for: .normal)
         visibilityToggleButton.setImage(.eyeOpen, for: .selected)
         visibilityToggleButton.configuration = buttonConfiguration
-
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.rightView = visibilityToggleButton
-        passwordTextField.rightViewMode = .always
     }
     
     private func setupDoneButtonUI() {
@@ -94,14 +82,12 @@ class SignInView: UIView {
         }
         
         stackView.snp.makeConstraints { make in
-            make.bottom.equalTo(doneButton.snp.top).offset(-12)
+            make.centerY.equalToSuperview()
             make.leading.trailing.equalTo(titleLabel)
         }
         
-        [nicknameTextField, emailTextField, passwordTextField].forEach {
-            $0.snp.makeConstraints { make in
-                make.height.equalTo(ComponentSize.textFieldHeight)
-            }
+        nicknameTextField.snp.makeConstraints { make in
+            make.height.equalTo(ComponentSize.textFieldHeight)
         }
       
         doneButton.snp.makeConstraints { make in

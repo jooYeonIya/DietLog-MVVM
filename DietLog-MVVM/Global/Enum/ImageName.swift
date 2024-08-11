@@ -12,6 +12,4 @@ enum ImageName {
     static let eyeClosed = "eye.closed"
     static let eyeOpen = "eye.open"
     static let rightArrow = "arrowshape.turn.up.right"
-    static let naverLogo = "naver.logo"
-    static let kakaoLogo = "kakao.logo"
 }

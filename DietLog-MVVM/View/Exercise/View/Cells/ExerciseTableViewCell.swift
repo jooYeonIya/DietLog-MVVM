@@ -37,11 +37,16 @@ class ExerciseTableViewCell: UITableViewCell {
         
         backgroundWhiteView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-8)
         }
+        
+        thumbnailImageView.applyRadius()
+        thumbnailImageView.layer.masksToBounds = true
+        
         titleLabel.configure(text: exercise.title, font: .body)
         titleLabel.numberOfLines = 0
-        titleLabel.lineBreakMode = .byCharWrapping
-        
+        titleLabel.lineBreakStrategy = .hangulWordPriority
+
         memoLabel.configure(text: exercise.memo ?? "", font: .smallBody)
         memoLabel.numberOfLines = 0
         memoLabel.lineBreakMode = .byCharWrapping
@@ -52,30 +57,27 @@ class ExerciseTableViewCell: UITableViewCell {
         backgroundWhiteView.addSubviews([thumbnailImageView, titleLabel, memoLabel, optionButton])
         
         thumbnailImageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
+            make.top.leading.equalToSuperview().offset(8)
+            make.width.equalTo(160)
+            make.height.equalTo(thumbnailImageView.snp.width).multipliedBy(9.0/16.0)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(Padding.leftRightSpacing.rawValue)
-            make.trailing.lessThanOrEqualTo(optionButton.snp.leading).offset(-8)
+            make.centerY.equalTo(thumbnailImageView)
+            make.leading.equalTo(thumbnailImageView.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualTo(optionButton.snp.leading).offset(-4)
         }
         
         memoLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(Padding.leftRightSpacing.rawValue)
-            make.bottom.equalToSuperview().offset(-12)
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview().offset(-8)
         }
         
         optionButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.top)
-            make.trailing.equalToSuperview().offset(-Padding.leftRightSpacing.rawValue)
+            make.trailing.equalToSuperview().offset(-8)
             make.width.height.equalTo(20)
-        }
-        
-        backgroundWhiteView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-8)
         }
     }
     

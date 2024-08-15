@@ -107,33 +107,20 @@ class ExerciseViewController: BaseViewController, WKYTPlayerViewDelegate {
 
 // MARK: - TableView
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return exerciseData.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .customGray
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return exerciseData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
         
-        viewModel.findThumbnailImage(with: exerciseData[indexPath.section].thumbnailURL)
+        viewModel.findThumbnailImage(with: exerciseData[indexPath.row].thumbnailURL)
             .subscribe(onNext: { image in
                 cell.thumbnailImageView.image = image
             }).disposed(by: disposeBag)
                 
-        cell.configure(exercise: exerciseData[indexPath.section])
+        cell.configure(exercise: exerciseData[indexPath.row])
         cell.selectionStyle = .none
         cell.delegate = self
         return cell
@@ -144,7 +131,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let URL = exerciseData[indexPath.section].URL
+        let URL = exerciseData[indexPath.row].URL
         if let videoId = YoutubeService.shared.extractVideoId(from: URL) {
             let playVarsDic = ["playsinline": 1]
             playerView.load(withVideoId: videoId, playerVars: playVarsDic)

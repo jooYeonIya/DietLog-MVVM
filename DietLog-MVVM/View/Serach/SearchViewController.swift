@@ -140,8 +140,7 @@ class SearchViewController: BaseViewController {
         
         resultTableView.rx.modelSelected(Exercise.self)
             .subscribe { [weak self] item in
-                let viewController = WebViewController(youtubeURL: item.URL)
-                self?.navigationController?.pushViewController(viewController, animated: true)
+
             }
             .disposed(by: disposeBag)
         

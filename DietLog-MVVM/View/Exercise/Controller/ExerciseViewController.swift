@@ -8,13 +8,14 @@
 import UIKit
 import RxSwift
 import RealmSwift
+import YoutubePlayer_in_WKWebView
 
-class ExerciseViewController: BaseViewController {
+class ExerciseViewController: BaseViewController, WKYTPlayerViewDelegate {
 
     // MARK: - Component
     private lazy var exerciseDataTableView = UITableView()
     private lazy var noDataLabel = UILabel()
-    private lazy var playerView = UIView()
+    private lazy var playerView = WKYTPlayerView()
     
     // MARK: - 변수
     private var exerciseData: [Exercise] = []
@@ -36,10 +37,6 @@ class ExerciseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         reloadData()
     }
     
@@ -47,6 +44,11 @@ class ExerciseViewController: BaseViewController {
         if let categoryId = categoryId {
             viewModel.findExerciseData(by: categoryId)
             exerciseDataTableView.reloadData()
+        }
+        
+        if let URL = exerciseData.first?.URL, let videoId = YoutubeService.shared.extractVideoId(from: URL) {
+            let playVarsDic = ["playsinline": 1]
+            playerView.load(withVideoId: videoId, playerVars: playVarsDic)
         }
         
         let hasData = !exerciseData.isEmpty
@@ -66,8 +68,6 @@ class ExerciseViewController: BaseViewController {
                                        forCellReuseIdentifier: ExerciseTableViewCell.identifier)
         
         noDataLabel.configure(text: LocalizedText.plusData, font: .body)
-        
-        playerView.backgroundColor = .orange
     }
     
     // MARK: - Setup Layout

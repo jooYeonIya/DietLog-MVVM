@@ -19,7 +19,7 @@ class ExerciseEditViewModel {
     var URLTextField = BehaviorSubject<String>(value: "")
     var URLErrorLabel = BehaviorSubject<String>(value: "")
     var selectedCategoryId = BehaviorSubject<ObjectId?>(value: nil)
-    var memoTextView = BehaviorSubject<String?>(value: nil)
+    var memoTextView = BehaviorSubject<String?>(value: "")
     
     private var isEnableURL: Bool = false
     private let disposeBag = DisposeBag()

@@ -8,22 +8,26 @@
 import UIKit
 import RxSwift
 import RealmSwift
+import YoutubePlayer_in_WKWebView
 
-class ExerciseViewController: BaseViewController {
+class ExerciseViewController: BaseViewController, WKYTPlayerViewDelegate {
 
     // MARK: - Component
     private lazy var exerciseDataTableView = UITableView()
     private lazy var noDataLabel = UILabel()
+    private lazy var playerView = WKYTPlayerView()
     
     // MARK: - 변수
     private var exerciseData: [Exercise] = []
     private let viewModel = ExerciseViewModel()
     private let disposeBag = DisposeBag()
     private let categoryId: ObjectId?
+    private let exerciseURL: String?
     
     // MARK: - 초기화
-    init(categoryId: ObjectId) {
+    init(categoryId: ObjectId, exerciseURL: String?) {
         self.categoryId = categoryId
+        self.exerciseURL = exerciseURL
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,10 +39,6 @@ class ExerciseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayTopView(false)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         reloadData()
     }
     
@@ -48,14 +48,21 @@ class ExerciseViewController: BaseViewController {
             exerciseDataTableView.reloadData()
         }
         
+        if let URL = exerciseURL == nil ? exerciseData.first?.URL : exerciseURL,
+           let videoId = YoutubeService.shared.extractVideoId(from: URL) {
+            let playVarsDic = ["playsinline": 1]
+            playerView.load(withVideoId: videoId, playerVars: playVarsDic)
+        }
+        
         let hasData = !exerciseData.isEmpty
         exerciseDataTableView.isHidden = !hasData
+        playerView.isHidden = !hasData
         noDataLabel.isHidden = hasData
     }
     
     // MARK: - Setup UI
     override func setupUI() {
-        view.addSubviews([exerciseDataTableView, noDataLabel])
+        view.addSubviews([playerView, exerciseDataTableView, noDataLabel])
         
         exerciseDataTableView.separatorStyle = .none
         exerciseDataTableView.backgroundColor = .clear
@@ -68,8 +75,14 @@ class ExerciseViewController: BaseViewController {
     
     // MARK: - Setup Layout
     override func setupLayout() {
+        playerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalToSuperview()
+            make.height.equalTo(playerView.snp.width).multipliedBy(9.0/16.0)
+        }
+        
         exerciseDataTableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
+            make.top.equalTo(playerView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -97,33 +110,20 @@ class ExerciseViewController: BaseViewController {
 
 // MARK: - TableView
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return exerciseData.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .customGray
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return exerciseData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExerciseTableViewCell.identifier, for: indexPath) as? ExerciseTableViewCell else { return UITableViewCell() }
         
-        viewModel.findThumbnailImage(with: exerciseData[indexPath.section].thumbnailURL)
+        viewModel.findThumbnailImage(with: exerciseData[indexPath.row].thumbnailURL)
             .subscribe(onNext: { image in
                 cell.thumbnailImageView.image = image
             }).disposed(by: disposeBag)
                 
-        cell.configure(exercise: exerciseData[indexPath.section])
+        cell.configure(exercise: exerciseData[indexPath.row])
         cell.selectionStyle = .none
         cell.delegate = self
         return cell
@@ -134,9 +134,11 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = WebViewController(youtubeURL: exerciseData[indexPath.section].URL)
-        viewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(viewController, animated: true)
+        let URL = exerciseData[indexPath.row].URL
+        if let videoId = YoutubeService.shared.extractVideoId(from: URL) {
+            let playVarsDic = ["playsinline": 1]
+            playerView.load(withVideoId: videoId, playerVars: playVarsDic)
+        }
     }
 }
 

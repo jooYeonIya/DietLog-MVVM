@@ -67,7 +67,7 @@ class ExerciseBaseEditViewController: BaseViewController {
             .bind(to: viewModel.selectedCategoryId)
             .disposed(by: disposeBag)
         
-        exerciseEditView.memoTextView.rx.text
+        exerciseEditView.memoTextView.rx.text.orEmpty
             .bind(to: viewModel.memoTextView)
             .disposed(by: disposeBag)
     }

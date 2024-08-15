@@ -51,7 +51,7 @@ class YoutubeService {
             }
     }
     
-    private func extractVideoId(from urlString: String) -> String? {
+    func extractVideoId(from urlString: String) -> String? {
         guard let url = URL(string: urlString) else { return "" }
         
         if urlString.contains("youtu.be") || urlString.contains("shorts") {

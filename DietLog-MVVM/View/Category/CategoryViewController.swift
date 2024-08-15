@@ -167,7 +167,7 @@ class CategoryViewController: BaseViewController {
         
         categoryCollectionView.rx.modelSelected(Category.self)
             .subscribe { [weak self] item in
-                let viewController = ExerciseViewController(categoryId: item.id)
+                let viewController = ExerciseViewController(categoryId: item.id, exerciseURL: nil)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)

@@ -140,7 +140,10 @@ class SearchViewController: BaseViewController {
         
         resultTableView.rx.modelSelected(Exercise.self)
             .subscribe { [weak self] item in
-
+                if let categoryID = item.element?.categoryID {
+                    let vc = ExerciseViewController(categoryId: categoryID, exerciseURL: item.element?.URL)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
             }
             .disposed(by: disposeBag)
         

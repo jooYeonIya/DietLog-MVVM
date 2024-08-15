@@ -22,10 +22,12 @@ class ExerciseViewController: BaseViewController, WKYTPlayerViewDelegate {
     private let viewModel = ExerciseViewModel()
     private let disposeBag = DisposeBag()
     private let categoryId: ObjectId?
+    private let exerciseURL: String?
     
     // MARK: - 초기화
-    init(categoryId: ObjectId) {
+    init(categoryId: ObjectId, exerciseURL: String?) {
         self.categoryId = categoryId
+        self.exerciseURL = exerciseURL
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,7 +48,8 @@ class ExerciseViewController: BaseViewController, WKYTPlayerViewDelegate {
             exerciseDataTableView.reloadData()
         }
         
-        if let URL = exerciseData.first?.URL, let videoId = YoutubeService.shared.extractVideoId(from: URL) {
+        if let URL = exerciseURL == nil ? exerciseData.first?.URL : exerciseURL,
+           let videoId = YoutubeService.shared.extractVideoId(from: URL) {
             let playVarsDic = ["playsinline": 1]
             playerView.load(withVideoId: videoId, playerVars: playVarsDic)
         }

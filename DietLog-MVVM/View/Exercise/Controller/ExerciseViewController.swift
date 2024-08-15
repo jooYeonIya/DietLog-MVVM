@@ -144,7 +144,11 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let URL = exerciseData[indexPath.section].URL
+        if let videoId = YoutubeService.shared.extractVideoId(from: URL) {
+            let playVarsDic = ["playsinline": 1]
+            playerView.load(withVideoId: videoId, playerVars: playVarsDic)
+        }
     }
 }
 
